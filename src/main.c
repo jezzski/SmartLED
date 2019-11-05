@@ -71,14 +71,14 @@ void app_main()
 
 
         //quick pwm test
-        ledc_timer_config_t ledc_timer = {
+        ledc_timer_config_t ledc_timer_test = {
             .duty_resolution = LEDC_TIMER_12_BIT,
             .freq_hz = 5000,
             .speed_mode = LEDC_HIGH_SPEED_MODE,
             .timer_num = LEDC_TIMER_0
         };
 
-        ledc_timer_config(&ledc_timer);
+        ledc_timer_config(&ledc_timer_test);
 
         int dutyVal = 0;
         int test = restart_counter % 3;
@@ -96,23 +96,72 @@ void app_main()
             default:break;
         }
         printf("%x\n", dutyVal);
-        ledc_channel_config_t ledc_channel = {
+        ledc_channel_config_t ledc_channel_test = {
             .channel = LEDC_CHANNEL_0,
             .duty = dutyVal,
             .gpio_num = 23,
             .speed_mode = LEDC_HIGH_SPEED_MODE,
             .hpoint = 0,
             .timer_sel = LEDC_TIMER_0};
-        ledc_channel_config(&ledc_channel);
+        ledc_channel_config(&ledc_channel_test);
     }
 
-    printf("\n");
+
+    ledc_channel_config_t ledc_channel_red = {
+        .channel = LEDC_CHANNEL_1,
+        .duty = 0,
+        .gpio_num = 21,
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .hpoint = 0,
+        .timer_sel = LEDC_TIMER_0};
+    ledc_channel_config(&ledc_channel_red);
+
+    ledc_channel_config_t ledc_channel_green = {
+        .channel = LEDC_CHANNEL_2,
+        .duty = 0,
+        .gpio_num = 19,
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .hpoint = 0,
+        .timer_sel = LEDC_TIMER_0};
+    ledc_channel_config(&ledc_channel_green);
+
+    ledc_channel_config_t ledc_channel_blue = {
+        .channel = LEDC_CHANNEL_3,
+        .duty = 0,
+        .gpio_num = 22,
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .hpoint = 0,
+        .timer_sel = LEDC_TIMER_0};
+    ledc_channel_config(&ledc_channel_blue);
 
     uint32_t duty = ledc_get_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
 
     bool up = true;
+    uint16_t r = 0;
+    uint16_t g = 0;
+    uint16_t b = 0;
     while (1)
     {
+        uint32_t color = esp_random(); //RRGGBB
+        r = (color >> 16) & 0xFF;
+        g = (color >> 12) & 0xFF;
+        b = color & 0xFF;
+
+        r <<= 4;
+        g <<= 4;
+        b <<= 4;
+        printf("R:%x G:%x B:%x\n", r, g, b);
+
+
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, r);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
+
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, g);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
+
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, b);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
+
         if (up)
         {
             duty += 100;
@@ -133,7 +182,7 @@ void app_main()
         }
         ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
         ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
-        printf("Duty:%x\n", duty);
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        //printf("Duty:%x\n", duty);
+        vTaskDelay(/*50*/1000 / portTICK_PERIOD_MS);
     }
 }

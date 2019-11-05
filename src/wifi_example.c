@@ -4,7 +4,7 @@
    software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
    CONDITIONS OF ANY KIND, either express or implied.
 */
-#include <string.h>
+/*#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
@@ -17,22 +17,22 @@
 #include "lwip/err.h"
 #include "lwip/sys.h"
 
-/* The examples use simple WiFi configuration that you can set via
-   'make menuconfig'.
-   If you'd rather not, just change the below entries to strings with
-   the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
-*/
+//  The examples use simple WiFi configuration that you can set via
+// 'make menuconfig'.
+//  If you'd rather not, just change the below entries to strings with
+//  the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
+
 #define EXAMPLE_ESP_WIFI_MODE_AP   0 //TRUE:AP FALSE:STA
 #define EXAMPLE_ESP_WIFI_SSID      "ncsu"
 #define EXAMPLE_ESP_WIFI_PASS      ""
 #define EXAMPLE_MAX_STA_CONN       4
 
-/* FreeRTOS event group to signal when we are connected*/
+// FreeRTOS event group to signal when we are connected
 static EventGroupHandle_t wifi_event_group;
 
-/* The event group allows multiple bits for each event,
-   but we only care about one event - are we connected
-   to the AP with an IP? */
+// The event group allows multiple bits for each event,
+// but we only care about one event - are we connected
+// to the AP with an IP? 
 const int WIFI_CONNECTED_BIT = BIT0;
 
 static const char *TAG = "simple wifi";
@@ -139,6 +139,6 @@ void app_main()
 #else
     ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
     wifi_init_sta();
-#endif /*EXAMPLE_ESP_WIFI_MODE_AP*/
+#endif //EXAMPLE_ESP_WIFI_MODE_AP
 
-}
+}*/
