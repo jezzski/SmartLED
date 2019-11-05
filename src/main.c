@@ -108,8 +108,32 @@ void app_main()
 
     printf("\n");
 
+    uint32_t duty = ledc_get_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
+
+    bool up = true;
     while (1)
     {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        if (up)
+        {
+            duty += 100;
+            if (duty > 0xFFF)
+            {
+                duty = 0xFFF;
+                up = false;
+            }
+        }
+        else
+        {
+            duty -= 100;
+            if (duty <= 0 || duty > 0xFFFF)
+            {
+                duty = 0;
+                up = true;
+            }
+        }
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
+        printf("Duty:%x\n", duty);
+        vTaskDelay(50 / portTICK_PERIOD_MS);
     }
 }
