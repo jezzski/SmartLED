@@ -11,7 +11,9 @@ basic example used in PDR prototype demonstration
 
 #include "driver/ledc.h"
 
-
+#include "wifi.h"
+#include "espsntp.h"
+#include "scheduler.h"
 
 void app_main()
 {
@@ -24,9 +26,17 @@ void app_main()
         err = nvs_flash_init();
     }
     ESP_ERROR_CHECK( err );
+    printf("size:%d\n", sizeof(long));
+
+    //init wifi
+    //wifi_init_sta();
+
+    //obtain_time();
+
+    init_schedule();
 
     // Open
-    printf("\n");
+    /*printf("\n");
     printf("Opening Non-Volatile Storage (NVS) handle... ");
     nvs_handle my_handle;
     err = nvs_open("storage", NVS_READWRITE, &my_handle);
@@ -99,14 +109,14 @@ void app_main()
         ledc_channel_config_t ledc_channel = {
             .channel = LEDC_CHANNEL_0,
             .duty = dutyVal,
-            .gpio_num = 23,
+            .gpio_num = 19,
             .speed_mode = LEDC_HIGH_SPEED_MODE,
             .hpoint = 0,
             .timer_sel = LEDC_TIMER_0};
         ledc_channel_config(&ledc_channel);
     }
 
-    printf("\n");
+    printf("\n");*/
 
     while (1)
     {
