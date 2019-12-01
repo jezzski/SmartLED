@@ -32,10 +32,27 @@ void app_main()
 
     //obtain_time();
 
-    //init_schedule();
-
+    init_schedule();
+    
+    vTaskDelay(2000 / portTICK_PERIOD_MS);
+    schedule_object s = {
+        .ID = 0,
+        .enabled = 1,
+        .start = 20,
+        .duration = 30,
+        .repeat_mask = 0b01000000,
+        .repeat_time = 0
+    };
+    strcpy(s.name, "Schedule1");
+    create_schedule(0, s);
+    s.start = 10;
+    s.duration = 60;
+    s.ID = 1;
+    strcpy(s.name, "Schedule2");
+    create_schedule(1, s);
+    
     //quick pwm test
-    ledc_timer_config_t ledc_timer_test = {
+    /*ledc_timer_config_t ledc_timer_test = {
         .duty_resolution = LEDC_TIMER_12_BIT,
         .freq_hz = 5000,
         .speed_mode = LEDC_HIGH_SPEED_MODE,
@@ -130,11 +147,11 @@ void app_main()
         ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
         ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
         printf("Duty:%x\n", duty);
-        vTaskDelay(/*50*/1000 / portTICK_PERIOD_MS);
-    }
-
-    /*while (1)
-    {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }*/
+
+    while (1)
+    {
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
 }
