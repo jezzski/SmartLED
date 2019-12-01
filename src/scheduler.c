@@ -15,8 +15,39 @@ static void Scheduler(void *pvParms);
 
 void update_start_time(schedule_object *s, time_t curr)
 {
-    //math to update the start time based on repeat time/mask and current time
-    s->enabled = 0; //just disable for now
+    //check if schedule is repeating
+    if (!s->repeat_mask && !s->repeat_time)
+    {
+        s->enabled = 0;
+        return;
+    }
+    //todo: revisit this logic
+    //does this support lights on twice a day, once a day?
+    //should repeat_time stop after day ends or carry on into next day?
+
+    //if schedule runs every x seconds
+    if (s->repeat_time)
+    {
+        s->start += s->repeat_time;
+        return;
+    }
+    //schedule runs on certain days
+    struct tm time_info = { 0 };
+    localtime_r(&curr, &time_info);
+    //find difference between current day and next run day
+    uint8_t currDay = time_info.tm_wday; //current day of week
+    uint8_t nextDay = 1; //days until next run, at least 1
+    for (int i = currDay + 1; i != currDay; ++i)
+    {
+        if (i > 6) i = 0;
+        //check if schedule runs this day
+        if ((s->repeat_mask >> (6-i)) & 1)
+        {
+            s->start += (86400*nextDay);
+            break;
+        }
+        ++nextDay;
+    }
 }
 
 void init_schedule(void)
@@ -34,19 +65,19 @@ void init_schedule(void)
     schedules[0]->next = NULL;
     schedules[1] = malloc(sizeof(List));
     schedules[1]->next = NULL;
-
     schedule_object s = {
         .ID = 0,
         .enabled = 1,
         .start = 20,
         .duration = 30,
-        .repeat_mask = 0,
-        .repeat_time = 60
+        .repeat_mask = 0b01000000,
+        .repeat_time = 0
     };
     strcpy(s.name, "Schedule1");
     schedules[0]->schedule = s;
     s.start = 10;
     s.duration = 60;
+    s.ID = 1;
     strcpy(s.name, "Schedule2");
     schedules[1]->schedule = s;
 }
@@ -79,7 +110,7 @@ static void Scheduler(void *pvParms)
         strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
         printf("Current time=%ld, %s\n", curr, strftime_buf);
         
-        uint32_t nextTime = 0xFFFFFFFF; //next time for task to run
+        uint32_t nextTime = UINT32_MAX; //next time for task to run, default to infinite
         for (int i = 0; i < NUM_CHANNELS; ++i) //check all schedules
         {
             List *it = schedules[i];
@@ -104,6 +135,7 @@ static void Scheduler(void *pvParms)
                                 //schedule finished
                                 printf("Schedule duration done\n");
                                 update_start_time(&(it->schedule), curr);
+                                nextTime = MIN(nextTime, it->schedule.start);
                             }
                             else
                             {
@@ -114,6 +146,7 @@ static void Scheduler(void *pvParms)
                         {
                             //infinite duration, just update schedule
                             update_start_time(&(it->schedule), curr);
+                            nextTime = MIN(nextTime, it->schedule.start);
                         }
 
                     }
@@ -127,7 +160,7 @@ static void Scheduler(void *pvParms)
         }
         
         
-        printf("Next Scheduled Task Time:%ud\n\n", nextTime);
+        printf("Next Scheduled Task Time:%u\n\n", nextTime);
         
         TickType_t xTicksToWait = (((nextTime-curr)*1000)/portTICK_PERIOD_MS);
         if (nextTime==UINT32_MAX)

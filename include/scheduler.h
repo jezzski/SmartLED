@@ -14,6 +14,9 @@
 //todo: good c coding to make variables "private" when possible
 
 void init_schedule(void);
+esp_err_t create_schedule(uint8_t channel, schedule_object s);
+esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID);
+esp_err_t delete_schedule_by_name(uint8_t channel, char *name);
 
 //todo: integrate with LED control properly
 #define NUM_CHANNELS 6
