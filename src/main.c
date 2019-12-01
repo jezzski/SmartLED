@@ -14,6 +14,7 @@ basic example used in PDR prototype demonstration
 #include "wifi.h"
 #include "espsntp.h"
 #include "scheduler.h"
+#include "led.h"
 
 void app_main()
 {
@@ -27,131 +28,50 @@ void app_main()
     }
     ESP_ERROR_CHECK( err );
 
+    //init gpio/LED outputs
+    init_channels();
+    //init schedule
+    init_schedule();
     //init wifi
     //wifi_init_sta();
-
+    //init sntp
     //obtain_time();
-
-    init_schedule();
     
     vTaskDelay(2000 / portTICK_PERIOD_MS);
     schedule_object s = {
         .ID = 0,
         .enabled = 1,
-        .start = 20,
-        .duration = 30,
-        .repeat_mask = 0b01000000,
-        .repeat_time = 0
+        .start = 10,
+        .duration = UINT32_MAX,
+        .repeat_mask = 0b00000000,
+        .repeat_time = 2,
+
+        .isRGB = 1, //could combine with a previous field to save memory space
+        .brightness = 0xFF,
+        .r = 0x00,
+        .g = 0x00,
+        .b = 0xFF,
     };
     strcpy(s.name, "Schedule1");
-    create_schedule(0, s);
-    s.start = 10;
-    s.duration = 60;
+    create_schedule(1, s);
+    s.start = 11;
+    s.duration = UINT32_MAX;
+    s.repeat_time = 2;
+    s.isRGB = 1;
+    s.r = 0xFF;
+    s.g = 0x00;
+    s.b = 0x00;
     s.ID = 1;
     strcpy(s.name, "Schedule2");
     create_schedule(1, s);
-    
-    //quick pwm test
-    /*ledc_timer_config_t ledc_timer_test = {
-        .duty_resolution = LEDC_TIMER_12_BIT,
-        .freq_hz = 5000,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .timer_num = LEDC_TIMER_0
-    };
-
-    ledc_timer_config(&ledc_timer_test);
-
-    ledc_channel_config_t ledc_channel_test = {
-        .channel = LEDC_CHANNEL_0,
-        .duty = 0xFFF,
-        .gpio_num = 25,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0};
-    ledc_channel_config(&ledc_channel_test);
 
 
-    ledc_channel_config_t ledc_channel_red = {
-        .channel = LEDC_CHANNEL_1,
-        .duty = 0,
-        .gpio_num = 19,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0};
-    ledc_channel_config(&ledc_channel_red);
-
-    ledc_channel_config_t ledc_channel_green = {
-        .channel = LEDC_CHANNEL_2,
-        .duty = 0,
-        .gpio_num = 18,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0};
-    ledc_channel_config(&ledc_channel_green);
-
-    ledc_channel_config_t ledc_channel_blue = {
-        .channel = LEDC_CHANNEL_3,
-        .duty = 0,
-        .gpio_num = 5,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0};
-    ledc_channel_config(&ledc_channel_blue);
-
-    uint32_t duty = ledc_get_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
-
-    bool up = true;
-    uint16_t r = 0;
-    uint16_t g = 0;
-    uint16_t b = 0;
+    uint8_t brightness = 0x00;
     while (1)
     {
-        uint32_t color = esp_random(); //RRGGBB
-        r = (color >> 16) & 0xFF;
-        g = (color >> 12) & 0xFF;
-        b = color & 0xFF;
+        brightness += 0x01;
+        channel_on(2, brightness);
 
-        r <<= 4;
-        g <<= 4;
-        b <<= 4;
-        printf("R:%x G:%x B:%x\n", r, g, b);
-
-
-        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, r);
-        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
-
-        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, g);
-        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
-
-        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, b);
-        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
-
-        if (up)
-        {
-            duty += 100;
-            if (duty > 0xFFF)
-            {
-                duty = 0xFFF;
-                up = false;
-            }
-        }
-        else
-        {
-            duty -= 100;
-            if (duty <= 0 || duty > 0xFFFF)
-            {
-                duty = 0;
-                up = true;
-            }
-        }
-        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
-        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
-        printf("Duty:%x\n", duty);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-    }*/
-
-    while (1)
-    {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }

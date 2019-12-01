@@ -12,6 +12,8 @@
 #define GPIO_CHANNEL_4 18
 #define GPIO_CHANNEL_5 5
 
+#define NUM_CHANNELS 6
+
 void init_channels(void);
 void channel_on(uint8_t index, uint8_t brightness);
 void channel_off(uint8_t index);

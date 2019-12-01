@@ -89,6 +89,7 @@ void init_channels(void)
 
 void channel_on(uint8_t index, uint8_t brightness)
 {
+    brightness <<= 4;
     switch(index)
     {
         case 0:
@@ -153,32 +154,31 @@ void channel_off(uint8_t index)
 
 void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)
 {
-    brightness = (float) brightness / UINT8_MAX;
-    r *= brightness;
-    g *= brightness;
-    b *= brightness;
+    r *= (float)(brightness / UINT8_MAX);
+    g *= (float)(brightness / UINT8_MAX);
+    b *= (float)(brightness / UINT8_MAX);
 
     switch(index)
     {
         case 0:
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, r);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, r << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
             
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, g);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, g << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
             
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, b);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, b << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
             
         break;
         case 1:
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, r);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, r << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
             
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, g);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, g << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4);
             
-            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, b);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, b << 4);
             ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5);
         break;
         default: break;
