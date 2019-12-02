@@ -324,7 +324,7 @@ static void Scheduler(void *pvParms)
             printf("Infinite\n");
             xTicksToWait = portMAX_DELAY;
         }
-        
+        printf("Diff(s)%u, Ticks:%d, Period:%d\n", (nextTime-curr), xTickstoWait, portTICK_PERIOD_MS);
         xTaskNotifyWait( 0x00,      /* Don't clear any notification bits on entry. */
                          ULONG_MAX, /* Reset the notification value to 0 on exit. */
                          &ulNotifiedValue, /* Notified value pass out in

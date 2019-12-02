@@ -71,7 +71,9 @@ void app_main()
     {
         //brightness += 0x01;
         //channel_on(2, brightness);
-
-        vTaskDelay(100 / portTICK_PERIOD_MS);
+        time_t curr;
+        time(&curr);
+        printf("Current unix time:%u\n", curr);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
