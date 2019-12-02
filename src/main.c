@@ -33,9 +33,9 @@ void app_main()
     //init schedule
     init_schedule();
     //init wifi
-    //wifi_init_sta();
+    wifi_init_sta();
     //init sntp
-    //obtain_time();
+    obtain_time();
     
     vTaskDelay(2000 / portTICK_PERIOD_MS);
     schedule_object s = {
@@ -53,7 +53,7 @@ void app_main()
         .b = 0xFF,
     };
     strcpy(s.name, "Schedule1");
-    create_schedule(1, s);
+    //create_schedule(1, s);
     s.start = 11;
     s.duration = UINT32_MAX;
     s.repeat_time = 2;
@@ -63,14 +63,14 @@ void app_main()
     s.b = 0x00;
     s.ID = 1;
     strcpy(s.name, "Schedule2");
-    create_schedule(1, s);
+    //create_schedule(1, s);
 
 
     uint8_t brightness = 0x00;
     while (1)
     {
-        brightness += 0x01;
-        channel_on(2, brightness);
+        //brightness += 0x01;
+        //channel_on(2, brightness);
 
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
