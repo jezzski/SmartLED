@@ -154,9 +154,9 @@ void channel_off(uint8_t index)
 
 void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)
 {
-    r *= (float)(brightness / UINT8_MAX);
-    g *= (float)(brightness / UINT8_MAX);
-    b *= (float)(brightness / UINT8_MAX);
+    r *= ((float)brightness / UINT8_MAX);
+    g *= ((float)brightness / UINT8_MAX);
+    b *= ((float)brightness / UINT8_MAX);
 
     switch(index)
     {

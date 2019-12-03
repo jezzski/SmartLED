@@ -15,6 +15,7 @@ basic example used in PDR prototype demonstration
 #include "espsntp.h"
 #include "scheduler.h"
 #include "led.h"
+#include "bleSL.h"
 
 void app_main()
 {
@@ -28,6 +29,7 @@ void app_main()
     }
     ESP_ERROR_CHECK( err );
 
+    Init_Bluetooth();
     //init gpio/LED outputs
     init_channels();
     //init schedule
@@ -73,7 +75,7 @@ void app_main()
         //channel_on(2, brightness);
         time_t curr;
         time(&curr);
-        printf("Current unix time:%u\n", curr);
+        printf("Current unix time:%ld\n", curr);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }

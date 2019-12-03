@@ -17,7 +17,7 @@ esp_err_t decode_ble_schedule(uint8_t* packet){
     new_sch.start = get_Int32(&packet[2]);
     new_sch.duration = get_Int32(&packet[6]);
     new_sch.repeat_mask = packet[14];
-    new_sch.repeat_time = 0;
+    new_sch.repeat_time = get_Int32(&packet[15]);;
     new_sch.isRGB = 1;
     new_sch.brightness = packet[10];
     new_sch.r = packet[11];

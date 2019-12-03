@@ -17,6 +17,9 @@ static void Scheduler(void *pvParms);
 
 esp_err_t create_schedule(uint8_t channel, schedule_object s)
 {
+    printf("Channel: %x, Start: %d, Duration: %d, Repeat: %d", channel,s.start, s.duration, s.repeat_time);
+    printf("Brightness: %x", s.brightness);
+    printf("Red: %x, Green: %x, Blue: %x",s.r, s.g, s.b);
     //check if channel is valid
     if (channel > NUM_CHANNELS)
     {
@@ -324,7 +327,8 @@ static void Scheduler(void *pvParms)
             printf("Infinite\n");
             xTicksToWait = portMAX_DELAY;
         }
-        printf("Diff(s)%u, Ticks:%d, Period:%d\n", (nextTime-curr), xTickstoWait, portTICK_PERIOD_MS);
+        printf("curr:%ld, Next:%u\n", curr, nextTime);
+        printf("Diff(s)%ld, Ticks:%d, Period:%d\n", (nextTime-curr), xTicksToWait, portTICK_PERIOD_MS);
         xTaskNotifyWait( 0x00,      /* Don't clear any notification bits on entry. */
                          ULONG_MAX, /* Reset the notification value to 0 on exit. */
                          &ulNotifiedValue, /* Notified value pass out in
