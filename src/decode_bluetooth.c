@@ -9,10 +9,18 @@
 #include "scheduler.h"
 #include "schedule_object.h"
 
+//for set time code
+#include "espsntp.h"
+
 esp_err_t decode_ble_schedule(uint8_t* packet){
     schedule_object new_sch;
+    if (packet[1] > NUM_CHANNELS)
+    {
+        uint32_t t = get_Int32(&packet[2]);
+        set_time(t);
+    }
     new_sch.ID = packet[1];
-    new_sch.name[0] = "\0";
+    new_sch.name[0] = '\0';
     new_sch.enabled = 1;
     new_sch.start = get_Int32(&packet[2]);
     new_sch.duration = get_Int32(&packet[6]);

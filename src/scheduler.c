@@ -236,7 +236,7 @@ static esp_err_t start_Schedule_Task(void)
         ESP_LOGE(SCHEDULE_TAG, "Task already started!");
         return ESP_FAIL;
     }
-    xTaskCreate(&Scheduler, "Scheduler", 2048, NULL, configMAX_PRIORITIES - 1, &Schedule_Task);
+    xTaskCreate(&Scheduler, "Scheduler", 4096, NULL, configMAX_PRIORITIES - 1, &Schedule_Task);
     return ESP_OK;
 }
 

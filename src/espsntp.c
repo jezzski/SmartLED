@@ -7,7 +7,23 @@ const int CONNECTED_BIT = BIT0;
 static void initialize_sntp(void);
 //static esp_err_t event_handler(void *ctx, system_event_t *event);
 
-
+void set_time(uint32_t time)
+{
+    time_t now = time;
+    struct timeval val = {
+        .tv_sec = time,
+        .tv_usec = 0
+    };
+    settimeofday(&val, NULL);
+    // Set timezone to Eastern Standard Time and print local time
+    char strftime_buf[64];
+    setenv("TZ", "EST5EDT,M3.2.0/2,M11.1.0", 1);
+    tzset();
+    struct tm timeinfo = { 0 };
+    localtime_r(&now, &timeinfo);
+    strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+    ESP_LOGI(SNTP_TAG, "The current date/time in New York is: %s", strftime_buf);
+}
 
 void obtain_time(void)
 {

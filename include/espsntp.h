@@ -7,5 +7,6 @@
 #include "lwip/apps/sntp.h"
 
 void obtain_time(void);
+void set_time(uint32_t time);
 
 //todo: sntp with old version of idf or upgrade to 4.0 somehow?

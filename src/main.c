@@ -35,18 +35,18 @@ void app_main()
     //init schedule
     init_schedule();
     //init wifi
-    wifi_init_sta();
+    //wifi_init_sta();
     //init sntp
-    obtain_time();
+    //obtain_time();
     
     vTaskDelay(2000 / portTICK_PERIOD_MS);
     schedule_object s = {
         .ID = 0,
         .enabled = 1,
-        .start = 10,
-        .duration = UINT32_MAX,
+        .start = 0,
+        .duration = 1,
         .repeat_mask = 0b00000000,
-        .repeat_time = 2,
+        .repeat_time = 7,
 
         .isRGB = 1, //could combine with a previous field to save memory space
         .brightness = 0xFF,
@@ -56,9 +56,9 @@ void app_main()
     };
     strcpy(s.name, "Schedule1");
     //create_schedule(1, s);
-    s.start = 11;
-    s.duration = UINT32_MAX;
-    s.repeat_time = 2;
+    s.start = 60;
+    s.duration = 1;
+    s.repeat_time = 7;
     s.isRGB = 1;
     s.r = 0xFF;
     s.g = 0x00;
@@ -75,7 +75,7 @@ void app_main()
         //channel_on(2, brightness);
         time_t curr;
         time(&curr);
-        printf("Current unix time:%ld\n", curr);
+        //printf("Current unix time:%ld\n", curr);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
