@@ -14,9 +14,9 @@
 
 esp_err_t decode_ble_schedule(uint8_t* packet){
     schedule_object new_sch;
-    if (packet[1] > NUM_CHANNELS)
+    if (packet[0] > NUM_CHANNELS)
     {
-        uint32_t t = get_Int32(&packet[2]);
+        uint32_t t = get_Int32(&packet[1]);
         set_time(t);
     }
     new_sch.ID = packet[1];
