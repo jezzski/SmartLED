@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="styles.css">
+<script src="schedules.js"></script>
+
+
+<head>
+    <title>Smart LED</title>
+</head>
+
+<body>
+    <h1>Schedule Manager</h1>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a class="active" href="schedules.html">Schedules</a>
+        <a href="#Settings">Settings</a>
+        <a href="test.html">Test</a>
+        <input type="text" placeholder="Search... [Not Implemented]">
+    </div>
+
+    <div class="channel_nav">
+        <a class="active" href="#Channel1">Channel 1</a>
+        <a href="#Channel2">Channel 2</a>
+        <a href="#Channel3">Channel 3</a>
+        <a href="#Channel4">Channel 4</a>
+        <a href="#Channel5">Channel 5</a>
+        <a href="#Channel6">Channel 6</a>
+        <a id="debug" href="#DEBUG"> Debug</a>
+    </div>
+
+    <div class=schedule_table_container>
+        <table style="width:100%" border="1">
+            <tr>
+                <th style="width:70%">Schedule Name</th>
+                <th>Active</th>
+                <th>Edit</th>
+                <th>Selected</th>
+            </tr>
+            <tr>
+                <td class="channel_entry"> <!-- Used channel_entry just for formatting -->
+                    Morning
+                </td>
+                <td class="channel_entry">
+                    <input type="checkbox">
+                </td>
+                <td class="channel_entry">
+                    <input type="button">
+                </td>
+                <td class="channel_entry">
+                    <input type="checkbox">
+                </td>
+            </tr>
+        </table>
+        <div style="margin-top:2%;margin-left:80%">
+            <input type="button" value="Test" onclick="CreateNewSchedule()">
+            <input type="button" value="Delete Selected">
+        </div>
+    </div>
+
+    <div id="new_sch_container" style="margin-top:2%;margin-right:15%;float:right">
+        <form>
+            <label for="name">Schedule Name:</label>
+            <input type="text" id="sch_name" placeholder="New Schedule Name.."><br>
+            <input type="radio" id="state_on" name="state" value="on">
+            <label for="state_on">Turn ON</label>
+            <input type="radio" id="state_off" name="state" value="off">
+            <label for="state_off">Turn OFF</label>
+            <table border="1">
+                <tr>
+                    <th style="text-align:center;width:14.28%"> Sun </th>
+                    <th style="text-align:center;width:14.28%"> Mon </th>
+                    <th style="text-align:center;width:14.28%"> Tues </th>
+                    <th style="text-align:center;width:14.28%"> Wed </th>
+                    <th style="text-align:center;width:14.28%"> Th </th>
+                    <th style="text-align:center;width:14.28%"> Fri </th>
+                    <th style="text-align:center;width:14.28%"> Sat </th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="sun_checkbox"></td>
+                    <td><input type="checkbox" id="mon_checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </table>
+            <input type="time">
+            <input type="button" value="Add Event"> <br>
+            <br>
+            <h4>Events in this Schedule:</h4>
+            <div class=event_list>
+                This is where I'll list events...
+            </div>
+            <input type="button" value="Save Schedule" style="margin-top:5%;margin-left:10%">
+        </form>
+    </div>
+
+    <div class="footer">
+        <a href="#about">About Project</a>
+        |
+        <a href="#Github">Github</a>
+    </div>
+</body>
+
+</html>
