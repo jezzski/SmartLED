@@ -37,17 +37,46 @@ esp_err_t homepage_handler(httpd_req_t* req)
     const char* resp_str = (const char*) req->user_ctx;
     FILE * fp;
     fp = fopen("/spiffs/index.html", "r");
-    char str[60];
+    char str[255];
     if(fp == NULL){
         ESP_LOGI("SPIFF","Error Opening File");
     }
     else
     {
-        fgets(str,60,fp);
+        //httpd_resp_set_status(req, "206 Partial Content");
+        while(fgets(str,254,fp)!=NULL){
+            httpd_resp_send_chunk(req, str, strlen(str));
+        }
     }
-    
-    httpd_resp_send(req, resp_str, strlen(resp_str));
+    fclose(fp);
+    // strcpy(str,"<Done>");
+    // httpd_resp_set_status(req, "200 OK");
+    // httpd_resp_send_chunk(req, str, strlen(str));
+    httpd_resp_send_chunk(req, NULL, 0);  // indicates end
+    ESP_LOGI(HTTP_TAG, "Finished homepage-handler");
+    return ESP_OK;
+}
 
+esp_err_t styles_handler(httpd_req_t* req)
+{
+    ESP_LOGI(HTTP_TAG, "Reached styles handler");
+    
+    FILE * fp;
+    fp = fopen("/spiffs/styles.css", "r");
+    char str[255];
+    if(fp == NULL){
+        ESP_LOGI("SPIFF","Error Opening File");
+        httpd_resp_send_404(req);
+    }
+    else
+    {
+        httpd_resp_set_type(req, "text/css");
+        while(fgets(str,254,fp)!=NULL){
+            httpd_resp_send_chunk(req, str, strlen(str));
+        }
+    }
+    fclose(fp);
+    httpd_resp_send_chunk(req, NULL, 0);  // indicates end
     return ESP_OK;
 }
 
@@ -122,6 +151,76 @@ void app_main(){
     } else {
         ESP_LOGI("SPIFFS", "Partition size: total: %d, used: %d", total, used);
     }
+
+    //Initialize NVS
+    ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+      ESP_ERROR_CHECK(nvs_flash_erase());
+      ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    wifi_init_sta();
+
+    httpd_config_t config = {                           
+    .task_priority      = tskIDLE_PRIORITY+5,       
+    .stack_size         = 4096,                     
+    .server_port        = 80,                       
+    .ctrl_port          = 32768,                    
+    .max_open_sockets   = 7,                        
+    .max_uri_handlers   = 8,                        
+    .max_resp_headers   = 8,                        
+    .backlog_conn       = 5,                        
+    .lru_purge_enable   = false,                    
+    .recv_wait_timeout  = 5,                        
+    .send_wait_timeout  = 5,                        
+    .global_user_ctx = NULL,                        
+    .global_user_ctx_free_fn = NULL,                
+    .global_transport_ctx = NULL,                   
+    .global_transport_ctx_free_fn = NULL,           
+    .open_fn = NULL,                                
+    .close_fn = NULL,                               
+    .uri_match_fn = NULL                            
+    }; //HTTPD_DEFAULT_CONFIG();
+
+    /* Empty handle to esp_http_server */
+    httpd_handle_t server = NULL;
+
+    /* make a sample uri */
+    static const httpd_uri_t home_page = {
+        .uri = "/",
+        .method = HTTP_GET,
+        .handler = homepage_handler,
+        .user_ctx = HOME_PAGE
+    };
+
+    static const httpd_uri_t echo = {
+        .uri = "/echo",
+        .method = HTTP_POST,
+        .handler = echo_post_handler,
+        .user_ctx = NULL
+    };
+
+    static const httpd_uri_t styles = {
+        .uri = "/styles.css",
+        .method = HTTP_GET,
+        .handler = styles_handler,
+        .user_ctx = NULL
+    };
+
+
+
+    /* Start the httpd server */
+    if (httpd_start(&server, &config) == ESP_OK) {
+        /* Register URI handlers */
+        httpd_register_uri_handler(server, &home_page);
+        httpd_register_uri_handler(server, &echo);
+        httpd_register_uri_handler(server, &styles);
+        //httpd_register_uri_handler(server, &uri_get);
+        //httpd_register_uri_handler(server, &uri_post);
+    }
+
+
 }
 
 // void app_main()
