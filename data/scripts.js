@@ -1,9 +1,17 @@
 // scripts.js
 
 workingSchedule = null;
+dictSchedules = {};
 
 function init(){
     document.getElementById("sch_time").value="12:00";
+
+    // below is temp setup for testing initialize a schedule
+    document.getElementById("sch_name").value="Test";
+    document.getElementById("on_duration").value=5;
+    document.getElementById("repeat_time").value=10;
+    document.getElementById("mon_checkbox").checked=true;
+    addSchEvent();
 }
 
 function CreateNewSchedule(){
@@ -44,7 +52,7 @@ function addSchEvent(){
 
     // Get Repeat Time
     repeatTime=document.getElementById("repeat_time").value;
-    console.log('On Duration: ' + repeatTime);
+    console.log('Repeat Time: ' + repeatTime);
 
     // Generate Week Repeat Mask
     checkedArr = [
@@ -71,4 +79,76 @@ function addSchEvent(){
         repeatTime;
     
     workingSchedule=[schTimeUnix, onDuration, repeatTime, repeatBitMask, ""]
+}
+
+function addSchedule(){
+    if(workingSchedule==null){
+        window.alert("No events in schedule");
+        return;
+    }
+
+    schName=document.getElementById("sch_name").value;
+    if(schName==""){
+        window.alert("Schedule is not named");
+        return;
+    }
+    console.log('Adding schdule: ' + schName);
+
+    schTable=document.getElementById("sch_table");
+
+    newSchEntry=schTable.insertRow(-1);
+    nameCell=newSchEntry.insertCell(0);
+    nameCell.innerHTML=schName;
+    nameCell.className="channel_entry";
+
+    activeCell=newSchEntry.insertCell(1);
+    activeCell.innerHTML="<input type=\"checkbox\">";
+    activeCell.className="channel_entry";
+
+    editCell=newSchEntry.insertCell(2);
+    editCell.innerHTML="<input type=\"button\">";
+    editCell.className="channel_entry";
+
+    selectedCell=newSchEntry.insertCell(3);
+    selectedCell.innerHTML="<input type=\"checkbox\">";
+    selectedCell.className="channel_entry";
+
+    dictSchedules[schName]=workingSchedule;
+
+}
+
+function deleteSelected(){
+    return;
+}
+
+function applySchedules(){
+    schTable=document.getElementById("sch_table");
+    for(row of schTable.rows){
+        if(row.rowIndex==0) continue;  // skip header row
+        schName = row.cells[0].innerHTML;
+        activeCheck = row.cells[1].children[0].checked;
+        if(activeCheck){
+            console.log('Processing active schedule: '+ schName);
+            if(! (schName in dictSchedules)){  // if not found
+                window.alert('No data structure found for selected ' +
+                    'schedule: ' + schName);
+                return;
+            }
+            schProperties=dictSchedules[schName];
+            console.log(schProperties);
+            console.log(createScheduleJSON(1, schName, schProperties));
+        }
+    }
+}
+
+function createScheduleJSON(active_ch, schName,schProperties){
+    sch_JSON =`{
+        "${active_ch}" : {
+            "id": 0,
+            "name": "${schName}",
+            "enabled": true,
+            "start": "${schProperties[0]}"
+        },
+    }`;
+    return sch_JSON;
 }

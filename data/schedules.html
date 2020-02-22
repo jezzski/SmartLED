@@ -30,17 +30,15 @@
     </div>
 
     <div class=schedule_table_container>
-        <table style="width:100%" border="1">
+        <table id="sch_table" style="width:100%" border="1">
             <tr>
                 <th style="width:70%">Schedule Name</th>
                 <th>Active</th>
                 <th>Edit</th>
                 <th>Selected</th>
             </tr>
-            <tr>
-                <td class="channel_entry"> <!-- Used channel_entry just for formatting -->
-                    Morning
-                </td>
+            <!-- <tr>
+                <td class="channel_entry">Morning</td>
                 <td class="channel_entry">
                     <input type="checkbox">
                 </td>
@@ -50,11 +48,11 @@
                 <td class="channel_entry">
                     <input type="checkbox">
                 </td>
-            </tr>
+            </tr> -->
         </table>
         <div style="margin-top:2%;margin-left:80%">
-            <input type="button" value="Test" onclick="CreateNewSchedule()">
-            <input type="button" value="Delete Selected">
+            <input type="button" value="Delete Selected" onclick="deleteSelected()">
+            <input type="button" value="Apply" onclick="applySchedules()">
         </div>
     </div>
 
@@ -100,9 +98,9 @@
             <br>
             <h4>Events in this Schedule:</h4>
             <div id="sch_event_list" class=event_list>
-                This is where I'll list events...
+                <!-- This is where I'll list events... -->
             </div>
-            <input type="button" value="Save Schedule" style="margin-top:5%;margin-left:10%">
+            <input type="button" value="Save Schedule" style="margin-top:5%;margin-left:10%" onclick="addSchedule()">
         </form>
     </div>
 

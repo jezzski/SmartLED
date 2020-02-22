@@ -120,6 +120,7 @@ esp_err_t styles_handler(httpd_req_t* req)
         fclose(fp);
         httpd_resp_send_chunk(req, NULL, 0);  // indicates end
     }
+    ESP_LOGI(HTTP_TAG, "Finished styles_handler");
     return ESP_OK;
 }
 
@@ -143,6 +144,7 @@ esp_err_t schedules_handler(httpd_req_t* req)
         fclose(fp);
         httpd_resp_send_chunk(req, NULL, 0);  // indicates end
     }
+    ESP_LOGI(HTTP_TAG, "Finished schedules_handler");
     return ESP_OK;
 }
 
@@ -165,6 +167,7 @@ esp_err_t scripts_handler(httpd_req_t* req)
         }
         fclose(fp);
         httpd_resp_send_chunk(req, NULL, 0);  // indicates end
+        ESP_LOGI(HTTP_TAG, "Finished scripts_handler");
     }
     return ESP_OK;
 }
