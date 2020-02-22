@@ -19,13 +19,13 @@
         <input type="text" placeholder="Search... [Not Implemented]">
     </div>
 
-    <div class="channel_nav">
-        <a class="active" href="#Channel1">Channel 1</a>
-        <a href="#Channel2">Channel 2</a>
-        <a href="#Channel3">Channel 3</a>
-        <a href="#Channel4">Channel 4</a>
-        <a href="#Channel5">Channel 5</a>
-        <a href="#Channel6">Channel 6</a>
+    <div id="channel_select" class="channel_nav">
+        <a id="ch_sel1" class="active" href="#Channel1" onclick="channelSelect(1)">Channel 1</a>
+        <a id="ch_sel2" href="#Channel2" onclick="channelSelect(2)">Channel 2</a>
+        <a id="ch_sel3" href="#Channel3" onclick="channelSelect(3)">Channel 3</a>
+        <a id="ch_sel4" href="#Channel4" onclick="channelSelect(4)">Channel 4</a>
+        <a id="ch_sel5" href="#Channel5" onclick="channelSelect(5)">Channel 5</a>
+        <a id="ch_sel6" href="#Channel6" onclick="channelSelect(6)">Channel 6</a>
         <a id="debug" href="#DEBUG"> Debug</a>
     </div>
 
@@ -60,12 +60,22 @@
 
     <div id="new_sch_container" style="margin-top:2%;margin-right:15%;float:right">
         <form>
-            <label for="name">Schedule Name:</label>
+            <label for="sch_name">Schedule Name:</label>
             <input type="text" id="sch_name" placeholder="New Schedule Name.."><br>
-            <input type="radio" id="state_on" name="state" value="on">
-            <label for="state_on">Turn ON</label>
-            <input type="radio" id="state_off" name="state" value="off">
-            <label for="state_off">Turn OFF</label>
+            <label for="sch_time">Time:</label>
+            <input id="sch_time" type="time"></br>
+            <input type="radio" id="state_on" name="state" value="on" disabled>
+            <label for="state_on" style="color:grey">Turn ON</label>
+            <input type="radio" id="state_off" name="state" value="off" disabled>
+            <label for="state_off" style="color:grey">Turn OFF</label><br>
+            
+            <!-- Temporary Input Type for legacy schdule control -->
+            <label for="on_duration"> ON Duration:</label>
+            <input type="text" id="on_duration" placeholder="Time in s for on.."><br>
+            <label for="repeat_time"> Repeat Time:</label>
+            <input type="text" id="repeat_time" placeholder="Time in s for repeat.."><br>
+            <label for="sch_color"> Color (if applicable):</label>
+            <input id="sch_color" type="color">
             <table border="1">
                 <tr>
                     <th style="text-align:center;width:14.28%"> Sun </th>
@@ -79,23 +89,26 @@
                 <tr>
                     <td><input type="checkbox" id="sun_checkbox"></td>
                     <td><input type="checkbox" id="mon_checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" id="tues_checkbox"></td>
+                    <td><input type="checkbox" id="wed_checkbox"></td>
+                    <td><input type="checkbox" id="th_checkbox"></td>
+                    <td><input type="checkbox" id="fri_checkbox"></td>
+                    <td><input type="checkbox" id="sat_checkbox"></td>
                 </tr>
             </table>
-            <input type="time">
-            <input type="button" value="Add Event"> <br>
+            <input type="button" value="Add Event" onclick="addSchEvent()"> <br>
             <br>
             <h4>Events in this Schedule:</h4>
-            <div class=event_list>
+            <div id="sch_event_list" class=event_list>
                 This is where I'll list events...
             </div>
             <input type="button" value="Save Schedule" style="margin-top:5%;margin-left:10%">
         </form>
     </div>
+
+    <!-- Included to load call init -->
+    <!-- TBD: Find better way -->
+    <div> <body onload="init()"> </div>
 
     <div class="footer">
         <a href="#about">About Project</a>
