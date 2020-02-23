@@ -43,7 +43,7 @@ function addSchEvent(){
     currDate = new Date();
     setDate = new Date(currDate.getFullYear(), currDate.getMonth(),
         currDate.getDate(), hour, min);
-    schTimeUnix = setDate.getTime();
+    schTimeUnix = setDate.getTime()/1000;  // time since epoch in s
     console.log('Event Time: '+ schTime + ' / Unix: ' + schTimeUnix);
     
     // Get On Duration
