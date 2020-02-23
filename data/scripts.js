@@ -110,15 +110,18 @@ function addSchedule(){
     editCell.className="channel_entry";
 
     selectedCell=newSchEntry.insertCell(3);
-    selectedCell.innerHTML="<input type=\"checkbox\">";
+    selectedCell.innerHTML="<input type=\"button\" onclick=\"deleteSchedule(this)\">";
     selectedCell.className="channel_entry";
 
     dictSchedules[schName]=workingSchedule;
 
 }
 
-function deleteSelected(){
-    return;
+
+function deleteSchedule(calledFrom){
+    // TBD: Should I erase the record from dictSchedules here?
+    row = calledFrom.parentElement.parentElement;
+    row.parentElement.deleteRow(row.rowIndex);
 }
 
 function applySchedules(){
@@ -134,9 +137,19 @@ function applySchedules(){
                     'schedule: ' + schName);
                 return;
             }
+            // Get Schedule Properties
             schProperties=dictSchedules[schName];
             console.log(schProperties);
             console.log(createScheduleJSON(1, schName, schProperties));
+            // Get Active Channel
+            for(i=1; i<7; i++){
+                chSel = document.getElementById('ch_sel' + i);
+                if(chSel.className=="active"){
+                    active_ch=i;
+                }
+            }
+            console.log('Applying schedules to channel: ' + active_ch);
+            // Sent to ESP32
         }
     }
 }

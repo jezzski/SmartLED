@@ -35,7 +35,7 @@
                 <th style="width:70%">Schedule Name</th>
                 <th>Active</th>
                 <th>Edit</th>
-                <th>Selected</th>
+                <th>Delete</th>
             </tr>
             <!-- <tr>
                 <td class="channel_entry">Morning</td>
@@ -46,12 +46,11 @@
                     <input type="button">
                 </td>
                 <td class="channel_entry">
-                    <input type="checkbox">
+                    <input type=\"button\" onclick=\"deleteSchedule(this)\">
                 </td>
             </tr> -->
         </table>
         <div style="margin-top:2%;margin-left:80%">
-            <input type="button" value="Delete Selected" onclick="deleteSelected()">
             <input type="button" value="Apply" onclick="applySchedules()">
         </div>
     </div>
