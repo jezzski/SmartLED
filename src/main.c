@@ -82,9 +82,6 @@ void app_main(){
     else
     {
         ESP_LOGI("SPIFFS", "Accessed the file!");
-        // fgets(str,60,fp);
-        // str[59] = (char) "\n";
-        // ESP_LOGI("SPIFFS", "%s", str);
     }
     fclose(fp);
     size_t total = 0, used = 0;

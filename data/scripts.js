@@ -88,7 +88,7 @@ function addSchEvent(){
         "Brightness: " + brightness ;
     
     workingSchedule=[schTimeUnix, onDuration, repeatTime,
-        colorValue, repeatBitMask, ""]
+        repeatBitMask, brightness, isRGB, colorValue]
 }
 
 function addSchedule(){
@@ -160,19 +160,16 @@ function applySchedules(){
                     'schedule: ' + schName);
                 return;
             }
-            // Get Schedule Properties
-            schProperties=dictSchedules[schName];
-            console.log(schProperties);
-            console.log(createScheduleJSON(1, schName, schProperties));
             // Get Active Channel
             for(i=1; i<7; i++){
                 chSel = document.getElementById('ch_sel' + i);
                 if(chSel.className=="active"){
-                    active_ch=i;
+                    activeCh=i;
                 }
             }
-            console.log('Applying schedules to channel: ' + active_ch);
+            console.log(`Applying schedule ${schName} to channel: ${activeCh}`);
             // Sent to ESP32
+            httpPostSchToESP(schName, activeCh);
         }
     }
 }
@@ -189,7 +186,43 @@ function createScheduleJSON(active_ch, schName,schProperties){
     return sch_JSON;
 }
 
-function httpPostToESP(){
-    hostname=window.location.hostname;
-    console.log(hostname);
+function Test(schName, channel_num){
+    delimiterStr=";';";
+    schData = dictSchedules[schName];
+    strToTransmit=schName + delimiterStr + channel_num;
+    for(i=0; i<schData.length; i++){
+        strToTransmit = strToTransmit + delimiterStr +
+            schData[i];
+    }
+
+    console.log('The following string will be trasmitted: ' +
+        strToTransmit);
+}
+
+function httpPostSchToESP(schName, channel_num){
+    request = new XMLHttpRequest();
+    // request.onload = function(){
+    //     status = request.status;
+    //     data=request.responseText;
+    // }
+
+    // get schedule data
+    schData = dictSchedules[schName];  // error checking is performed by caller
+
+    // prepare data to send
+    delimiterStr=";';";
+    strSchData = schName + delimiterStr + channel_num + 
+        delimiterStr + "true";  // hard-code enabled TBD Revist
+    for(i=0; i<schData.length; i++){
+        strSchData = strSchData + delimiterStr +
+            schData[i];
+    }
+
+    strSchData = strSchData + delimiterStr + "PADDING";
+
+    request.open("POST", "post_sch", true);  // true indicates Async
+    // request.setRequestHeader("Content-Type", "applicaiton/json;charset=UTF-8");
+
+    // send data
+    request.send(strSchData);
 }

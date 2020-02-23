@@ -16,8 +16,8 @@
 //  If you'd rather not, just change the below entries to strings with
 //  the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
 
-#define ESP_WIFI_SSID      "ncsu"
-#define ESP_WIFI_PASS      ""
+#define ESP_WIFI_SSID      "Esp32"
+#define ESP_WIFI_PASS      "hello123"
 #define MAX_STA_CONN       4
 
 // FreeRTOS event group to signal when we are connected
