@@ -92,29 +92,42 @@ function addSchedule(){
         window.alert("Schedule is not named");
         return;
     }
-    console.log('Adding schdule: ' + schName);
+    if(!scheduleInTable(schName)){  // if not in table, create entry
+        console.log('Adding schedule: ' + schName);
 
-    schTable=document.getElementById("sch_table");
+        schTable=document.getElementById("sch_table");
 
-    newSchEntry=schTable.insertRow(-1);
-    nameCell=newSchEntry.insertCell(0);
-    nameCell.innerHTML=schName;
-    nameCell.className="channel_entry";
+        newSchEntry=schTable.insertRow(-1);
+        nameCell=newSchEntry.insertCell(0);
+        nameCell.innerHTML=schName;
+        nameCell.className="channel_entry";
 
-    activeCell=newSchEntry.insertCell(1);
-    activeCell.innerHTML="<input type=\"checkbox\">";
-    activeCell.className="channel_entry";
+        activeCell=newSchEntry.insertCell(1);
+        activeCell.innerHTML="<input type=\"checkbox\">";
+        activeCell.className="channel_entry";
 
-    editCell=newSchEntry.insertCell(2);
-    editCell.innerHTML="<input type=\"button\">";
-    editCell.className="channel_entry";
+        editCell=newSchEntry.insertCell(2);
+        editCell.innerHTML="<input type=\"button\">";
+        editCell.className="channel_entry";
 
-    selectedCell=newSchEntry.insertCell(3);
-    selectedCell.innerHTML="<input type=\"button\" onclick=\"deleteSchedule(this)\">";
-    selectedCell.className="channel_entry";
+        selectedCell=newSchEntry.insertCell(3);
+        selectedCell.innerHTML="<input type=\"button\" onclick=\"deleteSchedule(this)\">";
+        selectedCell.className="channel_entry";
+    }
 
+    // add/update schedule properties
     dictSchedules[schName]=workingSchedule;
 
+}
+
+function scheduleInTable(schName){
+    schTable=document.getElementById("sch_table");
+    for(row of schTable.rows){
+        if(row.cells[0].innerHTML==schName){
+            return true;
+        }
+    }
+    return false;  // returns false if no matches
 }
 
 
