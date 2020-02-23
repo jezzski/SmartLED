@@ -54,6 +54,10 @@ function addSchEvent(){
     repeatTime=document.getElementById("repeat_time").value;
     console.log('Repeat Time: ' + repeatTime);
 
+    // Get RGB Color Info
+    colorValue=document.getElementById("sch_color").value;
+    console.log('Color Value: ' + colorValue);
+
     // Generate Week Repeat Mask
     checkedArr = [
         document.getElementById("sun_checkbox").checked,
@@ -73,12 +77,18 @@ function addSchEvent(){
     console.log('Repeat bitmask: ' + repeatBitMask);
 
     eventList = document.getElementById("sch_event_list");
+    // Temp Placeholder for params not implmented.
+    isRGB = true;
+    brightness = 100;
     // Temp for simple schedule - Only supports singular event
-    eventList.innerHTML = schTime + " | Bitmask: " + repeatBitMask +
-        " | On Duration: " + onDuration + " | Repeat Time: " + 
-        repeatTime;
+    eventList.innerHTML = schTime + " | On Duration: " +
+        onDuration + " | Repeat Time: " + repeatTime +
+        " <br> Bitmask: " + repeatBitMask + " | isRGB: " +
+        isRGB + " | Color: " + colorValue + " <br>" +
+        "Brightness: " + brightness ;
     
-    workingSchedule=[schTimeUnix, onDuration, repeatTime, repeatBitMask, ""]
+    workingSchedule=[schTimeUnix, onDuration, repeatTime,
+        colorValue, repeatBitMask, ""]
 }
 
 function addSchedule(){
@@ -177,4 +187,9 @@ function createScheduleJSON(active_ch, schName,schProperties){
         },
     }`;
     return sch_JSON;
+}
+
+function httpPostToESP(){
+    hostname=window.location.hostname;
+    console.log(hostname);
 }
