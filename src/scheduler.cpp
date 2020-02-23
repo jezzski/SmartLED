@@ -1,5 +1,7 @@
 #include "scheduler.h"
 
+//todo: thread safe code
+
 //tag for logging
 const static char *SCHEDULE_TAG = "SCHEDULER";
 //task handle
@@ -12,6 +14,57 @@ static void Scheduler(void *pvParms);
 //helper macros
 #define MIN(a, b) a < b ? a : b
 #define MAX(a, b) a > b ? a : b
+
+List *schedules[NUM_CHANNELS];
+
+esp_err_t create_schedule(uint8_t channel, schedule_object s)
+{
+    ESP_LOGI(SCHEDULE_TAG, "Schedule creation!");
+
+    //check if channel is valid
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+    //create new schedule node
+    List *newSched = (List*)malloc(sizeof(List));
+    if (newSched == NULL)
+    {
+        ESP_LOGE(SCHEDULE_TAG, "create_schedule unable to malloc new node!");
+        return ESP_ERR_NO_MEM;
+    }
+    newSched->next = NULL;
+    newSched->schedule = s;
+
+    //append to list
+    List *it = schedules[channel];
+    if (it == NULL)
+    {
+        //at head of list
+        schedules[channel] = newSched;
+    }
+    else
+    {
+        //find end of list
+        while (it->next != NULL)
+        {
+            it = it->next;
+        }
+        it->next = newSched;
+    }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
+    return ESP_OK;
+}
+
+esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID)
+{
+    return ESP_FAIL;
+}
+
+esp_err_t delete_schedule_by_name(uint8_t channel, char *name)
+{
+    return ESP_FAIL;
+}
 
 void update_start_time(schedule_object *s, time_t curr)
 {
@@ -32,7 +85,7 @@ void update_start_time(schedule_object *s, time_t curr)
         return;
     }
     //schedule runs on certain days
-    struct tm time_info = { 0 };
+    struct tm time_info;
     localtime_r(&curr, &time_info);
     //find difference between current day and next run day
     uint8_t currDay = time_info.tm_wday; //current day of week
@@ -61,25 +114,6 @@ void init_schedule(void)
     {
         schedules[i] = NULL;
     }
-    schedules[0] = malloc(sizeof(List));
-    schedules[0]->next = NULL;
-    schedules[1] = malloc(sizeof(List));
-    schedules[1]->next = NULL;
-    schedule_object s = {
-        .ID = 0,
-        .enabled = 1,
-        .start = 20,
-        .duration = 30,
-        .repeat_mask = 0b01000000,
-        .repeat_time = 0
-    };
-    strcpy(s.name, "Schedule1");
-    schedules[0]->schedule = s;
-    s.start = 10;
-    s.duration = 60;
-    s.ID = 1;
-    strcpy(s.name, "Schedule2");
-    schedules[1]->schedule = s;
 }
 
 //task init
@@ -99,7 +133,7 @@ static void Scheduler(void *pvParms)
 {
     printf("Task Started!\n");
     time_t curr;
-    struct tm timeinfo = { 0 };
+    struct tm timeinfo;
     char strftime_buf[64];
 
     uint32_t ulNotifiedValue;

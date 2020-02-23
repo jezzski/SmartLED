@@ -6,6 +6,7 @@
 #include "esp_system.h"
 
 //object for schedules
+//todo: revisit with C++ style code? would make certain actions way easier
 typedef struct Schedule_Object
 {
     uint8_t ID;
@@ -30,5 +31,4 @@ typedef struct Node
     schedule_object schedule;
     struct Node *next;
 } List;
-
 #endif
