@@ -1,0 +1,150 @@
+body {
+    background-color: powderblue;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2196F3;
+    color: white;
+}
+
+.topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a, .topnav input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+.slidercontainer {
+    width: 100%;
+    /* Fills outside container */
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: grey;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: black;
+    /* if custom image background: url('a.png') */
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: blue;
+    /* if custom image background: url('a.png') */
+    cursor: pointer;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.channel_entry {
+    text-align: center;
+}
+
+.channel_nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    height: 100%;
+    float: left;
+    overflow: auto;
+    margin-top: 2%;
+}
+
+.channel_nav a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.channel_nav a.active {
+    background-color: skyblue;
+    color: white;
+}
+
+.channel_nav a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.schedule_table_container{
+    margin-top:2%;
+    width:40%;
+    float:left;
+    margin-left:2%;
+    /* margin-right:40%; */
+    position: sticky;
+}
+
+/* input[type=text], select, textarea{
+    width:100%;
+    border: 1px #000;
+    border-radius: 3px;
+    resize: vertical;
+} */
+
+.event_list{
+    margin-top:5px;
+}

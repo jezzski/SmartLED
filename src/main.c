@@ -1,115 +1,109 @@
-/*
-basic example used in PDR prototype demonstration
+/* Simple WiFi Example
+   This example code is in the Public Domain (or CC0 licensed, at your option.)
+   Unless required by applicable law or agreed to in writing, this
+   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+   CONDITIONS OF ANY KIND, either express or implied.
 */
-
-#include <stdio.h>
+#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/event_groups.h"
 #include "esp_system.h"
+#include "esp_wifi.h"
+#include "esp_event_loop.h"
+#include "esp_log.h"
 #include "nvs_flash.h"
-#include "nvs.h"
 
-#include "driver/ledc.h"
+#include "esp_http_server.h"
+#include "esp_spiffs.h"
+
+#include "wifi.h"
+#include "http.h"
+
+#include "lwip/err.h"
+#include "lwip/sys.h"
 
 
+// esp_err_t echo_post_handler(httpd_req_t* req)
+// {
+//     char buf[100];
+//     int ret, remaining = req->content_len;
 
-void app_main()
-{
-    // Initialize NVS
-    esp_err_t err = nvs_flash_init();
-    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        // NVS partition was truncated and needs to be erased
-        // Retry nvs_flash_init
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        err = nvs_flash_init();
+//     while (remaining > 0) {
+//         /* Read the data for the request */
+//         if ((ret = httpd_req_recv(req, buf,
+//                         MIN(remaining, sizeof(buf)))) <= 0) {
+//             if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
+//                 /* Retry receiving if timeout occurred */
+//                 continue;
+//             }
+//             return ESP_FAIL;
+//         }
+
+//         /* Send back the same data */
+//         httpd_resp_send_chunk(req, buf, ret);
+//         remaining -= ret;
+
+//         /* Log data received */
+//         ESP_LOGI(HTTP_TAG, "=========== RECEIVED DATA ==========");
+//         ESP_LOGI(HTTP_TAG, "%.*s", ret, buf);
+//         ESP_LOGI(HTTP_TAG, "====================================");
+//     }
+
+//     // End response
+//     httpd_resp_send_chunk(req, NULL, 0);
+//     return ESP_OK;
+// }
+
+void app_main(){
+    esp_vfs_spiffs_conf_t conf = {
+      .base_path = "/spiffs",
+      .partition_label = "website",
+      .max_files = 10,
+      .format_if_mount_failed = false
+    };
+
+    // Use settings defined above to initialize and mount SPIFFS filesystem.
+    // Note: esp_vfs_spiffs_register is an all-in-one convenience function.
+    esp_err_t ret = esp_vfs_spiffs_register(&conf);
+    if(ret == ESP_OK){
+        ESP_LOGI("SPIFFS","Successful mount");
     }
-    ESP_ERROR_CHECK( err );
-
-    // Open
-    printf("\n");
-    printf("Opening Non-Volatile Storage (NVS) handle... ");
-    nvs_handle my_handle;
-    err = nvs_open("storage", NVS_READWRITE, &my_handle);
-    if (err != ESP_OK) {
-        printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
-    } else {
-        printf("Done\n");
-
-        // Read
-        printf("Reading restart counter from NVS ... ");
-        int32_t restart_counter = 0; // value will default to 0, if not set yet in NVS
-        err = nvs_get_i32(my_handle, "restart_counter", &restart_counter);
-        switch (err) {
-            case ESP_OK:
-                printf("Done\n");
-                printf("Restart counter = %d\n", restart_counter);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                printf("The value is not initialized yet!\n");
-                break;
-            default :
-                printf("Error (%s) reading!\n", esp_err_to_name(err));
-        }
-
-        // Write
-        printf("Updating restart counter in NVS ... ");
-        restart_counter++;
-        err = nvs_set_i32(my_handle, "restart_counter", restart_counter);
-        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        // Commit written value.
-        // After setting any values, nvs_commit() must be called to ensure changes are written
-        // to flash storage. Implementations may write to storage at other times,
-        // but this is not guaranteed.
-        printf("Committing updates in NVS ... ");
-        err = nvs_commit(my_handle);
-        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        // Close
-        nvs_close(my_handle);
-
-
-
-        //quick pwm test
-        ledc_timer_config_t ledc_timer = {
-            .duty_resolution = LEDC_TIMER_12_BIT,
-            .freq_hz = 5000,
-            .speed_mode = LEDC_HIGH_SPEED_MODE,
-            .timer_num = LEDC_TIMER_0
-        };
-
-        ledc_timer_config(&ledc_timer);
-
-        int dutyVal = 0;
-        int test = restart_counter % 3;
-        switch (test)
-        {
-            case 0:
-                dutyVal = 0xF00;
-            break;
-            case 1:
-                dutyVal = 0x100;
-            break;
-            case 2:
-                dutyVal = 0;
-            break;
-            default:break;
-        }
-        printf("%x\n", dutyVal);
-        ledc_channel_config_t ledc_channel = {
-            .channel = LEDC_CHANNEL_0,
-            .duty = dutyVal,
-            .gpio_num = 23,
-            .speed_mode = LEDC_HIGH_SPEED_MODE,
-            .hpoint = 0,
-            .timer_sel = LEDC_TIMER_0};
-        ledc_channel_config(&ledc_channel);
+    else if (ret == ESP_ERR_NOT_FOUND){
+        ESP_LOGE("SPIFFS", "Failed to find SPIFFS partition");
     }
 
-    printf("\n");
-
-    while (1)
+    FILE * fp;
+    fp = fopen("/spiffs/settings.html", "r");
+    // char str[60];
+    if(fp == NULL){
+        ESP_LOGI("SPIFFS","Error Opening File");
+    }
+    else
     {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        ESP_LOGI("SPIFFS", "Accessed the file!");
     }
+    fclose(fp);
+    size_t total = 0, used = 0;
+    ret = esp_spiffs_info("website", &total, &used);
+    if (ret != ESP_OK) {
+        ESP_LOGE("SPIFFS", "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
+    } else {
+        ESP_LOGI("SPIFFS", "Partition size: total: %d, used: %d", total, used);
+    }
+
+    //Initialize NVS
+    ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+      ESP_ERROR_CHECK(nvs_flash_erase());
+      ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    wifi_init_sta();
+
+    httpd_handle_t server = NULL;  // empty server handle
+    init_http(server);
+
+
 }
