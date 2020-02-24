@@ -3,6 +3,10 @@
 workingSchedule = null;
 dictSchedules = {};
 
+function debug(){
+    console.log(dictSchedules["Test"]);
+}
+
 function init(){
     document.getElementById("sch_time").value="12:00";
 
@@ -11,6 +15,7 @@ function init(){
     document.getElementById("on_duration").value=5;
     document.getElementById("repeat_time").value=10;
     document.getElementById("mon_checkbox").checked=true;
+    document.getElementById("is_RGB").checked=true;
     addSchEvent();
 }
 
@@ -46,6 +51,10 @@ function addSchEvent(){
     schTimeUnix = setDate.getTime()/1000;  // time since epoch in s
     console.log('Event Time: '+ schTime + ' / Unix: ' + schTimeUnix);
     
+    // Get Brightness
+    brightness=document.getElementById("brightness_slider").value;
+    console.log('Brightness: ' + brightness);
+
     // Get On Duration
     onDuration=document.getElementById("on_duration").value;
     console.log('On Duration: ' + onDuration);
@@ -53,6 +62,10 @@ function addSchEvent(){
     // Get Repeat Time
     repeatTime=document.getElementById("repeat_time").value;
     console.log('Repeat Time: ' + repeatTime);
+
+    // Get is_RGB
+    isRGB=document.getElementById("is_RGB").checked;
+    console.log('Is Channel RGB: ' + isRGB);
 
     // Get RGB Color Info
     colorValue=document.getElementById("sch_color").value;
@@ -77,9 +90,7 @@ function addSchEvent(){
     console.log('Repeat bitmask: ' + repeatBitMask);
 
     eventList = document.getElementById("sch_event_list");
-    // Temp Placeholder for params not implmented.
-    isRGB = true;
-    brightness = 100;
+
     // Temp for simple schedule - Only supports singular event
     eventList.innerHTML = schTime + " | On Duration: " +
         onDuration + " | Repeat Time: " + repeatTime +
@@ -92,6 +103,7 @@ function addSchEvent(){
 }
 
 function addSchedule(){
+    addSchEvent();
     if(workingSchedule==null){
         window.alert("No events in schedule");
         return;

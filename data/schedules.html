@@ -26,7 +26,7 @@
         <a id="ch_sel4" href="#Channel4" onclick="channelSelect(4)">Channel 4</a>
         <a id="ch_sel5" href="#Channel5" onclick="channelSelect(5)">Channel 5</a>
         <a id="ch_sel6" href="#Channel6" onclick="channelSelect(6)">Channel 6</a>
-        <a id="debug" href="#DEBUG" onclick=""> Debug</a>
+        <a id="debug" href="#DEBUG" onclick="debug()"> Debug</a>
     </div>
 
     <div class=schedule_table_container>
@@ -66,13 +66,17 @@
             <input type="radio" id="state_off" name="state" value="off" disabled>
             <label for="state_off" style="color:grey">Turn OFF</label><br>
             
-            <!-- Temporary Input Type for legacy schdule control -->
+            <!-- Temporary Input Type for legacy schdule control(?) -->
+            <label for="brightness_slider">Brightness:</label>
+            <input id="brightness_slider" type="range" class="slider" min="0" max="255" value="255"><br>
             <label for="on_duration"> ON Duration:</label>
             <input type="text" id="on_duration" placeholder="Time in s for on.."><br>
             <label for="repeat_time"> Repeat Time:</label>
             <input type="text" id="repeat_time" placeholder="Time in s for repeat.."><br>
             <label for="sch_color"> Color (if applicable):</label>
             <input id="sch_color" type="color" value="#ff0000">
+            <input id="is_RGB" type="checkbox">
+            <label for="is_RGB"> RGB </label>
             <table border="1">
                 <tr>
                     <th style="text-align:center;width:14.28%"> Sun </th>
