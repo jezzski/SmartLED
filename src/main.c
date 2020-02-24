@@ -19,6 +19,9 @@
 
 #include "wifi.h"
 #include "http.h"
+#include "led.h"
+#include "scheduler.h"
+#include "espsntp.h"
 
 #include "lwip/err.h"
 #include "lwip/sys.h"
@@ -100,10 +103,31 @@ void app_main(){
     }
     ESP_ERROR_CHECK(ret);
 
+    init_channels();
+    init_schedule();
+
     wifi_init_sta();
 
     httpd_handle_t server = NULL;  // empty server handle
     init_http(server);
 
+    // vTaskDelay(2000 / portTICK_PERIOD_MS);
+    // schedule_object s = {
+    //     .ID = 0,
+    //     .enabled = 1,
+    //     .start = 0,
+    //     .duration = 1,
+    //     .repeat_mask = 0b00000000,
+    //     .repeat_time = 7,
 
+    //     .isRGB = 1, //could combine with a previous field to save memory space
+    //     .brightness = 0xFF,
+    //     .r = 0x00,
+    //     .g = 0x00,
+    //     .b = 0xFF,
+    // };
+    // strcpy(s.name, "Schedule1");
+    // create_schedule(1, s);
+
+    while(1) vTaskDelay(1000/portTICK_PERIOD_MS);
 }

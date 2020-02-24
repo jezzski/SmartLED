@@ -9,6 +9,7 @@
 #include "esp_http_server.h"
 
 #include "http.h"
+#include "scheduler.h"
 
 esp_err_t init_http(httpd_handle_t server)
 {
@@ -284,6 +285,22 @@ void schTokenProcess(char* str){
     ESP_LOGI(TOKEN_TAG, "r: %X", r);
     ESP_LOGI(TOKEN_TAG, "g: %X", g);
     ESP_LOGI(TOKEN_TAG, "b: %X", b);
+
+    schedule_object s ={
+        .ID = 0,
+        .enabled = enabled,
+        .start = 0,
+        .duration = duration,
+        .repeat_mask = repeat_mask,
+        .repeat_time = repeat_time,
+        .isRGB = isRGB,
+        .brightness = brightness,
+        .r = r,
+        .g = g,
+        .b = b
+    };
+
+    create_schedule(channel, s);
 
     // while(token!=NULL){
     //     ESP_LOGI(TOKEN_TAG, "%s", token);
