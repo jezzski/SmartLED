@@ -82,10 +82,10 @@ function addSchEvent(){
         document.getElementById("sat_checkbox").checked
     ];
     repeatBitMask = 0;  // init to 0
-    temp_mask = 1;
+    temp_mask = 64;
     for(check_box of checkedArr){
         if(check_box) repeatBitMask = repeatBitMask | temp_mask;
-        temp_mask = temp_mask << 1;
+        temp_mask = temp_mask >> 1;
     }
     console.log('Repeat bitmask: ' + repeatBitMask);
 
