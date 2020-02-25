@@ -10,16 +10,15 @@ static void initialize_sntp(void);
 void set_time(uint32_t time)
 {
     time_t now = time;
-    struct timeval val = {
-        .tv_sec = time,
-        .tv_usec = 0
-    };
+    struct timeval val;
+    val.tv_sec = time;
+    val.tv_usec = 0;
     settimeofday(&val, NULL);
     // Set timezone to Eastern Standard Time and print local time
     char strftime_buf[64];
     setenv("TZ", "EST5EDT,M3.2.0/2,M11.1.0", 1);
     tzset();
-    struct tm timeinfo = { 0 };
+    struct tm timeinfo;
     localtime_r(&now, &timeinfo);
     strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
     ESP_LOGI(SNTP_TAG, "The current date/time in New York is: %s", strftime_buf);
@@ -31,7 +30,7 @@ void obtain_time(void)
 
     // wait for time to be set
     time_t now = 0;
-    struct tm timeinfo = { 0 };
+    struct tm timeinfo;
     int retry = 0;
     const int retry_count = 10;
     while(timeinfo.tm_year < (2016 - 1900) && ++retry < retry_count) {

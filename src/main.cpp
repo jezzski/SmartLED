@@ -1,20 +1,33 @@
 /*
-basic example used in PDR prototype demonstration
+example used in alpha demonstration
 */
 
+//C libraries
 #include <stdio.h>
+#include <string.h>
+
+//esp32 & related libraries
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/event_groups.h"
+#include "esp_event_loop.h"
+#include "esp_http_server.h"
+#include "esp_log.h"
+#include "esp_spiffs.h"
 #include "esp_system.h"
-#include "nvs_flash.h"
+#include "esp_wifi.h"
 #include "nvs.h"
+#include "nvs_flash.h"
+#include "lwip/err.h"
+#include "lwip/sys.h"
 
-#include "driver/ledc.h"
-
-#include "wifi.h"
+//custom libraries
 #include "espsntp.h"
+#include "http.h"
+#include "led.h"
 #include "scheduler.h"
 #include "memory.h"
+#include "wifi.h"
 
 extern "C" {
     void app_main();
@@ -31,6 +44,44 @@ void app_main()
         build a timing table for freeRTOS tasks so we can optimize timings so tasks are not constantly interrupting each other
     */
 
+   //todo: this shouldn't be in main, specific to website component
+   //=====================================================================================================================
+   esp_vfs_spiffs_conf_t conf = {
+      .base_path = "/spiffs",
+      .partition_label = "website",
+      .max_files = 10,
+      .format_if_mount_failed = false
+    };
+
+    // Use settings defined above to initialize and mount SPIFFS filesystem.
+    // Note: esp_vfs_spiffs_register is an all-in-one convenience function.
+    esp_err_t ret = esp_vfs_spiffs_register(&conf);
+    if(ret == ESP_OK){
+        ESP_LOGI("SPIFFS","Successful mount");
+    }
+    else if (ret == ESP_ERR_NOT_FOUND){
+        ESP_LOGE("SPIFFS", "Failed to find SPIFFS partition");
+    }
+
+    FILE * fp;
+    fp = fopen("/spiffs/settings.html", "r");
+    // char str[60];
+    if(fp == NULL){
+        ESP_LOGI("SPIFFS","Error Opening File");
+    }
+    else
+    {
+        ESP_LOGI("SPIFFS", "Accessed the file!");
+    }
+    fclose(fp);
+    size_t total = 0, used = 0;
+    ret = esp_spiffs_info("website", &total, &used);
+    if (ret != ESP_OK) {
+        ESP_LOGE("SPIFFS", "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
+    } else {
+        ESP_LOGI("SPIFFS", "Partition size: total: %d, used: %d", total, used);
+    }
+    //=====================================================================================================================
 
     // Initialize NVS
     esp_err_t err = nvs_flash_init();
@@ -42,37 +93,19 @@ void app_main()
     }
     ESP_ERROR_CHECK( err );
 
-    
+    //init functions
+    //todo: error checking
     err = init_memory();
-    //init wifi
-    //wifi_init_sta();
-
-    //obtain_time();
-
     init_schedule();
+    wifi_init_sta();
+
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     //todo: should this be done automatically when init_memory is called?
     //should this return extra information like # of schedules an 
     recall_schedules();
-
-    /*schedule_object s;
-    s.ID = 0;
-    strcpy(s.name, "test");
-    s.enabled = 1;
-    s.start = 10;
-    s.duration = 10;
-    s.repeat_mask = 0;
-    s.repeat_time = 0;
-    s.isRGB = 0;
-    s.brightness = 255;
-    s.r = 0;
-    s.g = 0;
-    s.b = 0;
-
-    //create_schedule(0, s);
-    err = create_schedule((uint8_t)0, (schedule_object)s);*/
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    httpd_handle_t server = NULL;  // empty server handle
+    init_http(server);
 
     while (1)
     {

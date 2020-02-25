@@ -11,78 +11,71 @@ struct channel
 
 void init_channels(void)
 {
-    ledc_timer_config_t ledc_timer = {
-        .duty_resolution = LEDC_TIMER_12_BIT,
-        .freq_hz = 5000,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .timer_num = LEDC_TIMER_0
-    };
+    ledc_timer_config_t ledc_timer;
+    ledc_timer.duty_resolution = LEDC_TIMER_12_BIT;
+    ledc_timer.freq_hz = 5000;
+    ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_timer.timer_num = LEDC_TIMER_0;
 
     ledc_timer_config(&ledc_timer);
 
-    ledc_channel_config_t ledc_channel_0 = {
-        .channel = LEDC_CHANNEL_0,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_0,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0
-    };
+    ledc_channel_config_t ledc_channel_0;
+    ledc_channel_0.channel = LEDC_CHANNEL_0;
+    ledc_channel_0.duty = 0;
+    ledc_channel_0.gpio_num = GPIO_CHANNEL_0;
+    ledc_channel_0.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_0.hpoint = 0;
+    ledc_channel_0.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_0);
 
-    ledc_channel_config_t ledc_channel_1 = {
-        .channel = LEDC_CHANNEL_1,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_1,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0,
-    };
+    ledc_channel_config_t ledc_channel_1;
+    ledc_channel_1.channel = LEDC_CHANNEL_1;
+    ledc_channel_1.duty = 0;
+    ledc_channel_1.gpio_num = GPIO_CHANNEL_1;
+    ledc_channel_1.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_1.hpoint = 0;
+    ledc_channel_1.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_1);
 
-    ledc_channel_config_t ledc_channel_2 = {
-        .channel = LEDC_CHANNEL_2,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_2,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0
-    };
+    ledc_channel_config_t ledc_channel_2;
+    ledc_channel_2.channel = LEDC_CHANNEL_2;
+    ledc_channel_2.duty = 0;
+    ledc_channel_2.gpio_num = GPIO_CHANNEL_2;
+    ledc_channel_2.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_2.hpoint = 0;
+    ledc_channel_2.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_2);
 
-    ledc_channel_config_t ledc_channel_3 = {
-        .channel = LEDC_CHANNEL_3,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_3,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0,
-    };
+    ledc_channel_config_t ledc_channel_3;
+    ledc_channel_3.channel = LEDC_CHANNEL_3;
+    ledc_channel_3.duty = 0;
+    ledc_channel_3.gpio_num = GPIO_CHANNEL_3;
+    ledc_channel_3.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_3.hpoint = 0;
+    ledc_channel_3.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_3);
 
-    ledc_channel_config_t ledc_channel_4 = {
-        .channel = LEDC_CHANNEL_4,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_4,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0,
-    };
+    ledc_channel_config_t ledc_channel_4;
+    ledc_channel_4.channel = LEDC_CHANNEL_4;
+    ledc_channel_4.duty = 0;
+    ledc_channel_4.gpio_num = GPIO_CHANNEL_4;
+    ledc_channel_4.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_4.hpoint = 0;
+    ledc_channel_4.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_4);
 
-    ledc_channel_config_t ledc_channel_5 = {
-        .channel = LEDC_CHANNEL_5,
-        .duty = 0,
-        .gpio_num = GPIO_CHANNEL_5,
-        .speed_mode = LEDC_HIGH_SPEED_MODE,
-        .hpoint = 0,
-        .timer_sel = LEDC_TIMER_0,
-    };
+    ledc_channel_config_t ledc_channel_5;
+    ledc_channel_5.channel = LEDC_CHANNEL_5;
+    ledc_channel_5.duty = 0;
+    ledc_channel_5.gpio_num = GPIO_CHANNEL_5;
+    ledc_channel_5.speed_mode = LEDC_HIGH_SPEED_MODE;
+    ledc_channel_5.hpoint = 0;
+    ledc_channel_5.timer_sel = LEDC_TIMER_0;
 
     ledc_channel_config(&ledc_channel_5);
 }

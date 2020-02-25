@@ -31,6 +31,6 @@ esp_err_t enable_all_schedules(void);
 
 
 //todo: integrate with LED control properly
-List *schedules[NUM_CHANNELS];
+extern List *schedules[NUM_CHANNELS];
 
 #endif

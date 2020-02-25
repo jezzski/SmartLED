@@ -11,16 +11,18 @@ static esp_err_t start_Schedule_Task(void);
 //task code
 static void Scheduler(void *pvParms);
 
+//schedule list for each channel
+List *schedules[NUM_CHANNELS];
+
 //helper macros
 #define MIN(a, b) a < b ? a : b
 #define MAX(a, b) a > b ? a : b
 
-List *schedules[NUM_CHANNELS];
-
 esp_err_t create_schedule(uint8_t channel, schedule_object s)
 {
-    ESP_LOGI(SCHEDULE_TAG, "Schedule creation!");
-
+    printf("Channel: %x, Start: %d, Duration: %d, Repeat: %d", channel,s.start, s.duration, s.repeat_time);
+    printf("Brightness: %x", s.brightness);
+    printf("Red: %x, Green: %x, Blue: %x",s.r, s.g, s.b);
     //check if channel is valid
     if (channel > NUM_CHANNELS)
     {
@@ -58,12 +60,125 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
 
 esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID)
 {
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
     return ESP_FAIL;
 }
 
 esp_err_t delete_schedule_by_name(uint8_t channel, char *name)
 {
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
     return ESP_FAIL;
+}
+
+esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
+{
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+
+    List *it = schedules[channel];
+    while (it != NULL)
+    {
+        if (it->schedule.ID == ID)
+        {
+            it->schedule.enabled = 0;
+            return ESP_OK;
+        }
+        it = it->next;
+    }
+    return ESP_ERR_NOT_FOUND;
+}
+
+esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
+{
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+    List *it = schedules[channel];
+    while (it != NULL)
+    {
+        if (strcmp(it->schedule.name, name))
+        {
+            it->schedule.enabled = 0;
+            return ESP_OK;
+        }
+        it = it->next;
+    }
+    return ESP_ERR_NOT_FOUND;
+}
+
+esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID)
+{
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+    List *it = schedules[channel];
+    while (it != NULL)
+    {
+        if (it->schedule.ID == ID)
+        {
+            it->schedule.enabled = 1;
+            return ESP_OK;
+        }
+        it = it->next;
+    }
+    return ESP_ERR_NOT_FOUND;
+}
+
+esp_err_t enable_schedule_by_name(uint8_t channel, char *name)
+{
+    if (channel > NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+    List *it = schedules[channel];
+    while (it != NULL)
+    {
+        if (strcmp(it->schedule.name, name))
+        {
+            it->schedule.enabled = 1;
+            return ESP_OK;
+        }
+        it = it->next;
+    }
+    return ESP_ERR_NOT_FOUND;
+}
+
+esp_err_t disable_all_schedules(void)
+{
+    for (int i = 0; i < NUM_CHANNELS; ++i)
+    {
+        List *it = schedules[i];
+        while (it != NULL)
+        {
+            it->schedule.enabled = 0;
+            it = it->next;
+        }
+    }
+    return ESP_OK;
+}
+
+esp_err_t enable_all_schedules(void)
+{
+    for (int i = 0; i < NUM_CHANNELS; ++i)
+    {
+        List *it = schedules[i];
+        while (it != NULL)
+        {
+            it->schedule.enabled = 1;
+            it = it->next;
+        }
+    }
+    return ESP_OK;
 }
 
 void update_start_time(schedule_object *s, time_t curr)
@@ -124,7 +239,7 @@ static esp_err_t start_Schedule_Task(void)
         ESP_LOGE(SCHEDULE_TAG, "Task already started!");
         return ESP_FAIL;
     }
-    xTaskCreate(&Scheduler, "Scheduler", 2048, NULL, configMAX_PRIORITIES - 1, &Schedule_Task);
+    xTaskCreate(&Scheduler, "Scheduler", 4096, NULL, configMAX_PRIORITIES - 1, &Schedule_Task);
     return ESP_OK;
 }
 
@@ -159,6 +274,14 @@ static void Scheduler(void *pvParms)
                         schedule_object t = it->schedule;
                         printf("[%d]%s Start:%d, Duration:%d, Mask:%d, Repeat:%d\n", t.ID, t.name, t.start, t.duration, t.repeat_mask, t.repeat_time);
                         //todo: dispatch update (color,brightness?)
+                        if (t.isRGB)
+                        {
+                            set_color(i, t.r, t.g, t.b, t.brightness);
+                        }
+                        else
+                        {
+                            channel_on(i, t.brightness);
+                        }
 
                         //duration handling
                         if (it->schedule.duration != UINT32_MAX) //check if schedule has a duration
@@ -168,6 +291,11 @@ static void Scheduler(void *pvParms)
                             {
                                 //schedule finished
                                 printf("Schedule duration done\n");
+                                //todo: turn off RGB with same function
+                                if (!it->schedule.isRGB)
+                                    channel_off(i);
+                                else
+                                    set_color(i, 0, 0, 0, 0);
                                 update_start_time(&(it->schedule), curr);
                                 nextTime = MIN(nextTime, it->schedule.start);
                             }
@@ -202,7 +330,8 @@ static void Scheduler(void *pvParms)
             printf("Infinite\n");
             xTicksToWait = portMAX_DELAY;
         }
-        
+        printf("curr:%ld, Next:%u\n", curr, nextTime);
+        printf("Diff(s)%ld, Ticks:%d, Period:%d\n", (nextTime-curr), xTicksToWait, portTICK_PERIOD_MS);
         xTaskNotifyWait( 0x00,      /* Don't clear any notification bits on entry. */
                          ULONG_MAX, /* Reset the notification value to 0 on exit. */
                          &ulNotifiedValue, /* Notified value pass out in
