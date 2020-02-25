@@ -10,19 +10,27 @@
 #include <string.h>
 
 #include "schedule_object.h"
+#include "led.h"
 
 //todo: good c coding to make variables "private" when possible
-//todo: revisit with C++ style coding, would make certain actions way easier
 
 void init_schedule(void);
-//should make more of these that are easier to use?
 esp_err_t create_schedule(uint8_t channel, schedule_object s);
+//todo: schedule deletion
 esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID);
 esp_err_t delete_schedule_by_name(uint8_t channel, char *name);
 
+esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID);
+esp_err_t disable_schedule_by_name(uint8_t channel, char *name);
+
+esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID);
+esp_err_t enable_schedule_by_name(uint8_t channel, char *name);
+
+esp_err_t disable_all_schedules(void);
+esp_err_t enable_all_schedules(void);
+
+
 //todo: integrate with LED control properly
-#define NUM_CHANNELS 6
-//List *schedules[NUM_CHANNELS];
-extern List *schedules[NUM_CHANNELS];
+List *schedules[NUM_CHANNELS];
 
 #endif

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "esp_http_server.h": "c",
+        "esp_spiffs.h": "c"
+    }
+}
