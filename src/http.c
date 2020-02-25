@@ -10,6 +10,7 @@
 
 #include "http.h"
 #include "scheduler.h"
+#include "espsntp.h"
 
 esp_err_t init_http(httpd_handle_t server)
 {
@@ -76,6 +77,13 @@ esp_err_t init_http(httpd_handle_t server)
         .user_ctx = NULL
     };
 
+    static const httpd_uri_t time_post ={
+        .uri = "/time",
+        .method = HTTP_POST,
+        .handler = time_post_handler,
+        .user_ctx = NULL
+    };
+
     /* Start the httpd server */
     if (httpd_start(&server, &config) == ESP_OK) {
         /* Register URI handlers */
@@ -86,6 +94,7 @@ esp_err_t init_http(httpd_handle_t server)
         httpd_register_uri_handler(server, &scripts_get);
         httpd_register_uri_handler(server, &schedule_post);
         httpd_register_uri_handler(server, &favicon_ico_get);
+        httpd_register_uri_handler(server, &time_post);
         //httpd_register_uri_handler(server, &uri_get);
         //httpd_register_uri_handler(server, &uri_post);
         return ESP_OK;
@@ -204,7 +213,7 @@ esp_err_t schedule_post_handler(httpd_req_t* req){
 
 void schTokenProcess(char* str){
     const char* TOKEN_TAG = "TOKEN";
-    ESP_LOGI(TOKEN_TAG, "Reached here");
+    ESP_LOGI(TOKEN_TAG, "Reached token process");
 
     // Params needed for create_schedule
     uint8_t channel;
@@ -289,7 +298,7 @@ void schTokenProcess(char* str){
     schedule_object s ={
         .ID = 0,
         .enabled = enabled,
-        .start = 0,
+        .start = start,
         .duration = duration,
         .repeat_mask = repeat_mask,
         .repeat_time = repeat_time,
@@ -302,10 +311,7 @@ void schTokenProcess(char* str){
 
     create_schedule(channel, s);
 
-    // while(token!=NULL){
-    //     ESP_LOGI(TOKEN_TAG, "%s", token);
-    //     token = strtok(NULL,DELIMITER);
-    // }
+    ESP_LOGI(TOKEN_TAG, "Leave token processing");
 }
 
 esp_err_t favicon_ico_get_handler(httpd_req_t* req){
@@ -328,5 +334,17 @@ esp_err_t favicon_ico_get_handler(httpd_req_t* req){
         httpd_resp_send_chunk(req, NULL, 0);  // indicates end
         ESP_LOGI(HTTP_TAG, "Finished favicon_ico_handler");
     }
+    return ESP_OK;
+}
+
+esp_err_t time_post_handler(httpd_req_t* req){
+    const char* TIME_TAG = "HTTP-TIME";
+    ESP_LOGI(TIME_TAG, "Reached time_post_handler");
+    char buf[255];
+    httpd_req_recv(req, buf, sizeof(buf));
+    ESP_LOGI(TIME_TAG, "Time Received: %s", buf);
+    uint32_t time = (uint32_t) atoi(buf);
+    set_time(time);
+    ESP_LOGI(TIME_TAG, "Finished time_post_handler");
     return ESP_OK;
 }

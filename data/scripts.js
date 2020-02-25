@@ -17,6 +17,9 @@ function init(){
     document.getElementById("mon_checkbox").checked=true;
     document.getElementById("is_RGB").checked=true;
     addSchEvent();
+
+    // init time on device
+    postTimeToESP();
 }
 
 function CreateNewSchedule(){
@@ -237,4 +240,19 @@ function httpPostSchToESP(schName, channel_num){
 
     // send data
     request.send(strSchData);
+}
+
+function postTimeToESP(){
+    request = new XMLHttpRequest();
+
+    currDate = new Date();
+    notExactDate = new Date(currDate.getFullYear(), currDate.getMonth(),
+    currDate.getDate(), currDate.getHours(), currDate.getMinutes());
+    schTimeUnix = notExactDate.getTime()/1000;  // time since epoch in s
+
+    request.open("POST", "time", true);  // true indicates Async
+    // request.setRequestHeader("Content-Type", "applicaiton/json;charset=UTF-8");
+    console.log('Sending: ' + schTimeUnix);
+    // send data
+    request.send(schTimeUnix);
 }
