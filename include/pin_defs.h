@@ -6,7 +6,8 @@
 #define CH3_LOW 36
 
 //can use either for alpha PCB
-#define DAC1 25
+//#define DAC1 25
+#define DAC1 1
 #define DAC2 26
 
 //INA 300 Pins for OC
