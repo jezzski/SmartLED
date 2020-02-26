@@ -1,34 +1,24 @@
 package com.example.smartled.ui.schedule;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.smartled.R;
-import com.example.smartled.Schedule;
 
-import org.xml.sax.SAXException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import static com.example.smartled.Schedule.getScheduleNames;
-import static com.example.smartled.Schedule.readXML;
-import static com.example.smartled.Schedule.writeToXML;
+import static com.example.smartled.ui.schedule.Schedule.getScheduleNames;
+import static com.example.smartled.ui.schedule.Schedule.readXML;
+import static com.example.smartled.ui.schedule.Schedule.writeToXML;
 
 public class ScheduleFragment extends Fragment {
 
@@ -45,7 +35,6 @@ public class ScheduleFragment extends Fragment {
         scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
         scheduleArray=readXML(root.getContext());
-        //scheduleArray.clear();
         scheduleString=getScheduleNames(scheduleArray);
 
         scheduleAdapter = new ScheduleListAdapter(scheduleString, getActivity());
@@ -58,6 +47,7 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 scheduleArray.add(new Schedule(scheduleName.getText().toString()));
+                //scheduleArray.clear();
                 writeToXML(v.getContext(), scheduleArray);
                 scheduleString.add(scheduleName.getText().toString());
                 scheduleAdapter.notifyDataSetChanged();

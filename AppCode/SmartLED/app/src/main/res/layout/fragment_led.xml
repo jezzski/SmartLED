@@ -5,98 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/rgbNumber1"
-        android:layout_width="59dp"
-        android:layout_height="61dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/rgbSpinner1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/rgbSpinner1" />
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="136dp"
+        android:layout_height="27dp"
+        android:text="Enable RGB1"
+        app:layout_constraintStart_toStartOf="@+id/rgb1"
+        app:layout_constraintTop_toBottomOf="@+id/connectSwitch" />
 
-    <EditText
-        android:id="@+id/rgbNumber2"
-        android:layout_width="58dp"
-        android:layout_height="56dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/rgbSpinner2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/rgbSpinner2" />
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="136dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:text="Enable RGB2"
+        app:layout_constraintStart_toStartOf="@+id/rgb2"
+        app:layout_constraintTop_toBottomOf="@+id/rgb1" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/rgbSpinner2"
         android:layout_width="269dp"
         android:layout_height="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgb2" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/led4"
+        app:layout_constraintTop_toBottomOf="@+id/rgbBar2" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/rgbSpinner1"
         android:layout_width="269dp"
         android:layout_height="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgb1" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/led1"
+        app:layout_constraintTop_toBottomOf="@+id/rgbBar1" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner1"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/led1"
         app:layout_constraintTop_toBottomOf="@+id/led1" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner6"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        app:layout_constraintStart_toEndOf="@+id/ledSpinner5"
-        app:layout_constraintTop_toBottomOf="@+id/led6" />
+        app:layout_constraintStart_toStartOf="@+id/led5"
+        app:layout_constraintTop_toBottomOf="@+id/led5" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner5"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/led5" />
+        app:layout_constraintStart_toStartOf="@+id/led6"
+        app:layout_constraintTop_toBottomOf="@+id/led6" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner4"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        app:layout_constraintStart_toEndOf="@+id/ledSpinner3"
+        app:layout_constraintStart_toStartOf="@+id/led4"
         app:layout_constraintTop_toBottomOf="@+id/led4" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner3"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/led3"
         app:layout_constraintTop_toBottomOf="@+id/led3" />
 
     <com.example.smartled.ui.led.MultiSpinner
         android:id="@+id/ledSpinner2"
         android:layout_width="155dp"
         android:layout_height="24dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        app:layout_constraintStart_toEndOf="@+id/ledSpinner1"
+        app:layout_constraintStart_toStartOf="@+id/led2"
         app:layout_constraintTop_toBottomOf="@+id/led2" />
 
     <TextView
@@ -108,6 +89,7 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -116,97 +98,222 @@
         android:id="@+id/led1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="LED Channel 1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_led" />
+        app:layout_constraintTop_toBottomOf="@+id/rgbSpinner1" />
 
     <TextView
         android:id="@+id/led4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:text="LED Channel 4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/led3"
-        app:layout_constraintTop_toBottomOf="@+id/led2" />
+        app:layout_constraintStart_toStartOf="@+id/led3"
+        app:layout_constraintTop_toBottomOf="@+id/rgbSpinner2" />
 
     <TextView
         android:id="@+id/led3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="12dp"
         android:text="LED Channel 3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/led1" />
+        app:layout_constraintStart_toStartOf="@+id/led2"
+        app:layout_constraintTop_toBottomOf="@+id/ledSpinner2" />
 
     <TextView
         android:id="@+id/led5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="12dp"
         android:text="LED Channel 5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/led3" />
+        app:layout_constraintStart_toStartOf="@+id/led4"
+        app:layout_constraintTop_toBottomOf="@+id/ledSpinner4" />
 
     <TextView
         android:id="@+id/led6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="12dp"
         android:text="LED Channel 6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/led5"
-        app:layout_constraintTop_toBottomOf="@+id/led4" />
+        app:layout_constraintStart_toStartOf="@+id/led5"
+        app:layout_constraintTop_toBottomOf="@+id/ledSpinner6" />
 
     <TextView
         android:id="@+id/rgb2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="RGB Channel 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgb1" />
+        android:layout_width="345dp"
+        android:layout_height="205dp"
+        android:text="RGB 2"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="@+id/rgb1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
     <Button
         android:id="@+id/uploadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgbSpinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/rgb2" />
 
     <TextView
         android:id="@+id/led2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="LED Channel 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/led1"
-        app:layout_constraintTop_toBottomOf="@+id/text_led" />
+        app:layout_constraintStart_toStartOf="@+id/led1"
+        app:layout_constraintTop_toBottomOf="@+id/ledSpinner1" />
 
     <TextView
         android:id="@+id/rgb1"
+        android:layout_width="345dp"
+        android:layout_height="205dp"
+        android:background="@drawable/border"
+        android:text="RGB 1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/led1"
+        app:layout_constraintTop_toTopOf="@+id/led1" />
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar2"
+        app:layout_constraintStart_toEndOf="@+id/led3"
+        app:layout_constraintTop_toTopOf="@+id/led3" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/led2"
+        app:layout_constraintTop_toTopOf="@+id/led2" />
+
+    <SeekBar
+        android:id="@+id/seekBar4"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar3"
+        app:layout_constraintStart_toEndOf="@+id/led4"
+        app:layout_constraintTop_toTopOf="@+id/led4" />
+
+    <SeekBar
+        android:id="@+id/seekBar5"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar4"
+        app:layout_constraintStart_toEndOf="@+id/led5"
+        app:layout_constraintTop_toTopOf="@+id/led5" />
+
+    <SeekBar
+        android:id="@+id/seekBar6"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar5"
+        app:layout_constraintStart_toEndOf="@+id/led6"
+        app:layout_constraintTop_toTopOf="@+id/led6" />
+
+    <SeekBar
+        android:id="@+id/rgbBar2"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/rgbbutton2"
+        app:layout_constraintTop_toTopOf="@+id/rgb2" />
+
+    <SeekBar
+        android:id="@+id/rgbBar1"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:max="255"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/rgbbutton"
+        app:layout_constraintTop_toTopOf="@+id/rgb1" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="230dp"
+        android:layout_height="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/ledSpinner1"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar">
+
+        <RadioButton
+            android:id="@+id/radioButtonR"
+            android:layout_width="42dp"
+            android:layout_height="24dp"
+            android:text="R" />
+
+        <RadioButton
+            android:id="@+id/radioButtonG"
+            android:layout_width="42dp"
+            android:layout_height="24dp"
+            android:text="G" />
+
+        <RadioButton
+            android:id="@+id/radioButtonB"
+            android:layout_width="42dp"
+            android:layout_height="24dp"
+            android:text="B" />
+
+        <RadioButton
+            android:id="@+id/radioButtonN"
+            android:layout_width="75dp"
+            android:layout_height="24dp"
+            android:text="None" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/rgbbutton"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="24dp"
+        android:text="Color"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rgbSpinner1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/rgbbutton2"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="24dp"
+        android:text="Color"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rgbSpinner2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/connectSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:text="RGB Channel 1"
+        android:text="Connected "
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ledSpinner5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

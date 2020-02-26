@@ -26,4 +26,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_scan" />
+
+    <ListView
+        android:id="@+id/list_device"
+        android:layout_width="349dp"
+        android:layout_height="568dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanButton"></ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

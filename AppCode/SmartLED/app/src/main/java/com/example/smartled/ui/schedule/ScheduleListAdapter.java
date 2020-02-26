@@ -11,13 +11,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.smartled.R;
-import com.example.smartled.Schedule;
-import com.example.smartled.ui.schedule.ScheduleEditorActivity;
 
 import java.util.ArrayList;
-
-import static com.example.smartled.Schedule.readXML;
-import static com.example.smartled.Schedule.writeToXML;
 
 public class ScheduleListAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list = new ArrayList<String>();

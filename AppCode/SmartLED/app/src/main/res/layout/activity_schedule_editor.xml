@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brightnessBar" />
 
-    <ImageView
+    <Button
         android:id="@+id/colorImage"
         android:layout_width="48dp"
         android:layout_height="48dp"

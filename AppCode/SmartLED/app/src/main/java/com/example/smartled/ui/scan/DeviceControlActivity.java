@@ -16,7 +16,6 @@
 
 package com.example.smartled.ui.scan;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
@@ -31,20 +30,28 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.smartled.MainActivity;
 import com.example.smartled.R;
-import com.example.smartled.Schedule;
+import com.example.smartled.ui.schedule.Schedule;
+import com.example.smartled.BluetoothLeService;
 import com.example.smartled.ui.led.LedChannel;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.example.smartled.Schedule.createSchedulePacket;
-import static com.example.smartled.Schedule.readXML;
+import static com.example.smartled.ui.schedule.Schedule.createSchedulePacket;
+import static com.example.smartled.ui.schedule.Schedule.readXML;
 import static com.example.smartled.ui.led.LedChannel.readChannelXML;
 
 /**
@@ -53,7 +60,7 @@ import static com.example.smartled.ui.led.LedChannel.readChannelXML;
  * communicates with {@code BluetoothLeService}, which in turn interacts with the
  * Bluetooth LE API.
  */
-public class DeviceControlActivity extends Activity {
+public class DeviceControlActivity extends AppCompatActivity {
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -72,6 +79,8 @@ public class DeviceControlActivity extends Activity {
 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
+    private String testB="0000ff02-0000-1000-8000-00805f9b34fb";
+    private String testC="0000ff03-0000-1000-8000-00805f9b34fb";
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -146,18 +155,35 @@ public class DeviceControlActivity extends Activity {
                             ArrayList<LedChannel> channelList=readChannelXML(v.getContext());
                             ArrayList<Schedule> scheduleList=readXML(v.getContext());
                             byte[] val=null;
-                            for(int i=0;i<channelList.size();i++){
-                                LedChannel tempChannel=channelList.get(i);
-                                for(int j=0;j<tempChannel.scheduleCount;j++){
-                                    if(tempChannel.scheduleIndexes[j]==0){
+                            byte[] temp=new byte[5];
+                            if(testB.compareTo(characteristic.getUuid().toString())==0){
+                                temp[0]=(byte) 0xff;
+                                Calendar calendar=Calendar.getInstance();
+                                int time=(int)(calendar.getTimeInMillis()/1000);
+                                ByteBuffer bBuffer=ByteBuffer.allocate(4);
+                                byte[] result=bBuffer.array();
+                                bBuffer.putInt(time);
+                                temp[1]=result[0];
+                                temp[2]=result[1];
+                                temp[3]=result[2];
+                                temp[4]=result[3];
+                                characteristic.setValue(temp);
+                                mBluetoothLeService.mBluetoothGatt.writeCharacteristic(characteristic);
+                            }
+                            else if(testC.compareTo(characteristic.getUuid().toString())==0){
+                                for(int i=0;i<channelList.size();i++){
+                                    LedChannel tempChannel=channelList.get(i);
+                                    for(int j=0;j<tempChannel.scheduleCount;j++){
+                                        if(tempChannel.scheduleIndexes[j]==0){
 
-                                    }
-                                    else{
-                                        val=createSchedulePacket(scheduleList.get(tempChannel.scheduleIndexes[j]-1),tempChannel.channelNum);
-                                        characteristic.setValue(val);
-                                        boolean status=mBluetoothLeService.mBluetoothGatt.writeCharacteristic(characteristic);
-                                        while(!status){
-                                            status=mBluetoothLeService.mBluetoothGatt.writeCharacteristic(characteristic);
+                                        }
+                                        else{
+                                            val=createSchedulePacket(scheduleList.get(tempChannel.scheduleIndexes[j]-1),tempChannel.channelNum);
+                                            characteristic.setValue(val);
+                                            boolean status=mBluetoothLeService.mBluetoothGatt.writeCharacteristic(characteristic);
+                                            while(!status){
+                                                status=mBluetoothLeService.mBluetoothGatt.writeCharacteristic(characteristic);
+                                            }
                                         }
                                     }
                                 }
@@ -188,6 +214,15 @@ public class DeviceControlActivity extends Activity {
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
+        Bundle args=new Bundle();
+        args.putString("DeviceName",mDeviceName);
+        args.putString("DeviceAddress",mDeviceAddress);
+        ScanFragment fragment=new ScanFragment();
+        fragment.setArguments(args);
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainer, fragment);
+        transaction.commit();
+
         // Sets up UI references.
         ((TextView) findViewById(R.id.device_address)).setText(mDeviceAddress);
         mGattServicesList = (ExpandableListView) findViewById(R.id.gatt_services_list);
@@ -199,6 +234,16 @@ public class DeviceControlActivity extends Activity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         getApplicationContext().bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
+        Button returnButton= findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBluetoothLeService.disconnect();
+                final Intent intent2 = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent2);
+            }
+        });
     }
 
     @Override

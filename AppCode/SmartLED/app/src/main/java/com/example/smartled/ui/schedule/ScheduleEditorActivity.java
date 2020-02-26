@@ -9,26 +9,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.smartled.R;
-import com.example.smartled.Schedule;
+import com.example.smartled.HSVColorPickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.TimeZone;
 
-import static com.example.smartled.Schedule.getScheduleNames;
-import static com.example.smartled.Schedule.readXML;
-import static com.example.smartled.Schedule.writeToXML;
+import static com.example.smartled.ui.schedule.Schedule.readXML;
+import static com.example.smartled.ui.schedule.Schedule.writeToXML;
 
 public class ScheduleEditorActivity extends AppCompatActivity {
     ArrayList<Schedule> scheduleList;
     int scheduleNumber;
     Button colorButton;
-    ImageView colorImage;
+    Button colorImage;
     CheckBox mCheck;
     CheckBox tuCheck;
     CheckBox wCheck;
@@ -65,13 +62,13 @@ public class ScheduleEditorActivity extends AppCompatActivity {
         fCheck=findViewById(R.id.rbF);
         saCheck=findViewById(R.id.rbSA);
         suCheck=findViewById(R.id.rbSU);
-        suCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 0));
-        mCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 1));
-        tuCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 2));
-        wCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 3));
-        thCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 4));
-        fCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 5));
-        saCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 6));
+        suCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 7));
+        mCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 6));
+        tuCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 5));
+        wCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 4));
+        thCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 3));
+        fCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 2));
+        saCheck.setChecked(checkRepeatMask(curSchedule.repeatMask, 1));
 
 
         brightBar=findViewById(R.id.brightnessBar);
@@ -84,10 +81,26 @@ public class ScheduleEditorActivity extends AppCompatActivity {
         g=g<<8;
         int b1=curSchedule.Blue & 0xFF;
         int savedColor=0xFF000000+r+g+b1;
+        colorButtonPressed=false;
         colorImage=findViewById(R.id.colorImage);
         colorImage.setBackgroundColor(savedColor);
+        colorImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HSVColorPickerDialog cpd = new HSVColorPickerDialog(v.getContext(), 0xFF4488CC, new HSVColorPickerDialog.OnColorSelectedListener() {
+                    @Override
+                    public void colorSelected(Integer color) {
+                        colorImage.setBackgroundColor(color);
+                        colorVal=color;
+                    }
+                });
+                cpd.setTitle( "Pick a color" );
+                cpd.setNoColorButton( R.string.no_color );
+                cpd.show();
+                colorButtonPressed=true;
+            }
+        });
         colorButton=findViewById(R.id.colorButton);
-        colorButtonPressed=false;
         colorButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -108,7 +121,7 @@ public class ScheduleEditorActivity extends AppCompatActivity {
         long timestamp=curSchedule.start;
 
         Calendar tempCal = Calendar.getInstance();
-        tempCal.setTimeInMillis(timestamp * 1000);
+        //tempCal.setTimeInMillis(timestamp * 1000);
         int hour=tempCal.get(Calendar.HOUR_OF_DAY);
         int min=tempCal.get(Calendar.MINUTE);
         hourText=findViewById(R.id.hourTimeText);
@@ -134,31 +147,31 @@ public class ScheduleEditorActivity extends AppCompatActivity {
                 //repeat
                 byte tempRepeatMask=0;
                 if(suCheck.isChecked()){
-                    tempRepeatMask+=1;
+                    tempRepeatMask+=128;
                     daysRepeat[0]=true;
                 }
                 if(mCheck.isChecked()){
-                    tempRepeatMask+=2;
+                    tempRepeatMask+=64;
                     daysRepeat[1]=true;
                 }
                 if(tuCheck.isChecked()){
-                    tempRepeatMask+=4;
+                    tempRepeatMask+=32;
                     daysRepeat[2]=true;
                 }
                 if(wCheck.isChecked()){
-                    tempRepeatMask+=8;
+                    tempRepeatMask+=16;
                     daysRepeat[3]=true;
                 }
                 if(thCheck.isChecked()){
-                    tempRepeatMask+=16;
+                    tempRepeatMask+=8;
                     daysRepeat[4]=true;
                 }
                 if(fCheck.isChecked()){
-                    tempRepeatMask+=32;
+                    tempRepeatMask+=4;
                     daysRepeat[5]=true;
                 }
                 if(saCheck.isChecked()){
-                    tempRepeatMask+=64;
+                    tempRepeatMask+=2;
                     daysRepeat[6]=true;
                 }
                 curSaveSchedule.repeatMask=tempRepeatMask;
@@ -209,9 +222,14 @@ public class ScheduleEditorActivity extends AppCompatActivity {
                 cal.set(Calendar.SECOND,0);
                 cal.set(Calendar.WEEK_OF_YEAR, currentWeek);
                 curSaveSchedule.start=(int)(cal.getTimeInMillis()/1000);
-                curSaveSchedule.duration=Integer.valueOf(durationText.getText().toString());
+                if(Integer.valueOf(durationText.getText().toString())!=0){
+                    curSaveSchedule.duration=Integer.valueOf(durationText.getText().toString());
+                }
+                else{
+                    curSaveSchedule.duration=0xffffffff;
+                }
                 curSaveSchedule.repeatTime=Integer.valueOf(repeatText.getText().toString());
-
+                Log.d("Hunaid", String.valueOf(curSaveSchedule.duration));
                 writeToXML(getApplicationContext(), scheduleList);
             }
         });
@@ -241,8 +259,7 @@ public class ScheduleEditorActivity extends AppCompatActivity {
         boolean checked=false;
         switch(day){
             case 0:
-                if((repeatMask&1)==1){checked=true;}
-                else{checked=false;}
+                if((repeatMask&1)==1){}
                 break;
             case 1:
                 if(((repeatMask&2)>>day)==1){checked=true;}
@@ -269,6 +286,8 @@ public class ScheduleEditorActivity extends AppCompatActivity {
                 else{checked=false;}
                 break;
             case 7:
+                if(((repeatMask&128)>>day)==1){checked=true;}
+                else{checked=false;}
                 break;
         }
         return checked;
