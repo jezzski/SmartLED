@@ -96,6 +96,7 @@ void app_main()
     //init functions
     //todo: error checking
     init_channels();
+    init_oc();
     err = init_memory();
     init_schedule();
     wifi_init_sta();
