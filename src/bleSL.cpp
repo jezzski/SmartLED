@@ -124,12 +124,12 @@ static esp_ble_adv_data_t scan_rsp_data = {
 #endif /* CONFIG_SET_RAW_ADV_DATA */
 
 static esp_ble_adv_params_t adv_params = {
-    .adv_int_min         = 0x20,
+    /*.adv_int_min         = 0x20,
     .adv_int_max         = 0x40,
     .adv_type            = ADV_TYPE_IND,
     .own_addr_type       = BLE_ADDR_TYPE_PUBLIC,
     .channel_map         = ADV_CHNL_ALL,
-    .adv_filter_policy   = ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY,
+    .adv_filter_policy   = ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY,*/
 };
 
 struct gatts_profile_inst {
@@ -152,10 +152,10 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event,
 
 /* One gatt-based profile one app_id and one gatts_if, this array will store the gatts_if returned by ESP_GATTS_REG_EVT */
 static struct gatts_profile_inst heart_rate_profile_tab[PROFILE_NUM] = {
-    [PROFILE_APP_IDX] = {
-        .gatts_cb = gatts_profile_event_handler,
-        .gatts_if = ESP_GATT_IF_NONE,       /* Not get the gatt_if, so initial is ESP_GATT_IF_NONE */
-    },
+    //[PROFILE_APP_IDX] = {
+    //    .gatts_cb = gatts_profile_event_handler,
+    //    .gatts_if = ESP_GATT_IF_NONE,       /* Not get the gatt_if, so initial is ESP_GATT_IF_NONE */
+    //},
 };
 
 /* Service */
@@ -375,12 +375,13 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
             if (create_attr_ret){
                 ESP_LOGE(GATTS_TABLE_TAG, "create attr table failed, error code = %x", create_attr_ret);
             }
-        }
        	    break;
-        case ESP_GATTS_READ_EVT:
+        }
+        case ESP_GATTS_READ_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT");
        	    break;
-        case ESP_GATTS_WRITE_EVT:
+        }
+        case ESP_GATTS_WRITE_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "Enter Write");
             if (!param->write.is_prep){
                 // the data length of gattc write  must be less than GATTS_DEMO_CHAR_VAL_LEN_MAX.
@@ -427,24 +428,29 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 example_prepare_write_event_env(gatts_if, &prepare_write_env, param);
             }
       	    break;
-        case ESP_GATTS_EXEC_WRITE_EVT: 
+        }
+        case ESP_GATTS_EXEC_WRITE_EVT: {
             // the length of gattc prepare write data must be less than GATTS_DEMO_CHAR_VAL_LEN_MAX. 
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_EXEC_WRITE_EVT");
             example_exec_write_event_env(&prepare_write_env, param);
             break;
-        case ESP_GATTS_MTU_EVT:
+        }
+        case ESP_GATTS_MTU_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_MTU_EVT, MTU %d", param->mtu.mtu);
             break;
-        case ESP_GATTS_CONF_EVT:
+        }
+        case ESP_GATTS_CONF_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_CONF_EVT, status = %d, attr_handle %d", param->conf.status, param->conf.handle);
             break;
-        case ESP_GATTS_START_EVT:
+        }
+        case ESP_GATTS_START_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "SERVICE_START_EVT, status %d, service_handle %d", param->start.status, param->start.service_handle);
             break;
-        case ESP_GATTS_CONNECT_EVT:
+        }
+        case ESP_GATTS_CONNECT_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_CONNECT_EVT, conn_id = %d", param->connect.conn_id);
             esp_log_buffer_hex(GATTS_TABLE_TAG, param->connect.remote_bda, 6);
-            esp_ble_conn_update_params_t conn_params = {0};
+            esp_ble_conn_update_params_t conn_params = { };
             memcpy(conn_params.bda, param->connect.remote_bda, sizeof(esp_bd_addr_t));
             /* For the iOS system, please refer to Apple official documents about the BLE connection parameters restrictions. */
             conn_params.latency = 0;
@@ -454,10 +460,12 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
             //start sent the update connection parameters to the peer device.
             esp_ble_gap_update_conn_params(&conn_params);
             break;
-        case ESP_GATTS_DISCONNECT_EVT:
+        }
+        case ESP_GATTS_DISCONNECT_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_DISCONNECT_EVT, reason = 0x%x", param->disconnect.reason);
             esp_ble_gap_start_advertising(&adv_params);
             break;
+        }
         case ESP_GATTS_CREAT_ATTR_TAB_EVT:{
             if (param->add_attr_tab.status != ESP_GATT_OK){
                 ESP_LOGE(GATTS_TABLE_TAG, "create attribute table failed, error code=0x%x", param->add_attr_tab.status);
@@ -517,6 +525,20 @@ static void gatts_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_
 void Init_Bluetooth(void)
 {
     esp_err_t ret;
+
+    //here
+    adv_params.adv_int_min         = 0x20;
+    adv_params.adv_int_max         = 0x40;
+    adv_params.adv_type            = ADV_TYPE_IND;
+    adv_params.own_addr_type       = BLE_ADDR_TYPE_PUBLIC;
+    adv_params.channel_map         = ADV_CHNL_ALL;
+    adv_params.adv_filter_policy   = ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY;
+
+    gatts_profile_inst t = { };
+    t.gatts_cb = gatts_profile_event_handler;
+    t.gatts_if = ESP_GATT_IF_NONE; /* Not get the gatt_if, so initial is ESP_GATT_IF_NONE */
+    heart_rate_profile_tab[PROFILE_APP_IDX] = t;
+    //end here
 
     /* Initialize NVS. */
     ret = nvs_flash_init();
