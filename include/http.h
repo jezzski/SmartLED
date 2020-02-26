@@ -20,6 +20,7 @@ esp_err_t schedules_handler(httpd_req_t* req);
 esp_err_t scripts_handler(httpd_req_t* req);
 esp_err_t schedule_post_handler(httpd_req_t* req);
 esp_err_t favicon_ico_get_handler(httpd_req_t* req);
+esp_err_t time_post_handler(httpd_req_t* req);
 void schTokenProcess(char* str);
 
 
