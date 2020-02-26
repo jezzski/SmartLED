@@ -295,19 +295,18 @@ void schTokenProcess(char* str){
     ESP_LOGI(TOKEN_TAG, "g: %X", g);
     ESP_LOGI(TOKEN_TAG, "b: %X", b);
 
-    schedule_object s ={
-        .ID = 0,
-        .enabled = enabled,
-        .start = start,
-        .duration = duration,
-        .repeat_mask = repeat_mask,
-        .repeat_time = repeat_time,
-        .isRGB = isRGB,
-        .brightness = brightness,
-        .r = r,
-        .g = g,
-        .b = b
-    };
+    schedule_object s;
+    s.ID = 0;
+    s.enabled = enabled;
+    s.start = start;
+    s.duration = duration;
+    s.repeat_mask = repeat_mask;
+    s.repeat_time = repeat_time;
+    s.isRGB = isRGB;
+    s.brightness = brightness;
+    s.r = r;
+    s.g = g;
+    s.b = b;
 
     create_schedule(channel, s);
 

@@ -95,9 +95,10 @@ void app_main()
 
     //init functions
     //todo: error checking
+    init_channels();
     err = init_memory();
     init_schedule();
-    //wifi_init_sta();
+    wifi_init_sta();
 
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -105,22 +106,12 @@ void app_main()
     //should this return extra information like # of schedules an 
     recall_schedules();
     httpd_handle_t server = NULL;  // empty server handle
-    //init_http(server);
-
-    uint8_t brightness = 0;
+    init_http(server);
+    
     while (1)
-    {
-        vTaskDelay(200 / portTICK_PERIOD_MS);
-        printf("Test:%d\n", brightness);
-        //channel_on(0, brightness);
-        set_color(0, 255, 0, 0, brightness);
-        brightness += 5;
-    }
-
-    /*while (1)
     {
         vTaskDelay(10000 / portTICK_PERIOD_MS);
         //todo: create task to auto save ever x seconds and on outage?
         store_schedules();
-    }*/
+    }
 }
