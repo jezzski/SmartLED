@@ -23,6 +23,7 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
     printf("Channel: %x, Start: %d, Duration: %d, Repeat: %d", channel,s.start, s.duration, s.repeat_time);
     printf("Brightness: %x", s.brightness);
     printf("Red: %x, Green: %x, Blue: %x",s.r, s.g, s.b);
+    printf("ID:%d, Name:%s", s.ID, s.name);
     //check if channel is valid
     if (channel > NUM_CHANNELS)
     {
@@ -178,6 +179,23 @@ esp_err_t enable_all_schedules(void)
             it = it->next;
         }
     }
+    return ESP_OK;
+}
+
+esp_err_t delete_all_schedules(void)
+{
+    for (int i = 0; i < NUM_CHANNELS; ++i)
+    {
+        List *it = schedules[i];
+        List *tmp = it;
+        while (it != NULL)
+        {
+            tmp = it;
+            it = it->next;
+            free(tmp);
+        }
+    }
+
     return ESP_OK;
 }
 

@@ -203,3 +203,32 @@ esp_err_t store_schedules(void)
 
     return ESP_OK;
 }
+
+esp_err_t clear_schedule_data(void)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+
+    //check if files already exist
+    struct stat st;
+    char src[255];
+    strcpy(src, "/spiffs/schedules");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+
+    if (stat(src, &st) == 0)
+    {
+        ESP_LOGI(TAG, "Found schedule file, deleting");
+        unlink(src);
+    }
+    else
+    {
+        ESP_LOGE(TAG, "Schedule file already deleted!");
+        return ESP_OK;
+    }
+    
+    return ESP_OK;
+}

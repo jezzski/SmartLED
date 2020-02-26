@@ -100,6 +100,10 @@ void app_main()
     init_schedule();
     wifi_init_sta();
 
+    schedule_object s = { };
+    s.ID = 0;
+    strcpy(s.name, "test");
+    create_schedule(0, s);
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     //todo: should this be done automatically when init_memory is called?
@@ -107,7 +111,7 @@ void app_main()
     recall_schedules();
     httpd_handle_t server = NULL;  // empty server handle
     init_http(server);
-    
+
     while (1)
     {
         vTaskDelay(10000 / portTICK_PERIOD_MS);

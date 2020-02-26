@@ -28,6 +28,7 @@ esp_err_t enable_schedule_by_name(uint8_t channel, char *name);
 
 esp_err_t disable_all_schedules(void);
 esp_err_t enable_all_schedules(void);
+esp_err_t delete_all_schedules(void);
 
 
 //todo: integrate with LED control properly

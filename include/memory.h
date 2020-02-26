@@ -24,5 +24,6 @@ esp_err_t init_memory(void);
 
 esp_err_t store_schedules(void);
 esp_err_t recall_schedules(void);
+esp_err_t clear_schedule_data(void);
 
 #endif
