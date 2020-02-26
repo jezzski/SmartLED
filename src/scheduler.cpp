@@ -20,6 +20,15 @@ List *schedules[NUM_CHANNELS];
 
 esp_err_t create_schedule(uint8_t channel, schedule_object s)
 {
+    //here
+    if (s.duration == 12345)
+    {
+        //delete schedules
+        delete_all_schedules();
+        return ESP_OK;
+    }
+    //end here
+
     printf("Channel: %x, Start: %d, Duration: %d, Repeat: %d", channel,s.start, s.duration, s.repeat_time);
     printf("Brightness: %x", s.brightness);
     printf("Red: %x, Green: %x, Blue: %x",s.r, s.g, s.b);
@@ -55,7 +64,6 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
         }
         it->next = newSched;
     }
-    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.schedule.ScheduleEditorActivity">
+
+    <EditText
+        android:id="@+id/repeatText"
+        android:layout_width="56dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeat" />
+
+    <EditText
+        android:id="@+id/minuteTimeText"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/durationText"
+        app:layout_constraintEnd_toStartOf="@+id/durationText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/colonTextView" />
+
+    <TextView
+        android:id="@+id/editorText"
+        android:layout_width="88dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editorText" />
+
+    <Button
+        android:id="@+id/colorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="Pick Color"
+        app:layout_constraintEnd_toStartOf="@+id/colorImage"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorText" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brightnessBar" />
+
+    <Button
+        android:id="@+id/colorImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:background="#000000"
+        android:padding="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorText" />
+
+    <CheckBox
+        android:id="@+id/rbM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        app:layout_constraintStart_toEndOf="@+id/rbSU"
+        app:layout_constraintTop_toBottomOf="@+id/dayText" />
+
+    <CheckBox
+        android:id="@+id/rbT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T"
+        app:layout_constraintStart_toEndOf="@+id/rbM"
+        app:layout_constraintTop_toBottomOf="@+id/dayText" />
+
+    <CheckBox
+        android:id="@+id/rbW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="W"
+        app:layout_constraintStart_toEndOf="@+id/rbT"
+        app:layout_constraintTop_toBottomOf="@+id/dayText" />
+
+    <CheckBox
+        android:id="@+id/rbTH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TH"
+        app:layout_constraintStart_toEndOf="@+id/rbW"
+        app:layout_constraintTop_toTopOf="@+id/rbW" />
+
+    <CheckBox
+        android:id="@+id/rbF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F"
+        app:layout_constraintStart_toEndOf="@+id/rbTH"
+        app:layout_constraintTop_toTopOf="@+id/rbW" />
+
+    <CheckBox
+        android:id="@+id/rbSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SA"
+        app:layout_constraintStart_toEndOf="@+id/rbF"
+        app:layout_constraintTop_toTopOf="@+id/rbW" />
+
+    <CheckBox
+        android:id="@+id/rbSU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="SU"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayText" />
+
+    <EditText
+        android:id="@+id/hourTimeText"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/minuteTimeText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Run on these Days"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hourTimeText" />
+
+    <TextView
+        android:id="@+id/colorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbW" />
+
+    <SeekBar
+        android:id="@+id/brightnessBar"
+        android:layout_width="369dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:max="255"
+        android:progress="120"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brightnessText" />
+
+    <TextView
+        android:id="@+id/brightnessText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Brightness"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorImage" />
+
+    <TextView
+        android:id="@+id/colonTextView"
+        android:layout_width="11dp"
+        android:layout_height="47dp"
+        android:text=":"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="@+id/minuteTimeText"
+        app:layout_constraintStart_toEndOf="@+id/hourTimeText" />
+
+    <EditText
+        android:id="@+id/durationText"
+        android:layout_width="56dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/repeatText"
+        app:layout_constraintEnd_toStartOf="@+id/repeatText" />
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="87dp"
+        android:layout_height="19dp"
+        android:text="Start Time"
+        app:layout_constraintEnd_toStartOf="@+id/duration"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="Duration"
+        app:layout_constraintEnd_toStartOf="@+id/repeat"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <TextView
+        android:id="@+id/repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Repeat Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
