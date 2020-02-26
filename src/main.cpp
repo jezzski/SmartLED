@@ -26,6 +26,7 @@ example used in alpha demonstration
 #include "http.h"
 #include "led.h"
 #include "scheduler.h"
+#include "measurement.h"
 #include "memory.h"
 #include "wifi.h"
 
