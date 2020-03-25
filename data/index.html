@@ -2,7 +2,7 @@
 <html>
 
 <link rel="stylesheet" href="styles.css">
-<!-- <script src="scripts.js"></script> -->
+<script src="scripts.js"></script>
 
 
 <head>
@@ -29,114 +29,99 @@
                 <br>
                 Less <-- --> More
             </th>
-            <th>Edit</th>
-            <th>RGB</th>
-            <th>Color</th>
+            <th>On/Off</th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:5%;">
+                    <label for="set1_rgb">Channel 1-3 RGB:</label>
+                    <input type="checkbox" id="set1_rgb">
+                    <label for="set1_color">Color:</label>
+                    <input type="color" id="set1_color" onchange="setColor(this,1)">
+                </div>
+            </td>
         </tr>
         <tr>
             <td class="channel_entry">1</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel1_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,1)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
-            </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel1_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel1_color>
+                <input type="checkbox" onchange="setOnOff(this,1)">
             </td>
         </tr>
         <tr>
             <td class="channel_entry">2</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel2_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,2)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
-            </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel2_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel2_color>
+                <input type="checkbox" onchange="setOnOff(this,4)">
             </td>
         </tr>
         <tr>
             <td class="channel_entry">3</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel3_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,3)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
+                <input type="checkbox" onchange="setOnOff(this,3)">
             </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel3_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel3_color>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:5%;">
+                    <label for="set2_rgb">Channel 4-6 RGB:</label>
+                    <input type="checkbox" id="set2_rgb">
+                    <label for="set2_color">Color:</label>
+                    <input type="color" id="set2_color" onchange="setColor(this,2)">
+                </div>
             </td>
         </tr>
         <tr>
             <td class="channel_entry">4</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel4_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,4)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
-            </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel4_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel4_color>
+                <input type="checkbox" onchange="setOnOff(this,4)">
             </td>
         </tr>
         <tr>
             <td class="channel_entry">5</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel5_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,5)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
-            </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel5_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel5_color>
+                <input type="checkbox" onchange="setOnOff(this,5)">
             </td>
         </tr>
         <tr>
             <td class="channel_entry">6</td>
             <td>
                 <div class="slidercontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="channel6_slider">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,6)">
                 </div>
             </td>
             <td class="channel_entry">
-                <input type="button">
-            </td>
-            <td class="channel_entry">
-                <input type="checkbox" id="channel6_rgb">
-            </td>
-            <td class="channel_entry">
-                <input type="color" id=channel6_color>
+                <input type="checkbox" onchange="setOnOff(this,6)">
             </td>
         </tr>
     </table>
 
+    <!-- Included to load call init -->
+    <!-- TBD: Find better way -->
+    <!-- <div> <body onload="init()"> </div> - unneed for this html-->
 
     <div class="footer">
         <a href="#about">About Project</a>

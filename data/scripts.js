@@ -256,3 +256,46 @@ function postTimeToESP(){
     // send data
     request.send(schTimeUnix);
 }
+
+// -----------------------------------------
+// Direct Control Scripts
+
+
+function setOnOff(objCalledFrom, channelNum){
+    // channelNum parameter is currently indexed by 1
+    // i.e. channels 1-6 - do we want to index by 0?
+    console.log(objCalledFrom.checked + ":" + channelNum);
+
+    request = new XMLHttpRequest();
+    request.open("POST", "direct_control", true);  // true indicates Async
+    delimiterStr=";';";
+    // sends cmd channel num state
+    // console.log("OnOff" + delimiterStr + channelNum + delimiterStr +
+    // Number(objCalledFrom.checked) + delimiterStr + "PADDING")
+    request.send("OnOff" + delimiterStr + channelNum + delimiterStr +
+        Number(objCalledFrom.checked) + delimiterStr + "PADDING");
+}
+
+function setColor(objCalledFrom, iWhichSet){
+    // iWhichSet 1 corresponds to channels 1-3
+    // iWhichSet 4 corresponds to channels 4-6
+    console.log("Reached setColor. Set: " + iWhichSet +
+        " Color: " + objCalledFrom.value);
+    request = new XMLHttpRequest();
+    request.open("POST", "direct_control", true);  // true indicates Async
+    delimiterStr=";';";
+    request.send("Color" + delimiterStr + iWhichSet + delimiterStr +
+        objCalledFrom.value + delimiterStr + "PADDING")
+}
+
+function setBrightness(objCalledFrom, channelNum){
+    console.log("Channel Num: " + channelNum + " - Brightness: " + objCalledFrom.value);
+
+    request = new XMLHttpRequest();
+    request.open("POST", "direct_control", true);  // true indicates Async
+    delimiterStr=";';";
+    // console.log("Brightness" + delimiterStr + channelNum + 
+    //     delimiterStr + objCalledFrom.value + delimiterStr + "PADDING");
+    request.send("Brightness" + delimiterStr + channelNum + 
+        delimiterStr + objCalledFrom.value + delimiterStr + "PADDING");
+}

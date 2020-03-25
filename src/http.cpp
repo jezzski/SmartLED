@@ -20,7 +20,7 @@ esp_err_t init_http(httpd_handle_t server)
     .server_port        = 80,                       
     .ctrl_port          = 32768,                    
     .max_open_sockets   = 7,                        
-    .max_uri_handlers   = 8,                        
+    .max_uri_handlers   = 9,                        
     .max_resp_headers   = 8,                        
     .backlog_conn       = 5,                        
     .lru_purge_enable   = false,                    
@@ -84,6 +84,13 @@ esp_err_t init_http(httpd_handle_t server)
         .user_ctx = NULL
     };
 
+    static const httpd_uri_t direct_control_post ={
+        .uri = "/direct_control",
+        .method = HTTP_POST,
+        .handler = direct_control_post_handler,
+        .user_ctx = NULL
+    };
+
     /* Start the httpd server */
     if (httpd_start(&server, &config) == ESP_OK) {
         /* Register URI handlers */
@@ -95,6 +102,7 @@ esp_err_t init_http(httpd_handle_t server)
         httpd_register_uri_handler(server, &schedule_post);
         httpd_register_uri_handler(server, &favicon_ico_get);
         httpd_register_uri_handler(server, &time_post);
+        httpd_register_uri_handler(server, &direct_control_post);
         //httpd_register_uri_handler(server, &uri_get);
         //httpd_register_uri_handler(server, &uri_post);
         return ESP_OK;
@@ -345,5 +353,64 @@ esp_err_t time_post_handler(httpd_req_t* req){
     uint32_t time = (uint32_t) atoi(buf);
     set_time(time);
     ESP_LOGI(TIME_TAG, "Finished time_post_handler");
+    return ESP_OK;
+}
+
+esp_err_t direct_control_post_handler(httpd_req_t* req){
+    const char* HTTP_TAG = "HTTP-Direct Control";
+    ESP_LOGI(HTTP_TAG, "Reached direct_control_post_handler");
+
+    char buf[255];
+    httpd_req_recv(req, buf, sizeof(buf));
+    buf[254]=NULL;
+    ESP_LOGI(HTTP_TAG, "%s", buf);
+
+    char cmd[16];
+
+    // variable to hold various tokens before conversion to 
+    char* token;
+    token = strtok(buf, DELIMITER);
+    strcpy(cmd,token);
+
+    uint8_t channel;  // next token will be channel num
+    token = strtok(NULL, DELIMITER);
+    channel = (uint8_t) atoi(token);
+
+    ESP_LOGI(HTTP_TAG, "%s : %u", cmd, channel);
+
+    uint8_t brightness;
+
+    if(!strcmp(cmd,"OnOff")){
+        token = strtok(NULL, DELIMITER);
+        brightness = (uint8_t) atoi(token);
+        if(brightness) channel_on(channel, 100);
+        else channel_off(channel);
+        ESP_LOGI(HTTP_TAG, "On/Off %s", token);
+    }
+    else if(!strcmp(cmd,"Brightness")){
+        token = strtok(NULL, DELIMITER);
+        brightness = (uint8_t) atoi(token);
+        channel_on(channel, brightness);
+        ESP_LOGI(HTTP_TAG, "Brightness %s", token);
+    }
+    else if(!strcmp(cmd,"Color")){
+        uint8_t r;
+        uint8_t g;
+        uint8_t b;
+        token = strtok(NULL, DELIMITER);
+        uint32_t temp = (uint32_t) strtol(token+1, NULL, 16);  // skip first char
+        b = (uint8_t) temp;
+        temp = temp >> 8;
+        g = (uint8_t) temp;
+        temp = temp >> 8;
+        r = (uint8_t) temp;
+        set_color(channel, r, g, b, 200);
+        ESP_LOGI(HTTP_TAG, "Color %s", token);
+    }
+    else{  // should never hit unless trans error
+        return ESP_FAIL;
+    }
+
+    ESP_LOGI(HTTP_TAG, "Finished direct_control_post_handler");
     return ESP_OK;
 }
