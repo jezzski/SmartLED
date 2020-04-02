@@ -102,15 +102,15 @@ void app_main()
     init_schedule();
     wifi_init_sta();
 
-    schedule_object s = { };
+    /*schedule_object s = { };
     s.ID = 0;
     strcpy(s.name, "test");
-    create_schedule(0, s);
+    create_schedule(0, s);*/
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     //todo: should this be done automatically when init_memory is called?
     //should this return extra information like # of schedules an 
-    recall_schedules();
+    //recall_schedules();
     httpd_handle_t server = NULL;  // empty server handle
     init_http(server);
 
