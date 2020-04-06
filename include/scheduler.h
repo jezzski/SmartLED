@@ -31,7 +31,7 @@ esp_err_t enable_all_schedules(void);
 esp_err_t delete_all_schedules(void);
 
 esp_err_t get_schedule_names(uint8_t channel, char* &out);
-esp_err_t get_schedule(char *name, schedule_object *out);
+esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out);
 
 //todo: integrate with LED control properly
 extern List *schedules[NUM_CHANNELS];
