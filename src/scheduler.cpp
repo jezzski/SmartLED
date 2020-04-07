@@ -64,6 +64,7 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
         }
         it->next = newSched;
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -73,7 +74,7 @@ esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID)
     {
         return ESP_ERR_INVALID_ARG;
     }
-    return ESP_FAIL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 esp_err_t delete_schedule_by_name(uint8_t channel, char *name)
@@ -82,7 +83,7 @@ esp_err_t delete_schedule_by_name(uint8_t channel, char *name)
     {
         return ESP_ERR_INVALID_ARG;
     }
-    return ESP_FAIL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
@@ -98,6 +99,7 @@ esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
         if (it->schedule.ID == ID)
         {
             it->schedule.enabled = 0;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -117,6 +119,7 @@ esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
         if (strcmp(it->schedule.name, name))
         {
             it->schedule.enabled = 0;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -136,6 +139,7 @@ esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID)
         if (it->schedule.ID == ID)
         {
             it->schedule.enabled = 1;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -155,6 +159,7 @@ esp_err_t enable_schedule_by_name(uint8_t channel, char *name)
         if (strcmp(it->schedule.name, name))
         {
             it->schedule.enabled = 1;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -173,6 +178,7 @@ esp_err_t disable_all_schedules(void)
             it = it->next;
         }
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -187,6 +193,7 @@ esp_err_t enable_all_schedules(void)
             it = it->next;
         }
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -203,7 +210,7 @@ esp_err_t delete_all_schedules(void)
             free(tmp);
         }
     }
-
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -239,18 +246,15 @@ esp_err_t get_schedule_names(uint8_t channel, char* &out)
     }
     out[place++] = '}';
     //printf("\ntest2\n%s\n", out);
-
     return ESP_OK;
 }
 
-//return schedule by channel and name, schedule is assigned to out
-//return ESP_ERR_INVALID_ARG is channel invalid
-//return ESP_OK and set out to schedule if found
-//return ESP_FAIL and set out to NULL if not found
+
 esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out)
 {
     if (channel >= NUM_CHANNELS)
     {
+        out = NULL;
         return ESP_ERR_INVALID_ARG;
     }
     List *iter = schedules[channel];
@@ -263,7 +267,7 @@ esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out)
         }
     }
     out = NULL;
-    return ESP_FAIL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 void update_start_time(schedule_object *s, time_t curr)
