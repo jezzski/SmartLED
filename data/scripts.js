@@ -1,4 +1,13 @@
 // scripts.js
+/*
+    Javascript side of Website for Iot LED Controller
+    Contains scripts that add functionality to website,
+    post data to ESP32 device, and received data from 
+    ESP 32 device
+
+    Author: Andy Yang
+    Written Spring 2020 for Senior Design
+*/
 
 workingSchedule = null;
 dictSchedules = {};
@@ -8,6 +17,10 @@ function debug(){
 }
 
 function init(){
+    /*
+        Function to be called on schedule page load
+        Initializes some elements of the new sch form
+    */
     document.getElementById("sch_time").value="12:00";
 
     // below is temp setup for testing initialize a schedule
@@ -16,19 +29,29 @@ function init(){
     document.getElementById("repeat_time").value=10;
     document.getElementById("mon_checkbox").checked=true;
     document.getElementById("is_RGB").checked=true;
-    addSchEvent();
+    addSchEvent();  // temporary call
 
-    // init time on device
-    postTimeToESP();
+    // init time on device - TBD remove when RTC used
+    postTimeToESP();  // temporary call
 }
 
-function CreateNewSchedule(){
+function CreateNewSchedule(){  // Deprecated in development
     new_sch_container=document.getElementById("new_sch_container");
     debug_out=document.getElementById("debug");
     debug_out.innerHTML="wowow";
 }
 
 function channelSelect(channel_num){
+    /*
+        Interacts with HTML to create show active channel on navigation bar
+
+        Arguments:
+            channel_num - a numeric character argument to tell function which element to make active
+
+        TODO:
+            remove archaic channel_num argument and use JS's 'this' keyword instead - 
+                see function SetOnOff() and it's caller HTML in index.html for an example
+    */
     var i;
     for(i=1; i<7; i++){
         chSel = document.getElementById('ch_sel' + i);
@@ -39,6 +62,14 @@ function channelSelect(channel_num){
 }
 
 function addSchEvent(){
+    /*
+        Updates a schedule event in the HTML form
+
+        Note:
+            When I originally added this function, I envisioned having multiple schedule events
+                in a schedule (not the simple one-event schedule that existed in the embedded code).
+                - This is why I named this function this way - TBD Decide if renaming is worthwhile
+    */
     
     // Get Time of Event
     schTime = document.getElementById("sch_time").value;
@@ -106,7 +137,10 @@ function addSchEvent(){
 }
 
 function addSchedule(){
-    addSchEvent();
+    /*
+        Adds/Updates schedule to table and internal schedules data structure
+    */
+    addSchEvent();  // updates sch form to most recent user input
     if(workingSchedule==null){
         window.alert("No events in schedule");
         return;
@@ -146,6 +180,12 @@ function addSchedule(){
 }
 
 function scheduleInTable(schName){
+    /*
+        Utility to return if schedule is in table based on schedule name
+
+        Arguments:
+            schName - schedule name string
+    */
     schTable=document.getElementById("sch_table");
     for(row of schTable.rows){
         if(row.cells[0].innerHTML==schName){
@@ -157,12 +197,23 @@ function scheduleInTable(schName){
 
 
 function deleteSchedule(calledFrom){
+    /*
+        Deletes a schedule from UI table - does NOT delete from internal data structure
+
+        Arguments:
+            calledFrom - object in which invoked the function is passed in here
+                In the use case this is the HTML input button at a delete column
+                at the row of the particular schedule to be deleted
+    */
     // TBD: Should I erase the record from dictSchedules here?
     row = calledFrom.parentElement.parentElement;
     row.parentElement.deleteRow(row.rowIndex);
 }
 
 function applySchedules(){
+    /*
+        Takes active schedules and sends them to the ESP32
+    */
     schTable=document.getElementById("sch_table");
     for(row of schTable.rows){
         if(row.rowIndex==0) continue;  // skip header row
@@ -189,7 +240,7 @@ function applySchedules(){
     }
 }
 
-function createScheduleJSON(active_ch, schName,schProperties){
+function createScheduleJSON(active_ch, schName,schProperties){  // deprecated in development
     sch_JSON =`{
         "${active_ch}" : {
             "id": 0,
@@ -215,6 +266,13 @@ function Test(schName, channel_num){
 }
 
 function httpPostSchToESP(schName, channel_num){
+    /*
+        Post a schedule to the ESP32 as a delimited string
+
+        Arguments:
+            schName - schedule name string
+            channel_num - numeric char of channel number
+    */
     request = new XMLHttpRequest();
     // request.onload = function(){
     //     status = request.status;
@@ -243,6 +301,13 @@ function httpPostSchToESP(schName, channel_num){
 }
 
 function postTimeToESP(){
+    /*
+        Post time to ESP32
+
+        Note:
+            Chrome uses minute precision for time so your uploaded time will have
+                a maximum error of 59 s
+    */
     request = new XMLHttpRequest();
 
     currDate = new Date();
@@ -262,6 +327,13 @@ function postTimeToESP(){
 
 
 function setOnOff(objCalledFrom, channelNum){
+    /*
+        Sets on off state of LED channel - HTTP Post to ESP32
+
+        Arguments:
+            objCalledFrom - 
+            channelNum - 
+    */
     // channelNum parameter is currently indexed by 1
     // i.e. channels 1-6 - do we want to index by 0?
     console.log(objCalledFrom.checked + ":" + channelNum);
@@ -277,6 +349,13 @@ function setOnOff(objCalledFrom, channelNum){
 }
 
 function setColor(objCalledFrom, iWhichSet){
+    /*
+        Sets color of RGB channel - HTTP Post to ESP32
+
+        Arguments:
+            objCalledFrom - 
+            iWhichSet - 
+    */
     // iWhichSet 1 corresponds to channels 1-3
     // iWhichSet 4 corresponds to channels 4-6
     console.log("Reached setColor. Set: " + iWhichSet +
@@ -289,6 +368,13 @@ function setColor(objCalledFrom, iWhichSet){
 }
 
 function setBrightness(objCalledFrom, channelNum){
+    /*
+        Sets brightness - HTTP Post to ESP32
+
+        Arguments:
+            objCalledFrom - 
+            channelNum - 
+    */
     console.log("Channel Num: " + channelNum + " - Brightness: " + objCalledFrom.value);
 
     request = new XMLHttpRequest();
