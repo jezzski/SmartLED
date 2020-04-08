@@ -208,12 +208,14 @@ esp_err_t scripts_handler(httpd_req_t* req)
 
 esp_err_t schedule_post_handler(httpd_req_t* req){
     const char* SCHEDULE_POST_TAG = "HTTP-POST";
-    ESP_LOGI(SCHEDULE_POST_TAG, "461 Reached here");
+    ESP_LOGI(SCHEDULE_POST_TAG, "Reached schedule post handler");
     char buf[255];
     httpd_req_recv(req, buf, sizeof(buf));
     buf[254]=NULL;
     ESP_LOGI(SCHEDULE_POST_TAG, "%s", buf);
     schTokenProcess(buf);
+    const char resp[] = "URI POST Response";
+    httpd_resp_send(req, resp, strlen(resp));
     return ESP_OK;
 }
 
@@ -410,6 +412,9 @@ esp_err_t direct_control_post_handler(httpd_req_t* req){
     else{  // should never hit unless trans error
         return ESP_FAIL;
     }
+
+    const char resp[] = "URI POST Response";
+    httpd_resp_send(req, resp, strlen(resp));
 
     ESP_LOGI(HTTP_TAG, "Finished direct_control_post_handler");
     return ESP_OK;
