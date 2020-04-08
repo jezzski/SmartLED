@@ -32,9 +32,9 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
     printf("Channel: %x, Start: %d, Duration: %d, Repeat: %d", channel,s.start, s.duration, s.repeat_time);
     printf("Brightness: %x", s.brightness);
     printf("Red: %x, Green: %x, Blue: %x",s.r, s.g, s.b);
-    printf("ID:%d, Name:%s", s.ID, s.name);
+    printf("ID:%d, Name:%s\n", s.ID, s.name);
     //check if channel is valid
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
@@ -64,30 +64,31 @@ esp_err_t create_schedule(uint8_t channel, schedule_object s)
         }
         it->next = newSched;
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
 esp_err_t delete_schedule_by_id(uint8_t channel, uint8_t ID)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
-    return ESP_FAIL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 esp_err_t delete_schedule_by_name(uint8_t channel, char *name)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
-    return ESP_FAIL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
@@ -98,6 +99,7 @@ esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
         if (it->schedule.ID == ID)
         {
             it->schedule.enabled = 0;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -107,7 +109,7 @@ esp_err_t disable_schedule_by_id(uint8_t channel, uint8_t ID)
 
 esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
@@ -117,6 +119,7 @@ esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
         if (strcmp(it->schedule.name, name))
         {
             it->schedule.enabled = 0;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -126,7 +129,7 @@ esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
 
 esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
@@ -136,6 +139,7 @@ esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID)
         if (it->schedule.ID == ID)
         {
             it->schedule.enabled = 1;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -145,7 +149,7 @@ esp_err_t enable_schedule_by_id(uint8_t channel, uint8_t ID)
 
 esp_err_t enable_schedule_by_name(uint8_t channel, char *name)
 {
-    if (channel > NUM_CHANNELS)
+    if (channel >= NUM_CHANNELS)
     {
         return ESP_ERR_INVALID_ARG;
     }
@@ -155,6 +159,7 @@ esp_err_t enable_schedule_by_name(uint8_t channel, char *name)
         if (strcmp(it->schedule.name, name))
         {
             it->schedule.enabled = 1;
+            xTaskNotify(Schedule_Task, 0, eNoAction);
             return ESP_OK;
         }
         it = it->next;
@@ -173,6 +178,7 @@ esp_err_t disable_all_schedules(void)
             it = it->next;
         }
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -187,6 +193,7 @@ esp_err_t enable_all_schedules(void)
             it = it->next;
         }
     }
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
 }
 
@@ -203,8 +210,64 @@ esp_err_t delete_all_schedules(void)
             free(tmp);
         }
     }
-
+    xTaskNotify(Schedule_Task, 0, eNoAction);
     return ESP_OK;
+}
+
+esp_err_t get_schedule_names(uint8_t channel, char* &out)
+{
+    if (channel >= NUM_CHANNELS)
+    {
+        return ESP_ERR_INVALID_ARG;
+    }
+    //create key/value of name and active
+    //todo: json wrapper?
+
+    //todo: should malloc correct size?
+    out = (char*)malloc(sizeof(char)*1024);
+    memset(out, 0, 1024);
+    int place = 0;
+    out[place++] = '{';
+    List *iter = schedules[channel];
+    while (iter != NULL)
+    {
+        int len = strlen(iter->schedule.name);
+        out[place++] = '"';
+        for (int i = 0; i < len; i++)
+        {
+            out[place++] = iter->schedule.name[i];
+        }
+        out[place++] = '"';
+        out[place++] = ':';
+        out[place++] = iter->schedule.enabled + '0';
+        if (iter->next != NULL)
+            out[place++] = ',';
+        iter = iter->next;
+    }
+    out[place++] = '}';
+    //printf("\ntest2\n%s\n", out);
+    return ESP_OK;
+}
+
+
+esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out)
+{
+    if (channel >= NUM_CHANNELS)
+    {
+        out = NULL;
+        return ESP_ERR_INVALID_ARG;
+    }
+    List *iter = schedules[channel];
+    while (iter != NULL)
+    {
+        if (strcmp(iter->schedule.name, name))
+        {
+            *out = (iter->schedule);
+            return ESP_OK;
+        }
+    }
+    out = NULL;
+    return ESP_ERR_NOT_FOUND;
 }
 
 void update_start_time(schedule_object *s, time_t curr)
