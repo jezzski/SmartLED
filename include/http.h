@@ -22,6 +22,7 @@ extern "C" {
     esp_err_t favicon_ico_get_handler(httpd_req_t* req);
     esp_err_t time_post_handler(httpd_req_t* req);
     esp_err_t direct_control_post_handler(httpd_req_t* req);
+    esp_err_t sch_data_post_handler(httpd_req_t* req);
     void schTokenProcess(char* str);
 
 }

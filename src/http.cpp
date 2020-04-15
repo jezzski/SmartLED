@@ -20,7 +20,7 @@ esp_err_t init_http(httpd_handle_t server)
     .server_port        = 80,                       
     .ctrl_port          = 32768,                    
     .max_open_sockets   = 7,                        
-    .max_uri_handlers   = 9,                        
+    .max_uri_handlers   = 10,                        
     .max_resp_headers   = 8,                        
     .backlog_conn       = 5,                        
     .lru_purge_enable   = false,                    
@@ -37,6 +37,13 @@ esp_err_t init_http(httpd_handle_t server)
 
     static const httpd_uri_t home_page_get = {
         .uri = "/index.html",
+        .method = HTTP_GET,
+        .handler = homepage_handler,
+        .user_ctx = NULL    
+    };
+
+    static const httpd_uri_t alt_home_page_get = {
+        .uri = "/",
         .method = HTTP_GET,
         .handler = homepage_handler,
         .user_ctx = NULL    
@@ -91,11 +98,18 @@ esp_err_t init_http(httpd_handle_t server)
         .user_ctx = NULL
     };
 
+    static const httpd_uri_t sch_data_post ={
+        .uri = "/sch_data",
+        .method = HTTP_POST,
+        .handler = sch_data_post_handler,
+        .user_ctx = NULL
+    };
+
     /* Start the httpd server */
     if (httpd_start(&server, &config) == ESP_OK) {
         /* Register URI handlers */
         httpd_register_uri_handler(server, &home_page_get);
-        //httpd_register_uri_handler(server, &echo);
+        httpd_register_uri_handler(server, &alt_home_page_get);
         httpd_register_uri_handler(server, &styles_get);
         httpd_register_uri_handler(server, &schedules_get);
         httpd_register_uri_handler(server, &scripts_get);
@@ -103,8 +117,8 @@ esp_err_t init_http(httpd_handle_t server)
         httpd_register_uri_handler(server, &favicon_ico_get);
         httpd_register_uri_handler(server, &time_post);
         httpd_register_uri_handler(server, &direct_control_post);
-        //httpd_register_uri_handler(server, &uri_get);
-        //httpd_register_uri_handler(server, &uri_post);
+        httpd_register_uri_handler(server, &sch_data_post);
+
         return ESP_OK;
     }
     return ESP_FAIL;  // is this the right return type?
@@ -417,5 +431,17 @@ esp_err_t direct_control_post_handler(httpd_req_t* req){
     httpd_resp_send(req, resp, strlen(resp));
 
     ESP_LOGI(HTTP_TAG, "Finished direct_control_post_handler");
+    return ESP_OK;
+}
+
+esp_err_t sch_data_post_handler(httpd_req_t* req){
+    const char* HTTP_TAG = "HTTP-Sch Data";
+    ESP_LOGI(HTTP_TAG, "Reached sch_data_post_handler");
+
+
+    const char resp[] = "URI POST Response";
+    httpd_resp_send(req, resp, strlen(resp));
+
+    ESP_LOGI(HTTP_TAG, "Finished sch_data_post_handler");
     return ESP_OK;
 }
