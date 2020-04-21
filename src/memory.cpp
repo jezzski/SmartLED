@@ -5,6 +5,42 @@ static const char *TAG = "MEMORY";
 
 //vars
 bool bSPIFFS = false;
+bool readNeeded = true;
+char *settingsString;
+
+esp_err_t read_settings_to_buffer(void)
+{
+    //buffer may not be up to date, re-read
+    struct stat st;
+    char src[255];
+    //generate file name based on current version of firmware (in case older versions are incompatible)
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+    //check if file exists
+    if (stat(src, &st) == 0)
+    {
+        FILE *f = fopen(src, "r");
+        if (f == NULL)
+        {
+            fclose(f);
+            ESP_LOGE(TAG, "failed to open settings file for reading setting!");
+            return ESP_FAIL;
+        }
+        memset(settingsString, 0, SETTINGS_BUFFER_SIZE); //clear buffer and read file contents into
+        //fscanf(f, "%s", settingsString);
+        fgets(settingsString, SETTINGS_BUFFER_SIZE, f);
+        fclose(f);
+        return ESP_OK;
+        //printf("File Contents:\n\n%s\n", buf);
+    }
+    else
+    {
+        ESP_LOGW(TAG, "couldn't find settings file. No settings can be recovered!");
+        memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+        return ESP_FAIL;
+    }
+}
 
 esp_err_t init_spiffs(void)
 {
@@ -52,6 +88,16 @@ esp_err_t init_memory(void)
 {
     esp_err_t ret = init_spiffs();
     if (ret != ESP_OK) return ret;
+
+    //allocate memory for settings buffer so we don't have to read from the file every time we get a setting
+    settingsString = (char*)malloc(sizeof(char)*SETTINGS_BUFFER_SIZE);
+    if (settingsString == NULL)
+    {
+        ESP_LOGE(TAG, "Couldn't allocate buffer for settings. Likely out of memory");
+        return ESP_ERR_NO_MEM;
+    }
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+
     //recall schedules by default or explicit call?
     return ESP_OK;
 }
@@ -230,5 +276,418 @@ esp_err_t clear_schedule_data(void)
         return ESP_OK;
     }
     
+    return ESP_OK;
+}
+
+esp_err_t store_setting_string(const char *name, char *setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+    //read needed, update buffer before updating
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            //return ESP_FAIL;
+            readNeeded = true;
+        }
+        else
+        {
+            readNeeded = false;
+        }
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //store setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    doc[name] = setting;
+    //strcpy(obj[name], setting); //what is the proper way to do this? //here
+    //printf("String Setting Stored: %s, %s\n", setting, obj[name]); //here
+    //store new settings doc in buffer
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+    serializeJson(doc, settingsString, SETTINGS_BUFFER_SIZE);
+    //save settings to memory
+    char src[255];
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+    
+    FILE *f = fopen(src, "w");
+    if (f == NULL)
+    {
+        ESP_LOGE(TAG, "Failed to open settings file!");
+        return ESP_FAIL;
+    }
+    ESP_LOGI(TAG, "Settings file opened!");
+    fprintf(f, settingsString);
+    ESP_LOGI(TAG, "Serialized settings:\n %s\n", settingsString);
+    fclose(f);
+    doc.clear();
+    readNeeded = true;
+    return ESP_OK;
+}
+
+esp_err_t store_setting_int(const char *name, int setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+    //read needed, update buffer before updating
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            //return ESP_FAIL;
+            readNeeded = true;
+        }
+        else
+        {
+            readNeeded = false;
+        }
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //store setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    doc[name] = setting;
+    //printf("Int Setting Stored: %d, %d\n", setting, obj[name]); //here
+    //store new settings doc in buffer
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+    serializeJson(doc, settingsString, SETTINGS_BUFFER_SIZE);
+    //save settings to memory
+    char src[255];
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+    
+    FILE *f = fopen(src, "w");
+    if (f == NULL)
+    {
+        ESP_LOGE(TAG, "Failed to open settings file!");
+        return ESP_FAIL;
+    }
+    ESP_LOGI(TAG, "Settings file opened!");
+    fprintf(f, settingsString);
+    ESP_LOGI(TAG, "Serialized settings:\n %s\n", settingsString);
+    fclose(f);
+    doc.clear();
+
+    readNeeded = true;
+    return ESP_OK;
+}
+
+esp_err_t store_setting_byte(const char *name, uint8_t setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+    //read needed, update buffer before updating
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            //return ESP_FAIL;
+            readNeeded = true;
+        }
+        else
+        {
+            readNeeded = false;
+        }
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //store setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    doc[name] = setting;
+    //printf("Byte Setting Stored: %u, %u\n", setting, obj[name]); //here
+    //store new settings doc in buffer
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+    serializeJson(doc, settingsString, SETTINGS_BUFFER_SIZE);
+    //save settings to memory
+    char src[255];
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+    
+    FILE *f = fopen(src, "w");
+    if (f == NULL)
+    {
+        ESP_LOGE(TAG, "Failed to open settings file!");
+        return ESP_FAIL;
+    }
+    ESP_LOGI(TAG, "Settings file opened!");
+    fprintf(f, settingsString);
+    ESP_LOGI(TAG, "Serialized settings:\n %s\n", settingsString);
+    fclose(f);
+    doc.clear();
+
+    readNeeded = true;
+    return ESP_OK;
+}
+
+esp_err_t store_setting_double(const char *name, double setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+    //read needed, update buffer before updating
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            //return ESP_FAIL;
+            readNeeded = true;
+        }
+        else
+        {
+            readNeeded = false;
+        }
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //store setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    doc[name] = setting;
+    //printf("Double Setting Stored: %lf, %lf\n", setting, obj[name]); //here
+    //store new settings doc in buffer
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
+    serializeJson(doc, settingsString, SETTINGS_BUFFER_SIZE);
+    //save settings to memory
+    char src[255];
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+    
+    FILE *f = fopen(src, "w");
+    if (f == NULL)
+    {
+        ESP_LOGE(TAG, "Failed to open settings file!");
+        return ESP_FAIL;
+    }
+    ESP_LOGI(TAG, "Settings file opened!");
+    fprintf(f, settingsString);
+    ESP_LOGI(TAG, "Serialized settings:\n %s\n", settingsString);
+    fclose(f);
+    doc.clear();
+
+    readNeeded = true;
+    return ESP_OK;
+}
+
+esp_err_t get_setting_string(const char *name, char *setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        readNeeded = false;
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //get setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    if (doc.containsKey(name))
+    {
+        char buffer[250];
+        serializeJson(doc, buffer);
+        printf("Buffer: %s\n", buffer);
+        if (!doc[name].is<char*>()) //here
+        {
+            ESP_LOGE(TAG, "%s is not a char*", name);
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        strcpy(setting, doc[name]);
+    }
+    else
+    {
+        ESP_LOGI(TAG, "Setting %s not found", name);
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    return ESP_OK;
+}
+
+esp_err_t get_setting_int(const char *name, int *setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        readNeeded = false;
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //recall setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    if (doc.containsKey(name))
+    {
+        if (!doc[name].is<int>()) //here
+        {
+            ESP_LOGE(TAG, "%s is not a int*", name);
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        *setting = doc[name];
+    }
+    else
+    {
+        ESP_LOGI(TAG, "Setting %s not found", name);
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    return ESP_OK;
+}
+
+esp_err_t get_setting_byte(const char *name, uint8_t *setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        readNeeded = false;
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //recall setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    if (doc.containsKey(name))
+    {
+        if (!doc[name].is<unsigned char>()) //here
+        {
+            ESP_LOGE(TAG, "%s is not a byte (unsigned char)", name);
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        *setting = doc[name];
+    }
+    else
+    {
+        ESP_LOGI(TAG, "Setting %s not found", name);
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    return ESP_OK;
+}
+
+esp_err_t get_setting_double(const char *name, double *setting)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    if (readNeeded)
+    {
+        if (read_settings_to_buffer() != ESP_OK)
+        {
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        readNeeded = false;
+    }
+    char tmp[SETTINGS_BUFFER_SIZE];
+    memset(tmp, 0, SETTINGS_BUFFER_SIZE);
+    strcpy(tmp, settingsString);
+    //recall setting in document
+    StaticJsonDocument<SETTINGS_BUFFER_SIZE> doc;
+    deserializeJson(doc, tmp);
+    if (doc.containsKey(name))
+    {
+        if (!doc[name].is<double>()) //here
+        {
+            ESP_LOGE(TAG, "%s is not a double", name);
+            setting = NULL;
+            return ESP_FAIL;
+        }
+        *setting = doc[name];
+    }
+    else
+    {
+        ESP_LOGI(TAG, "Setting %s not found", name);
+        setting = NULL;
+        return ESP_FAIL;
+    }
+    return ESP_OK;
+}
+
+esp_err_t clear_setting_data(void)
+{
+    if (!bSPIFFS) 
+    {
+        ESP_LOGE(TAG, "SPIFFS not mounted!");
+        return ESP_FAIL;
+    }
+
+    //check if files already exist
+    struct stat st;
+    char src[255];
+    strcpy(src, "/spiffs/settings");
+    strcat(src, CODE_VERSION);
+    strcat(src, ".c");
+
+    if (stat(src, &st) == 0)
+    {
+        ESP_LOGI(TAG, "Found setting file, deleting");
+        unlink(src);
+    }
+    else
+    {
+        ESP_LOGE(TAG, "Setting file already deleted!");
+        return ESP_OK;
+    }
+    //clear settings in ram too?
+    memset(settingsString, 0, SETTINGS_BUFFER_SIZE);
     return ESP_OK;
 }
