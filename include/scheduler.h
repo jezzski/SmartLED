@@ -20,7 +20,7 @@
 void init_schedule(void);
 
 /**
- * @brief Create a schedule to associate with the specified channel. TODO: overwrite schedule if already exists (conflicting ID/NAME)
+ * @brief Create a schedule to associate with the specified channel. If the schedule already exists then it is replaced with the new schedule.
  * 
  * @param channel The channel that the schedule will be placed on.
  * @param s The schedule object that will be placed.
