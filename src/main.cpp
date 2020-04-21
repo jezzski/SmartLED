@@ -99,7 +99,7 @@ void app_main()
     init_channels();
     init_oc();
     err = init_memory();
-    init_schedule();
+    init_schedule();    
     wifi_init_sta();
 
     vTaskDelay(10000 / portTICK_PERIOD_MS);
