@@ -334,6 +334,7 @@ esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out)
             *out = (iter->schedule);
             return ESP_OK;
         }
+        iter = iter->next;
     }
     out = NULL;
     return ESP_ERR_NOT_FOUND;
