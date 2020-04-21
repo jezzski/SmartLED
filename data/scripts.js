@@ -33,6 +33,8 @@ function init(){
 
     // init time on device - TBD remove when RTC used
     postTimeToESP();  // temporary call
+
+    getSchNames(1);  // get channel 1 schedules
 }
 
 function CreateNewSchedule(){  // Deprecated in development
@@ -59,6 +61,8 @@ function channelSelect(channel_num){
     }
     activeCh = document.getElementById('ch_sel' + channel_num);
     activeCh.className = "active";
+    getSchNames(channel_num);
+    //updateSchNames("")  // for dev
 }
 
 function addSchEvent(){
@@ -235,7 +239,7 @@ function applySchedules(){
             }
             console.log(`Applying schedule ${schName} to channel: ${activeCh}`);
             // Sent to ESP32
-            httpPostSchToESP(schName, activeCh);
+            httpPostSchToESP(schName, activeCh - 1);  // channels internally indexed by 0
         }
     }
 }
@@ -323,6 +327,60 @@ function postTimeToESP(){
 }
 
 // -----------------------------------------
+// Query Schedule Data Scripts
+
+function httpPostAsync(theUrl, callback, msg){
+    request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200)  // if server responds ok
+            callback(request.responseText);
+    }
+    request.open("POST", theUrl, true);
+    request.send(msg);
+}
+
+function updateSchNames(sSchNames){
+    //sSchNames = "{\"Test1\":1,\"Test2\":0}";  // for dev
+    console.log(sSchNames);
+    jsonParse = JSON.parse(sSchNames);
+    for(schName in jsonParse){
+        console.log(schName);
+        bActive = jsonParse[schName];
+        console.log(bActive);
+        if(!scheduleInTable(schName)){  // if not in table, create entry
+            console.log('Adding schedule: ' + schName);
+    
+            schTable=document.getElementById("sch_table");
+    
+            newSchEntry=schTable.insertRow(-1);
+            nameCell=newSchEntry.insertCell(0);
+            nameCell.innerHTML=schName;
+            nameCell.className="channel_entry";
+    
+            activeCell=newSchEntry.insertCell(1);
+            if(bActive) activeCell.innerHTML="<input type=\"checkbox\", checked=true>";
+            else activeCell.innerHTML="<input type=\"checkbox\">"
+            activeCell.className="channel_entry";
+    
+            editCell=newSchEntry.insertCell(2);
+            editCell.innerHTML="<input type=\"button\">";
+            editCell.className="channel_entry";
+    
+            selectedCell=newSchEntry.insertCell(3);
+            selectedCell.innerHTML="<input type=\"button\" onclick=\"deleteSchedule(this)\">";
+            selectedCell.className="channel_entry";
+        }
+    }
+}
+
+function getSchNames(channelNum){
+    console.log(channelNum);
+    delimiterStr=";';";
+    strData="NamesList" + delimiterStr + (channelNum-1) + delimiterStr + "PADDING";
+    httpPostAsync("sch_data", updateSchNames, strData);
+}
+
+// -----------------------------------------
 // Direct Control Scripts
 
 
@@ -385,3 +443,4 @@ function setBrightness(objCalledFrom, channelNum){
     request.send("Brightness" + delimiterStr + channelNum + 
         delimiterStr + objCalledFrom.value + delimiterStr + "PADDING");
 }
+

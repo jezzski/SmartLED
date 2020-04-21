@@ -238,6 +238,7 @@ esp_err_t schedule_post_handler(httpd_req_t* req){
 void schTokenProcess(char* str){
     const char* TOKEN_TAG = "TOKEN";
     ESP_LOGI(TOKEN_TAG, "Reached token process");
+    static uint8_t prev_id = 0;  // should get rid of this var
 
     // Params needed for create_schedule
     uint8_t channel;
@@ -263,7 +264,7 @@ void schTokenProcess(char* str){
     // 0 - index
     token = strtok(str, DELIMITER);
     strcpy(name, token);
-    ESP_LOGI(TOKEN_TAG, "name: %s", name);
+    ESP_LOGI(TOKEN_TAG, "Name: %s", name);
     // 1
     token = strtok(NULL, DELIMITER);
     ESP_LOGI(TOKEN_TAG, "Processing: %s", token);
@@ -320,7 +321,8 @@ void schTokenProcess(char* str){
     ESP_LOGI(TOKEN_TAG, "b: %X", b);
 
     schedule_object s;
-    s.ID = 0;
+    s.ID = prev_id++;
+    strcpy(s.name, name);
     s.enabled = enabled;
     s.start = start;
     s.duration = duration;
@@ -438,9 +440,33 @@ esp_err_t sch_data_post_handler(httpd_req_t* req){
     const char* HTTP_TAG = "HTTP-Sch Data";
     ESP_LOGI(HTTP_TAG, "Reached sch_data_post_handler");
 
+    char buf[255];
+    httpd_req_recv(req, buf, sizeof(buf));
+    buf[254]=NULL;
+    ESP_LOGI(HTTP_TAG, "%s", buf);
 
-    const char resp[] = "URI POST Response";
-    httpd_resp_send(req, resp, strlen(resp));
+    char cmd[16];
+
+    // variable to hold various tokens before conversion to 
+    char* token;
+    token = strtok(buf, DELIMITER);
+    strcpy(cmd,token);
+
+    if(!strcmp(cmd,"NamesList")){  // wants list of schnames
+        char* list;
+        token = strtok(NULL, DELIMITER);
+        uint8_t channel = (uint8_t) atoi(token);
+        get_schedule_names(channel, list);
+        ESP_LOGI(HTTP_TAG, "%s", list);
+        ESP_LOGI(HTTP_TAG, "%s", token);
+        ESP_LOGI(HTTP_TAG, "%d", channel);
+        httpd_resp_send(req, list, strlen(list));
+        free(list);
+    }
+    else{
+        const char resp[] = "Error: Unable To Access Sch List";
+        httpd_resp_send(req, resp, strlen(resp));
+    }
 
     ESP_LOGI(HTTP_TAG, "Finished sch_data_post_handler");
     return ESP_OK;
