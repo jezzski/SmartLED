@@ -377,7 +377,8 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 ESP_LOGE(GATTS_TABLE_TAG, "create attr table failed, error code = %x", create_attr_ret);
             }
        	    break;
-        case ESP_GATTS_READ_EVT:
+        }
+        case ESP_GATTS_READ_EVT:{
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT, handle = %d",param->read.handle);
             if(heart_rate_handle_table[IDX_CHAR_A]==(param->read.handle-1)){
                 esp_ble_gatts_set_attr_value(param->read.handle,sizeof(schedule_value),schedule_value);
