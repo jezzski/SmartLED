@@ -247,8 +247,8 @@ function applySchedules(){
         activeCheck = row.cells[1].children[0].checked;
         console.log('Processing schedule: '+ schName);
         if(! (schName in dictSchedules)){  // if not found
-            window.alert('No data structure found for selected ' +
-                'schedule: ' + schName);
+            console.log('No data structure found for selected ' +
+                'schedule: ' + schName + '. Potentially unchanged from device?');
             return;
         }
         // Get Active Channel
