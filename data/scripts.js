@@ -64,11 +64,7 @@ function channelSelect(channel_num){
 
     // clear table to be filled with data
     schTable=document.getElementById("sch_table");
-    // for(row of schTable.rows){
-    //     if(row.rowIndex!=0) row.parentElement.deleteRow(row.rowIndex);
-    // }
-    table = row.parentElement;
-    while(table.rows.length>1) table.deleteRow(1);
+    while(schTable.rows.length>1) schTable.deleteRow(1);
 
     getSchNames(channel_num);
     //updateSchNames("{\"Test1\":1,\"Test2\":0}")  // for dev
