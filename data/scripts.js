@@ -64,9 +64,11 @@ function channelSelect(channel_num){
 
     // clear table to be filled with data
     schTable=document.getElementById("sch_table");
-    for(row of schTable.rows){
-        if(row.rowIndex!=0) row.parentElement.deleteRow(row.rowIndex);
-    }
+    // for(row of schTable.rows){
+    //     if(row.rowIndex!=0) row.parentElement.deleteRow(row.rowIndex);
+    // }
+    table = row.parentElement;
+    while(table.rows.length>1) table.deleteRow(1);
 
     getSchNames(channel_num);
     //updateSchNames("{\"Test1\":1,\"Test2\":0}")  // for dev
@@ -247,24 +249,22 @@ function applySchedules(){
         if(row.rowIndex==0) continue;  // skip header row
         schName = row.cells[0].innerHTML;
         activeCheck = row.cells[1].children[0].checked;
-        if(activeCheck){
-            console.log('Processing active schedule: '+ schName);
-            if(! (schName in dictSchedules)){  // if not found
-                window.alert('No data structure found for selected ' +
-                    'schedule: ' + schName);
-                return;
-            }
-            // Get Active Channel
-            for(i=1; i<7; i++){
-                chSel = document.getElementById('ch_sel' + i);
-                if(chSel.className=="active"){
-                    activeCh=i;
-                }
-            }
-            console.log(`Applying schedule ${schName} to channel: ${activeCh}`);
-            // Sent to ESP32
-            httpPostSchToESP(schName, activeCh - 1);  // channels internally indexed by 0
+        console.log('Processing schedule: '+ schName);
+        if(! (schName in dictSchedules)){  // if not found
+            window.alert('No data structure found for selected ' +
+                'schedule: ' + schName);
+            return;
         }
+        // Get Active Channel
+        for(i=1; i<7; i++){
+            chSel = document.getElementById('ch_sel' + i);
+            if(chSel.className=="active"){
+                activeCh=i;
+            }
+        }
+        console.log(`Applying schedule ${schName} to channel: ${activeCh}`);
+        // Sent to ESP32
+        httpPostSchToESP(schName, activeCh - 1, activeCheck);  // channels internally indexed by 0
     }
 }
 
@@ -293,7 +293,7 @@ function Test(schName, channel_num){
         strToTransmit);
 }
 
-function httpPostSchToESP(schName, channel_num){
+function httpPostSchToESP(schName, channel_num, bActive){
     /*
         Post a schedule to the ESP32 as a delimited string
 
@@ -312,8 +312,10 @@ function httpPostSchToESP(schName, channel_num){
 
     // prepare data to send
     delimiterStr=";';";
+    if(bActive) sActive = "true";
+    else sActive = "false";
     strSchData = schName + delimiterStr + channel_num + 
-        delimiterStr + "true";  // hard-code enabled TBD Revist
+        delimiterStr + sActive;  // hard-code enabled TBD Revist
     for(i=0; i<schData.length; i++){
         strSchData = strSchData + delimiterStr +
             schData[i];
