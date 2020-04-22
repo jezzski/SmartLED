@@ -249,7 +249,7 @@ function applySchedules(){
         if(! (schName in dictSchedules)){  // if not found
             console.log('No data structure found for selected ' +
                 'schedule: ' + schName + '. Potentially unchanged from device?');
-            return;
+            continue;
         }
         // Get Active Channel
         for(i=1; i<7; i++){
