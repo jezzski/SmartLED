@@ -183,7 +183,7 @@ esp_err_t disable_schedule_by_name(uint8_t channel, char *name)
     List *it = schedules[channel];
     while (it != NULL)
     {
-        if (strcmp(it->schedule.name, name))
+        if (strcmp(it->schedule.name, name) == 0)
         {
             it->schedule.enabled = 0;
             xTaskNotify(Schedule_Task, 0, eNoAction);
@@ -223,7 +223,7 @@ esp_err_t enable_schedule_by_name(uint8_t channel, char *name)
     List *it = schedules[channel];
     while (it != NULL)
     {
-        if (strcmp(it->schedule.name, name))
+        if (strcmp(it->schedule.name, name) == 0)
         {
             it->schedule.enabled = 1;
             xTaskNotify(Schedule_Task, 0, eNoAction);
@@ -329,9 +329,10 @@ esp_err_t get_schedule(uint8_t channel, char *name, schedule_object *out)
     List *iter = schedules[channel];
     while (iter != NULL)
     {
-        if (strcmp(iter->schedule.name, name))
+        if (strcmp(iter->schedule.name, name) == 0)
         {
-            *out = (iter->schedule);
+            memcpy(out, &(iter->schedule), sizeof(schedule_object));
+            //out = iter->schedule;
             return ESP_OK;
         }
         iter = iter->next;
