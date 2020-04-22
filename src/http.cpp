@@ -464,60 +464,73 @@ esp_err_t sch_data_post_handler(httpd_req_t* req){
         httpd_resp_send(req, list, strlen(list));
         free(list);
     }
-    if(!strcmp(cmd,"SchData")){  // want sch data
+    else if(!strcmp(cmd,"SchData")){  // want sch data
         Schedule_Object sch_data;
         token = strtok(NULL, DELIMITER);
         channel = (uint8_t) atoi(token);
         token = strtok(NULL, DELIMITER);
-        get_schedule(channel, token, &sch_data);
-        char delimit[] = ";";
-        char resp[256];  // prob overkill
-        // TBD find more efficent way of transmitting
-        char num_str[64];
-        
-        strcpy(resp, sch_data.name);  // sch name
-        strcat(resp, delimit);
+        if(get_schedule(channel, token, &sch_data)==ESP_OK){
+            char delimit[] = ";";
+            char resp[256];  // prob overkill
+            // TBD find more efficent way of transmitting
+            char num_str[64];
+            
+            strcpy(resp, sch_data.name);  // sch name
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.start);
-        strcat(resp, num_str);  // start time
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.start);
+            strcat(resp, num_str);  // start time
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.duration);
-        strcat(resp, num_str);  // duration
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.duration);
+            strcat(resp, num_str);  // duration
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.repeat_time);
-        strcat(resp, num_str);  // repeat time
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.repeat_time);
+            strcat(resp, num_str);  // repeat time
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.repeat_mask);
-        strcat(resp, num_str);  // repeat mask
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.repeat_mask);
+            strcat(resp, num_str);  // repeat mask
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.brightness);
-        strcat(resp, num_str);  // brightness
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.brightness);
+            strcat(resp, num_str);  // brightness
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.isRGB);
-        strcat(resp, num_str);  // RGB bool
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.isRGB);
+            strcat(resp, num_str);  // RGB bool
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.r);
-        strcat(resp, num_str);  // r
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.r);
+            strcat(resp, num_str);  // r
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.g);
-        strcat(resp, num_str);  // g
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.g);
+            strcat(resp, num_str);  // g
+            strcat(resp, delimit);
 
-        sprintf(num_str, "%d", sch_data.b);
-        strcat(resp, num_str);  // b
-        strcat(resp, delimit);
+            sprintf(num_str, "%d", sch_data.b);
+            strcat(resp, num_str);  // b
+            strcat(resp, delimit);
 
-        ESP_LOGI(HTTP_TAG, "%s", sch_data.name);
-        ESP_LOGI(HTTP_TAG, "%s", token);
-        ESP_LOGI(HTTP_TAG, "%d", channel);
-        httpd_resp_send(req, resp, strlen(resp));
+            ESP_LOGI(HTTP_TAG, "%s", sch_data.name);
+            ESP_LOGI(HTTP_TAG, "%s", token);
+            ESP_LOGI(HTTP_TAG, "%d", channel);
+            httpd_resp_send(req, resp, strlen(resp));
+        }
+        else{
+            const char not_found[] = "Error: Did not find sch";
+            httpd_resp_send(req, not_found, strlen(not_found));
+        }
+    }
+    else if(!strcmp(cmd,"DexSch")){  // want to delete
+        token = strtok(NULL, DELIMITER);
+        channel = (uint8_t) atoi(token);
+        token = strtok(NULL, DELIMITER);
+        delete_schedule_by_name(channel, token);
+        const char del[] = "Deleted schedule bu name";
+        httpd_resp_send(req, del, strlen(del));
     }
     else{
         const char resp[] = "Error: Unable To Access Sch List";
