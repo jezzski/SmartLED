@@ -45,43 +45,6 @@ void app_main()
         build a timing table for freeRTOS tasks so we can optimize timings so tasks are not constantly interrupting each other
     */
 
-   //todo: this shouldn't be in main, specific to website component
-   //=====================================================================================================================
-   esp_vfs_spiffs_conf_t conf = {
-      .base_path = "/spiffs",
-      .partition_label = "website",
-      .max_files = 10,
-      .format_if_mount_failed = false
-    };
-
-    // Use settings defined above to initialize and mount SPIFFS filesystem.
-    // Note: esp_vfs_spiffs_register is an all-in-one convenience function.
-    esp_err_t ret = esp_vfs_spiffs_register(&conf);
-    if(ret == ESP_OK){
-        ESP_LOGI("SPIFFS","Successful mount");
-    }
-    else if (ret == ESP_ERR_NOT_FOUND){
-        ESP_LOGE("SPIFFS", "Failed to find SPIFFS partition");
-    }
-
-    FILE * fp;
-    fp = fopen("/spiffs/settings.html", "r");
-    // char str[60];
-    if(fp == NULL){
-        ESP_LOGI("SPIFFS","Error Opening File");
-    }
-    else
-    {
-        ESP_LOGI("SPIFFS", "Accessed the file!");
-    }
-    fclose(fp);
-    size_t total = 0, used = 0;
-    ret = esp_spiffs_info("website", &total, &used);
-    if (ret != ESP_OK) {
-        ESP_LOGE("SPIFFS", "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
-    } else {
-        ESP_LOGI("SPIFFS", "Partition size: total: %d, used: %d", total, used);
-    }
     //=====================================================================================================================
 
     // Initialize NVS
