@@ -99,13 +99,15 @@ void app_main()
     init_channels();
     init_oc();
     err = init_memory();
-    init_schedule();
+    init_schedule();    
     wifi_init_sta();
 
-    schedule_object s = { };
+    vTaskDelay(10000 / portTICK_PERIOD_MS);
+
+    /*schedule_object s = { };
     s.ID = 0;
     strcpy(s.name, "test");
-    create_schedule(0, s);
+    create_schedule(0, s);*/
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     //todo: should this be done automatically when init_memory is called?
