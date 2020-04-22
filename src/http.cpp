@@ -524,11 +524,14 @@ esp_err_t sch_data_post_handler(httpd_req_t* req){
             httpd_resp_send(req, not_found, strlen(not_found));
         }
     }
-    else if(!strcmp(cmd,"DexSch")){  // want to delete
+    else if(!strcmp(cmd,"DelSch")){  // want to delete
+        ESP_LOGI(HTTP_TAG, "Deleting schedule");
         token = strtok(NULL, DELIMITER);
         channel = (uint8_t) atoi(token);
         token = strtok(NULL, DELIMITER);
         delete_schedule_by_name(channel, token);
+        ESP_LOGI(HTTP_TAG, "%s", token);
+        ESP_LOGI(HTTP_TAG, "%d", channel);
         const char del[] = "Deleted schedule bu name";
         httpd_resp_send(req, del, strlen(del));
     }

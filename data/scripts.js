@@ -219,6 +219,22 @@ function deleteSchedule(calledFrom){
     */
     // TBD: Should I erase the record from dictSchedules here?
     row = calledFrom.parentElement.parentElement;
+    
+    schName = row.cells[0].innerHTML;
+    // Get Active Channel
+    for(i=1; i<7; i++){
+        chSel = document.getElementById('ch_sel' + i);
+        if(chSel.className=="active"){
+            activeCh=i;
+        }
+    }
+    activeCh-=1;
+    
+    DELIMITER = ";';";
+    request = new XMLHttpRequest();
+    request.open("POST", "sch_data", true);  // true indicates Async
+    request.send("DelSch" + DELIMITER + activeCh.toString(10) +
+        DELIMITER + schName + DELIMITER + "PADDING");
     row.parentElement.deleteRow(row.rowIndex);
 }
 
