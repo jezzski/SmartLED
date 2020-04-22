@@ -15,8 +15,6 @@ extern "C" {
     #define GPIO_CHANNEL_5 5
     
     #define NUM_CHANNELS 6
-    
-    #define LEDC_FADE_TIME 300 //max fade time in ms
 
     void init_channels(void);
     void channel_on(uint8_t index, uint8_t brightness);

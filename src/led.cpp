@@ -1,5 +1,14 @@
 #include "led.h"
 
+struct channel
+{
+    char name[250];
+    uint16_t r;
+    uint16_t g;
+    uint16_t b;
+    uint8_t brightness;
+};
+
 void init_channels(void)
 {
     ledc_timer_config_t ledc_timer;
@@ -73,32 +82,33 @@ void init_channels(void)
 
 void channel_on(uint8_t index, uint8_t brightness)
 {
-    brightness <<= 4;
+    int br = brightness << 4;
+    printf("Brightness:%d\n", br);
     switch(index)
     {
         case 0:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
             break;
         case 1:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
             break;
         case 2:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
             break;
         case 3:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
             break;            
         case 4:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4);
             break;
         case 5:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, brightness, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, br);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5);
             break;
         default: break;
     }    
@@ -109,28 +119,28 @@ void channel_off(uint8_t index)
     switch(index)
     {
         case 0:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
             break;
         case 1:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
             break;
         case 2:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
             break;
         case 3:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
             break;            
         case 4:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4);
             break;
         case 5:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, 0, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, 0);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5);
             break;
         default: break;
     }
@@ -145,25 +155,25 @@ void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t bright
     switch(index)
     {
         case 0:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, r << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, r << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
             
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, g << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, g << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
             
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, b << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2, b << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_2);
             
         break;
         case 1:
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, r << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3, r << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_3);
             
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, g << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4, g << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_4);
             
-            ledc_set_fade_with_time(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, b << 4, LEDC_FADE_TIME);
-            ledc_fade_start(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, LEDC_FADE_NO_WAIT);
+            ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5, b << 4);
+            ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_5);
         break;
         default: break;
     }
