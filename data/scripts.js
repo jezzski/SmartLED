@@ -68,8 +68,8 @@ function channelSelect(channel_num){
         if(row.rowIndex!=0) row.parentElement.deleteRow(row.rowIndex);
     }
 
-    //getSchNames(channel_num);
-    updateSchNames("{\"Test1\":1,\"Test2\":0}")  // for dev
+    getSchNames(channel_num);
+    //updateSchNames("{\"Test1\":1,\"Test2\":0}")  // for dev
 }
 
 function addSchEvent(){
@@ -144,7 +144,7 @@ function addSchEvent(){
         "Brightness: " + brightness ;
     
     workingSchedule=[schTimeUnix, onDuration, repeatTime,
-        repeatBitMask, brightness, isRGB, colorValue]
+        repeatBitMask, brightness, isRGB, colorValue];
     console.log(workingSchedule);
 }
 
@@ -334,24 +334,10 @@ function postTimeToESP(){
     request.send(schTimeUnix);
 }
 
-function editSchedule(objCalledFrom){
-    schName = objCalledFrom.parentElement.parentElement.children[0].innerHTML;
-    console.log('Attempting to edit schedule: ' + schName);
-    if(! (schName in dictSchedules)){  // if not found
-        console.log('No data structure found for selected ' +
-            'schedule: ' + schName);
-        console.log('Attempting to retrieve data from ESP32');
-        getScheduleData(schName);
-        window.alert("Fetching Schedule Data from ESP32\n" +
-            "Reclick edit to try again\n" +
-            "TBD Remove for more intutive interaction.");
-        return;
-    }
-
+function updateSchForm(schName){
     // workingSchedule=[schTimeUnix, onDuration, repeatTime,
     //     repeatBitMask, brightness, isRGB, colorValue]
     document.getElementById("sch_name").value=schName;
-
     schProperties = dictSchedules[schName];
     unix_time = schProperties[0];
     date = new Date(unix_time * 1000);
@@ -407,6 +393,23 @@ function editSchedule(objCalledFrom){
     addSchEvent();
 }
 
+function editSchedule(objCalledFrom){
+    schName = objCalledFrom.parentElement.parentElement.children[0].innerHTML;
+    console.log('Attempting to edit schedule: ' + schName);
+    if(! (schName in dictSchedules)){  // if not found
+        console.log('No data structure found for selected ' +
+            'schedule: ' + schName);
+        console.log('Attempting to retrieve data from ESP32');
+        getScheduleData(schName);
+        // window.alert("Fetching Schedule Data from ESP32\n" +
+        //     "Reclick edit to try again\n" +
+        //     "TBD Remove for more intutive interaction.");
+        return;  // update is called by callback in http post
+    }
+
+    updateSchForm(schName);
+}
+
 
 // -----------------------------------------
 // Query Schedule Data Scripts
@@ -439,6 +442,30 @@ function getScheduleData(schName){
 
 function updateSchData(schData){
     console.log(schData);
+    splitData = schData.split(";");
+    schName = splitData[0];
+    schTimeUnix = parseInt(splitData[1],10);
+    onDuration = splitData[2];
+    repeatTime = splitData[3];
+    repeatBitMask = parseInt(splitData[4],10);
+    brightness = splitData[5];
+    if(splitData[6]=="1") isRGB = true;
+    else isRGB = false;
+
+    r = parseInt(splitData[7],10).toString(16);
+    if(r.length==1) r = `0${r}`;
+    g = parseInt(splitData[8],10).toString(16);
+    if(g.length==1) r = `0${g}`;
+    b = parseInt(splitData[9],10).toString(16);
+    if(b.length==1) r = `0${b}`;
+    colorValue= `#${r}${g}${b}`;
+
+    workingSchedule=[schTimeUnix, onDuration, repeatTime,
+        repeatBitMask, brightness, isRGB, colorValue];
+    console.log(workingSchedule);
+    // add/update schedule properties
+    dictSchedules[schName]=workingSchedule;
+    updateSchForm(schName);
 }
 
 function updateSchNames(sSchNames){

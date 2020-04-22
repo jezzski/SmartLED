@@ -452,16 +452,72 @@ esp_err_t sch_data_post_handler(httpd_req_t* req){
     token = strtok(buf, DELIMITER);
     strcpy(cmd,token);
 
-    if(!strcmp(cmd,"NamesList")){  // wants list of schnames
+    uint8_t channel;
+    if(!strcmp(cmd,"NamesList")){  // want list of schnames
         char* list;
         token = strtok(NULL, DELIMITER);
-        uint8_t channel = (uint8_t) atoi(token);
+        channel = (uint8_t) atoi(token);
         get_schedule_names(channel, list);
         ESP_LOGI(HTTP_TAG, "%s", list);
         ESP_LOGI(HTTP_TAG, "%s", token);
         ESP_LOGI(HTTP_TAG, "%d", channel);
         httpd_resp_send(req, list, strlen(list));
         free(list);
+    }
+    if(!strcmp(cmd,"SchData")){  // want sch data
+        Schedule_Object sch_data;
+        token = strtok(NULL, DELIMITER);
+        channel = (uint8_t) atoi(token);
+        token = strtok(NULL, DELIMITER);
+        get_schedule(channel, token, &sch_data);
+        char delimit[] = ";";
+        char resp[256];  // prob overkill
+        // TBD find more efficent way of transmitting
+        char num_str[64];
+        
+        strcpy(resp, sch_data.name);  // sch name
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.start);
+        strcat(resp, num_str);  // start time
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.duration);
+        strcat(resp, num_str);  // duration
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.repeat_time);
+        strcat(resp, num_str);  // repeat time
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.repeat_mask);
+        strcat(resp, num_str);  // repeat mask
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.brightness);
+        strcat(resp, num_str);  // brightness
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.isRGB);
+        strcat(resp, num_str);  // RGB bool
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.r);
+        strcat(resp, num_str);  // r
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.g);
+        strcat(resp, num_str);  // g
+        strcat(resp, delimit);
+
+        sprintf(num_str, "%d", sch_data.b);
+        strcat(resp, num_str);  // b
+        strcat(resp, delimit);
+
+        ESP_LOGI(HTTP_TAG, "%s", sch_data.name);
+        ESP_LOGI(HTTP_TAG, "%s", token);
+        ESP_LOGI(HTTP_TAG, "%d", channel);
+        httpd_resp_send(req, resp, strlen(resp));
     }
     else{
         const char resp[] = "Error: Unable To Access Sch List";
