@@ -61,8 +61,15 @@ function channelSelect(channel_num){
     }
     activeCh = document.getElementById('ch_sel' + channel_num);
     activeCh.className = "active";
-    getSchNames(channel_num);
-    //updateSchNames("")  // for dev
+
+    // clear table to be filled with data
+    schTable=document.getElementById("sch_table");
+    for(row of schTable.rows){
+        if(row.rowIndex!=0) row.parentElement.deleteRow(row.rowIndex);
+    }
+
+    //getSchNames(channel_num);
+    updateSchNames("{\"Test1\":1,\"Test2\":0}")  // for dev
 }
 
 function addSchEvent(){
@@ -138,6 +145,7 @@ function addSchEvent(){
     
     workingSchedule=[schTimeUnix, onDuration, repeatTime,
         repeatBitMask, brightness, isRGB, colorValue]
+    console.log(workingSchedule);
 }
 
 function addSchedule(){
@@ -170,7 +178,7 @@ function addSchedule(){
         activeCell.className="channel_entry";
 
         editCell=newSchEntry.insertCell(2);
-        editCell.innerHTML="<input type=\"button\">";
+        editCell.innerHTML="<input type=\"button\" onclick=\"editSchedule(this)\">";
         editCell.className="channel_entry";
 
         selectedCell=newSchEntry.insertCell(3);
@@ -326,6 +334,80 @@ function postTimeToESP(){
     request.send(schTimeUnix);
 }
 
+function editSchedule(objCalledFrom){
+    schName = objCalledFrom.parentElement.parentElement.children[0].innerHTML;
+    console.log('Attempting to edit schedule: ' + schName);
+    if(! (schName in dictSchedules)){  // if not found
+        console.log('No data structure found for selected ' +
+            'schedule: ' + schName);
+        console.log('Attempting to retrieve data from ESP32');
+        getScheduleData(schName);
+        window.alert("Fetching Schedule Data from ESP32\n" +
+            "Reclick edit to try again\n" +
+            "TBD Remove for more intutive interaction.");
+        return;
+    }
+
+    // workingSchedule=[schTimeUnix, onDuration, repeatTime,
+    //     repeatBitMask, brightness, isRGB, colorValue]
+    document.getElementById("sch_name").value=schName;
+
+    schProperties = dictSchedules[schName];
+    unix_time = schProperties[0];
+    date = new Date(unix_time * 1000);
+    hours = date.getHours().toString();
+    if(hours.length==1) minutes = `0${hours}`;
+    minutes = date.getMinutes().toString();
+    if(minutes.length==1) minutes = `0${minutes}`;
+    document.getElementById("sch_time").value=`${hours}:${minutes}`;
+
+    document.getElementById("on_duration").value=schProperties[1];
+    document.getElementById("repeat_time").value=schProperties[2];
+    document.getElementById("brightness_slider").value=schProperties[4];
+
+    if(schProperties[5]) document.getElementById("is_RGB").checked=true;
+    else document.getElementById("is_RGB").checked=false;
+    document.getElementById("sch_color").value=schProperties[6];
+
+    BitMask=parseInt(schProperties[3]);
+    if(BitMask-64>=0){
+        BitMask-=64;
+        document.getElementById("sun_checkbox").checked=true;
+    }
+    else document.getElementById("sun_checkbox").checked=false;
+    if(BitMask-32>=0){
+        BitMask-=32;
+        document.getElementById("mon_checkbox").checked=true;
+    }
+    else document.getElementById("mon_checkbox").checked=false;
+    if(BitMask-16>=0){
+        BitMask-=16;
+        document.getElementById("tues_checkbox").checked=true;
+    }
+    else document.getElementById("tues_checkbox").checked=false;
+    if(BitMask-8>=0){
+        BitMask-=8;
+        document.getElementById("wed_checkbox").checked=true;
+    }
+    else document.getElementById("wed_checkbox").checked=false;
+    if(BitMask-4>=0){
+        BitMask-=4;
+        document.getElementById("th_checkbox").checked=true;
+    }
+    else document.getElementById("th_checkbox").checked=false;
+    if(BitMask-2>=0){
+        BitMask-=2;
+        document.getElementById("fri_checkbox").checked=true;
+    }
+    else document.getElementById("fri_checkbox").checked=false;
+    if(BitMask-1>=0){
+        document.getElementById("sat_checkbox").checked=true;
+    }
+    else document.getElementById("sat_checkbox").checked=false;
+    addSchEvent();
+}
+
+
 // -----------------------------------------
 // Query Schedule Data Scripts
 
@@ -339,8 +421,27 @@ function httpPostAsync(theUrl, callback, msg){
     request.send(msg);
 }
 
+function getScheduleData(schName){
+    // Get Active Channel - TBD do we want to do this here
+    for(i=1; i<7; i++){
+        chSel = document.getElementById('ch_sel' + i);
+        if(chSel.className=="active"){
+            activeCh=i;
+        }
+    }
+    delimiterStr=";';";
+    strData="SchData" + delimiterStr + (activeCh-1).toString(10) + delimiterStr
+        + schName + delimiterStr + "PADDING";
+    console.log('sending: '+ strData);
+    httpPostAsync("sch_data", updateSchData, strData)
+    return true;
+}
+
+function updateSchData(schData){
+    console.log(schData);
+}
+
 function updateSchNames(sSchNames){
-    //sSchNames = "{\"Test1\":1,\"Test2\":0}";  // for dev
     console.log(sSchNames);
     jsonParse = JSON.parse(sSchNames);
     for(schName in jsonParse){
@@ -358,12 +459,12 @@ function updateSchNames(sSchNames){
             nameCell.className="channel_entry";
     
             activeCell=newSchEntry.insertCell(1);
-            if(bActive) activeCell.innerHTML="<input type=\"checkbox\", checked=true>";
+            if(bActive) activeCell.innerHTML="<input type=\"checkbox\" checked=true>";
             else activeCell.innerHTML="<input type=\"checkbox\">"
             activeCell.className="channel_entry";
     
             editCell=newSchEntry.insertCell(2);
-            editCell.innerHTML="<input type=\"button\">";
+            editCell.innerHTML="<input type=\"button\" onclick=\" editSchedule(this)\">";
             editCell.className="channel_entry";
     
             selectedCell=newSchEntry.insertCell(3);
