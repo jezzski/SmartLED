@@ -172,6 +172,7 @@ static const uint8_t char_prop_write               = ESP_GATT_CHAR_PROP_BIT_WRIT
 static const uint8_t char_prop_read_write_notify   = ESP_GATT_CHAR_PROP_BIT_WRITE | ESP_GATT_CHAR_PROP_BIT_READ | ESP_GATT_CHAR_PROP_BIT_NOTIFY;
 static const uint8_t heart_measurement_ccc[2]      = {0x00, 0x00};
 static const uint8_t char_value[4]                 = {0x11, 0x22, 0x33, 0x44};
+uint8_t schedule_value[4]                 = {0x12, 0x23, 0x34, 0x56};
 
 
 /* Full Database Description - Used to add attributes into the database */
@@ -378,7 +379,11 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
        	    break;
         }
         case ESP_GATTS_READ_EVT:{
-            ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT");
+            ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT, handle = %d",param->read.handle);
+            if(heart_rate_handle_table[IDX_CHAR_A]==(param->read.handle-1)){
+                esp_ble_gatts_set_attr_value(param->read.handle,sizeof(schedule_value),schedule_value);
+                schedule_value[1]++;;
+            }
        	    break;
         }
         case ESP_GATTS_WRITE_EVT:{
@@ -387,7 +392,14 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 // the data length of gattc write  must be less than GATTS_DEMO_CHAR_VAL_LEN_MAX.
                 ESP_LOGI(GATTS_TABLE_TAG, "GATT_WRITE_EVT, handle = %d, value len = %d, value :", param->write.handle, param->write.len);
                 esp_log_buffer_hex(GATTS_TABLE_TAG, param->write.value, param->write.len);
-                decode_ble_schedule(param->write.value);
+                if(heart_rate_handle_table[IDX_CHAR_C]==(param->write.handle-1)){
+                    ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_DECODE_EVT_C");
+                    decode_ble_schedule(param->write.value);
+                }
+                else if(heart_rate_handle_table[IDX_CHAR_B]==(param->write.handle-1)){
+                    ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_DECODE_EVT_B");
+                    decode_ble_schedule(param->write.value);
+                }
                 if (heart_rate_handle_table[IDX_CHAR_CFG_A] == param->write.handle && param->write.len == 2){
                     uint16_t descr_value = param->write.value[1]<<8 | param->write.value[0];
                     if (descr_value == 0x0001){
