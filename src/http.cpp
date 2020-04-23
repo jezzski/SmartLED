@@ -20,7 +20,7 @@ esp_err_t init_http(httpd_handle_t server)
     .server_port        = 80,                       
     .ctrl_port          = 32768,                    
     .max_open_sockets   = 7,                        
-    .max_uri_handlers   = 8,                        
+    .max_uri_handlers   = 10,                        
     .max_resp_headers   = 8,                        
     .backlog_conn       = 5,                        
     .lru_purge_enable   = false,                    
@@ -37,6 +37,13 @@ esp_err_t init_http(httpd_handle_t server)
 
     static const httpd_uri_t home_page_get = {
         .uri = "/index.html",
+        .method = HTTP_GET,
+        .handler = homepage_handler,
+        .user_ctx = NULL    
+    };
+
+    static const httpd_uri_t alt_home_page_get = {
+        .uri = "/",
         .method = HTTP_GET,
         .handler = homepage_handler,
         .user_ctx = NULL    
@@ -84,19 +91,34 @@ esp_err_t init_http(httpd_handle_t server)
         .user_ctx = NULL
     };
 
+    static const httpd_uri_t direct_control_post ={
+        .uri = "/direct_control",
+        .method = HTTP_POST,
+        .handler = direct_control_post_handler,
+        .user_ctx = NULL
+    };
+
+    static const httpd_uri_t sch_data_post ={
+        .uri = "/sch_data",
+        .method = HTTP_POST,
+        .handler = sch_data_post_handler,
+        .user_ctx = NULL
+    };
+
     /* Start the httpd server */
     if (httpd_start(&server, &config) == ESP_OK) {
         /* Register URI handlers */
         httpd_register_uri_handler(server, &home_page_get);
-        //httpd_register_uri_handler(server, &echo);
+        httpd_register_uri_handler(server, &alt_home_page_get);
         httpd_register_uri_handler(server, &styles_get);
         httpd_register_uri_handler(server, &schedules_get);
         httpd_register_uri_handler(server, &scripts_get);
         httpd_register_uri_handler(server, &schedule_post);
         httpd_register_uri_handler(server, &favicon_ico_get);
         httpd_register_uri_handler(server, &time_post);
-        //httpd_register_uri_handler(server, &uri_get);
-        //httpd_register_uri_handler(server, &uri_post);
+        httpd_register_uri_handler(server, &direct_control_post);
+        httpd_register_uri_handler(server, &sch_data_post);
+
         return ESP_OK;
     }
     return ESP_FAIL;  // is this the right return type?
@@ -200,12 +222,14 @@ esp_err_t scripts_handler(httpd_req_t* req)
 
 esp_err_t schedule_post_handler(httpd_req_t* req){
     const char* SCHEDULE_POST_TAG = "HTTP-POST";
-    ESP_LOGI(SCHEDULE_POST_TAG, "461 Reached here");
+    ESP_LOGI(SCHEDULE_POST_TAG, "Reached schedule post handler");
     char buf[255];
     httpd_req_recv(req, buf, sizeof(buf));
     buf[254]=NULL;
     ESP_LOGI(SCHEDULE_POST_TAG, "%s", buf);
     schTokenProcess(buf);
+    const char resp[] = "URI POST Response";
+    httpd_resp_send(req, resp, strlen(resp));
     return ESP_OK;
 }
 
@@ -214,6 +238,7 @@ esp_err_t schedule_post_handler(httpd_req_t* req){
 void schTokenProcess(char* str){
     const char* TOKEN_TAG = "TOKEN";
     ESP_LOGI(TOKEN_TAG, "Reached token process");
+    static uint8_t prev_id = 0;  // should get rid of this var
 
     // Params needed for create_schedule
     uint8_t channel;
@@ -239,7 +264,7 @@ void schTokenProcess(char* str){
     // 0 - index
     token = strtok(str, DELIMITER);
     strcpy(name, token);
-    ESP_LOGI(TOKEN_TAG, "name: %s", name);
+    ESP_LOGI(TOKEN_TAG, "Name: %s", name);
     // 1
     token = strtok(NULL, DELIMITER);
     ESP_LOGI(TOKEN_TAG, "Processing: %s", token);
@@ -296,7 +321,8 @@ void schTokenProcess(char* str){
     ESP_LOGI(TOKEN_TAG, "b: %X", b);
 
     schedule_object s;
-    s.ID = 0;
+    s.ID = prev_id++;
+    strcpy(s.name, name);
     s.enabled = enabled;
     s.start = start;
     s.duration = duration;
@@ -345,5 +371,175 @@ esp_err_t time_post_handler(httpd_req_t* req){
     uint32_t time = (uint32_t) atoi(buf);
     set_time(time);
     ESP_LOGI(TIME_TAG, "Finished time_post_handler");
+    return ESP_OK;
+}
+
+esp_err_t direct_control_post_handler(httpd_req_t* req){
+    const char* HTTP_TAG = "HTTP-Direct Control";
+    ESP_LOGI(HTTP_TAG, "Reached direct_control_post_handler");
+
+    char buf[255];
+    httpd_req_recv(req, buf, sizeof(buf));
+    buf[254]=NULL;
+    ESP_LOGI(HTTP_TAG, "%s", buf);
+
+    char cmd[16];
+
+    // variable to hold various tokens before conversion to 
+    char* token;
+    token = strtok(buf, DELIMITER);
+    strcpy(cmd,token);
+
+    uint8_t channel;  // next token will be channel num
+    token = strtok(NULL, DELIMITER);
+    channel = (uint8_t) atoi(token);
+
+    ESP_LOGI(HTTP_TAG, "%s : %u", cmd, channel);
+
+    uint8_t brightness;
+
+    if(!strcmp(cmd,"OnOff")){
+        token = strtok(NULL, DELIMITER);
+        brightness = (uint8_t) atoi(token);
+        if(brightness) channel_on(channel, 100);
+        else channel_off(channel);
+        ESP_LOGI(HTTP_TAG, "On/Off %s", token);
+    }
+    else if(!strcmp(cmd,"Brightness")){
+        token = strtok(NULL, DELIMITER);
+        brightness = (uint8_t) atoi(token);
+        channel_on(channel, brightness);
+        ESP_LOGI(HTTP_TAG, "Brightness %s", token);
+    }
+    else if(!strcmp(cmd,"Color")){
+        uint8_t r;
+        uint8_t g;
+        uint8_t b;
+        token = strtok(NULL, DELIMITER);
+        uint32_t temp = (uint32_t) strtol(token+1, NULL, 16);  // skip first char
+        b = (uint8_t) temp;
+        temp = temp >> 8;
+        g = (uint8_t) temp;
+        temp = temp >> 8;
+        r = (uint8_t) temp;
+        set_color(channel, r, g, b, 200);
+        ESP_LOGI(HTTP_TAG, "Color %s", token);
+    }
+    else{  // should never hit unless trans error
+        return ESP_FAIL;
+    }
+
+    const char resp[] = "URI POST Response";
+    httpd_resp_send(req, resp, strlen(resp));
+
+    ESP_LOGI(HTTP_TAG, "Finished direct_control_post_handler");
+    return ESP_OK;
+}
+
+esp_err_t sch_data_post_handler(httpd_req_t* req){
+    const char* HTTP_TAG = "HTTP-Sch Data";
+    ESP_LOGI(HTTP_TAG, "Reached sch_data_post_handler");
+
+    char buf[255];
+    httpd_req_recv(req, buf, sizeof(buf));
+    buf[254]=NULL;
+    ESP_LOGI(HTTP_TAG, "%s", buf);
+
+    char cmd[16];
+
+    // variable to hold various tokens before conversion to 
+    char* token;
+    token = strtok(buf, DELIMITER);
+    strcpy(cmd,token);
+
+    uint8_t channel;
+    if(!strcmp(cmd,"NamesList")){  // want list of schnames
+        char* list;
+        token = strtok(NULL, DELIMITER);
+        channel = (uint8_t) atoi(token);
+        get_schedule_names(channel, list);
+        ESP_LOGI(HTTP_TAG, "%s", list);
+        ESP_LOGI(HTTP_TAG, "%s", token);
+        ESP_LOGI(HTTP_TAG, "%d", channel);
+        httpd_resp_send(req, list, strlen(list));
+        free(list);
+    }
+    else if(!strcmp(cmd,"SchData")){  // want sch data
+        Schedule_Object sch_data;
+        token = strtok(NULL, DELIMITER);
+        channel = (uint8_t) atoi(token);
+        token = strtok(NULL, DELIMITER);
+        if(get_schedule(channel, token, &sch_data)==ESP_OK){
+            char delimit[] = ";";
+            char resp[256];  // prob overkill
+            // TBD find more efficent way of transmitting
+            char num_str[64];
+            
+            strcpy(resp, sch_data.name);  // sch name
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.start);
+            strcat(resp, num_str);  // start time
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.duration);
+            strcat(resp, num_str);  // duration
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.repeat_time);
+            strcat(resp, num_str);  // repeat time
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.repeat_mask);
+            strcat(resp, num_str);  // repeat mask
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.brightness);
+            strcat(resp, num_str);  // brightness
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.isRGB);
+            strcat(resp, num_str);  // RGB bool
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.r);
+            strcat(resp, num_str);  // r
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.g);
+            strcat(resp, num_str);  // g
+            strcat(resp, delimit);
+
+            sprintf(num_str, "%d", sch_data.b);
+            strcat(resp, num_str);  // b
+            strcat(resp, delimit);
+
+            ESP_LOGI(HTTP_TAG, "%s", sch_data.name);
+            ESP_LOGI(HTTP_TAG, "%s", token);
+            ESP_LOGI(HTTP_TAG, "%d", channel);
+            httpd_resp_send(req, resp, strlen(resp));
+        }
+        else{
+            const char not_found[] = "Error: Did not find sch";
+            httpd_resp_send(req, not_found, strlen(not_found));
+        }
+    }
+    else if(!strcmp(cmd,"DelSch")){  // want to delete
+        ESP_LOGI(HTTP_TAG, "Deleting schedule");
+        token = strtok(NULL, DELIMITER);
+        channel = (uint8_t) atoi(token);
+        token = strtok(NULL, DELIMITER);
+        delete_schedule_by_name(channel, token);
+        ESP_LOGI(HTTP_TAG, "%s", token);
+        ESP_LOGI(HTTP_TAG, "%d", channel);
+        const char del[] = "Deleted schedule bu name";
+        httpd_resp_send(req, del, strlen(del));
+    }
+    else{
+        const char resp[] = "Error: Unable To Access Sch List";
+        httpd_resp_send(req, resp, strlen(resp));
+    }
+
+    ESP_LOGI(HTTP_TAG, "Finished sch_data_post_handler");
     return ESP_OK;
 }
