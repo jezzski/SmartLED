@@ -556,8 +556,8 @@ function setColor(objCalledFrom, iWhichSet){
             objCalledFrom - 
             iWhichSet - 
     */
-    // iWhichSet 1 corresponds to channels 1-3
-    // iWhichSet 4 corresponds to channels 4-6
+    // iWhichSet 0 corresponds to channels 1-3
+    // iWhichSet 1 corresponds to channels 4-6
     console.log("Reached setColor. Set: " + iWhichSet +
         " Color: " + objCalledFrom.value);
     request = new XMLHttpRequest();
