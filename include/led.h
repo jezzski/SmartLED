@@ -5,6 +5,7 @@ extern "C" {
 #endif
     #include <stdio.h>
     #include "esp_system.h"
+    #include "esp_log.h"
     #include "driver/ledc.h"
     
     #define GPIO_CHANNEL_0 32
@@ -15,6 +16,9 @@ extern "C" {
     #define GPIO_CHANNEL_5 5
     
     #define NUM_CHANNELS 6
+
+    esp_err_t shutdown_outputs(void);
+    esp_err_t clear_shutdown(void);
 
     void init_channels(void);
     void channel_on(uint8_t index, uint8_t brightness);

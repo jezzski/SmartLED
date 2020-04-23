@@ -9,6 +9,41 @@ struct channel
     uint8_t brightness;
 };
 
+uint8_t shutdown_status = 0;
+
+esp_err_t shutdown_outputs(void)
+{
+    for (int i = 0; i < NUM_CHANNELS; i++)
+    {
+        channel_off(i);
+    }
+
+    if (shutdown_status)
+    {
+        ESP_LOGI("LED", "Already in shutdown state!");
+        return ESP_FAIL;
+    }
+    else
+    {
+        shutdown_status = 1;
+        return ESP_OK;
+    }
+}
+
+esp_err_t clear_shutdown(void)
+{
+    if (!shutdown_status)
+    {
+        ESP_LOGI("LED", "Not in shutdown state!");
+        return ESP_FAIL;
+    }
+    else
+    {
+        shutdown_status = 0;
+        return ESP_OK;
+    }
+}
+
 void init_channels(void)
 {
     ledc_timer_config_t ledc_timer;
@@ -82,6 +117,12 @@ void init_channels(void)
 
 void channel_on(uint8_t index, uint8_t brightness)
 {
+    if (shutdown_status)
+    {
+        ESP_LOGW("LED", "Cannot control LED's while in shutdown status!");
+        return;
+    }
+
     int br = brightness << 4;
     printf("Brightness:%d\n", br);
     switch(index)
@@ -148,6 +189,11 @@ void channel_off(uint8_t index)
 
 void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)
 {
+    if (shutdown_status)
+    {
+        ESP_LOGW("LED", "Cannot control LED's while in shutdown status!");
+        return;
+    }
     r *= ((float)brightness / UINT8_MAX);
     g *= ((float)brightness / UINT8_MAX);
     b *= ((float)brightness / UINT8_MAX);
