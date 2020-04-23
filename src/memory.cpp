@@ -132,7 +132,8 @@ esp_err_t recall_schedules(void)
             ESP_LOGE(TAG, "Could not allocate output buffer!");
             return ESP_ERR_NO_MEM;
         }
-        fscanf(f, "%s", buf);
+        //fscanf(f, "%s", buf);
+        fgets(buf, 4096, f); //fgets ignores linefeeds that may be from schedule names
         //printf("File Contents:\n\n%s\n", buf);
 
         DynamicJsonDocument doc(4096);
@@ -207,7 +208,8 @@ esp_err_t store_schedules(void)
         while (iter != NULL)
         {
             schedule_object s = iter->schedule;
-            char c = schedulesStored++ + 0x30;
+            char c[2] = "0";
+            c[0] = schedulesStored++ + 0x30;
             JsonObject objToStore = docToObj.createNestedObject(&c);
             objToStore["id"] = s.ID;
             objToStore["name"] = s.name;
