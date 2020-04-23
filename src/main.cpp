@@ -102,7 +102,7 @@ void app_main()
     init_oc();
     err = init_memory();
     init_schedule();    
-    //wifi_init_sta();
+    wifi_init_sta();
 
     vTaskDelay(10000 / portTICK_PERIOD_MS);
 
@@ -116,7 +116,7 @@ void app_main()
     //should this return extra information like # of schedules an 
     recall_schedules();
     httpd_handle_t server = NULL;  // empty server handle
-    //init_http(server);
+    init_http(server);
     Init_Bluetooth();
 
     while (1)
