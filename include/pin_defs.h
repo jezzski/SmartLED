@@ -11,8 +11,9 @@
 #define DAC2 26
 
 //INA 300 Pins for OC
-#define OC_ENABLE
-#define OC_ALERT
+//TODO: must modify these to use updated pins from PCB
+#define OC_ENABLE GPIO_NUM_22
+#define OC_ALERT GPIO_NUM_26
 #define OC_LATCH
 //will be DAC
 #define OC_LIMIT DAC1

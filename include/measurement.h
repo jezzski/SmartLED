@@ -11,11 +11,23 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+#include "led.h"
+#include "memory.h"
+
 //two methods
 //measure with ADC periodically and calculate current from difference
 
 //set up INA OC with DAC limit and have an interrupt on alert
 
-void init_oc(void);
+esp_err_t init_oc(void);
+
+esp_err_t set_current_level(double ampLimit);
+
+esp_err_t set_voltage_level(double voltLimit);
+
+uint8_t isCurrentFault();
+uint8_t isVoltageFault();
+
+esp_err_t clearFaults();
 
 #endif
