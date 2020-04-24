@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js"></script>
+
+
+<head>
+    <title>Smart LED</title>
+</head>
+
+<body>
+    <h1>Smart LED Test Page</h1>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="schedules.html">Schedules</a>
+        <a href="#Settings">Settings</a>
+        <a href="test.html">Test</a>
+        <input type="text" placeholder="Search... [Not Implemented]">
+    </div>
+
+
+    <br></br>
+    <table style="width:96%;margin:2%" border="1">
+        <tr>
+            <th>Channel</th>
+            <th>
+                Brightness
+                <br>
+                Less <-- --> More
+            </th>
+            <th>On/Off</th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:5%;">
+                    <label for="set1_rgb">Channel 1-3 RGB:</label>
+                    <input type="checkbox" id="set1_rgb">
+                    <label for="set1_color">Color:</label>
+                    <input type="color" id="set1_color" onchange="setColor(this,0)">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">1</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,0)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,0)">
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">2</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,1)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,1)">
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">3</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,2)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,2)">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:5%;">
+                    <label for="set2_rgb">Channel 4-6 RGB:</label>
+                    <input type="checkbox" id="set2_rgb">
+                    <label for="set2_color">Color:</label>
+                    <input type="color" id="set2_color" onchange="setColor(this,1)">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">4</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,3)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,3)">
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">5</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,4)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,4)">
+            </td>
+        </tr>
+        <tr>
+            <td class="channel_entry">6</td>
+            <td>
+                <div class="slidercontainer">
+                    <input type="range" min="0" max="255" value="255" class="slider" onchange="setBrightness(this,5)">
+                </div>
+            </td>
+            <td class="channel_entry">
+                <input type="checkbox" onchange="setOnOff(this,5)">
+            </td>
+        </tr>
+    </table>
+
+    <!-- Included to load call init -->
+    <!-- TBD: Find better way -->
+    <!-- <div> <body onload="init()"> </div> - unneed for this html-->
+
+    <div class="footer">
+        <a href="#about">About Project</a>
+        |
+        <a href="#Github">Github</a>
+    </div>
+</body>
+
+
+</html>
