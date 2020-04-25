@@ -12,6 +12,8 @@
 #include "schedule_object.h"
 #include "led.h"
 
+#include "dawndusk.h"
+#include "memory.h"
 
 /**
  * @brief Init the scheduler code. Starts the background task if not already started. If this is not called the schedules will not run.

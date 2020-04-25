@@ -7,26 +7,24 @@ void rtc_config(void)
     esp_err_t ret;
     //spi_device_handle_t rtc;
     
-    spi_bus_config_t buscfg = {
-        .mosi_io_num = HSPI_MOSI,
-        .miso_io_num = HSPI_MISO,
-        .sclk_io_num = HSPI_CLK,
-        .quadwp_io_num = -1,
-        .quadhd_io_num = -1,
-        .max_transfer_sz = 5
-    };
+    spi_bus_config_t buscfg;
+    buscfg.mosi_io_num = HSPI_MOSI;
+    buscfg.miso_io_num = HSPI_MISO;
+    buscfg.sclk_io_num = HSPI_CLK;
+    buscfg.quadwp_io_num = -1;
+    buscfg.quadhd_io_num = -1;
+    buscfg.max_transfer_sz = 5;
 
-    spi_device_interface_config_t rtccfg = {
-        .command_bits = 8,
-        .address_bits = 8,
-        .dummy_bits = 0,
-        .clock_speed_hz = 1000,
-        //.duty_cycle_pos = 128,        //50% duty cycle
-        .mode = 3,
-        .spics_io_num = HSPI_CS,
-        //.cs_ena_posttrans = 3,        
-        .queue_size = 3
-    };
+    spi_device_interface_config_t rtccfg;
+    rtccfg.command_bits = 8;
+    rtccfg.address_bits = 8;
+    rtccfg.dummy_bits = 0;
+    rtccfg.clock_speed_hz = 1000;
+    //.duty_cycle_pos = 128,        //50% duty cycle
+    rtccfg.mode = 3;
+    rtccfg.spics_io_num = HSPI_CS;
+    //.cs_ena_posttrans = 3,       ;
+    rtccfg.queue_size = 3;
 
     ret = spi_bus_initialize(HSPI_HOST, &buscfg, 0);
     assert(ret == ESP_OK);
@@ -49,13 +47,12 @@ esp_err_t readData(uint32_t addr, uint8_t *out)
 {
 	//spi_device_handle_t rtc;
 
-    spi_transaction_t t_read = {
-		.cmd = RTC_READ,
-		.flags = SPI_TRANS_USE_RXDATA,
-		.rxlength = 8,
-		.length = 8,
-		.addr = addr
-	};
+    spi_transaction_t t_read;
+	t_read.cmd = RTC_READ;
+	t_read.flags = SPI_TRANS_USE_RXDATA;
+	t_read.rxlength = 8;
+	t_read.length = 8;
+	t_read.addr = addr;
 
 	esp_err_t ret = spi_device_transmit(rtc, &t_read); 
 	*out = t_read.rx_data[0];
@@ -66,13 +63,12 @@ esp_err_t writeData(uint32_t addr, uint8_t data)
 {
 	//spi_device_handle_t rtc;
     
-    spi_transaction_t t_write = {
-		.cmd = RTC_WRITE, //Command is write
-		.flags = SPI_TRANS_USE_TXDATA,
-		.rxlength = 0,
-		.length = 8,
-		.addr = addr
-	};
+    spi_transaction_t t_write;
+	t_write.cmd = RTC_WRITE; //Command is write
+	t_write.flags = SPI_TRANS_USE_TXDATA;
+	t_write.rxlength = 0;
+	t_write.length = 8;
+	t_write.addr = addr;
 
 	t_write.tx_data[0] = data;
 	esp_err_t ret = spi_device_transmit(rtc, &t_write); //Transmit
@@ -270,12 +266,10 @@ esp_err_t getTime(struct tm *outTime)
 	return ret;
 }
 
-void RTCHandler(void) 
+void RTCHandler(void *pvParms) 
 {
 	esp_err_t ret = ESP_OK;
-	struct tm date = {
-		0
-	};
+	struct tm date;
 
 	currTime = &date;
 	

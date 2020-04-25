@@ -18,7 +18,9 @@ typedef struct Schedule_Object
     uint32_t start; /**< The unix timestamp of the start time. If a schedule repeats, this field will update to the next start time as the schedule runs. */
     uint32_t duration; /**< The duration, in seconds, of the schedule. If set to the max value the schedule will run indefinitely. */
     uint8_t repeat_mask; /**< A bit mask for which days the schedule runs on. If repeat_time is set this field is not used. The MSB bit is not used and following bits represent the days. The 8 bits represent [Unused, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]. */
-    uint32_t repeat_time; /**< An alternative way to have schedules repeat instead of by day. This field represents the time, in seconds, that the schedule repeats. The next start time is calculated by adding the current start time plus the repeat_time. Settings this field to 5 seconds means that the schedule's start is triggered every 5 seconds. */
+    uint32_t repeat_time; /**< An alternative way to have schedules repeat instead of by day. This field represents the time, in seconds, that the schedule repeats. The next start time is calculated by adding the current start time plus the repeat_time. Settings this field to 5 seconds means that the schedule's start is triggered every 5 seconds. If this field is enabled then repeat_mask and dawn/dusk will not work. */
+    uint8_t dawn; /**< Whether the schedule runs at dawn. Not compatable with repeat_time */
+    uint8_t dusk;/**< Whether the schedule runs at dusk. Not compatable with repeat_time. */
 
     //actions to take
     uint8_t isRGB; /**< The type of LED associated. If this field is 0, the LED is not an RGB LED and only the brightness field is used in controlling the LED. If isRGB is not 0, the brightness, R, G, and B fields control the LED */

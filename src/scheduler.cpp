@@ -366,6 +366,40 @@ void update_start_time(schedule_object *s, time_t curr)
     localtime_r(&curr, &time_info);
     //find difference between current day and next run day
     uint8_t currDay = time_info.tm_wday; //current day of week
+
+    double lat, longt;
+    //try to get latitude and longitude settings
+    //if not found, default to approximately Raleigh, NC
+    if (get_setting_double("latitude", &lat) != ESP_OK)
+    {
+        lat = 35.78;
+        store_setting_double("latitude", lat);
+    }
+    if (get_setting_double("longitude", &longt) != ESP_OK)
+    {
+        longt = -78.64;
+        store_setting_double("longitude", longt);
+    }
+
+    //schedule runs and dawn AND dusk, check if needs to run again today
+    if (s->dawn && s->dusk)
+    {
+        //does dusk need to run?
+        if (time_info.tm_hour > 12 && time_info.tm_hour < 23)
+        {
+            double dusk = duskCalc(time_info.tm_mday, time_info.tm_mon + 1, time_info.tm_year + 1900, lat, longt);
+            time_info.tm_hour = dusk;
+            double min = (dusk - (long)dusk) * 60;
+            time_info.tm_min = min;
+            time_t ti = mktime(&time_info);
+            if (curr < ti)
+            {
+                s->start = ti;
+                return;
+            }
+        }
+    }
+
     uint8_t nextDay = 1; //days until next run, at least 1
     for (int i = currDay + 1; i != currDay; ++i) //start with tomorrow and loop until found next day or reached back to current day
     {
@@ -373,7 +407,35 @@ void update_start_time(schedule_object *s, time_t curr)
         //check if schedule runs this day
         if ((s->repeat_mask >> (6-i)) & 1)
         {
-            s->start += (86400*nextDay); //start time += seconds in day * num of days
+            time_t t = s->start + (86400*nextDay);
+            if (s->dusk) //schedule runs at dusk on this day
+            {
+                struct tm st;
+                localtime_r(&t, &st);
+                //approximate dusk at the day it runs
+                double dusk = duskCalc(st.tm_mday, st.tm_mon + 1, st.tm_year + 1900, lat, longt);
+                //convert decimal format to hours/minutes
+                //ex. 5.46 = 5 hours and 27 minutes
+                st.tm_hour = dusk;
+                double min = (dusk - (long)dusk) * 60;
+                st.tm_min = min;
+                s->start = mktime(&st); //update start time
+            }
+            if (s->dawn) //schedule runs at dawn on this day
+            {
+                struct tm st;
+                localtime_r(&t, &st);
+                //approximate dawn at the day it runs
+                double dawn = dawnCalc(st.tm_mday, st.tm_mon + 1, st.tm_year + 1900, lat, longt);
+                //convert decimal format to hours/minutes
+                st.tm_hour = dawn;
+                double min = (dawn - (long)dawn) * 60;
+                st.tm_min = min;
+                s->start = mktime(&st); //update start time
+            }
+
+            if (!s->dawn && !s->dusk) //has specific start time, ignore dawn/dusk
+                s->start += (86400*nextDay); //start time += seconds in day * num of days
             break;
         }
         ++nextDay;

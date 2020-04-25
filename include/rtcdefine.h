@@ -78,7 +78,7 @@
 esp_err_t setTime(const struct tm *time);
 esp_err_t getTime(struct tm *outTime);
 
-void RTCHandler(void);
+void RTCHandler(void *pvParms);
 esp_err_t ST_StartRTCHandler(void);
 TaskHandle_t RTC_Handle;
 
