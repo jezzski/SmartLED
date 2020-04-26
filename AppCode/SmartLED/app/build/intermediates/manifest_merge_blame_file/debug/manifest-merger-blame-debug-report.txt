@@ -24,69 +24,74 @@
 15-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:9:5-28
 16
 17    <application
-17-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:10:5-31:19
+17-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:10:5-33:19
 18        android:allowBackup="true"
 18-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:11:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:22:18-86
+19-->[androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
-21        android:icon="@mipmap/ic_launcher"
-21-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:12:9-43
+21        android:icon="@mipmap/ic_logo"
+21-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:12:9-39
 22        android:label="@string/app_name"
 22-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:13:9-41
-23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:14:9-54
+23        android:roundIcon="@mipmap/ic_logo_round"
+23-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:14:9-50
 24        android:supportsRtl="true"
 24-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:15:9-35
 25        android:testOnly="true"
 26        android:theme="@style/AppTheme" >
 26-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:16:9-40
-27        <activity android:name="com.example.smartled.ui.schedule.ScheduleEditorActivity" />
-27-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:9-81
-27-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:19-69
-28        <activity android:name="com.example.smartled.ui.scan.DeviceScanActivity" />
-28-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:9-73
-28-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:19-61
-29        <activity android:name="com.example.smartled.ui.scan.DeviceControlActivity" />
-29-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:9-76
-29-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:19-64
+27        <activity
+27-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:9-18:62
+28            android:name="com.example.smartled.ui.schedule.ScheduleEditorActivity"
+28-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:19-69
+29            android:screenOrientation="portrait" />
+29-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:13-49
 30        <activity
-30-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:20:9-29:20
-31            android:name="com.example.smartled.MainActivity"
-31-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:21:13-41
-32            android:label="@string/app_name"
-32-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:22:13-45
-33            android:theme="@style/AppTheme.NoActionBar" >
-33-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:23:13-56
-34            <intent-filter>
-34-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:24:13-28:29
-35                <action android:name="android.intent.action.MAIN" />
-35-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:17-69
-35-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:25-66
-36
-37                <category android:name="android.intent.category.LAUNCHER" />
-37-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:17-77
-37-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:27-74
-38            </intent-filter>
-39        </activity>
+30-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:9-20:62
+31            android:name="com.example.smartled.ui.scan.DeviceScanActivity"
+31-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:19-61
+32            android:screenOrientation="portrait" />
+32-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:20:13-49
+33        <activity
+33-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:21:9-31:20
+34            android:name="com.example.smartled.MainActivity"
+34-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:23:13-41
+35            android:label="@string/app_name"
+35-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:24:13-45
+36            android:screenOrientation="portrait"
+36-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:22:13-49
+37            android:theme="@style/AppTheme.NoActionBar" >
+37-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:13-56
+38            <intent-filter>
+38-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:26:13-30:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:17-69
+39-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:25-66
 40
-41        <service
-41-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:9-77
-42            android:name="com.example.smartled.BluetoothLeService"
-42-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:18-52
-43            android:enabled="true" />
-43-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:53-75
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:29:17-77
+41-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:29:27-74
+42            </intent-filter>
+43        </activity>
 44
-45        <provider
-45-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-46            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-46-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-47            android:authorities="com.example.smartled.lifecycle-process"
-47-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-48            android:exported="false"
-48-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-49            android:multiprocess="true" />
-49-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-50    </application>
-51
-52</manifest>
+45        <service
+45-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:9-77
+46            android:name="com.example.smartled.BluetoothLeService"
+46-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:18-52
+47            android:enabled="true" />
+47-->C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:53-75
+48
+49        <provider
+49-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+50            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+50-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+51            android:authorities="com.example.smartled.lifecycle-process"
+51-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+52            android:exported="false"
+52-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+53            android:multiprocess="true" />
+53-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+54    </application>
+55
+56</manifest>

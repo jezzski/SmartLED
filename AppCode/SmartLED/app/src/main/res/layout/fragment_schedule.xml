@@ -4,36 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/text_schedule"
+    <LinearLayout
+        android:id="@+id/optionLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/deleteButtonMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_delete"/>
+        <ImageButton
+            android:id="@+id/uploadButtonMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_upload"/>
+
+        <Spinner
+            android:id="@+id/ledChannelSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="100" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="0"/>
+        <Switch
+            android:id="@+id/connectSwitchMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Disconnected " />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list_schedule"
         android:layout_width="349dp"
-        android:layout_height="568dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_schedule"
-        app:layout_constraintStart_toStartOf="@+id/text_schedule"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/optionLayout"
+        app:layout_constraintStart_toStartOf="@+id/optionLayout"
         app:layout_constraintTop_toBottomOf="@+id/addScheculeButton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/addScheculeButton"
-        android:layout_width="88dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="10dp"
         android:text="Add"
+        android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_schedule" />
+        app:layout_constraintTop_toBottomOf="@id/optionLayout" />
 
     <EditText
         android:id="@+id/scheduleNameText"
@@ -42,10 +69,11 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:maxLength="18"
         android:text="Name of Schedule"
         app:layout_constraintEnd_toStartOf="@+id/addScheculeButton"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_schedule" />
+        app:layout_constraintTop_toBottomOf="@+id/optionLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
