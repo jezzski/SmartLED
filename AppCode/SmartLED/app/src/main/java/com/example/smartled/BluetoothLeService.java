@@ -145,10 +145,13 @@ public class BluetoothLeService extends Service {
             // For all other profiles, writes the data formatted in HEX.
             final byte[] data = characteristic.getValue();
             if (data != null && data.length > 0) {
+                /*
                 final StringBuilder stringBuilder = new StringBuilder(data.length);
                 for(byte byteChar : data)
                     stringBuilder.append(String.format("%02X ", byteChar));
                 intent.putExtra(EXTRA_DATA, new String(data) + "\n" + stringBuilder.toString());
+                 */
+                intent.putExtra(EXTRA_DATA,data);
             }
         }
         sendBroadcast(intent);
@@ -283,19 +286,6 @@ public class BluetoothLeService extends Service {
         }
         mBluetoothGatt.readCharacteristic(characteristic);
     }
-    /*
-    //custom write function
-    public boolean writeCharacteristic(){
-        if(mBluetoothGatt==null){
-            Log.e(TAG, "BluetoothGatt not available");
-            return false;
-        }
-        BluetoothGattService testService=mBluetoothGatt.getService()
-    }
-
-    public String testServiceUUID="000000ff-0000-1000-8000-00805f9b34fb";
-    public String
-    */
     /**
      * Enables or disables notification on a give characteristic.
      *

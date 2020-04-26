@@ -61,8 +61,10 @@ public class BleDeviceListAdapter extends BaseAdapter implements ListAdapter {
         //Handle buttons and add onClickListeners
         CheckBox activeCheck = (CheckBox) view.findViewById(R.id.active_check);
         ArrayList<BleDevice> tempDeviceList=readDeviceXML(context);
-        if(tempDeviceList.get(position).isActive()){
-            activeCheck.setChecked(true);
+        if(tempDeviceList!=null){
+            if(tempDeviceList.get(position).isActive()){
+                activeCheck.setChecked(true);
+            }
         }
         activeCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

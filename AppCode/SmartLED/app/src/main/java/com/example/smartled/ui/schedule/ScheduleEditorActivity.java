@@ -231,6 +231,7 @@ public class ScheduleEditorActivity extends AppCompatActivity {
                 curSaveSchedule.repeatTime=Integer.valueOf(repeatText.getText().toString());
                 Log.d("Hunaid", String.valueOf(curSaveSchedule.duration));
                 writeToXML(getApplicationContext(), scheduleList);
+                finish();
             }
         });
     }

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class Schedule {
+    private int channelNum;//only use for schedules on the device already
     public int ID;
     public String name;
     public int start;
@@ -38,6 +39,15 @@ public class Schedule {
         Blue= 0x00;
         repeatMask=0x00;
     }
+
+    public void setChannelNum(int channelNum) {
+        this.channelNum = channelNum;
+    }
+
+    public int getChannelNum(){
+        return this.channelNum;
+    }
+
     public static byte[] createSchedulePacket(Schedule schedule, int channelNum){
         ByteBuffer b=ByteBuffer.allocate(4);
         ByteBuffer b2=ByteBuffer.allocate(4);
@@ -70,6 +80,29 @@ public class Schedule {
         packet[18]=result3[3];
         return packet;
     }
+
+    public static int fromByteArray(byte byte1, byte byte2, byte byte3, byte byte4) {
+        return ((byte1 & 0xFF) << 24) |
+                ((byte2 & 0xFF) << 16) |
+                ((byte3 & 0xFF) << 8 ) |
+                ((byte4 & 0xFF) << 0 );
+    }
+
+    public static Schedule decodeSchedulePacket(byte[] bytes, String name){
+        Schedule decodedSchedule=new Schedule(name);
+        decodedSchedule.setChannelNum(bytes[0]);
+        decodedSchedule.ID=bytes[1];
+        decodedSchedule.start=fromByteArray(bytes[2],bytes[3],bytes[4],bytes[5]);
+        decodedSchedule.duration=fromByteArray(bytes[6],bytes[7],bytes[8],bytes[9]);
+        decodedSchedule.brightness=bytes[10];
+        decodedSchedule.Red=bytes[11];
+        decodedSchedule.Green=bytes[12];
+        decodedSchedule.Blue=bytes[13];
+        decodedSchedule.repeatMask=bytes[14];
+        decodedSchedule.repeatTime=fromByteArray(bytes[15],bytes[16],bytes[17],bytes[18]);
+        return decodedSchedule;
+    }
+
     public static ArrayList<String> getScheduleNames(ArrayList<Schedule> scheduleList){
         ArrayList<String> schStringList=new ArrayList<String>();
         for(int i=0; i<scheduleList.size(); i++){

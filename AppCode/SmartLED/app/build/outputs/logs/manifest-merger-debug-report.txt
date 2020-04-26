@@ -1,61 +1,74 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dcb7c4118d7f5154b31d657edb943ecd\jetified-navigation-ui-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9ee5da6fca20f6f07dce6c73fc4ca33a\material-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dfb17c32c9e1bced7bb89f3e844a7607\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.1.0-alpha10] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c16b33b09c770b4cf858655d9ca0708c\material-1.1.0-alpha10\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\02986bdc22444181d139cea7132ca12d\appcompat-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.navigation:navigation-fragment:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d901b72938cabd308cff3bcfb8fc920f\navigation-fragment-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e5d386f6e25bce9d50afbfa94472541a\lifecycle-extensions-2.0.0\AndroidManifest.xml:17:1-25:12
-MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\25bfa9abbe57efa7109f3ed8175af34b\fragment-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\91a2e0650e476867729e44e6c1acc534\vectordrawable-animated-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\99839343cfb353ec06147cc6109cf9b2\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d93c655cdcaa19a3180f48e63f30b3d\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7069f94c00a30ecb63c486a742952bc7\viewpager2-1.0.0-beta04\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment-ktx:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4a5172956cac15df12661ae0824bc4f8\fragment-ktx-1.2.0-alpha04\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1ab843f3b5dfc20e94bd9a4503dcb26e\navigation-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\984e9edaa0792ad5f44429be517dd8ee\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d2d4a9c8ed9de951b346431f16b4376f\vectordrawable-1.0.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4ea847ccfe34de0657fc7a139eae5de8\transition-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a9608eab5c04bc79d9894b8c999ea514\coordinatorlayout-1.1.0-beta01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\278c8e284db6fc9800db55d51ff5aab6\transition-1.0.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46b01e92969b7c805066b71f7b52c3eb\appcompat-resources-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d41761766fdac33e60817aded433078\vectordrawable-animated-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fe88f66db568b34137c6af8ce4065c9d\vectordrawable-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7201af0ac6a1eb782d2b896d1ec4242\media-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\051abc67d3c4e33bdb6b5289276bbacd\recyclerview-1.1.0-beta04\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d0cbf43a696f91658c96ab53c47dd0ba\fragment-1.2.0-alpha04\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1603414193270fa56043b3aa75a80b46\activity-ktx-1.1.0-alpha03\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f93fb50b9cae38b34c6e1a7c59361b52\core-ktx-1.1.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\de3b4aff63e255359d6d83ac6fbdaff5\loader-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\cbfe81a657ef2afb513a6ca64388f844\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\3d66247cb3e229dc7753f5f4d3b35b4b\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\985ff358bb91108c25d3fd24361b35b6\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2dfde23a071269bfc073d57af77f7873\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9b9140e118d7f4f83e504277c0661cb2\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7b3b7b721ad53547c0e35001526b3ae3\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\144fdb6eac090fb35b1d84279c68b489\versionedparcelable-1.0.0\AndroidManifest.xml:17:1-25:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:17:1-30:12
-MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9403b198b8afe4b102d07c4886ca21c9\lifecycle-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c073c929da6ad4e112abaac7d3212747\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e72949b043b8df7a6068dab5e7cd21f2\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\072b344381f0227679ab9ff288809b6a\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8f00fe001c5577e119ad0ca7c32cbd65\activity-1.1.0-alpha03\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9a29ee90fd211f611caccd9d338a3e44\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8506ddbc1ed30380944ad7f0369e4760\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\35d6382087ac1999db47004e3bf24934\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8893b90c6f2a61edd1acfa898cb4cde1\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2d1f640c1b4beb33089ff5c91bbd7f31\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\694a34a6596a5c47d45e7e4d8f0ec3b4\lifecycle-viewmodel-ktx-2.2.0-alpha05\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\659f2b0a5bb5c9f43ae509671d4235b7\lifecycle-viewmodel-savedstate-1.0.0-alpha05\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\021d8390dfb440d43eed9720ce5c700b\lifecycle-viewmodel-2.2.0-alpha05\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\bde57fa38036b9c4f95170122b989370\lifecycle-runtime-ktx-2.2.0-alpha04\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\b435d0541401ffc4e53647bfb8f55a38\lifecycle-livedata-core-ktx-2.2.0-alpha05\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1632f540f2df61a32d89f4f5948766a0\lifecycle-livedata-core-2.2.0-alpha05\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\53c96e9824286a329f9de63ef8556523\lifecycle-runtime-2.2.0-alpha04\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f031147607d3aeb238f176a00d5e308c\savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7fd288a66b1b8e0d6669d784ba4e7ede\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:2:11-69
@@ -74,149 +87,177 @@ ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidMan
 protected-broadcast
 ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:9:5-28
 application
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:10:5-31:19
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9ee5da6fca20f6f07dce6c73fc4ca33a\material-1.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9ee5da6fca20f6f07dce6c73fc4ca33a\material-1.0.0\AndroidManifest.xml:22:5-20
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:10:5-33:19
+MERGED from [com.google.android.material:material:1.1.0-alpha10] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c16b33b09c770b4cf858655d9ca0708c\material-1.1.0-alpha10\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0-alpha10] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c16b33b09c770b4cf858655d9ca0708c\material-1.1.0-alpha10\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e5d386f6e25bce9d50afbfa94472541a\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e5d386f6e25bce9d50afbfa94472541a\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:22:5-89
-MERGED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:22:5-89
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\144fdb6eac090fb35b1d84279c68b489\versionedparcelable-1.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\144fdb6eac090fb35b1d84279c68b489\versionedparcelable-1.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9a29ee90fd211f611caccd9d338a3e44\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9a29ee90fd211f611caccd9d338a3e44\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:22:5-28:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:22:5-28:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:22:18-86
+		ADDED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:14:9-54
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:14:9-50
 	android:icon
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:12:9-39
 	android:allowBackup
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:16:9-40
 activity#com.example.smartled.ui.schedule.ScheduleEditorActivity
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:9-81
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:9-18:62
+	android:screenOrientation
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:13-49
 	android:name
 		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:17:19-69
 activity#com.example.smartled.ui.scan.DeviceScanActivity
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:9-73
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:9-20:62
+	android:screenOrientation
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:20:13-49
 	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:18:19-61
-activity#com.example.smartled.ui.scan.DeviceControlActivity
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:9-76
-	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:19-64
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:19:19-61
 activity#com.example.smartled.MainActivity
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:20:9-29:20
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:21:9-31:20
+	android:screenOrientation
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:22:13-49
 	android:label
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:24:13-45
 	android:theme
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:23:13-56
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:13-56
 	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:23:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:24:13-28:29
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:17-77
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:27:27-74
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:29:27-74
 service#com.example.smartled.BluetoothLeService
-ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:9-77
+ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:9-77
 	android:enabled
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:53-75
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:53-75
 	android:name
-		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:30:18-52
+		ADDED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml:32:18-52
 uses-sdk
 INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dcb7c4118d7f5154b31d657edb943ecd\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dcb7c4118d7f5154b31d657edb943ecd\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9ee5da6fca20f6f07dce6c73fc4ca33a\material-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9ee5da6fca20f6f07dce6c73fc4ca33a\material-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dfb17c32c9e1bced7bb89f3e844a7607\appcompat-1.0.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\dfb17c32c9e1bced7bb89f3e844a7607\appcompat-1.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0-alpha10] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c16b33b09c770b4cf858655d9ca0708c\material-1.1.0-alpha10\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0-alpha10] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c16b33b09c770b4cf858655d9ca0708c\material-1.1.0-alpha10\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\02986bdc22444181d139cea7132ca12d\appcompat-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\02986bdc22444181d139cea7132ca12d\appcompat-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.navigation:navigation-fragment:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d901b72938cabd308cff3bcfb8fc920f\navigation-fragment-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-fragment:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d901b72938cabd308cff3bcfb8fc920f\navigation-fragment-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e5d386f6e25bce9d50afbfa94472541a\lifecycle-extensions-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e5d386f6e25bce9d50afbfa94472541a\lifecycle-extensions-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\25bfa9abbe57efa7109f3ed8175af34b\fragment-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\25bfa9abbe57efa7109f3ed8175af34b\fragment-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\91a2e0650e476867729e44e6c1acc534\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\91a2e0650e476867729e44e6c1acc534\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\99839343cfb353ec06147cc6109cf9b2\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\99839343cfb353ec06147cc6109cf9b2\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d93c655cdcaa19a3180f48e63f30b3d\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d93c655cdcaa19a3180f48e63f30b3d\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7069f94c00a30ecb63c486a742952bc7\viewpager2-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7069f94c00a30ecb63c486a742952bc7\viewpager2-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4a5172956cac15df12661ae0824bc4f8\fragment-ktx-1.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4a5172956cac15df12661ae0824bc4f8\fragment-ktx-1.2.0-alpha04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1ab843f3b5dfc20e94bd9a4503dcb26e\navigation-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1ab843f3b5dfc20e94bd9a4503dcb26e\navigation-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\67e3a22614326cadf216274f01d6d423\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\984e9edaa0792ad5f44429be517dd8ee\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\984e9edaa0792ad5f44429be517dd8ee\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d2d4a9c8ed9de951b346431f16b4376f\vectordrawable-1.0.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d2d4a9c8ed9de951b346431f16b4376f\vectordrawable-1.0.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4ea847ccfe34de0657fc7a139eae5de8\transition-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\4ea847ccfe34de0657fc7a139eae5de8\transition-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a9608eab5c04bc79d9894b8c999ea514\coordinatorlayout-1.1.0-beta01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a9608eab5c04bc79d9894b8c999ea514\coordinatorlayout-1.1.0-beta01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\278c8e284db6fc9800db55d51ff5aab6\transition-1.0.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\278c8e284db6fc9800db55d51ff5aab6\transition-1.0.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46b01e92969b7c805066b71f7b52c3eb\appcompat-resources-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46b01e92969b7c805066b71f7b52c3eb\appcompat-resources-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d41761766fdac33e60817aded433078\vectordrawable-animated-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1d41761766fdac33e60817aded433078\vectordrawable-animated-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fe88f66db568b34137c6af8ce4065c9d\vectordrawable-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fe88f66db568b34137c6af8ce4065c9d\vectordrawable-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7201af0ac6a1eb782d2b896d1ec4242\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7201af0ac6a1eb782d2b896d1ec4242\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\051abc67d3c4e33bdb6b5289276bbacd\recyclerview-1.1.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\051abc67d3c4e33bdb6b5289276bbacd\recyclerview-1.1.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d0cbf43a696f91658c96ab53c47dd0ba\fragment-1.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\d0cbf43a696f91658c96ab53c47dd0ba\fragment-1.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1603414193270fa56043b3aa75a80b46\activity-ktx-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1603414193270fa56043b3aa75a80b46\activity-ktx-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f93fb50b9cae38b34c6e1a7c59361b52\core-ktx-1.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f93fb50b9cae38b34c6e1a7c59361b52\core-ktx-1.1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\de3b4aff63e255359d6d83ac6fbdaff5\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\de3b4aff63e255359d6d83ac6fbdaff5\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\cbfe81a657ef2afb513a6ca64388f844\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\cbfe81a657ef2afb513a6ca64388f844\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\3d66247cb3e229dc7753f5f4d3b35b4b\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\3d66247cb3e229dc7753f5f4d3b35b4b\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7ae8c1d65b7331eeb350edf91287a16c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\985ff358bb91108c25d3fd24361b35b6\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\985ff358bb91108c25d3fd24361b35b6\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2dfde23a071269bfc073d57af77f7873\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2dfde23a071269bfc073d57af77f7873\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9b9140e118d7f4f83e504277c0661cb2\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9b9140e118d7f4f83e504277c0661cb2\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7b3b7b721ad53547c0e35001526b3ae3\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7b3b7b721ad53547c0e35001526b3ae3\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\a81e6c348805ae7dff8b78d832e8b73a\navigation-common-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\144fdb6eac090fb35b1d84279c68b489\versionedparcelable-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\144fdb6eac090fb35b1d84279c68b489\versionedparcelable-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c034f7088c57e18a85dafc68b942945f\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9403b198b8afe4b102d07c4886ca21c9\lifecycle-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9403b198b8afe4b102d07c4886ca21c9\lifecycle-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c073c929da6ad4e112abaac7d3212747\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\c073c929da6ad4e112abaac7d3212747\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e72949b043b8df7a6068dab5e7cd21f2\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e72949b043b8df7a6068dab5e7cd21f2\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\072b344381f0227679ab9ff288809b6a\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\072b344381f0227679ab9ff288809b6a\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8f00fe001c5577e119ad0ca7c32cbd65\activity-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0-alpha03] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8f00fe001c5577e119ad0ca7c32cbd65\activity-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7f6c41cc2a14c0fbaa8d0166c17dc544\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9a29ee90fd211f611caccd9d338a3e44\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\9a29ee90fd211f611caccd9d338a3e44\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8506ddbc1ed30380944ad7f0369e4760\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8506ddbc1ed30380944ad7f0369e4760\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\35d6382087ac1999db47004e3bf24934\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\35d6382087ac1999db47004e3bf24934\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8893b90c6f2a61edd1acfa898cb4cde1\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\8893b90c6f2a61edd1acfa898cb4cde1\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\fb37b7f790edcc9d7fe6d3e5314b8c56\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2d1f640c1b4beb33089ff5c91bbd7f31\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\2d1f640c1b4beb33089ff5c91bbd7f31\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\694a34a6596a5c47d45e7e4d8f0ec3b4\lifecycle-viewmodel-ktx-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\694a34a6596a5c47d45e7e4d8f0ec3b4\lifecycle-viewmodel-ktx-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\659f2b0a5bb5c9f43ae509671d4235b7\lifecycle-viewmodel-savedstate-1.0.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\659f2b0a5bb5c9f43ae509671d4235b7\lifecycle-viewmodel-savedstate-1.0.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\021d8390dfb440d43eed9720ce5c700b\lifecycle-viewmodel-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\021d8390dfb440d43eed9720ce5c700b\lifecycle-viewmodel-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\bde57fa38036b9c4f95170122b989370\lifecycle-runtime-ktx-2.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\bde57fa38036b9c4f95170122b989370\lifecycle-runtime-ktx-2.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\e7284bace20bec096294b5474e153fbf\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\b435d0541401ffc4e53647bfb8f55a38\lifecycle-livedata-core-ktx-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\b435d0541401ffc4e53647bfb8f55a38\lifecycle-livedata-core-ktx-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1632f540f2df61a32d89f4f5948766a0\lifecycle-livedata-core-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0-alpha05] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\1632f540f2df61a32d89f4f5948766a0\lifecycle-livedata-core-2.2.0-alpha05\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7309f8169174f11110ad56440ca8f929\lifecycle-process-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\22b9570a1ed0fca2142825daa9f62beb\lifecycle-service-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\53c96e9824286a329f9de63ef8556523\lifecycle-runtime-2.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0-alpha04] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\53c96e9824286a329f9de63ef8556523\lifecycle-runtime-2.2.0-alpha04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f031147607d3aeb238f176a00d5e308c\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\f031147607d3aeb238f176a00d5e308c\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7fd288a66b1b8e0d6669d784ba4e7ede\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\hunai\.gradle\caches\transforms-2\files-2.1\7fd288a66b1b8e0d6669d784ba4e7ede\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
 INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\hunai\AndroidStudioProjects\SmartLED\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion

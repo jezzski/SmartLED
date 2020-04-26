@@ -28,13 +28,6 @@ public class ScanFragment extends Fragment {
     private ScanViewModel scanViewModel;
     public static final String EXTRA_MESSAGE = "com.example.smartled.schedulename";
 
-
-    private String deviceName;
-    private String deviceAddress;
-
-    public TextView deviceNameView;
-    public TextView deviceAddressView;
-
     public BleDeviceListAdapter deviceAdapter;
     public ListView deviceList;
     ArrayList<BleDevice> deviceArray=new ArrayList<BleDevice>();
@@ -44,13 +37,6 @@ public class ScanFragment extends Fragment {
         scanViewModel =
                 ViewModelProviders.of(this).get(ScanViewModel.class);
         View root = inflater.inflate(R.layout.fragment_scan, container, false);
-        final TextView textView = root.findViewById(R.id.text_scan);
-        scanViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         deviceArray=readDeviceXML(getContext());
         if(deviceArray==null){
@@ -72,22 +58,6 @@ public class ScanFragment extends Fragment {
                 v.getContext().startActivity(intent);
             }
         });
-
-        Bundle extras = getArguments();
-        if (extras != null) {
-            deviceName = extras.getString("DeviceName");
-            if(deviceName ==null){
-                deviceName ="Unknown";
-            }
-            deviceAddress = extras.getString("DeviceAddress");
-            if(deviceAddress==null){
-                deviceAddress="Unknown";
-            }
-            BleDevice tempDevice=new BleDevice();
-            tempDevice.setDeviceInfo(deviceName,deviceAddress);
-            deviceArray.add(tempDevice);
-            writeDeviceToXML(getContext(),deviceArray);
-        }
 
         return root;
     }

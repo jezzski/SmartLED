@@ -3,8 +3,6 @@ package com.example.smartled.ui.scan;
 import android.content.Context;
 import android.util.Xml;
 
-import com.example.smartled.ui.led.LedChannel;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -14,7 +12,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BleDevice {
@@ -22,7 +19,7 @@ public class BleDevice {
     public String deviceAddress;
     public boolean active;
 
-    BleDevice(){
+    public BleDevice(){
         deviceName=null;
         deviceAddress=null;
         active=false;
@@ -30,6 +27,9 @@ public class BleDevice {
 
     public static BleDevice getActiveDevice(ArrayList<BleDevice> devices){
         BleDevice activeDevice=new BleDevice();
+        if(devices==null){
+            return null;
+        }
         for(BleDevice device:devices){
             if(device.isActive()){
                 activeDevice=device;
