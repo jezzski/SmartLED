@@ -58,17 +58,17 @@
 #define  PWRDNMONTH	0x1B	//MONTH
 
 //global RTC constants/bitmasks
-#define  ST	0x80	//START OSC					(RTCSEC REG)
-#define  LPYR 0x20	//MASK FOR LEAP YEAR		(RTCMTH REG)
-#define  PM	0x20	//post-meridian bit 		(RTCHOUR REG)
-#define  H12 0x40	//12 HOURS FORMAT			(RTCHOUR REG)
-#define  TRIMSIGN 0x80	//minus sign for the calibration reg
-#define  OUT 0x80	//= SET CLKO PIN			(CONTROL REG)
-#define  SQWEN 0x40	//enable SQWAVE ON CLKOUT	(CONTROL REG)
+#define  ST	0x80
+#define  LPYR 0x20
+#define  PM	0x20
+#define  H12 0x40
+#define  TRIMSIGN
+#define  OUT
+#define  SQWEN
 
-#define  OSCRUN	0x20	//state of the oscillator	(running/not)
-#define  VBATEN 0x08	//enable battery BACKUP		(RTCWKDAY REG)
-#define  PWRFAIL 0x10	//Flag for power failure	(RTCWKDAY REG)
+#define  OSCRUN
+#define  VBATEN
+#define  PWRFAIL
 
 #define RTC_TAG "RTC"
 
