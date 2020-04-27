@@ -1,4 +1,13 @@
-
+/**
+ * @file wifi.cpp
+ * @author Andy Yang (andyyeung123@gmail.com)
+ * @brief File to connect ESP32 to WiFi
+ * @version 0.1
+ * @date 2020-04-27
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

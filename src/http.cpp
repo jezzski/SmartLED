@@ -1,3 +1,13 @@
+/**
+ * @file http.cpp
+ * @author Andy Yang (andyyeung123@gmail.com)
+ * @brief File for hosting http server specific to LED controller/scheduler
+ * @version 0.1
+ * @date 2020-04-27
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
