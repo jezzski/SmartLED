@@ -1,4 +1,10 @@
 
+/** \file
+ * Description: Provides function definitions to connect to a WiFi network.
+ * \author: Primary: Andy Yeung, Secondary: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

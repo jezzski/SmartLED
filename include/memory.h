@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains function declarations and settings used by the memory subsystem. Functions are primarily used by other files to get and retrieve values from persistent memory.
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef MEMORY_H
 #define MEMORY_H
 

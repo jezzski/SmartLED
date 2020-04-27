@@ -1,3 +1,10 @@
+/** \file
+ * Description: Provides function definitions to start an RTOS task and interface with an external RTC (MCP79510)
+ * Part of the timing subsystem
+ * \author: Primary: Shipra Vaidya, Secondary: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #include "rtcdefine.h"
 
 spi_device_handle_t rtc;

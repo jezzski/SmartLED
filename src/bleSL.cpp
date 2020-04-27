@@ -1,3 +1,10 @@
+/** \file
+ * Description: 
+ * NOTE: based on esp-idf example code provided. (TODO: LINK HERE HUNAID)
+ * \author: Hunaid Puri
+ * \date last modified: 4/26/2020
+ */
+
 /*
    This example code is in the Public Domain (or CC0 licensed, at your option.)
    Unless required by applicable law or agreed to in writing, this

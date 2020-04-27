@@ -1768,11 +1768,11 @@ $(function() {
 <div class="line"><a name="l01696"></a><span class="lineno"> 1696</span>&#160;  }</div>
 <div class="line"><a name="l01697"></a><span class="lineno"> 1697</span>&#160;};</div>
 <div class="line"><a name="l01698"></a><span class="lineno"> 1698</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;<span class="keyword">typename</span> enable_if&lt;is_signed&lt;T&gt;::value, <span class="keywordtype">int</span>&gt;::type sign(<span class="keyword">const</span> T &amp;value) {</div>
+<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;<span class="keyword">typename</span> enable_if&lt;is_signed&lt;T&gt;::value, <span class="keywordtype">int</span>&gt;::type <a class="code" href="dawndusk_8h.html#a09f11d2057b22449a395bd4f02513a61">sign</a>(<span class="keyword">const</span> T &amp;value) {</div>
 <div class="line"><a name="l01700"></a><span class="lineno"> 1700</span>&#160;  <span class="keywordflow">return</span> value &lt; 0 ? -1 : value &gt; 0 ? 1 : 0;</div>
 <div class="line"><a name="l01701"></a><span class="lineno"> 1701</span>&#160;}</div>
 <div class="line"><a name="l01702"></a><span class="lineno"> 1702</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l01703"></a><span class="lineno"> 1703</span>&#160;<span class="keyword">typename</span> enable_if&lt;is_unsigned&lt;T&gt;::value, <span class="keywordtype">int</span>&gt;::type sign(<span class="keyword">const</span> T &amp;value) {</div>
+<div class="line"><a name="l01703"></a><span class="lineno"> 1703</span>&#160;<span class="keyword">typename</span> enable_if&lt;is_unsigned&lt;T&gt;::value, <span class="keywordtype">int</span>&gt;::type <a class="code" href="dawndusk_8h.html#a09f11d2057b22449a395bd4f02513a61">sign</a>(<span class="keyword">const</span> T &amp;value) {</div>
 <div class="line"><a name="l01704"></a><span class="lineno"> 1704</span>&#160;  <span class="keywordflow">return</span> value &gt; 0 ? 1 : 0;</div>
 <div class="line"><a name="l01705"></a><span class="lineno"> 1705</span>&#160;}</div>
 <div class="line"><a name="l01706"></a><span class="lineno"> 1706</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
@@ -1784,12 +1784,12 @@ $(function() {
 <div class="line"><a name="l01712"></a><span class="lineno"> 1712</span>&#160;  <span class="keywordtype">void</span> visitArray(<span class="keyword">const</span> CollectionData &amp;) {}</div>
 <div class="line"><a name="l01713"></a><span class="lineno"> 1713</span>&#160;  <span class="keywordtype">void</span> visitObject(<span class="keyword">const</span> CollectionData &amp;) {}</div>
 <div class="line"><a name="l01714"></a><span class="lineno"> 1714</span>&#160;  <span class="keywordtype">void</span> visitFloat(Float lhs) {</div>
-<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160;    result = sign(lhs - <span class="keyword">static_cast&lt;</span>Float<span class="keyword">&gt;</span>(rhs));</div>
+<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160;    result = <a class="code" href="dawndusk_8h.html#a09f11d2057b22449a395bd4f02513a61">sign</a>(lhs - <span class="keyword">static_cast&lt;</span>Float<span class="keyword">&gt;</span>(rhs));</div>
 <div class="line"><a name="l01716"></a><span class="lineno"> 1716</span>&#160;  }</div>
 <div class="line"><a name="l01717"></a><span class="lineno"> 1717</span>&#160;  <span class="keywordtype">void</span> visitString(<span class="keyword">const</span> <span class="keywordtype">char</span> *) {}</div>
 <div class="line"><a name="l01718"></a><span class="lineno"> 1718</span>&#160;  <span class="keywordtype">void</span> visitRawJson(<span class="keyword">const</span> <span class="keywordtype">char</span> *, <span class="keywordtype">size_t</span>) {}</div>
 <div class="line"><a name="l01719"></a><span class="lineno"> 1719</span>&#160;  <span class="keywordtype">void</span> visitNegativeInteger(UInt lhs) {</div>
-<div class="line"><a name="l01720"></a><span class="lineno"> 1720</span>&#160;    result = -sign(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(lhs) + rhs);</div>
+<div class="line"><a name="l01720"></a><span class="lineno"> 1720</span>&#160;    result = -<a class="code" href="dawndusk_8h.html#a09f11d2057b22449a395bd4f02513a61">sign</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(lhs) + rhs);</div>
 <div class="line"><a name="l01721"></a><span class="lineno"> 1721</span>&#160;  }</div>
 <div class="line"><a name="l01722"></a><span class="lineno"> 1722</span>&#160;  <span class="keywordtype">void</span> visitPositiveInteger(UInt lhs) {</div>
 <div class="line"><a name="l01723"></a><span class="lineno"> 1723</span>&#160;    result = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(lhs) &lt; rhs ? -1 : <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(lhs) &gt; rhs ? 1 : 0;</div>
@@ -2663,9 +2663,9 @@ $(function() {
 <div class="line"><a name="l02591"></a><span class="lineno"> 2591</span>&#160;  FORCE_INLINE VariantRef getElement(<span class="keywordtype">size_t</span> index)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l02592"></a><span class="lineno"> 2592</span>&#160;    <span class="keywordflow">return</span> VariantRef(_pool, _data ? _data-&gt;get(index) : 0);</div>
 <div class="line"><a name="l02593"></a><span class="lineno"> 2593</span>&#160;  }</div>
-<div class="line"><a name="l02594"></a><span class="lineno"> 2594</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(iterator it)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l02594"></a><span class="lineno"> 2594</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(iterator <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l02595"></a><span class="lineno"> 2595</span>&#160;    <span class="keywordflow">if</span> (!_data) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02596"></a><span class="lineno"> 2596</span>&#160;    _data-&gt;remove(it.internal());</div>
+<div class="line"><a name="l02596"></a><span class="lineno"> 2596</span>&#160;    _data-&gt;remove(<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>.internal());</div>
 <div class="line"><a name="l02597"></a><span class="lineno"> 2597</span>&#160;  }</div>
 <div class="line"><a name="l02598"></a><span class="lineno"> 2598</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(<span class="keywordtype">size_t</span> index)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l02599"></a><span class="lineno"> 2599</span>&#160;    <span class="keywordflow">if</span> (!_data) <span class="keywordflow">return</span>;</div>
@@ -3006,9 +3006,9 @@ $(function() {
 <div class="line"><a name="l02934"></a><span class="lineno"> 2934</span>&#160;  FORCE_INLINE <span class="keywordtype">bool</span> operator==(ObjectRef rhs)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l02935"></a><span class="lineno"> 2935</span>&#160;    <span class="keywordflow">return</span> objectEquals(_data, rhs._data);</div>
 <div class="line"><a name="l02936"></a><span class="lineno"> 2936</span>&#160;  }</div>
-<div class="line"><a name="l02937"></a><span class="lineno"> 2937</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(iterator it)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l02937"></a><span class="lineno"> 2937</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(iterator <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l02938"></a><span class="lineno"> 2938</span>&#160;    <span class="keywordflow">if</span> (!_data) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02939"></a><span class="lineno"> 2939</span>&#160;    _data-&gt;remove(it.internal());</div>
+<div class="line"><a name="l02939"></a><span class="lineno"> 2939</span>&#160;    _data-&gt;remove(<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>.internal());</div>
 <div class="line"><a name="l02940"></a><span class="lineno"> 2940</span>&#160;  }</div>
 <div class="line"><a name="l02941"></a><span class="lineno"> 2941</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> TString&gt;</div>
 <div class="line"><a name="l02942"></a><span class="lineno"> 2942</span>&#160;  FORCE_INLINE <span class="keywordtype">void</span> remove(<span class="keyword">const</span> TString&amp; key)<span class="keyword"> const </span>{</div>
@@ -3641,17 +3641,17 @@ $(function() {
 <div class="line"><a name="l03569"></a><span class="lineno"> 3569</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l03570"></a><span class="lineno"> 3570</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> copyArray(ArrayConstRef src, T* dst, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l03571"></a><span class="lineno"> 3571</span>&#160;  <span class="keywordtype">size_t</span> i = 0;</div>
-<div class="line"><a name="l03572"></a><span class="lineno"> 3572</span>&#160;  <span class="keywordflow">for</span> (ArrayConstRef::iterator it = src.begin(); it != src.end() &amp;&amp; i &lt; len;</div>
-<div class="line"><a name="l03573"></a><span class="lineno"> 3573</span>&#160;       ++it)</div>
-<div class="line"><a name="l03574"></a><span class="lineno"> 3574</span>&#160;    dst[i++] = *it;</div>
+<div class="line"><a name="l03572"></a><span class="lineno"> 3572</span>&#160;  <span class="keywordflow">for</span> (ArrayConstRef::iterator <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a> = src.begin(); <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a> != src.end() &amp;&amp; i &lt; len;</div>
+<div class="line"><a name="l03573"></a><span class="lineno"> 3573</span>&#160;       ++<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>)</div>
+<div class="line"><a name="l03574"></a><span class="lineno"> 3574</span>&#160;    dst[i++] = *<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>;</div>
 <div class="line"><a name="l03575"></a><span class="lineno"> 3575</span>&#160;  <span class="keywordflow">return</span> i;</div>
 <div class="line"><a name="l03576"></a><span class="lineno"> 3576</span>&#160;}</div>
 <div class="line"><a name="l03577"></a><span class="lineno"> 3577</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">size_t</span> N1, <span class="keywordtype">size_t</span> N2&gt;</div>
 <div class="line"><a name="l03578"></a><span class="lineno"> 3578</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> copyArray(ArrayConstRef src, T (&amp;dst)[N1][N2]) {</div>
 <div class="line"><a name="l03579"></a><span class="lineno"> 3579</span>&#160;  <span class="keywordtype">size_t</span> i = 0;</div>
-<div class="line"><a name="l03580"></a><span class="lineno"> 3580</span>&#160;  <span class="keywordflow">for</span> (ArrayConstRef::iterator it = src.begin(); it != src.end() &amp;&amp; i &lt; N1;</div>
-<div class="line"><a name="l03581"></a><span class="lineno"> 3581</span>&#160;       ++it) {</div>
-<div class="line"><a name="l03582"></a><span class="lineno"> 3582</span>&#160;    copyArray(it-&gt;as&lt;ArrayConstRef&gt;(), dst[i++]);</div>
+<div class="line"><a name="l03580"></a><span class="lineno"> 3580</span>&#160;  <span class="keywordflow">for</span> (ArrayConstRef::iterator <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a> = src.begin(); <a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a> != src.end() &amp;&amp; i &lt; N1;</div>
+<div class="line"><a name="l03581"></a><span class="lineno"> 3581</span>&#160;       ++<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>) {</div>
+<div class="line"><a name="l03582"></a><span class="lineno"> 3582</span>&#160;    copyArray(<a class="code" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a>-&gt;as&lt;ArrayConstRef&gt;(), dst[i++]);</div>
 <div class="line"><a name="l03583"></a><span class="lineno"> 3583</span>&#160;  }</div>
 <div class="line"><a name="l03584"></a><span class="lineno"> 3584</span>&#160;}</div>
 <div class="line"><a name="l03585"></a><span class="lineno"> 3585</span>&#160;<span class="keyword">inline</span> VariantSlot* CollectionData::addSlot(MemoryPool* pool) {</div>
@@ -5899,6 +5899,8 @@ $(function() {
 <div class="line"><a name="l05827"></a><span class="lineno"> 5827</span>&#160; </div>
 <div class="line"><a name="l05828"></a><span class="lineno"> 5828</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="adawndusk_8h_html_a09f11d2057b22449a395bd4f02513a61"><div class="ttname"><a href="dawndusk_8h.html#a09f11d2057b22449a395bd4f02513a61">sign</a></div><div class="ttdeci">int sign(double x)</div><div class="ttdoc">Checks sign of given value. If longitude value is negative, an offset is taken into account for dawn/...</div><div class="ttdef"><b>Definition:</b> dawndusk.cpp:17</div></div>
+<div class="ttc" id="adecode__bluetooth_8cpp_html_af42292f395fe5fabb2164c3a332349e4"><div class="ttname"><a href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a></div><div class="ttdeci">List * it</div><div class="ttdef"><b>Definition:</b> decode_bluetooth.cpp:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

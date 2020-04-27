@@ -68,7 +68,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">measurement.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -83,10 +84,36 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6861881b1f558319c8992e94c7aafb28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a6861881b1f558319c8992e94c7aafb28">init_oc</a> (void)</td></tr>
-<tr class="separator:a6861881b1f558319c8992e94c7aafb28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a634d87c7e64482f79d435817317b45e1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a634d87c7e64482f79d435817317b45e1">isCurrentFault</a> ()</td></tr>
+<tr class="memdesc:a634d87c7e64482f79d435817317b45e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the device is in shutdown from an overcurrent condition.  <a href="measurement_8cpp.html#a634d87c7e64482f79d435817317b45e1">More...</a><br /></td></tr>
+<tr class="separator:a634d87c7e64482f79d435817317b45e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4034b32733c6054374ae2cc49b477986"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a4034b32733c6054374ae2cc49b477986">isVoltageFault</a> ()</td></tr>
+<tr class="memdesc:a4034b32733c6054374ae2cc49b477986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the device is in shutdown from an overvoltage condition.  <a href="measurement_8cpp.html#a4034b32733c6054374ae2cc49b477986">More...</a><br /></td></tr>
+<tr class="separator:a4034b32733c6054374ae2cc49b477986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07bf4858a59432f3e2195e2ed9a2a1bf"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a07bf4858a59432f3e2195e2ed9a2a1bf">clearFaults</a> ()</td></tr>
+<tr class="memdesc:a07bf4858a59432f3e2195e2ed9a2a1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all faults from the system and allows outputs to be controlled again.  <a href="measurement_8cpp.html#a07bf4858a59432f3e2195e2ed9a2a1bf">More...</a><br /></td></tr>
+<tr class="separator:a07bf4858a59432f3e2195e2ed9a2a1bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade8ba3e0fa220d224381d6f7a9a3466b"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#ade8ba3e0fa220d224381d6f7a9a3466b">set_current_level</a> (double ampLimit)</td></tr>
+<tr class="memdesc:ade8ba3e0fa220d224381d6f7a9a3466b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current level that will trigger a fault.  <a href="measurement_8cpp.html#ade8ba3e0fa220d224381d6f7a9a3466b">More...</a><br /></td></tr>
+<tr class="separator:ade8ba3e0fa220d224381d6f7a9a3466b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19a5bf746191f1ffcaa1e51e99cf398d"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a19a5bf746191f1ffcaa1e51e99cf398d">set_voltage_level</a> (double voltLimit)</td></tr>
+<tr class="memdesc:a19a5bf746191f1ffcaa1e51e99cf398d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the voltage level that will trigger a fault.  <a href="measurement_8cpp.html#a19a5bf746191f1ffcaa1e51e99cf398d">More...</a><br /></td></tr>
+<tr class="separator:a19a5bf746191f1ffcaa1e51e99cf398d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8801756e9aa5799e792b4d4e3b5991c"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#ab8801756e9aa5799e792b4d4e3b5991c">init_oc</a> (void)</td></tr>
+<tr class="memdesc:ab8801756e9aa5799e792b4d4e3b5991c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the overcurrent and overvoltage detection systems. The previously used values will be set as the level, with defaults of 24 Volts and 2 Amps triggering faults.  <a href="measurement_8cpp.html#ab8801756e9aa5799e792b4d4e3b5991c">More...</a><br /></td></tr>
+<tr class="separator:ab8801756e9aa5799e792b4d4e3b5991c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a05d23750e71620683dd8981160c303a5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a05d23750e71620683dd8981160c303a5">currentFault</a> = 0</td></tr>
+<tr class="separator:a05d23750e71620683dd8981160c303a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d22fadde026ad94f97257f59d96b074"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="measurement_8cpp.html#a1d22fadde026ad94f97257f59d96b074">voltageFault</a> = 0</td></tr>
+<tr class="separator:a1d22fadde026ad94f97257f59d96b074"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: Contains function definitions to set up and detect overvoltage and overcurrent conditions. NOTE: This is basically just out outline. Needs significant testing with actual hardware before development can finish. </p><dl class="section author"><dt>Author</dt><dd>: Jesse Cannon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc3d101f633a076cc1ca84b85b6224b2">&#9670;&nbsp;</a></span>TAG</h2>
 
@@ -102,18 +129,164 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6861881b1f558319c8992e94c7aafb28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6861881b1f558319c8992e94c7aafb28">&#9670;&nbsp;</a></span>init_oc()</h2>
+<a id="a07bf4858a59432f3e2195e2ed9a2a1bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07bf4858a59432f3e2195e2ed9a2a1bf">&#9670;&nbsp;</a></span>clearFaults()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void init_oc </td>
+          <td class="memname">esp_err_t clearFaults </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears all faults from the system and allows outputs to be controlled again. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK if successfully re-enables outputs. ESP_FAIL if error occurs. </dd></dl>
+
+</div>
+</div>
+<a id="ab8801756e9aa5799e792b4d4e3b5991c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8801756e9aa5799e792b4d4e3b5991c">&#9670;&nbsp;</a></span>init_oc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t init_oc </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inits the overcurrent and overvoltage detection systems. The previously used values will be set as the level, with defaults of 24 Volts and 2 Amps triggering faults. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t </dd></dl>
+
+</div>
+</div>
+<a id="a634d87c7e64482f79d435817317b45e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a634d87c7e64482f79d435817317b45e1">&#9670;&nbsp;</a></span>isCurrentFault()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t isCurrentFault </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the device is in shutdown from an overcurrent condition. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t A value of 1 means that there is currently a fault. A value of 0 means there is no fault </dd></dl>
+
+</div>
+</div>
+<a id="a4034b32733c6054374ae2cc49b477986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4034b32733c6054374ae2cc49b477986">&#9670;&nbsp;</a></span>isVoltageFault()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t isVoltageFault </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the device is in shutdown from an overvoltage condition. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t A value of 1 means that there is currently a fault. A value of 0 means there is no fault </dd></dl>
+
+</div>
+</div>
+<a id="ade8ba3e0fa220d224381d6f7a9a3466b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8ba3e0fa220d224381d6f7a9a3466b">&#9670;&nbsp;</a></span>set_current_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t set_current_level </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ampLimit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the current level that will trigger a fault. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ampLimit</td><td>The current level to be used to determine faults, such as 1.1 Amps. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK if the new level was successfully set, else if error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a19a5bf746191f1ffcaa1e51e99cf398d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19a5bf746191f1ffcaa1e51e99cf398d">&#9670;&nbsp;</a></span>set_voltage_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t set_voltage_level </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>voltLimit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the voltage level that will trigger a fault. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">voltLimit</td><td>The voltage level to be used to determine faults, such as 12.5 Volts. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK if the new level was successfully set, else if error occurred. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a05d23750e71620683dd8981160c303a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d23750e71620683dd8981160c303a5">&#9670;&nbsp;</a></span>currentFault</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t currentFault = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d22fadde026ad94f97257f59d96b074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d22fadde026ad94f97257f59d96b074">&#9670;&nbsp;</a></span>voltageFault</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t voltageFault = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

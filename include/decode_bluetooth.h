@@ -1,3 +1,9 @@
+/** \file
+ * Description: 
+ * \author: Hunaid Puri
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef DECOME_BLUETOOTH_H
 #define DECODE_BLUETOOTH_H
 

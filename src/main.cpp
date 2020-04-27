@@ -1,6 +1,8 @@
-/*
-example used in alpha demonstration
-*/
+/** \file
+ * Description: Contains code to initialize and start 'IoT LED Controller Device' subsystems
+ * \author: Jesse Cannon, Hunaid Puri, Shipra Vaidya, Andy Yeung
+ * \date last modified: 4/26/2020
+ */
 
 //C libraries
 #include <stdio.h>

@@ -1,3 +1,10 @@
+/** \file
+ * Description: Contains function definitions to approximate dawn and dusk times based on latitude and longitude.
+ * This article was first published on Quantitative Ecology, and adapted from R-bloggers.
+ * \author: Shipra Vaidya
+ * \date last modified: 4/26/2020
+ */
+
 #include "dawndusk.h"
 
 //This article was first published on Quantitative Ecology, and adapted from R-bloggers.

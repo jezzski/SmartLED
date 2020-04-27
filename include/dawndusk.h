@@ -1,3 +1,9 @@
+/** \file
+ * Desciprtion: Contains function declarations and constants used in approximate dawn and dusk times.
+ * \author: Shipra Vaidya
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef DAWNDUSK_H
 #define DAWNDUSK_H
 

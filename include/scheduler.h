@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains functions available to start and manipulate the scheduler subsystem.
+ * \author: Jesse Cannon
+ * \date: 4/26/2020
+ */
+
 #ifndef SCHEDULE_H
 #define SCHEDULE_H
 

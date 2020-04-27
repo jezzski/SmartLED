@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wifi_5fconnected_5fbit_623',['WIFI_CONNECTED_BIT',['../wifi_8cpp.html#a16d5ed168aa11f4ff9f3ebbaf75a262f',1,'wifi.cpp']]]
+  ['voltagefault_783',['voltageFault',['../measurement_8cpp.html#a1d22fadde026ad94f97257f59d96b074',1,'measurement.cpp']]]
 ];

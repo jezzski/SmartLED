@@ -91,6 +91,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a64dcf99843774af5f3c203a9f928133b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ea5d00066436b526d22975b701fbba7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schedule___object.html#a9ea5d00066436b526d22975b701fbba7">repeat_time</a></td></tr>
 <tr class="separator:a9ea5d00066436b526d22975b701fbba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ba399aa574079f9f9446f5327187b3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schedule___object.html#a25ba399aa574079f9f9446f5327187b3">dawn</a></td></tr>
+<tr class="separator:a25ba399aa574079f9f9446f5327187b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac188b3dcff486626bab6aed73011b0a0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schedule___object.html#ac188b3dcff486626bab6aed73011b0a0">dusk</a></td></tr>
+<tr class="separator:ac188b3dcff486626bab6aed73011b0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bbbbb61d42d35340c8cd44a64109ae4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schedule___object.html#a4bbbbb61d42d35340c8cd44a64109ae4">isRGB</a></td></tr>
 <tr class="separator:a4bbbbb61d42d35340c8cd44a64109ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add45a8a0cdb095e0a12d90648bf5a1d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schedule___object.html#add45a8a0cdb095e0a12d90648bf5a1d4">brightness</a></td></tr>
@@ -135,6 +139,21 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a25ba399aa574079f9f9446f5327187b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ba399aa574079f9f9446f5327187b3">&#9670;&nbsp;</a></span>dawn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Schedule_Object::dawn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the schedule runs at dawn. Not compatable with repeat_time </p>
+
+</div>
+</div>
 <a id="a295c89fe1c03c38ffd06f7d35db801a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a295c89fe1c03c38ffd06f7d35db801a3">&#9670;&nbsp;</a></span>duration</h2>
 
@@ -147,6 +166,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The duration, in seconds, of the schedule. If set to the max value the schedule will run indefinitely. </p>
+
+</div>
+</div>
+<a id="ac188b3dcff486626bab6aed73011b0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac188b3dcff486626bab6aed73011b0a0">&#9670;&nbsp;</a></span>dusk</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Schedule_Object::dusk</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the schedule runs at dusk. Not compatable with repeat_time. </p>
 
 </div>
 </div>
@@ -266,7 +300,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An alternative way to have schedules repeat instead of by day. This field represents the time, in seconds, that the schedule repeats. The next start time is calculated by adding the current start time plus the repeat_time. Settings this field to 5 seconds means that the schedule's start is triggered every 5 seconds. </p>
+<p>An alternative way to have schedules repeat instead of by day. This field represents the time, in seconds, that the schedule repeats. The next start time is calculated by adding the current start time plus the repeat_time. Settings this field to 5 seconds means that the schedule's start is triggered every 5 seconds. If this field is enabled then repeat_mask and dawn/dusk will not work. </p>
 
 </div>
 </div>

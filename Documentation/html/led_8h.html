@@ -75,6 +75,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;esp_system.h&quot;</code><br />
+<code>#include &quot;esp_log.h&quot;</code><br />
 <code>#include &quot;driver/ledc.h&quot;</code><br />
 </div>
 <p><a href="led_8h_source.html">Go to the source code of this file.</a></p>
@@ -82,6 +83,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a433b3c7f01ae3b61b3f697d3411f1f8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a433b3c7f01ae3b61b3f697d3411f1f8e">GPIO_CHANNEL_0</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:a433b3c7f01ae3b61b3f697d3411f1f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin definitions for tech demo, needs to be changed for PCB.  <a href="led_8h.html#a433b3c7f01ae3b61b3f697d3411f1f8e">More...</a><br /></td></tr>
 <tr class="separator:a433b3c7f01ae3b61b3f697d3411f1f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f0172bedfc5bf880e406808cd6b5e4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a4f0172bedfc5bf880e406808cd6b5e4c">GPIO_CHANNEL_1</a>&#160;&#160;&#160;33</td></tr>
 <tr class="separator:a4f0172bedfc5bf880e406808cd6b5e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,20 +96,34 @@ Macros</h2></td></tr>
 <tr class="memitem:a983c8a5c0b8f9101bed223adb727b964"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a983c8a5c0b8f9101bed223adb727b964">GPIO_CHANNEL_5</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:a983c8a5c0b8f9101bed223adb727b964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5597ce31d23d11493e6e674fe257d73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">NUM_CHANNELS</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memdesc:ae5597ce31d23d11493e6e674fe257d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Six pwm channels supported as either six individual channels, two RGB channels, or combination of two.  <a href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">More...</a><br /></td></tr>
 <tr class="separator:ae5597ce31d23d11493e6e674fe257d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa6db81ddec240b96865d0c5b4c86404a"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aa6db81ddec240b96865d0c5b4c86404a">shutdown_outputs</a> (void)</td></tr>
+<tr class="memdesc:aa6db81ddec240b96865d0c5b4c86404a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state until clear_shutdown is called or device is reset.  <a href="led_8h.html#aa6db81ddec240b96865d0c5b4c86404a">More...</a><br /></td></tr>
+<tr class="separator:aa6db81ddec240b96865d0c5b4c86404a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7cf4cbb4dc27090a67c478f6547a7e6"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ac7cf4cbb4dc27090a67c478f6547a7e6">clear_shutdown</a> (void)</td></tr>
+<tr class="memdesc:ac7cf4cbb4dc27090a67c478f6547a7e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a shutdown state, allowing outputs to be controlled again.  <a href="led_8h.html#ac7cf4cbb4dc27090a67c478f6547a7e6">More...</a><br /></td></tr>
+<tr class="separator:ac7cf4cbb4dc27090a67c478f6547a7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab050692af95b693671e6bcb3fdc4af8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">init_channels</a> (void)</td></tr>
+<tr class="memdesc:ab050692af95b693671e6bcb3fdc4af8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize channels to set all timer and channel configurations.  <a href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">More...</a><br /></td></tr>
 <tr class="separator:ab050692af95b693671e6bcb3fdc4af8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20896bf2f99ce528eff7170d5b605522"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">channel_on</a> (uint8_t index, uint8_t brightness)</td></tr>
+<tr class="memdesc:a20896bf2f99ce528eff7170d5b605522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets brightness of individual channel to turn that output on.  <a href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">More...</a><br /></td></tr>
 <tr class="separator:a20896bf2f99ce528eff7170d5b605522"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92cec3c1563c68b948ac4e12e8e1ee34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">channel_off</a> (uint8_t index)</td></tr>
+<tr class="memdesc:a92cec3c1563c68b948ac4e12e8e1ee34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets brightness of individual channel to 0 to turn off channel output.  <a href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">More...</a><br /></td></tr>
 <tr class="separator:a92cec3c1563c68b948ac4e12e8e1ee34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78a8765f8f3c3b5a4d57d08e8d0596b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">set_color</a> (uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)</td></tr>
+<tr class="memdesc:ae78a8765f8f3c3b5a4d57d08e8d0596b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls RGB channel by changing R, G, and B based off chosen brightness.  <a href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">More...</a><br /></td></tr>
 <tr class="separator:ae78a8765f8f3c3b5a4d57d08e8d0596b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: Contains function declarations and settings to configure GPIO outputs to be used as PWM control for LED strips. </p><dl class="section author"><dt>Author</dt><dd>: Primary: Shipra Vaidya, Secondary: Jesse Cannon (shutdown features) </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a433b3c7f01ae3b61b3f697d3411f1f8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a433b3c7f01ae3b61b3f697d3411f1f8e">&#9670;&nbsp;</a></span>GPIO_CHANNEL_0</h2>
 
@@ -119,6 +135,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pin definitions for tech demo, needs to be changed for PCB. </p>
 
 </div>
 </div>
@@ -204,6 +222,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Six pwm channels supported as either six individual channels, two RGB channels, or combination of two. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -222,6 +242,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets brightness of individual channel to 0 to turn off channel output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Value between 0 and 5 corresponding to channel being controlled. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -251,6 +279,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets brightness of individual channel to turn that output on. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Value between 0 and 5 corresponding to channel being controlled. </td></tr>
+    <tr><td class="paramname">brightness</td><td>Value of brightness chosen per channel. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac7cf4cbb4dc27090a67c478f6547a7e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7cf4cbb4dc27090a67c478f6547a7e6">&#9670;&nbsp;</a></span>clear_shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t clear_shutdown </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears a shutdown state, allowing outputs to be controlled again. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK on success, ESP_FAIL if not in shutdown state. </dd></dl>
+
 </div>
 </div>
 <a id="ab050692af95b693671e6bcb3fdc4af8a"></a>
@@ -268,6 +326,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize channels to set all timer and channel configurations. </p>
 
 </div>
 </div>
@@ -314,6 +374,39 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Controls RGB channel by changing R, G, and B based off chosen brightness. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Value between 0 and 1 corrensponding to two supported RGB channel outputs repectively. </td></tr>
+    <tr><td class="paramname">r</td><td>R value of chosen color. </td></tr>
+    <tr><td class="paramname">g</td><td>G value of chosen color. </td></tr>
+    <tr><td class="paramname">b</td><td>B value of chosen color. </td></tr>
+    <tr><td class="paramname">brightness</td><td>Value of brightness chosen for RGB channel. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa6db81ddec240b96865d0c5b4c86404a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6db81ddec240b96865d0c5b4c86404a">&#9670;&nbsp;</a></span>shutdown_outputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t shutdown_outputs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state until clear_shutdown is called or device is reset. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK on success, ESP_FAIL if already in shutdown state. </dd></dl>
 
 </div>
 </div>

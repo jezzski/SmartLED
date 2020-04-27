@@ -86,7 +86,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a78b719a43444d4e4f5f2385da49e9bd5"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8cpp.html#a78b719a43444d4e4f5f2385da49e9bd5">create_schedule</a> (uint8_t <a class="el" href="structchannel.html">channel</a>, <a class="el" href="schedule__object_8h.html#ad41a8d7f4f56707a3f71c48dd235f3f4">schedule_object</a> s)</td></tr>
-<tr class="memdesc:a78b719a43444d4e4f5f2385da49e9bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a schedule to associate with the specified channel. TODO: overwrite schedule if already exists (conflicting ID/NAME)  <a href="scheduler_8cpp.html#a78b719a43444d4e4f5f2385da49e9bd5">More...</a><br /></td></tr>
+<tr class="memdesc:a78b719a43444d4e4f5f2385da49e9bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a schedule to associate with the specified channel. If the schedule already exists then it is replaced with the new schedule.  <a href="scheduler_8cpp.html#a78b719a43444d4e4f5f2385da49e9bd5">More...</a><br /></td></tr>
 <tr class="separator:a78b719a43444d4e4f5f2385da49e9bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5081964098978c38f471b2de8603a27"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scheduler_8cpp.html#ad5081964098978c38f471b2de8603a27">delete_schedule_by_id</a> (uint8_t <a class="el" href="structchannel.html">channel</a>, uint8_t ID)</td></tr>
 <tr class="memdesc:ad5081964098978c38f471b2de8603a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a schedule by ID.  <a href="scheduler_8cpp.html#ad5081964098978c38f471b2de8603a27">More...</a><br /></td></tr>
@@ -133,7 +133,10 @@ Variables</h2></td></tr>
 <tr class="memdesc:aca8a942c3063c28b0d97591dc004ac56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linked list associated with each channel. Can be used directly instead of scheduler functions if so desired.  <a href="scheduler_8cpp.html#aca8a942c3063c28b0d97591dc004ac56">More...</a><br /></td></tr>
 <tr class="separator:aca8a942c3063c28b0d97591dc004ac56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: Provides function definitions for running and maintaining repeating schedules as part of the scheduler subsystem. </p><dl class="section author"><dt>Author</dt><dd>: Jesse Cannon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afa99ec4acc4ecb2dc3c2d05da15d0e3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa99ec4acc4ecb2dc3c2d05da15d0e3f">&#9670;&nbsp;</a></span>MAX</h2>
 
@@ -217,7 +220,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Create a schedule to associate with the specified channel. TODO: overwrite schedule if already exists (conflicting ID/NAME) </p>
+<p>Create a schedule to associate with the specified channel. If the schedule already exists then it is replaced with the new schedule. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">channel</td><td>The channel that the schedule will be placed on. </td></tr>

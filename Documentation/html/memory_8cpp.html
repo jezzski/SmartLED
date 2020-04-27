@@ -77,23 +77,63 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a591e1da396c659df3988ae4f6e69d51a"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a591e1da396c659df3988ae4f6e69d51a">read_settings_to_buffer</a> (void)</td></tr>
+<tr class="separator:a591e1da396c659df3988ae4f6e69d51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a708c2efa97b8be7752b9faa9d6aee420"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a708c2efa97b8be7752b9faa9d6aee420">init_spiffs</a> (void)</td></tr>
 <tr class="separator:a708c2efa97b8be7752b9faa9d6aee420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adefe2a9e7fd37ce90f5dd6cd63bac51b"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">init_memory</a> (void)</td></tr>
+<tr class="memdesc:adefe2a9e7fd37ce90f5dd6cd63bac51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the memory system. Call this before calling any other memory related functions.  <a href="memory_8cpp.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">More...</a><br /></td></tr>
 <tr class="separator:adefe2a9e7fd37ce90f5dd6cd63bac51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add45089dc311bf9774194476ec2381d9"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#add45089dc311bf9774194476ec2381d9">recall_schedules</a> (void)</td></tr>
+<tr class="memdesc:add45089dc311bf9774194476ec2381d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recall schedules from persistent memory. All schedules recalled will now be located in the tespective channel's schedule list.  <a href="memory_8cpp.html#add45089dc311bf9774194476ec2381d9">More...</a><br /></td></tr>
 <tr class="separator:add45089dc311bf9774194476ec2381d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dbe582624d12db7baf738eb30ae10ed"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a8dbe582624d12db7baf738eb30ae10ed">store_schedules</a> (void)</td></tr>
+<tr class="memdesc:a8dbe582624d12db7baf738eb30ae10ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores all currently running schedules in persistent memory.  <a href="memory_8cpp.html#a8dbe582624d12db7baf738eb30ae10ed">More...</a><br /></td></tr>
 <tr class="separator:a8dbe582624d12db7baf738eb30ae10ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada332ab16933ad45df8ff3b06d631d73"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#ada332ab16933ad45df8ff3b06d631d73">clear_schedule_data</a> (void)</td></tr>
+<tr class="memdesc:ada332ab16933ad45df8ff3b06d631d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all schedules from persistent memory. Does not delete the schedules from the list.  <a href="memory_8cpp.html#ada332ab16933ad45df8ff3b06d631d73">More...</a><br /></td></tr>
 <tr class="separator:ada332ab16933ad45df8ff3b06d631d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a46f1e1030d53ac90d68b8cdc1cc87"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a47a46f1e1030d53ac90d68b8cdc1cc87">store_setting_string</a> (const char *name, char *setting)</td></tr>
+<tr class="memdesc:a47a46f1e1030d53ac90d68b8cdc1cc87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persistently store a string setting.  <a href="memory_8cpp.html#a47a46f1e1030d53ac90d68b8cdc1cc87">More...</a><br /></td></tr>
+<tr class="separator:a47a46f1e1030d53ac90d68b8cdc1cc87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8842404654d4aa9cb8128fb41df8110d"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a8842404654d4aa9cb8128fb41df8110d">store_setting_int</a> (const char *name, int setting)</td></tr>
+<tr class="memdesc:a8842404654d4aa9cb8128fb41df8110d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persistently store an integer setting.  <a href="memory_8cpp.html#a8842404654d4aa9cb8128fb41df8110d">More...</a><br /></td></tr>
+<tr class="separator:a8842404654d4aa9cb8128fb41df8110d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97caf43dfa0fcca1bd2c57a87c735b9c"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a97caf43dfa0fcca1bd2c57a87c735b9c">store_setting_byte</a> (const char *name, uint8_t setting)</td></tr>
+<tr class="memdesc:a97caf43dfa0fcca1bd2c57a87c735b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persistently store a byte setting.  <a href="memory_8cpp.html#a97caf43dfa0fcca1bd2c57a87c735b9c">More...</a><br /></td></tr>
+<tr class="separator:a97caf43dfa0fcca1bd2c57a87c735b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737a727de5414266238a820f0595cc72"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a737a727de5414266238a820f0595cc72">store_setting_double</a> (const char *name, double setting)</td></tr>
+<tr class="memdesc:a737a727de5414266238a820f0595cc72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persistently store a double setting.  <a href="memory_8cpp.html#a737a727de5414266238a820f0595cc72">More...</a><br /></td></tr>
+<tr class="separator:a737a727de5414266238a820f0595cc72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbc26f3ee8d27b5f7a235c47fe9bbb8e"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#adbc26f3ee8d27b5f7a235c47fe9bbb8e">get_setting_string</a> (const char *name, char *setting)</td></tr>
+<tr class="memdesc:adbc26f3ee8d27b5f7a235c47fe9bbb8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recall a persistent string setting.  <a href="memory_8cpp.html#adbc26f3ee8d27b5f7a235c47fe9bbb8e">More...</a><br /></td></tr>
+<tr class="separator:adbc26f3ee8d27b5f7a235c47fe9bbb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc18cc835281f83af3547f0c87e117e"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a3dc18cc835281f83af3547f0c87e117e">get_setting_int</a> (const char *name, int *setting)</td></tr>
+<tr class="memdesc:a3dc18cc835281f83af3547f0c87e117e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recall a persistent integer setting.  <a href="memory_8cpp.html#a3dc18cc835281f83af3547f0c87e117e">More...</a><br /></td></tr>
+<tr class="separator:a3dc18cc835281f83af3547f0c87e117e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7025f21e1658c33370505929d1f187"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a7c7025f21e1658c33370505929d1f187">get_setting_byte</a> (const char *name, uint8_t *setting)</td></tr>
+<tr class="memdesc:a7c7025f21e1658c33370505929d1f187"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recall a byte string setting. Uint8_t is equivalent to unsigned char.  <a href="memory_8cpp.html#a7c7025f21e1658c33370505929d1f187">More...</a><br /></td></tr>
+<tr class="separator:a7c7025f21e1658c33370505929d1f187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cdcee3a995268d19285d8fabd3f3256"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a7cdcee3a995268d19285d8fabd3f3256">get_setting_double</a> (const char *name, double *setting)</td></tr>
+<tr class="memdesc:a7cdcee3a995268d19285d8fabd3f3256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recall a persistent double setting. Exact storage depends on ArduinoJson configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included.  <a href="memory_8cpp.html#a7cdcee3a995268d19285d8fabd3f3256">More...</a><br /></td></tr>
+<tr class="separator:a7cdcee3a995268d19285d8fabd3f3256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff4328f57ccf70037c9ee94e694a0f73"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#aff4328f57ccf70037c9ee94e694a0f73">clear_setting_data</a> (void)</td></tr>
+<tr class="memdesc:aff4328f57ccf70037c9ee94e694a0f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear settings from persistent memory and RAM.  <a href="memory_8cpp.html#aff4328f57ccf70037c9ee94e694a0f73">More...</a><br /></td></tr>
+<tr class="separator:aff4328f57ccf70037c9ee94e694a0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ace0f8a77d1ad4389e753f55e6ae2ec4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#ace0f8a77d1ad4389e753f55e6ae2ec4a">bSPIFFS</a> = false</td></tr>
 <tr class="separator:ace0f8a77d1ad4389e753f55e6ae2ec4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dfe987a7f9ae18d0f79d599728f621b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#a2dfe987a7f9ae18d0f79d599728f621b">readNeeded</a> = true</td></tr>
+<tr class="separator:a2dfe987a7f9ae18d0f79d599728f621b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac588057d215917e1c5b3a96022256fb1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8cpp.html#ac588057d215917e1c5b3a96022256fb1">settingsString</a></td></tr>
+<tr class="separator:ac588057d215917e1c5b3a96022256fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: Contains function definitions and settings used by memory subsystem. Provides interface to store values in persistent memory in the JSON format using ArduinoJson-v6.14.1 </p><dl class="section author"><dt>Author</dt><dd>: Jesse Cannon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ada332ab16933ad45df8ff3b06d631d73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada332ab16933ad45df8ff3b06d631d73">&#9670;&nbsp;</a></span>clear_schedule_data()</h2>
 
@@ -109,6 +149,182 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Clears all schedules from persistent memory. Does not delete the schedules from the list. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="aff4328f57ccf70037c9ee94e694a0f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff4328f57ccf70037c9ee94e694a0f73">&#9670;&nbsp;</a></span>clear_setting_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t clear_setting_data </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear settings from persistent memory and RAM. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t ESP_OK on success. ESP_FAIL if error occurrs. </dd></dl>
+
+</div>
+</div>
+<a id="a7c7025f21e1658c33370505929d1f187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c7025f21e1658c33370505929d1f187">&#9670;&nbsp;</a></span>get_setting_byte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t get_setting_byte </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recall a byte string setting. Uint8_t is equivalent to unsigned char. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to recall. </td></tr>
+    <tr><td class="paramname">setting</td><td>The output of that setting. Set to NULL if not found, the value if found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail if not found or an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a7cdcee3a995268d19285d8fabd3f3256"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cdcee3a995268d19285d8fabd3f3256">&#9670;&nbsp;</a></span>get_setting_double()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t get_setting_double </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recall a persistent double setting. Exact storage depends on ArduinoJson configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to recall. </td></tr>
+    <tr><td class="paramname">setting</td><td>The output of that setting. Set to NULL if not found, the value if found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail if not found or an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a3dc18cc835281f83af3547f0c87e117e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dc18cc835281f83af3547f0c87e117e">&#9670;&nbsp;</a></span>get_setting_int()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t get_setting_int </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recall a persistent integer setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to recall. </td></tr>
+    <tr><td class="paramname">setting</td><td>The output of that setting. Set to NULL if not found, the value if found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail if not found or an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="adbc26f3ee8d27b5f7a235c47fe9bbb8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc26f3ee8d27b5f7a235c47fe9bbb8e">&#9670;&nbsp;</a></span>get_setting_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t get_setting_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recall a persistent string setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to recall. </td></tr>
+    <tr><td class="paramname">setting</td><td>The output of that setting. Set to NULL if not found, the value if found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail if not found or an error occurred. </dd></dl>
 
 </div>
 </div>
@@ -128,6 +344,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Starts the memory system. Call this before calling any other memory related functions. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
 </div>
 </div>
 <a id="a708c2efa97b8be7752b9faa9d6aee420"></a>
@@ -138,6 +357,24 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">esp_err_t init_spiffs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a591e1da396c659df3988ae4f6e69d51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a591e1da396c659df3988ae4f6e69d51a">&#9670;&nbsp;</a></span>read_settings_to_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t read_settings_to_buffer </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -164,6 +401,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Recall schedules from persistent memory. All schedules recalled will now be located in the tespective channel's schedule list. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
 </div>
 </div>
 <a id="a8dbe582624d12db7baf738eb30ae10ed"></a>
@@ -182,6 +422,161 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Stores all currently running schedules in persistent memory. </p>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a97caf43dfa0fcca1bd2c57a87c735b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97caf43dfa0fcca1bd2c57a87c735b9c">&#9670;&nbsp;</a></span>store_setting_byte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t store_setting_byte </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Persistently store a byte setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. </td></tr>
+    <tr><td class="paramname">setting</td><td>The setting to associate with the given name. Uint8_t is equivalent to an unsigned char. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a737a727de5414266238a820f0595cc72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737a727de5414266238a820f0595cc72">&#9670;&nbsp;</a></span>store_setting_double()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t store_setting_double </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Persistently store a double setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. </td></tr>
+    <tr><td class="paramname">setting</td><td>The setting to associate with the given name. Exact storage depends on ArduinoJson configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a8842404654d4aa9cb8128fb41df8110d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8842404654d4aa9cb8128fb41df8110d">&#9670;&nbsp;</a></span>store_setting_int()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t store_setting_int </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Persistently store an integer setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. </td></tr>
+    <tr><td class="paramname">setting</td><td>The setting to associate with the given name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a47a46f1e1030d53ac90d68b8cdc1cc87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a46f1e1030d53ac90d68b8cdc1cc87">&#9670;&nbsp;</a></span>store_setting_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t store_setting_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>setting</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Persistently store a string setting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. </td></tr>
+    <tr><td class="paramname">setting</td><td>The setting to associate with the given name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on success. ESP_Fail or related if an error occurred. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -193,6 +588,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool bSPIFFS = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2dfe987a7f9ae18d0f79d599728f621b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dfe987a7f9ae18d0f79d599728f621b">&#9670;&nbsp;</a></span>readNeeded</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool readNeeded = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac588057d215917e1c5b3a96022256fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac588057d215917e1c5b3a96022256fb1">&#9670;&nbsp;</a></span>settingsString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* settingsString</td>
         </tr>
       </table>
 </div><div class="memdoc">

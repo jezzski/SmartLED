@@ -70,37 +70,48 @@ $(function() {
 <div class="title">led.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="led_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LED_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LED_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">    #include &quot;esp_system.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    #include &quot;driver/ledc.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="led_8h.html#a433b3c7f01ae3b61b3f697d3411f1f8e">   10</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_0 32</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="led_8h.html#a4f0172bedfc5bf880e406808cd6b5e4c">   11</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_1 33</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="led_8h.html#ae66d9f4c742e468bb1bec4d89df7ea8e">   12</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_2 25</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="led_8h.html#a843992d6790ffd7480179ff87bc042a4">   13</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_3 19</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="led_8h.html#a8ce67f6b1d6cdd13a36a27b402f47949">   14</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_4 18</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="led_8h.html#a983c8a5c0b8f9101bed223adb727b964">   15</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_5 5</span></div>
+<a href="led_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef LED_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define LED_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">    #include &quot;esp_system.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    #include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    #include &quot;driver/ledc.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">   17</a></span>&#160;<span class="preprocessor">    #define NUM_CHANNELS 6</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">init_channels</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">channel_on</a>(uint8_t index, uint8_t brightness);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">channel_off</a>(uint8_t index);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">set_color</a>(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="led_8h.html#a433b3c7f01ae3b61b3f697d3411f1f8e">   21</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_0 32</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="led_8h.html#a4f0172bedfc5bf880e406808cd6b5e4c">   22</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_1 33</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="led_8h.html#ae66d9f4c742e468bb1bec4d89df7ea8e">   23</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_2 25</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="led_8h.html#a843992d6790ffd7480179ff87bc042a4">   24</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_3 19</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="led_8h.html#a8ce67f6b1d6cdd13a36a27b402f47949">   25</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_4 18</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="led_8h.html#a983c8a5c0b8f9101bed223adb727b964">   26</a></span>&#160;<span class="preprocessor">    #define GPIO_CHANNEL_5 5</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">   32</a></span>&#160;<span class="preprocessor">    #define NUM_CHANNELS 6</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    esp_err_t <a class="code" href="led_8h.html#aa6db81ddec240b96865d0c5b4c86404a">shutdown_outputs</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    esp_err_t <a class="code" href="led_8h.html#ac7cf4cbb4dc27090a67c478f6547a7e6">clear_shutdown</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">init_channels</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">channel_on</a>(uint8_t index, uint8_t brightness);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">channel_off</a>(uint8_t index);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">set_color</a>(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aled_8h_html_ab050692af95b693671e6bcb3fdc4af8a"><div class="ttname"><a href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">init_channels</a></div><div class="ttdeci">void init_channels(void)</div><div class="ttdef"><b>Definition:</b> led.cpp:12</div></div>
-<div class="ttc" id="aled_8h_html_ae78a8765f8f3c3b5a4d57d08e8d0596b"><div class="ttname"><a href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">set_color</a></div><div class="ttdeci">void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)</div><div class="ttdef"><b>Definition:</b> led.cpp:148</div></div>
-<div class="ttc" id="aled_8h_html_a20896bf2f99ce528eff7170d5b605522"><div class="ttname"><a href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">channel_on</a></div><div class="ttdeci">void channel_on(uint8_t index, uint8_t brightness)</div><div class="ttdef"><b>Definition:</b> led.cpp:83</div></div>
-<div class="ttc" id="aled_8h_html_a92cec3c1563c68b948ac4e12e8e1ee34"><div class="ttname"><a href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">channel_off</a></div><div class="ttdeci">void channel_off(uint8_t index)</div><div class="ttdef"><b>Definition:</b> led.cpp:116</div></div>
+<div class="ttc" id="aled_8h_html_ab050692af95b693671e6bcb3fdc4af8a"><div class="ttname"><a href="led_8h.html#ab050692af95b693671e6bcb3fdc4af8a">init_channels</a></div><div class="ttdeci">void init_channels(void)</div><div class="ttdoc">Initialize channels to set all timer and channel configurations.</div><div class="ttdef"><b>Definition:</b> led.cpp:53</div></div>
+<div class="ttc" id="aled_8h_html_ac7cf4cbb4dc27090a67c478f6547a7e6"><div class="ttname"><a href="led_8h.html#ac7cf4cbb4dc27090a67c478f6547a7e6">clear_shutdown</a></div><div class="ttdeci">esp_err_t clear_shutdown(void)</div><div class="ttdoc">Clears a shutdown state, allowing outputs to be controlled again.</div><div class="ttdef"><b>Definition:</b> led.cpp:39</div></div>
+<div class="ttc" id="aled_8h_html_ae78a8765f8f3c3b5a4d57d08e8d0596b"><div class="ttname"><a href="led_8h.html#ae78a8765f8f3c3b5a4d57d08e8d0596b">set_color</a></div><div class="ttdeci">void set_color(uint8_t index, uint16_t r, uint16_t g, uint16_t b, uint8_t brightness)</div><div class="ttdoc">Controls RGB channel by changing R, G, and B based off chosen brightness.</div><div class="ttdef"><b>Definition:</b> led.cpp:196</div></div>
+<div class="ttc" id="aled_8h_html_a20896bf2f99ce528eff7170d5b605522"><div class="ttname"><a href="led_8h.html#a20896bf2f99ce528eff7170d5b605522">channel_on</a></div><div class="ttdeci">void channel_on(uint8_t index, uint8_t brightness)</div><div class="ttdoc">Sets brightness of individual channel to turn that output on.</div><div class="ttdef"><b>Definition:</b> led.cpp:124</div></div>
+<div class="ttc" id="aled_8h_html_a92cec3c1563c68b948ac4e12e8e1ee34"><div class="ttname"><a href="led_8h.html#a92cec3c1563c68b948ac4e12e8e1ee34">channel_off</a></div><div class="ttdeci">void channel_off(uint8_t index)</div><div class="ttdoc">Sets brightness of individual channel to 0 to turn off channel output.</div><div class="ttdef"><b>Definition:</b> led.cpp:164</div></div>
+<div class="ttc" id="aled_8h_html_aa6db81ddec240b96865d0c5b4c86404a"><div class="ttname"><a href="led_8h.html#aa6db81ddec240b96865d0c5b4c86404a">shutdown_outputs</a></div><div class="ttdeci">esp_err_t shutdown_outputs(void)</div><div class="ttdoc">Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state unt...</div><div class="ttdef"><b>Definition:</b> led.cpp:20</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

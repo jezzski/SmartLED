@@ -70,43 +70,75 @@ $(function() {
 <div class="title">memory.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="memory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MEMORY_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MEMORY_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//external libraries</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_arduino_json-v6_814_81_8h.html">ArduinoJson-v6.14.1.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//c libraries</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sys/unistd.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//esp32 libraries</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="main_8h.html">main.h</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;esp_spiffs.h&quot;</span></div>
+<a href="memory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef MEMORY_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define MEMORY_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//external libraries</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_arduino_json-v6_814_81_8h.html">ArduinoJson-v6.14.1.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//c libraries</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;sys/unistd.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//project libraries</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scheduler_8h.html">scheduler.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;esp_err_t <a class="code" href="memory_8h.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">init_memory</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a8dbe582624d12db7baf738eb30ae10ed">store_schedules</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;esp_err_t <a class="code" href="memory_8h.html#add45089dc311bf9774194476ec2381d9">recall_schedules</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;esp_err_t <a class="code" href="memory_8h.html#ada332ab16933ad45df8ff3b06d631d73">clear_schedule_data</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//esp32 libraries</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="main_8h.html">main.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;esp_spiffs.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//project libraries</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scheduler_8h.html">scheduler.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="memory_8h.html#a23e877cf59fe5ff552235db010e2c87d">   33</a></span>&#160;<span class="preprocessor">#define SETTINGS_BUFFER_SIZE 512</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;esp_err_t <a class="code" href="memory_8h.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">init_memory</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a8dbe582624d12db7baf738eb30ae10ed">store_schedules</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;esp_err_t <a class="code" href="memory_8h.html#add45089dc311bf9774194476ec2381d9">recall_schedules</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;esp_err_t <a class="code" href="memory_8h.html#ada332ab16933ad45df8ff3b06d631d73">clear_schedule_data</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a47a46f1e1030d53ac90d68b8cdc1cc87">store_setting_string</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *setting);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a8842404654d4aa9cb8128fb41df8110d">store_setting_int</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> setting);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a97caf43dfa0fcca1bd2c57a87c735b9c">store_setting_byte</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, uint8_t setting);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a737a727de5414266238a820f0595cc72">store_setting_double</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">double</span> setting);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;esp_err_t <a class="code" href="memory_8h.html#adbc26f3ee8d27b5f7a235c47fe9bbb8e">get_setting_string</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *setting);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a3dc18cc835281f83af3547f0c87e117e">get_setting_int</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> *setting);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a7c7025f21e1658c33370505929d1f187">get_setting_byte</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, uint8_t *setting);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;esp_err_t <a class="code" href="memory_8h.html#a7cdcee3a995268d19285d8fabd3f3256">get_setting_double</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">double</span> *setting);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;esp_err_t <a class="code" href="memory_8h.html#aff4328f57ccf70037c9ee94e694a0f73">clear_setting_data</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amemory_8h_html_ada332ab16933ad45df8ff3b06d631d73"><div class="ttname"><a href="memory_8h.html#ada332ab16933ad45df8ff3b06d631d73">clear_schedule_data</a></div><div class="ttdeci">esp_err_t clear_schedule_data(void)</div><div class="ttdef"><b>Definition:</b> memory.cpp:207</div></div>
-<div class="ttc" id="amemory_8h_html_a8dbe582624d12db7baf738eb30ae10ed"><div class="ttname"><a href="memory_8h.html#a8dbe582624d12db7baf738eb30ae10ed">store_schedules</a></div><div class="ttdeci">esp_err_t store_schedules(void)</div><div class="ttdef"><b>Definition:</b> memory.cpp:146</div></div>
-<div class="ttc" id="amemory_8h_html_add45089dc311bf9774194476ec2381d9"><div class="ttname"><a href="memory_8h.html#add45089dc311bf9774194476ec2381d9">recall_schedules</a></div><div class="ttdeci">esp_err_t recall_schedules(void)</div><div class="ttdef"><b>Definition:</b> memory.cpp:59</div></div>
-<div class="ttc" id="amemory_8h_html_adefe2a9e7fd37ce90f5dd6cd63bac51b"><div class="ttname"><a href="memory_8h.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">init_memory</a></div><div class="ttdeci">esp_err_t init_memory(void)</div><div class="ttdef"><b>Definition:</b> memory.cpp:51</div></div>
+<div class="ttc" id="amemory_8h_html_a97caf43dfa0fcca1bd2c57a87c735b9c"><div class="ttname"><a href="memory_8h.html#a97caf43dfa0fcca1bd2c57a87c735b9c">store_setting_byte</a></div><div class="ttdeci">esp_err_t store_setting_byte(const char *name, uint8_t setting)</div><div class="ttdoc">Persistently store a byte setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:396</div></div>
+<div class="ttc" id="amemory_8h_html_ada332ab16933ad45df8ff3b06d631d73"><div class="ttname"><a href="memory_8h.html#ada332ab16933ad45df8ff3b06d631d73">clear_schedule_data</a></div><div class="ttdeci">esp_err_t clear_schedule_data(void)</div><div class="ttdoc">Clears all schedules from persistent memory. Does not delete the schedules from the list.</div><div class="ttdef"><b>Definition:</b> memory.cpp:261</div></div>
+<div class="ttc" id="amemory_8h_html_a8dbe582624d12db7baf738eb30ae10ed"><div class="ttname"><a href="memory_8h.html#a8dbe582624d12db7baf738eb30ae10ed">store_schedules</a></div><div class="ttdeci">esp_err_t store_schedules(void)</div><div class="ttdoc">Stores all currently running schedules in persistent memory.</div><div class="ttdef"><b>Definition:</b> memory.cpp:199</div></div>
+<div class="ttc" id="amemory_8h_html_a737a727de5414266238a820f0595cc72"><div class="ttname"><a href="memory_8h.html#a737a727de5414266238a820f0595cc72">store_setting_double</a></div><div class="ttdeci">esp_err_t store_setting_double(const char *name, double setting)</div><div class="ttdoc">Persistently store a double setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:449</div></div>
+<div class="ttc" id="amemory_8h_html_add45089dc311bf9774194476ec2381d9"><div class="ttname"><a href="memory_8h.html#add45089dc311bf9774194476ec2381d9">recall_schedules</a></div><div class="ttdeci">esp_err_t recall_schedules(void)</div><div class="ttdoc">Recall schedules from persistent memory. All schedules recalled will now be located in the tespective...</div><div class="ttdef"><b>Definition:</b> memory.cpp:111</div></div>
+<div class="ttc" id="amemory_8h_html_adefe2a9e7fd37ce90f5dd6cd63bac51b"><div class="ttname"><a href="memory_8h.html#adefe2a9e7fd37ce90f5dd6cd63bac51b">init_memory</a></div><div class="ttdeci">esp_err_t init_memory(void)</div><div class="ttdoc">Starts the memory system. Call this before calling any other memory related functions.</div><div class="ttdef"><b>Definition:</b> memory.cpp:93</div></div>
 <div class="ttc" id="ascheduler_8h_html"><div class="ttname"><a href="scheduler_8h.html">scheduler.h</a></div></div>
+<div class="ttc" id="amemory_8h_html_a8842404654d4aa9cb8128fb41df8110d"><div class="ttname"><a href="memory_8h.html#a8842404654d4aa9cb8128fb41df8110d">store_setting_int</a></div><div class="ttdeci">esp_err_t store_setting_int(const char *name, int setting)</div><div class="ttdoc">Persistently store an integer setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:343</div></div>
+<div class="ttc" id="amemory_8h_html_a7cdcee3a995268d19285d8fabd3f3256"><div class="ttname"><a href="memory_8h.html#a7cdcee3a995268d19285d8fabd3f3256">get_setting_double</a></div><div class="ttdeci">esp_err_t get_setting_double(const char *name, double *setting)</div><div class="ttdoc">Recall a persistent double setting. Exact storage depends on ArduinoJson configuration,...</div><div class="ttdef"><b>Definition:</b> memory.cpp:631</div></div>
+<div class="ttc" id="amemory_8h_html_a3dc18cc835281f83af3547f0c87e117e"><div class="ttname"><a href="memory_8h.html#a3dc18cc835281f83af3547f0c87e117e">get_setting_int</a></div><div class="ttdeci">esp_err_t get_setting_int(const char *name, int *setting)</div><div class="ttdoc">Recall a persistent integer setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:547</div></div>
 <div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div></div>
+<div class="ttc" id="amemory_8h_html_a47a46f1e1030d53ac90d68b8cdc1cc87"><div class="ttname"><a href="memory_8h.html#a47a46f1e1030d53ac90d68b8cdc1cc87">store_setting_string</a></div><div class="ttdeci">esp_err_t store_setting_string(const char *name, char *setting)</div><div class="ttdoc">Persistently store a string setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:290</div></div>
+<div class="ttc" id="amemory_8h_html_adbc26f3ee8d27b5f7a235c47fe9bbb8e"><div class="ttname"><a href="memory_8h.html#adbc26f3ee8d27b5f7a235c47fe9bbb8e">get_setting_string</a></div><div class="ttdeci">esp_err_t get_setting_string(const char *name, char *setting)</div><div class="ttdoc">Recall a persistent string setting.</div><div class="ttdef"><b>Definition:</b> memory.cpp:502</div></div>
+<div class="ttc" id="amemory_8h_html_a7c7025f21e1658c33370505929d1f187"><div class="ttname"><a href="memory_8h.html#a7c7025f21e1658c33370505929d1f187">get_setting_byte</a></div><div class="ttdeci">esp_err_t get_setting_byte(const char *name, uint8_t *setting)</div><div class="ttdoc">Recall a byte string setting. Uint8_t is equivalent to unsigned char.</div><div class="ttdef"><b>Definition:</b> memory.cpp:589</div></div>
 <div class="ttc" id="a_arduino_json-v6_814_81_8h_html"><div class="ttname"><a href="_arduino_json-v6_814_81_8h.html">ArduinoJson-v6.14.1.h</a></div></div>
+<div class="ttc" id="amemory_8h_html_aff4328f57ccf70037c9ee94e694a0f73"><div class="ttname"><a href="memory_8h.html#aff4328f57ccf70037c9ee94e694a0f73">clear_setting_data</a></div><div class="ttdeci">esp_err_t clear_setting_data(void)</div><div class="ttdoc">Clear settings from persistent memory and RAM.</div><div class="ttdef"><b>Definition:</b> memory.cpp:673</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

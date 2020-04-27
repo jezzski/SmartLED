@@ -87,25 +87,70 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a7638adf8cc7014fbde3c2c93006fdde8"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#a7638adf8cc7014fbde3c2c93006fdde8">init_http</a> (httpd_handle_t server)</td></tr>
+<tr class="memdesc:a7638adf8cc7014fbde3c2c93006fdde8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a http server with other handlers defined the file.  <a href="http_8h.html#a7638adf8cc7014fbde3c2c93006fdde8">More...</a><br /></td></tr>
 <tr class="separator:a7638adf8cc7014fbde3c2c93006fdde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83f4e437e31a317cb8ef289bb499d61"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#ab83f4e437e31a317cb8ef289bb499d61">homepage_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:ab83f4e437e31a317cb8ef289bb499d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve home/direct control page. Accessed when server receives "/" or "/index.html".  <a href="http_8h.html#ab83f4e437e31a317cb8ef289bb499d61">More...</a><br /></td></tr>
 <tr class="separator:ab83f4e437e31a317cb8ef289bb499d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae02d41c41bdfabbac1caf5f0ca495f7f"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#ae02d41c41bdfabbac1caf5f0ca495f7f">styles_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:ae02d41c41bdfabbac1caf5f0ca495f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve styles CSS page. Accessed when server receives "/styles.css".  <a href="http_8h.html#ae02d41c41bdfabbac1caf5f0ca495f7f">More...</a><br /></td></tr>
 <tr class="separator:ae02d41c41bdfabbac1caf5f0ca495f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac48af00fc792e81230c8452487320728"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#ac48af00fc792e81230c8452487320728">schedules_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:ac48af00fc792e81230c8452487320728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve schedules page. Accessed when server receives "/schedules.html".  <a href="http_8h.html#ac48af00fc792e81230c8452487320728">More...</a><br /></td></tr>
 <tr class="separator:ac48af00fc792e81230c8452487320728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa40f115e7e8edd95c03ecc5973827bb9"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#aa40f115e7e8edd95c03ecc5973827bb9">scripts_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:aa40f115e7e8edd95c03ecc5973827bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve scripts page. Accessed when server receives "/schedules.js".  <a href="http_8h.html#aa40f115e7e8edd95c03ecc5973827bb9">More...</a><br /></td></tr>
 <tr class="separator:aa40f115e7e8edd95c03ecc5973827bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a353a6fa151767f3974cdc9cbaeadb43b"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#a353a6fa151767f3974cdc9cbaeadb43b">schedule_post_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:a353a6fa151767f3974cdc9cbaeadb43b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to create new schedule. Accessed when server receives or "/post_sch".  <a href="http_8h.html#a353a6fa151767f3974cdc9cbaeadb43b">More...</a><br /></td></tr>
 <tr class="separator:a353a6fa151767f3974cdc9cbaeadb43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbeb8f07bb0a10422c80124683f86e30"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#acbeb8f07bb0a10422c80124683f86e30">favicon_ico_get_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:acbeb8f07bb0a10422c80124683f86e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve favicon. Accessed when server receives "/favicon.ico" - DOES NOT WORK.  <a href="http_8h.html#acbeb8f07bb0a10422c80124683f86e30">More...</a><br /></td></tr>
 <tr class="separator:acbeb8f07bb0a10422c80124683f86e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7b8132253dc6de7025bf2d8276e02ea"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#aa7b8132253dc6de7025bf2d8276e02ea">time_post_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:aa7b8132253dc6de7025bf2d8276e02ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to post time to esp32. Accessed when server receives "/time".  <a href="http_8h.html#aa7b8132253dc6de7025bf2d8276e02ea">More...</a><br /></td></tr>
 <tr class="separator:aa7b8132253dc6de7025bf2d8276e02ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe426694ca121997c05295df19716747"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#afe426694ca121997c05295df19716747">direct_control_post_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:afe426694ca121997c05295df19716747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for direct control. Access when server receives "/direct_control".  <a href="http_8h.html#afe426694ca121997c05295df19716747">More...</a><br /></td></tr>
+<tr class="separator:afe426694ca121997c05295df19716747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58637ae93f71294b6811227fe3b22d9a"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#a58637ae93f71294b6811227fe3b22d9a">sch_data_post_handler</a> (httpd_req_t *req)</td></tr>
+<tr class="memdesc:a58637ae93f71294b6811227fe3b22d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler to retrieve schedule data Access when server receives "/sch_data".  <a href="http_8h.html#a58637ae93f71294b6811227fe3b22d9a">More...</a><br /></td></tr>
+<tr class="separator:a58637ae93f71294b6811227fe3b22d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06af17a6b0583d8e1fe2bd3f9da67027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http_8h.html#a06af17a6b0583d8e1fe2bd3f9da67027">schTokenProcess</a> (char *str)</td></tr>
+<tr class="memdesc:a06af17a6b0583d8e1fe2bd3f9da67027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to process ";';"-delimited string. Parses out scheduing data and for schedule post handler.  <a href="http_8h.html#a06af17a6b0583d8e1fe2bd3f9da67027">More...</a><br /></td></tr>
 <tr class="separator:a06af17a6b0583d8e1fe2bd3f9da67027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: </p><dl class="section author"><dt>Author</dt><dd>: Andy Yeung </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="afe426694ca121997c05295df19716747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe426694ca121997c05295df19716747">&#9670;&nbsp;</a></span>direct_control_post_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t direct_control_post_handler </td>
+          <td>(</td>
+          <td class="paramtype">httpd_req_t *&#160;</td>
+          <td class="paramname"><em>req</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for direct control. Access when server receives "/direct_control". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
+
+</div>
+</div>
 <a id="acbeb8f07bb0a10422c80124683f86e30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acbeb8f07bb0a10422c80124683f86e30">&#9670;&nbsp;</a></span>favicon_ico_get_handler()</h2>
 
@@ -121,6 +166,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Handler to retrieve favicon. Accessed when server receives "/favicon.ico" - DOES NOT WORK. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
 
 </div>
 </div>
@@ -140,6 +194,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handler to retrieve home/direct control page. Accessed when server receives "/" or "/index.html". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
+
 </div>
 </div>
 <a id="a7638adf8cc7014fbde3c2c93006fdde8"></a>
@@ -157,6 +220,42 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initializes a http server with other handlers defined the file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>A handle for the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
+
+</div>
+</div>
+<a id="a58637ae93f71294b6811227fe3b22d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58637ae93f71294b6811227fe3b22d9a">&#9670;&nbsp;</a></span>sch_data_post_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t sch_data_post_handler </td>
+          <td>(</td>
+          <td class="paramtype">httpd_req_t *&#160;</td>
+          <td class="paramname"><em>req</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler to retrieve schedule data Access when server receives "/sch_data". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
 
 </div>
 </div>
@@ -176,6 +275,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handler to create new schedule. Accessed when server receives or "/post_sch". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
+
 </div>
 </div>
 <a id="ac48af00fc792e81230c8452487320728"></a>
@@ -193,6 +301,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Handler to retrieve schedules page. Accessed when server receives "/schedules.html". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
 
 </div>
 </div>
@@ -212,6 +329,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function to process ";';"-delimited string. Parses out scheduing data and for schedule post handler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Received string </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa40f115e7e8edd95c03ecc5973827bb9"></a>
@@ -229,6 +354,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Handler to retrieve scripts page. Accessed when server receives "/schedules.js". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
 
 </div>
 </div>
@@ -248,6 +382,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handler to retrieve styles CSS page. Accessed when server receives "/styles.css". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
+
 </div>
 </div>
 <a id="aa7b8132253dc6de7025bf2d8276e02ea"></a>
@@ -265,6 +408,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Handler to post time to esp32. Accessed when server receives "/time". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>An incoming HTTP request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>esp_err_t Returns ESP_OK on successful deletion. ESP_ERR_INVALID_ARG if channel number is invalid. ESP_ERR_NOT_FOUND if schedule not found </dd></dl>
 
 </div>
 </div>

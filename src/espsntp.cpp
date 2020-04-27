@@ -1,3 +1,10 @@
+/** \file
+ * Description: Contains function definitions to start the process of obtaining time from an SNTP server.
+ * NOTE: not tested with latest version of project. Was initially developed very early in project and abandoned for other priorites. 
+ * \author: Jesse Cannon (based on https://github.com/espressif/esp-idf/blob/5aa21584cfb4cfe4f2c7f6250151341e28141cf3/examples/protocols/sntp/main/sntp_example_main.c)
+ * \date last modified: 4/26/2020
+ */
+
 #include "espsntp.h"
 
 static const char *SNTP_TAG = "SNTP";

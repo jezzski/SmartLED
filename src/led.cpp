@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains function definitions to setup and manipulate GPIO outputs as PWM outputs for controlling LED strips
+ * \author: Primary: Shipra Vaidya, Secondary: Jesse Cannon (bugfixes and shutdown feature)
+ * \date last modified: 4/26/2020
+ */
+
 #include "led.h"
 
 struct channel

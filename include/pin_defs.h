@@ -1,3 +1,9 @@
+/** \file
+ * Description: Pin definitions for external hardware. Used by measurement subsystem for INA300 for overcurrent detection
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef PIN_DEFS_H
 #define PIN_DEFS_H
 

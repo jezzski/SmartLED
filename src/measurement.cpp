@@ -1,3 +1,10 @@
+/** \file
+ * Description: Contains function definitions to set up and detect overvoltage and overcurrent conditions.
+ * NOTE: This is basically just out outline. Needs significant testing with actual hardware before development can finish.
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #include "driver/gpio.h"
 #include "measurement.h"
 
@@ -56,7 +63,7 @@ esp_err_t set_current_level(double ampLimit)
     //the desired trip voltage is Iload x Rsense
     double Rsense = 50/1000; //50 mOhms
     double trip = ampLimit * Rsense;
-    if (trip > 3.3 || trip < 0)
+    if (trip > 2.1 || trip < 0)
     {
         ESP_LOGE(TAG, "set_current_level trip limit %lf is not valid for this device", trip);
         return ESP_FAIL;

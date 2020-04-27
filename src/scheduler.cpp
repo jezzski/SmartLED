@@ -1,6 +1,12 @@
+/** \file
+ * Description: Provides function definitions for running and maintaining repeating schedules as part of the scheduler subsystem.
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #include "scheduler.h"
 
-//todo: thread safe code
+//todo: thread safe code?
 
 //tag for logging
 const static char *SCHEDULE_TAG = "SCHEDULER";

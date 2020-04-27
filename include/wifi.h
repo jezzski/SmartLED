@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains function declarations to connect to a WiFi networking using SSID defined in wifi.cpp
+ * \author: Lead: Andy Yeung, Secondary: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef WIFI_H
 #define WIFI_H
 #include <string.h>

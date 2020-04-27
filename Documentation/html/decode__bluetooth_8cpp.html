@@ -67,7 +67,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">decode_bluetooth.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -80,15 +81,89 @@ $(function() {
 <code>#include &quot;<a class="el" href="scheduler_8h_source.html">scheduler.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="schedule__object_8h_source.html">schedule_object.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="espsntp_8h_source.html">espsntp.h</a>&quot;</code><br />
+<code>#include &quot;esp_gatts_api.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ac27f9600c5121c97b9477380a418c40c"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#ac27f9600c5121c97b9477380a418c40c">start_schedule_read</a> (uint8_t *packet, uint16_t handle)</td></tr>
+<tr class="separator:ac27f9600c5121c97b9477380a418c40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c0fa4d3101421598daf61af1885266"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a58c0fa4d3101421598daf61af1885266">set_schedule_read</a> (uint16_t handle)</td></tr>
+<tr class="separator:a58c0fa4d3101421598daf61af1885266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c46d112b58daa431c6c25fd2b51a161"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a1c46d112b58daa431c6c25fd2b51a161">decode_ble_time</a> (uint8_t *packet)</td></tr>
+<tr class="separator:a1c46d112b58daa431c6c25fd2b51a161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8eebd201ec20abb784c4d459316d7c"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a2a8eebd201ec20abb784c4d459316d7c">decode_ble_direct</a> (uint8_t *packet)</td></tr>
+<tr class="separator:a2a8eebd201ec20abb784c4d459316d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85fea850b61c98028c892add6df79e3"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#ac85fea850b61c98028c892add6df79e3">decode_ble_delete</a> (uint8_t *packet)</td></tr>
+<tr class="separator:ac85fea850b61c98028c892add6df79e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a076344a574e0aebc243b5a645d123086"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a076344a574e0aebc243b5a645d123086">decode_ble_schedule_name</a> (uint8_t *packet, uint16_t length)</td></tr>
+<tr class="separator:a076344a574e0aebc243b5a645d123086"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a585aa05559a79ac7bb48f6ce4edc4b38"><td class="memItemLeft" align="right" valign="top">esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a585aa05559a79ac7bb48f6ce4edc4b38">decode_ble_schedule</a> (uint8_t *packet)</td></tr>
 <tr class="separator:a585aa05559a79ac7bb48f6ce4edc4b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2e833028a85d85228142ed5a3ffe58a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#ac2e833028a85d85228142ed5a3ffe58a">get_Int32</a> (uint8_t *begin)</td></tr>
 <tr class="separator:ac2e833028a85d85228142ed5a3ffe58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a53efc3a1d4fc32d094c583f591aa44bf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a53efc3a1d4fc32d094c583f591aa44bf">schedule_value</a> [20]</td></tr>
+<tr class="separator:a53efc3a1d4fc32d094c583f591aa44bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f48d59bff96267e893262d6179e1491"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a2f48d59bff96267e893262d6179e1491">saved_channel_num</a></td></tr>
+<tr class="separator:a2f48d59bff96267e893262d6179e1491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaa8867aa93977babc154a428f5f4979"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#aaaa8867aa93977babc154a428f5f4979">schedule_name</a> [20]</td></tr>
+<tr class="separator:aaaa8867aa93977babc154a428f5f4979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8a942c3063c28b0d97591dc004ac56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="schedule__object_8h.html#a15d73e1d2632c5e43b9c694d4c96eada">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#aca8a942c3063c28b0d97591dc004ac56">schedules</a> [<a class="el" href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">NUM_CHANNELS</a>]</td></tr>
+<tr class="memdesc:aca8a942c3063c28b0d97591dc004ac56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linked list associated with each channel. Can be used directly instead of scheduler functions if so desired.  <a href="decode__bluetooth_8cpp.html#aca8a942c3063c28b0d97591dc004ac56">More...</a><br /></td></tr>
+<tr class="separator:aca8a942c3063c28b0d97591dc004ac56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af42292f395fe5fabb2164c3a332349e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="schedule__object_8h.html#a15d73e1d2632c5e43b9c694d4c96eada">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#af42292f395fe5fabb2164c3a332349e4">it</a></td></tr>
+<tr class="separator:af42292f395fe5fabb2164c3a332349e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d24448ecc115c2bc232c55ba6b46f67"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a7d24448ecc115c2bc232c55ba6b46f67">saved_name</a> [21]</td></tr>
+<tr class="separator:a7d24448ecc115c2bc232c55ba6b46f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbde4f5b44d5472ba4db9be0a16862d3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#acbde4f5b44d5472ba4db9be0a16862d3">saved_len</a></td></tr>
+<tr class="separator:acbde4f5b44d5472ba4db9be0a16862d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b57aa10271a66f3dc936bba1d2f3830"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a0b57aa10271a66f3dc936bba1d2f3830">state</a> =4</td></tr>
+<tr class="separator:a0b57aa10271a66f3dc936bba1d2f3830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e66ffb1846efca66264e5fbbe30ed2e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__bluetooth_8cpp.html#a2e66ffb1846efca66264e5fbbe30ed2e">done_string</a> [10] =&quot;Done Read&quot;</td></tr>
+<tr class="separator:a2e66ffb1846efca66264e5fbbe30ed2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Description: </p><dl class="section author"><dt>Author</dt><dd>: Hunaid Puri </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ac85fea850b61c98028c892add6df79e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac85fea850b61c98028c892add6df79e3">&#9670;&nbsp;</a></span>decode_ble_delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t decode_ble_delete </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>packet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a8eebd201ec20abb784c4d459316d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8eebd201ec20abb784c4d459316d7c">&#9670;&nbsp;</a></span>decode_ble_direct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t decode_ble_direct </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>packet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a585aa05559a79ac7bb48f6ce4edc4b38"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a585aa05559a79ac7bb48f6ce4edc4b38">&#9670;&nbsp;</a></span>decode_ble_schedule()</h2>
 
@@ -97,6 +172,52 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">esp_err_t decode_ble_schedule </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>packet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a076344a574e0aebc243b5a645d123086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a076344a574e0aebc243b5a645d123086">&#9670;&nbsp;</a></span>decode_ble_schedule_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t decode_ble_schedule_name </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c46d112b58daa431c6c25fd2b51a161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c46d112b58daa431c6c25fd2b51a161">&#9670;&nbsp;</a></span>decode_ble_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t decode_ble_time </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>packet</em></td><td>)</td>
@@ -119,6 +240,181 @@ Functions</h2></td></tr>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>begin</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58c0fa4d3101421598daf61af1885266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c0fa4d3101421598daf61af1885266">&#9670;&nbsp;</a></span>set_schedule_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t set_schedule_read </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac27f9600c5121c97b9477380a418c40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac27f9600c5121c97b9477380a418c40c">&#9670;&nbsp;</a></span>start_schedule_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t start_schedule_read </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a2e66ffb1846efca66264e5fbbe30ed2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e66ffb1846efca66264e5fbbe30ed2e">&#9670;&nbsp;</a></span>done_string</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t done_string[10] =&quot;Done Read&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af42292f395fe5fabb2164c3a332349e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af42292f395fe5fabb2164c3a332349e4">&#9670;&nbsp;</a></span>it</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="schedule__object_8h.html#a15d73e1d2632c5e43b9c694d4c96eada">List</a>* it</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f48d59bff96267e893262d6179e1491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f48d59bff96267e893262d6179e1491">&#9670;&nbsp;</a></span>saved_channel_num</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t saved_channel_num</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbde4f5b44d5472ba4db9be0a16862d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbde4f5b44d5472ba4db9be0a16862d3">&#9670;&nbsp;</a></span>saved_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t saved_len</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d24448ecc115c2bc232c55ba6b46f67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d24448ecc115c2bc232c55ba6b46f67">&#9670;&nbsp;</a></span>saved_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char saved_name[21]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaaa8867aa93977babc154a428f5f4979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaa8867aa93977babc154a428f5f4979">&#9670;&nbsp;</a></span>schedule_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char schedule_name[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53efc3a1d4fc32d094c583f591aa44bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53efc3a1d4fc32d094c583f591aa44bf">&#9670;&nbsp;</a></span>schedule_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t schedule_value[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca8a942c3063c28b0d97591dc004ac56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca8a942c3063c28b0d97591dc004ac56">&#9670;&nbsp;</a></span>schedules</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="schedule__object_8h.html#a15d73e1d2632c5e43b9c694d4c96eada">List</a>* schedules[<a class="el" href="led_8h.html#ae5597ce31d23d11493e6e674fe257d73">NUM_CHANNELS</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The linked list associated with each channel. Can be used directly instead of scheduler functions if so desired. </p>
+
+</div>
+</div>
+<a id="a0b57aa10271a66f3dc936bba1d2f3830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b57aa10271a66f3dc936bba1d2f3830">&#9670;&nbsp;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t state =4</td>
         </tr>
       </table>
 </div><div class="memdoc">

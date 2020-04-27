@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains function definitions and settings used by memory subsystem. Provides interface to store values in persistent memory in the JSON format using ArduinoJson-v6.14.1
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #include "memory.h"
 
 //tag for logging

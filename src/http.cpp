@@ -6,6 +6,12 @@
 #include "esp_wifi.h"
 #include "esp_event_loop.h"
 #include "esp_log.h"
+/** \file
+ * Description: 
+ * \author: Andy Yeung
+ * \date last modified: 4/26/2020
+ */
+
 #include "esp_http_server.h"
 
 #include "http.h"

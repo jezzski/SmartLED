@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains the definition of the data object used for schedules in the scheduler subsystem. Defines a simple linked list data structure to contain schedule data object.
+ * \author: Jesse Cannon
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef SCHEDULE_OBJECT_H
 #define SCHEDULE_OBJECT_H
 

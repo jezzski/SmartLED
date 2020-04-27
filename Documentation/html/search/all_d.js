@@ -1,12 +1,20 @@
 var searchData=
 [
-  ['perm_473',['perm',['../structgatts__profile__inst.html#afdc86e882144c2c17a39178766bf0db6',1,'gatts_profile_inst']]],
-  ['pin_5fdefs_2eh_474',['pin_defs.h',['../pin__defs_8h.html',1,'']]],
-  ['prepare_5fbuf_475',['prepare_buf',['../structprepare__type__env__t.html#a86277091728e8864d48925ccb1dd55c8',1,'prepare_type_env_t']]],
-  ['prepare_5fbuf_5fmax_5fsize_476',['PREPARE_BUF_MAX_SIZE',['../ble_s_l_8cpp.html#a7a3ec99addf88f1f771fd5303c51f75c',1,'bleSL.cpp']]],
-  ['prepare_5flen_477',['prepare_len',['../structprepare__type__env__t.html#a1e7990aa05a5d71f70d4c30f5fe2e83c',1,'prepare_type_env_t']]],
-  ['prepare_5ftype_5fenv_5ft_478',['prepare_type_env_t',['../structprepare__type__env__t.html',1,'']]],
-  ['profile_5fapp_5fidx_479',['PROFILE_APP_IDX',['../ble_s_l_8cpp.html#a7df7ac092d330d877b3f9b638eaa4d06',1,'bleSL.cpp']]],
-  ['profile_5fnum_480',['PROFILE_NUM',['../ble_s_l_8cpp.html#aab6353cb3662bdc672ae8ab90df529ce',1,'bleSL.cpp']]],
-  ['property_481',['property',['../structgatts__profile__inst.html#a3b2cb211709c89a53fecbfef7f57916f',1,'gatts_profile_inst']]]
+  ['perm_516',['perm',['../structgatts__profile__inst.html#afdc86e882144c2c17a39178766bf0db6',1,'gatts_profile_inst']]],
+  ['pi_517',['pi',['../dawndusk_8h.html#a1daf785e3f68d293c7caa1c756d5cb74',1,'dawndusk.h']]],
+  ['pin_5fdefs_2eh_518',['pin_defs.h',['../pin__defs_8h.html',1,'']]],
+  ['planedist_519',['planeDist',['../dawndusk_8h.html#a59fcee4e0d5b10684a562118bbba8e66',1,'dawndusk.h']]],
+  ['pm_520',['PM',['../rtcdefine_8h.html#a23c7d58108d99a089ce0824823e6b950',1,'rtcdefine.h']]],
+  ['prepare_5fbuf_521',['prepare_buf',['../structprepare__type__env__t.html#a86277091728e8864d48925ccb1dd55c8',1,'prepare_type_env_t']]],
+  ['prepare_5fbuf_5fmax_5fsize_522',['PREPARE_BUF_MAX_SIZE',['../ble_s_l_8cpp.html#a7a3ec99addf88f1f771fd5303c51f75c',1,'bleSL.cpp']]],
+  ['prepare_5flen_523',['prepare_len',['../structprepare__type__env__t.html#a1e7990aa05a5d71f70d4c30f5fe2e83c',1,'prepare_type_env_t']]],
+  ['prepare_5ftype_5fenv_5ft_524',['prepare_type_env_t',['../structprepare__type__env__t.html',1,'']]],
+  ['profile_5fapp_5fidx_525',['PROFILE_APP_IDX',['../ble_s_l_8cpp.html#a7df7ac092d330d877b3f9b638eaa4d06',1,'bleSL.cpp']]],
+  ['profile_5fnum_526',['PROFILE_NUM',['../ble_s_l_8cpp.html#aab6353cb3662bdc672ae8ab90df529ce',1,'bleSL.cpp']]],
+  ['property_527',['property',['../structgatts__profile__inst.html#a3b2cb211709c89a53fecbfef7f57916f',1,'gatts_profile_inst']]],
+  ['pwrdndate_528',['PWRDNDATE',['../rtcdefine_8h.html#a12a5fde0f96f9e6c7b0232526beb59b9',1,'rtcdefine.h']]],
+  ['pwrdnhour_529',['PWRDNHOUR',['../rtcdefine_8h.html#a1db986fc6919176ed53a52b633279608',1,'rtcdefine.h']]],
+  ['pwrdnmin_530',['PWRDNMIN',['../rtcdefine_8h.html#a8ce59d4327f38712cb11fe1d25361215',1,'rtcdefine.h']]],
+  ['pwrdnmonth_531',['PWRDNMONTH',['../rtcdefine_8h.html#a0dad36b486c6800d69d93d803cb1498c',1,'rtcdefine.h']]],
+  ['pwrfail_532',['PWRFAIL',['../rtcdefine_8h.html#ae9b0a27b5c7e757712002658fb631c2b',1,'rtcdefine.h']]]
 ];

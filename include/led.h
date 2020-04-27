@@ -1,3 +1,9 @@
+/** \file
+ * Description: Contains function declarations and settings to configure GPIO outputs to be used as PWM control for LED strips.
+ * \author: Primary: Shipra Vaidya, Secondary: Jesse Cannon (shutdown features)
+ * \date last modified: 4/26/2020
+ */
+
 #ifndef LED_H
 #define LED_H
 #ifdef _cplusplus
@@ -25,7 +31,18 @@ extern "C" {
      */
     #define NUM_CHANNELS 6
 
+    /**
+     * @brief Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state until clear_shutdown is called or device is reset.
+     * 
+     * @return esp_err_t ESP_OK on success, ESP_FAIL if already in shutdown state.
+     */
     esp_err_t shutdown_outputs(void);
+
+    /**
+     * @brief Clears a shutdown state, allowing outputs to be controlled again.
+     * 
+     * @return esp_err_t ESP_OK on success, ESP_FAIL if not in shutdown state.
+     */
     esp_err_t clear_shutdown(void);
 
     /**
