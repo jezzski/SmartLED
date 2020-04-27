@@ -1,4 +1,13 @@
-
+/**
+ * @file decode_bluetooth.cpp
+ * @author Hunaid Puri (hunaid14@gmail.com)
+ * @brief This file contains functions used to decode/set byte packets from GATT server.
+ * @version 0.1
+ * @date 2020-04-26
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
