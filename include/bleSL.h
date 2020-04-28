@@ -9,6 +9,9 @@
 
 
 
-
+/**
+ * @brief Initializes GATT Server.
+ * 
+ */
 void Init_Bluetooth(void);
 #endif

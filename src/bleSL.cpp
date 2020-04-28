@@ -1,10 +1,14 @@
-/** \file
- * Description: 
- * NOTE: based on esp-idf example code provided. (TODO: LINK HERE HUNAID)
- * \author: Hunaid Puri
- * \date last modified: 4/26/2020
+/**
+ * @file bleSL.cpp
+ * @author Hunaid Puri (hunaid14@gmail.com)
+ * @brief GATT server demo code used as base from esp-idf. 
+ * Most modifications made in Init_Bluetooth function and gatts_profile_event_handler callback.
+ * @version 0.1
+ * @date 2020-04-26
+ * 
+ * @copyright Copyright (c) 2020
+ * 
  */
-
 /*
    This example code is in the Public Domain (or CC0 licensed, at your option.)
    Unless required by applicable law or agreed to in writing, this
@@ -407,37 +411,6 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                     decode_ble_schedule(param->write.value);
                     decode_ble_time(param->write.value);
                     decode_ble_direct(param->write.value);
-                }
-                if (heart_rate_handle_table[IDX_CHAR_CFG_A] == param->write.handle && param->write.len == 2){
-                    uint16_t descr_value = param->write.value[1]<<8 | param->write.value[0];
-                    if (descr_value == 0x0001){
-                        ESP_LOGI(GATTS_TABLE_TAG, "notify enable");
-                        uint8_t notify_data[15];
-                        for (int i = 0; i < sizeof(notify_data); ++i)
-                        {
-                            notify_data[i] = i % 0xff;
-                        }
-                        //the size of notify_data[] need less than MTU size
-                        esp_ble_gatts_send_indicate(gatts_if, param->write.conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
-                                                sizeof(notify_data), notify_data, false);
-                    }else if (descr_value == 0x0002){
-                        ESP_LOGI(GATTS_TABLE_TAG, "indicate enable");
-                        uint8_t indicate_data[15];
-                        for (int i = 0; i < sizeof(indicate_data); ++i)
-                        {
-                            indicate_data[i] = i % 0xff;
-                        }
-                        //the size of indicate_data[] need less than MTU size
-                        esp_ble_gatts_send_indicate(gatts_if, param->write.conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
-                                            sizeof(indicate_data), indicate_data, true);
-                    }
-                    else if (descr_value == 0x0000){
-                        ESP_LOGI(GATTS_TABLE_TAG, "notify/indicate disable ");
-                    }else{
-                        ESP_LOGE(GATTS_TABLE_TAG, "unknown descr value");
-                        esp_log_buffer_hex(GATTS_TABLE_TAG, param->write.value, param->write.len);
-                    }
-
                 }
                 /* send response when param->write.need_rsp is true*/
                 if (param->write.need_rsp){
