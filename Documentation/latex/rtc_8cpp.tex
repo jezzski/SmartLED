@@ -1,0 +1,128 @@
+\hypertarget{rtc_8cpp}{}\doxysection{src/rtc.cpp File Reference}
+\label{rtc_8cpp}\index{src/rtc.cpp@{src/rtc.cpp}}
+{\ttfamily \#include \char`\"{}rtcdefine.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{rtc_8cpp_a6230db2fa66985a56a3b7b3a935dad2f}{rtc\+\_\+config}} (void)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtc_8cpp_ab4522a566b06239337ad8898e436dbfb}{read\+Data}} (uint32\+\_\+t addr, uint8\+\_\+t $\ast$out)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtc_8cpp_ac95f5163d29ce14000e6c3a2d48b55b9}{write\+Data}} (uint32\+\_\+t addr, uint8\+\_\+t data)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtc_8cpp_a026bf6139463c2b571c9f49bba4d3a13}{set\+Time}} (const struct tm $\ast$time)
+\begin{DoxyCompactList}\small\item\em Set the time of the external R\+TC to the specified value. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtc_8cpp_a286e8d20210646469ac6c736cc90fad9}{get\+Time}} (struct tm $\ast$out\+Time)
+\begin{DoxyCompactList}\small\item\em Get the current time on the external R\+TC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8cpp_a27626acf2f67a88a169a20ccce924adf}{R\+T\+C\+Handler}} (void $\ast$pv\+Parms)
+\begin{DoxyCompactList}\small\item\em The R\+T\+OS task that handles R\+TC related actions. This task syncrhonizes the esp32\textquotesingle{}s and R\+TC\textquotesingle{}s time. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtc_8cpp_aa48027addbf1c2a0bbfcba31bb80c9c7}{S\+T\+\_\+\+Start\+R\+T\+C\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Starts the R\+T\+OS task that handles R\+TC and esp32 time synchronization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+spi\+\_\+device\+\_\+handle\+\_\+t \mbox{\hyperlink{rtc_8cpp_acbe583f98aa389ef4b89ecff41e0681f}{rtc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Provides function definitions to start an R\+T\+OS task and interface with an external R\+TC (M\+C\+P79510) Part of the timing subsystem \begin{DoxyAuthor}{Author}
+\+: Primary\+: Shipra Vaidya, Secondary\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8cpp_a286e8d20210646469ac6c736cc90fad9}\label{rtc_8cpp_a286e8d20210646469ac6c736cc90fad9}} 
+\index{rtc.cpp@{rtc.cpp}!getTime@{getTime}}
+\index{getTime@{getTime}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Time (\begin{DoxyParamCaption}\item[{struct tm $\ast$}]{out\+Time }\end{DoxyParamCaption})}
+
+
+
+Get the current time on the external R\+TC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Time} & The current time on the R\+TC will be stored in this value. Check the return type against E\+S\+P\+\_\+\+OK to ensure this value was set correctly. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, else on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8cpp_ab4522a566b06239337ad8898e436dbfb}\label{rtc_8cpp_ab4522a566b06239337ad8898e436dbfb}} 
+\index{rtc.cpp@{rtc.cpp}!readData@{readData}}
+\index{readData@{readData}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t read\+Data (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rtc_8cpp_a6230db2fa66985a56a3b7b3a935dad2f}\label{rtc_8cpp_a6230db2fa66985a56a3b7b3a935dad2f}} 
+\index{rtc.cpp@{rtc.cpp}!rtc\_config@{rtc\_config}}
+\index{rtc\_config@{rtc\_config}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{rtc\_config()}{rtc\_config()}}
+{\footnotesize\ttfamily void rtc\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rtc_8cpp_a27626acf2f67a88a169a20ccce924adf}\label{rtc_8cpp_a27626acf2f67a88a169a20ccce924adf}} 
+\index{rtc.cpp@{rtc.cpp}!RTCHandler@{RTCHandler}}
+\index{RTCHandler@{RTCHandler}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{RTCHandler()}{RTCHandler()}}
+{\footnotesize\ttfamily void R\+T\+C\+Handler (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parms }\end{DoxyParamCaption})}
+
+
+
+The R\+T\+OS task that handles R\+TC related actions. This task syncrhonizes the esp32\textquotesingle{}s and R\+TC\textquotesingle{}s time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pv\+Parms} & Required parameter of R\+T\+OS tasks. Not used in this task. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{rtc_8cpp_a026bf6139463c2b571c9f49bba4d3a13}\label{rtc_8cpp_a026bf6139463c2b571c9f49bba4d3a13}} 
+\index{rtc.cpp@{rtc.cpp}!setTime@{setTime}}
+\index{setTime@{setTime}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Time (\begin{DoxyParamCaption}\item[{const struct tm $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+Set the time of the external R\+TC to the specified value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time to be set on the device. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, else on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8cpp_aa48027addbf1c2a0bbfcba31bb80c9c7}\label{rtc_8cpp_aa48027addbf1c2a0bbfcba31bb80c9c7}} 
+\index{rtc.cpp@{rtc.cpp}!ST\_StartRTCHandler@{ST\_StartRTCHandler}}
+\index{ST\_StartRTCHandler@{ST\_StartRTCHandler}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{ST\_StartRTCHandler()}{ST\_StartRTCHandler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t S\+T\+\_\+\+Start\+R\+T\+C\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Starts the R\+T\+OS task that handles R\+TC and esp32 time synchronization. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if task started successfully, else on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8cpp_ac95f5163d29ce14000e6c3a2d48b55b9}\label{rtc_8cpp_ac95f5163d29ce14000e6c3a2d48b55b9}} 
+\index{rtc.cpp@{rtc.cpp}!writeData@{writeData}}
+\index{writeData@{writeData}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t write\+Data (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{rtc_8cpp_acbe583f98aa389ef4b89ecff41e0681f}\label{rtc_8cpp_acbe583f98aa389ef4b89ecff41e0681f}} 
+\index{rtc.cpp@{rtc.cpp}!rtc@{rtc}}
+\index{rtc@{rtc}!rtc.cpp@{rtc.cpp}}
+\doxysubsubsection{\texorpdfstring{rtc}{rtc}}
+{\footnotesize\ttfamily spi\+\_\+device\+\_\+handle\+\_\+t rtc}
+

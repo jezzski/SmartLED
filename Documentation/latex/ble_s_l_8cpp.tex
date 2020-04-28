@@ -1,0 +1,195 @@
+\hypertarget{ble_s_l_8cpp}{}\doxysection{src/ble\+SL.cpp File Reference}
+\label{ble_s_l_8cpp}\index{src/bleSL.cpp@{src/bleSL.cpp}}
+
+
+G\+A\+TT server demo code used as base from esp-\/idf. Most modifications made in Init\+\_\+\+Bluetooth function and gatts\+\_\+profile\+\_\+event\+\_\+handler callback.  
+
+
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nvs\+\_\+flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+bt.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+gap\+\_\+ble\+\_\+api.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+gatts\+\_\+api.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+bt\+\_\+main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gatts\+\_\+table\+\_\+creat\+\_\+demo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+gatt\+\_\+common\+\_\+api.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ble\+S\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}decode\+\_\+bluetooth.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structprepare__type__env__t}{prepare\+\_\+type\+\_\+env\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structgatts__profile__inst}{gatts\+\_\+profile\+\_\+inst}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a23217e54123406489e602dc0da505f91}{G\+A\+T\+T\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+T\+AG}}~\char`\"{}G\+A\+T\+T\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+D\+E\+MO\char`\"{}
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_aab6353cb3662bdc672ae8ab90df529ce}{P\+R\+O\+F\+I\+L\+E\+\_\+\+N\+UM}}~1
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a7df7ac092d330d877b3f9b638eaa4d06}{P\+R\+O\+F\+I\+L\+E\+\_\+\+A\+P\+P\+\_\+\+I\+DX}}~0
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a7f58e13befd440c6ec2fba126a64c013}{E\+S\+P\+\_\+\+A\+P\+P\+\_\+\+ID}}~0x55
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a6c9ac144ab5d14ab60ca39e1c8f3af4f}{S\+A\+M\+P\+L\+E\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+A\+ME}}~\char`\"{}E\+S\+P\+\_\+\+G\+A\+T\+T\+S\+\_\+\+D\+E\+MO\char`\"{}
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_ae54f817fcc69f4bc2b95dec2288d4880}{S\+V\+C\+\_\+\+I\+N\+S\+T\+\_\+\+ID}}~0
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_af754f155149c2758e19af40c7b639f05}{G\+A\+T\+T\+S\+\_\+\+D\+E\+M\+O\+\_\+\+C\+H\+A\+R\+\_\+\+V\+A\+L\+\_\+\+L\+E\+N\+\_\+\+M\+AX}}~500
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a7a3ec99addf88f1f771fd5303c51f75c}{P\+R\+E\+P\+A\+R\+E\+\_\+\+B\+U\+F\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE}}~1024
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a36dab879c60ad380569b702ffb0caabf}{C\+H\+A\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE}}~(sizeof(uint8\+\_\+t))
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_a5d2f5677517e7c8fd4ee8e2287ebec3b}{A\+D\+V\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+AG}}~(1 $<$$<$ 0)
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_ad92fd6350531e23c955c71626296406c}{S\+C\+A\+N\+\_\+\+R\+S\+P\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+AG}}~(1 $<$$<$ 1)
+\item 
+\#define \mbox{\hyperlink{ble_s_l_8cpp_ac3849efd47f53c12f732ef588955975c}{C\+O\+N\+F\+I\+G\+\_\+\+S\+E\+T\+\_\+\+R\+A\+W\+\_\+\+A\+D\+V\+\_\+\+D\+A\+TA}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ble_s_l_8cpp_a9718fb84d97cf82fe29be100e62b06f8}{example\+\_\+prepare\+\_\+write\+\_\+event\+\_\+env}} (esp\+\_\+gatt\+\_\+if\+\_\+t gatts\+\_\+if, \mbox{\hyperlink{structprepare__type__env__t}{prepare\+\_\+type\+\_\+env\+\_\+t}} $\ast$prepare\+\_\+write\+\_\+env, esp\+\_\+ble\+\_\+gatts\+\_\+cb\+\_\+param\+\_\+t $\ast$param)
+\item 
+void \mbox{\hyperlink{ble_s_l_8cpp_a31f6cef4c1b2631dee831e788cff230d}{example\+\_\+exec\+\_\+write\+\_\+event\+\_\+env}} (\mbox{\hyperlink{structprepare__type__env__t}{prepare\+\_\+type\+\_\+env\+\_\+t}} $\ast$prepare\+\_\+write\+\_\+env, esp\+\_\+ble\+\_\+gatts\+\_\+cb\+\_\+param\+\_\+t $\ast$param)
+\item 
+void \mbox{\hyperlink{ble_s_l_8cpp_a4a56147c07b11bed93a7c43f3b2e6824}{Init\+\_\+\+Bluetooth}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes G\+A\+TT Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{ble_s_l_8cpp_ad16146ef2434e8774dc230d62baa14a9}{heart\+\_\+rate\+\_\+handle\+\_\+table}} \mbox{[}\mbox{\hyperlink{gatts__table__creat__demo_8h_a06fc87d81c62e9abb8790b6e5713c55ba2582736d1b2b7952142ddf07a8b5771d}{H\+R\+S\+\_\+\+I\+D\+X\+\_\+\+NB}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+G\+A\+TT server demo code used as base from esp-\/idf. Most modifications made in Init\+\_\+\+Bluetooth function and gatts\+\_\+profile\+\_\+event\+\_\+handler callback. 
+
+\begin{DoxyAuthor}{Author}
+Hunaid Puri (\href{mailto:hunaid14@gmail.com}{\texttt{ hunaid14@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/04-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ble_s_l_8cpp_a5d2f5677517e7c8fd4ee8e2287ebec3b}\label{ble_s_l_8cpp_a5d2f5677517e7c8fd4ee8e2287ebec3b}} 
+\index{bleSL.cpp@{bleSL.cpp}!ADV\_CONFIG\_FLAG@{ADV\_CONFIG\_FLAG}}
+\index{ADV\_CONFIG\_FLAG@{ADV\_CONFIG\_FLAG}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{ADV\_CONFIG\_FLAG}{ADV\_CONFIG\_FLAG}}
+{\footnotesize\ttfamily \#define A\+D\+V\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+AG~(1 $<$$<$ 0)}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a36dab879c60ad380569b702ffb0caabf}\label{ble_s_l_8cpp_a36dab879c60ad380569b702ffb0caabf}} 
+\index{bleSL.cpp@{bleSL.cpp}!CHAR\_DECLARATION\_SIZE@{CHAR\_DECLARATION\_SIZE}}
+\index{CHAR\_DECLARATION\_SIZE@{CHAR\_DECLARATION\_SIZE}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{CHAR\_DECLARATION\_SIZE}{CHAR\_DECLARATION\_SIZE}}
+{\footnotesize\ttfamily \#define C\+H\+A\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE~(sizeof(uint8\+\_\+t))}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_ac3849efd47f53c12f732ef588955975c}\label{ble_s_l_8cpp_ac3849efd47f53c12f732ef588955975c}} 
+\index{bleSL.cpp@{bleSL.cpp}!CONFIG\_SET\_RAW\_ADV\_DATA@{CONFIG\_SET\_RAW\_ADV\_DATA}}
+\index{CONFIG\_SET\_RAW\_ADV\_DATA@{CONFIG\_SET\_RAW\_ADV\_DATA}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SET\_RAW\_ADV\_DATA}{CONFIG\_SET\_RAW\_ADV\_DATA}}
+{\footnotesize\ttfamily \#define C\+O\+N\+F\+I\+G\+\_\+\+S\+E\+T\+\_\+\+R\+A\+W\+\_\+\+A\+D\+V\+\_\+\+D\+A\+TA}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a7f58e13befd440c6ec2fba126a64c013}\label{ble_s_l_8cpp_a7f58e13befd440c6ec2fba126a64c013}} 
+\index{bleSL.cpp@{bleSL.cpp}!ESP\_APP\_ID@{ESP\_APP\_ID}}
+\index{ESP\_APP\_ID@{ESP\_APP\_ID}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{ESP\_APP\_ID}{ESP\_APP\_ID}}
+{\footnotesize\ttfamily \#define E\+S\+P\+\_\+\+A\+P\+P\+\_\+\+ID~0x55}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_af754f155149c2758e19af40c7b639f05}\label{ble_s_l_8cpp_af754f155149c2758e19af40c7b639f05}} 
+\index{bleSL.cpp@{bleSL.cpp}!GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX@{GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX}}
+\index{GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX@{GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX}{GATTS\_DEMO\_CHAR\_VAL\_LEN\_MAX}}
+{\footnotesize\ttfamily \#define G\+A\+T\+T\+S\+\_\+\+D\+E\+M\+O\+\_\+\+C\+H\+A\+R\+\_\+\+V\+A\+L\+\_\+\+L\+E\+N\+\_\+\+M\+AX~500}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a23217e54123406489e602dc0da505f91}\label{ble_s_l_8cpp_a23217e54123406489e602dc0da505f91}} 
+\index{bleSL.cpp@{bleSL.cpp}!GATTS\_TABLE\_TAG@{GATTS\_TABLE\_TAG}}
+\index{GATTS\_TABLE\_TAG@{GATTS\_TABLE\_TAG}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{GATTS\_TABLE\_TAG}{GATTS\_TABLE\_TAG}}
+{\footnotesize\ttfamily \#define G\+A\+T\+T\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+T\+AG~\char`\"{}G\+A\+T\+T\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+D\+E\+MO\char`\"{}}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a7a3ec99addf88f1f771fd5303c51f75c}\label{ble_s_l_8cpp_a7a3ec99addf88f1f771fd5303c51f75c}} 
+\index{bleSL.cpp@{bleSL.cpp}!PREPARE\_BUF\_MAX\_SIZE@{PREPARE\_BUF\_MAX\_SIZE}}
+\index{PREPARE\_BUF\_MAX\_SIZE@{PREPARE\_BUF\_MAX\_SIZE}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{PREPARE\_BUF\_MAX\_SIZE}{PREPARE\_BUF\_MAX\_SIZE}}
+{\footnotesize\ttfamily \#define P\+R\+E\+P\+A\+R\+E\+\_\+\+B\+U\+F\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE~1024}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a7df7ac092d330d877b3f9b638eaa4d06}\label{ble_s_l_8cpp_a7df7ac092d330d877b3f9b638eaa4d06}} 
+\index{bleSL.cpp@{bleSL.cpp}!PROFILE\_APP\_IDX@{PROFILE\_APP\_IDX}}
+\index{PROFILE\_APP\_IDX@{PROFILE\_APP\_IDX}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{PROFILE\_APP\_IDX}{PROFILE\_APP\_IDX}}
+{\footnotesize\ttfamily \#define P\+R\+O\+F\+I\+L\+E\+\_\+\+A\+P\+P\+\_\+\+I\+DX~0}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_aab6353cb3662bdc672ae8ab90df529ce}\label{ble_s_l_8cpp_aab6353cb3662bdc672ae8ab90df529ce}} 
+\index{bleSL.cpp@{bleSL.cpp}!PROFILE\_NUM@{PROFILE\_NUM}}
+\index{PROFILE\_NUM@{PROFILE\_NUM}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{PROFILE\_NUM}{PROFILE\_NUM}}
+{\footnotesize\ttfamily \#define P\+R\+O\+F\+I\+L\+E\+\_\+\+N\+UM~1}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a6c9ac144ab5d14ab60ca39e1c8f3af4f}\label{ble_s_l_8cpp_a6c9ac144ab5d14ab60ca39e1c8f3af4f}} 
+\index{bleSL.cpp@{bleSL.cpp}!SAMPLE\_DEVICE\_NAME@{SAMPLE\_DEVICE\_NAME}}
+\index{SAMPLE\_DEVICE\_NAME@{SAMPLE\_DEVICE\_NAME}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_DEVICE\_NAME}{SAMPLE\_DEVICE\_NAME}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+N\+A\+ME~\char`\"{}E\+S\+P\+\_\+\+G\+A\+T\+T\+S\+\_\+\+D\+E\+MO\char`\"{}}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_ad92fd6350531e23c955c71626296406c}\label{ble_s_l_8cpp_ad92fd6350531e23c955c71626296406c}} 
+\index{bleSL.cpp@{bleSL.cpp}!SCAN\_RSP\_CONFIG\_FLAG@{SCAN\_RSP\_CONFIG\_FLAG}}
+\index{SCAN\_RSP\_CONFIG\_FLAG@{SCAN\_RSP\_CONFIG\_FLAG}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{SCAN\_RSP\_CONFIG\_FLAG}{SCAN\_RSP\_CONFIG\_FLAG}}
+{\footnotesize\ttfamily \#define S\+C\+A\+N\+\_\+\+R\+S\+P\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+AG~(1 $<$$<$ 1)}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_ae54f817fcc69f4bc2b95dec2288d4880}\label{ble_s_l_8cpp_ae54f817fcc69f4bc2b95dec2288d4880}} 
+\index{bleSL.cpp@{bleSL.cpp}!SVC\_INST\_ID@{SVC\_INST\_ID}}
+\index{SVC\_INST\_ID@{SVC\_INST\_ID}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{SVC\_INST\_ID}{SVC\_INST\_ID}}
+{\footnotesize\ttfamily \#define S\+V\+C\+\_\+\+I\+N\+S\+T\+\_\+\+ID~0}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ble_s_l_8cpp_a31f6cef4c1b2631dee831e788cff230d}\label{ble_s_l_8cpp_a31f6cef4c1b2631dee831e788cff230d}} 
+\index{bleSL.cpp@{bleSL.cpp}!example\_exec\_write\_event\_env@{example\_exec\_write\_event\_env}}
+\index{example\_exec\_write\_event\_env@{example\_exec\_write\_event\_env}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{example\_exec\_write\_event\_env()}{example\_exec\_write\_event\_env()}}
+{\footnotesize\ttfamily void example\+\_\+exec\+\_\+write\+\_\+event\+\_\+env (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprepare__type__env__t}{prepare\+\_\+type\+\_\+env\+\_\+t}} $\ast$}]{prepare\+\_\+write\+\_\+env,  }\item[{esp\+\_\+ble\+\_\+gatts\+\_\+cb\+\_\+param\+\_\+t $\ast$}]{param }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a9718fb84d97cf82fe29be100e62b06f8}\label{ble_s_l_8cpp_a9718fb84d97cf82fe29be100e62b06f8}} 
+\index{bleSL.cpp@{bleSL.cpp}!example\_prepare\_write\_event\_env@{example\_prepare\_write\_event\_env}}
+\index{example\_prepare\_write\_event\_env@{example\_prepare\_write\_event\_env}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{example\_prepare\_write\_event\_env()}{example\_prepare\_write\_event\_env()}}
+{\footnotesize\ttfamily void example\+\_\+prepare\+\_\+write\+\_\+event\+\_\+env (\begin{DoxyParamCaption}\item[{esp\+\_\+gatt\+\_\+if\+\_\+t}]{gatts\+\_\+if,  }\item[{\mbox{\hyperlink{structprepare__type__env__t}{prepare\+\_\+type\+\_\+env\+\_\+t}} $\ast$}]{prepare\+\_\+write\+\_\+env,  }\item[{esp\+\_\+ble\+\_\+gatts\+\_\+cb\+\_\+param\+\_\+t $\ast$}]{param }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ble_s_l_8cpp_a4a56147c07b11bed93a7c43f3b2e6824}\label{ble_s_l_8cpp_a4a56147c07b11bed93a7c43f3b2e6824}} 
+\index{bleSL.cpp@{bleSL.cpp}!Init\_Bluetooth@{Init\_Bluetooth}}
+\index{Init\_Bluetooth@{Init\_Bluetooth}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{Init\_Bluetooth()}{Init\_Bluetooth()}}
+{\footnotesize\ttfamily void Init\+\_\+\+Bluetooth (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes G\+A\+TT Server. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ble_s_l_8cpp_ad16146ef2434e8774dc230d62baa14a9}\label{ble_s_l_8cpp_ad16146ef2434e8774dc230d62baa14a9}} 
+\index{bleSL.cpp@{bleSL.cpp}!heart\_rate\_handle\_table@{heart\_rate\_handle\_table}}
+\index{heart\_rate\_handle\_table@{heart\_rate\_handle\_table}!bleSL.cpp@{bleSL.cpp}}
+\doxysubsubsection{\texorpdfstring{heart\_rate\_handle\_table}{heart\_rate\_handle\_table}}
+{\footnotesize\ttfamily uint16\+\_\+t heart\+\_\+rate\+\_\+handle\+\_\+table\mbox{[}\mbox{\hyperlink{gatts__table__creat__demo_8h_a06fc87d81c62e9abb8790b6e5713c55ba2582736d1b2b7952142ddf07a8b5771d}{H\+R\+S\+\_\+\+I\+D\+X\+\_\+\+NB}}\mbox{]}}
+

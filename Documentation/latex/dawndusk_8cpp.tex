@@ -1,0 +1,114 @@
+\hypertarget{dawndusk_8cpp}{}\doxysection{src/dawndusk.cpp File Reference}
+\label{dawndusk_8cpp}\index{src/dawndusk.cpp@{src/dawndusk.cpp}}
+{\ttfamily \#include \char`\"{}dawndusk.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{dawndusk_8cpp_a7ffcbaffd00f005db97cc34773deabc9}{deg\+To\+Rad}} (double deg)
+\begin{DoxyCompactList}\small\item\em Convert degrees to radians. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dawndusk_8cpp_a09f11d2057b22449a395bd4f02513a61}{sign}} (double x)
+\begin{DoxyCompactList}\small\item\em Checks sign of given value. If longitude value is negative, an offset is taken into account for dawn/duck calculations. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{dawndusk_8cpp_a613b5ba6eb0eafdb8f59e489387eb2e3}{dawn\+Calc}} (int day, int month, int year, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Calculation of approximate dawn time based on given day and location. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{dawndusk_8cpp_a103f5b99a9a68e30e8aca3e210ce14f9}{dusk\+Calc}} (int day, int month, int year, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Calculation of approximate dusk time based on given day and location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function definitions to approximate dawn and dusk times based on latitude and longitude. This article was first published on Quantitative Ecology, and adapted from R-\/bloggers. \begin{DoxyAuthor}{Author}
+\+: Shipra Vaidya 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dawndusk_8cpp_a613b5ba6eb0eafdb8f59e489387eb2e3}\label{dawndusk_8cpp_a613b5ba6eb0eafdb8f59e489387eb2e3}} 
+\index{dawndusk.cpp@{dawndusk.cpp}!dawnCalc@{dawnCalc}}
+\index{dawnCalc@{dawnCalc}!dawndusk.cpp@{dawndusk.cpp}}
+\doxysubsubsection{\texorpdfstring{dawnCalc()}{dawnCalc()}}
+{\footnotesize\ttfamily double dawn\+Calc (\begin{DoxyParamCaption}\item[{int}]{day,  }\item[{int}]{month,  }\item[{int}]{year,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Calculation of approximate dawn time based on given day and location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Numerical value, day of month. \\
+\hline
+{\em month} & Numerical value, month in year. \\
+\hline
+{\em year} & Numerical value, year. \\
+\hline
+{\em latitude} & Degree value of latitude from user\textquotesingle{}s location. \\
+\hline
+{\em longitude} & Degree value of longitude from user\textquotesingle{}s location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns approximate time of dawn on given date at given location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8cpp_a7ffcbaffd00f005db97cc34773deabc9}\label{dawndusk_8cpp_a7ffcbaffd00f005db97cc34773deabc9}} 
+\index{dawndusk.cpp@{dawndusk.cpp}!degToRad@{degToRad}}
+\index{degToRad@{degToRad}!dawndusk.cpp@{dawndusk.cpp}}
+\doxysubsubsection{\texorpdfstring{degToRad()}{degToRad()}}
+{\footnotesize\ttfamily double deg\+To\+Rad (\begin{DoxyParamCaption}\item[{double}]{deg }\end{DoxyParamCaption})}
+
+
+
+Convert degrees to radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deg} & Latitude or longitude value in degrees. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns converted value in radians. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8cpp_a103f5b99a9a68e30e8aca3e210ce14f9}\label{dawndusk_8cpp_a103f5b99a9a68e30e8aca3e210ce14f9}} 
+\index{dawndusk.cpp@{dawndusk.cpp}!duskCalc@{duskCalc}}
+\index{duskCalc@{duskCalc}!dawndusk.cpp@{dawndusk.cpp}}
+\doxysubsubsection{\texorpdfstring{duskCalc()}{duskCalc()}}
+{\footnotesize\ttfamily double dusk\+Calc (\begin{DoxyParamCaption}\item[{int}]{day,  }\item[{int}]{month,  }\item[{int}]{year,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Calculation of approximate dusk time based on given day and location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Numerical value, day of month. \\
+\hline
+{\em month} & Numerical value, month in year. \\
+\hline
+{\em year} & Numerical value, year. \\
+\hline
+{\em latitude} & Degree value of latitude from user\textquotesingle{}s location. \\
+\hline
+{\em longitude} & Degree value of longitude from user\textquotesingle{}s location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns approximate time of dusk on given date at given location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8cpp_a09f11d2057b22449a395bd4f02513a61}\label{dawndusk_8cpp_a09f11d2057b22449a395bd4f02513a61}} 
+\index{dawndusk.cpp@{dawndusk.cpp}!sign@{sign}}
+\index{sign@{sign}!dawndusk.cpp@{dawndusk.cpp}}
+\doxysubsubsection{\texorpdfstring{sign()}{sign()}}
+{\footnotesize\ttfamily int sign (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+Checks sign of given value. If longitude value is negative, an offset is taken into account for dawn/duck calculations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Value of longitude. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 1 if positive, -\/1 if negative, to be multiplied in offset calculation. 
+\end{DoxyReturn}

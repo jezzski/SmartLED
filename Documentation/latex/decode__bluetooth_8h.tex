@@ -1,0 +1,199 @@
+\hypertarget{decode__bluetooth_8h}{}\doxysection{include/decode\+\_\+bluetooth.h File Reference}
+\label{decode__bluetooth_8h}\index{include/decode\_bluetooth.h@{include/decode\_bluetooth.h}}
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{decode__bluetooth_8h_ace91a5d41d45b586ac07287220868c4f}{D\+E\+C\+O\+D\+E\+\_\+\+B\+L\+U\+E\+T\+O\+O\+T\+H\+\_\+H}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_ac27f9600c5121c97b9477380a418c40c}{start\+\_\+schedule\+\_\+read}} (uint8\+\_\+t $\ast$packet, uint16\+\_\+t handle)
+\begin{DoxyCompactList}\small\item\em Looks for \char`\"{}\+Begin Read\char`\"{} from the packet recieved. Saves channel number found in packet in saved\+\_\+channel\+\_\+num. Calls set\+\_\+schedule read, passing handle parameter. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_a58c0fa4d3101421598daf61af1885266}{set\+\_\+schedule\+\_\+read}} (uint16\+\_\+t handle)
+\begin{DoxyCompactList}\small\item\em Sets G\+A\+TT characteristic with the respective handle to the value of a schedule. First sets the characteristic to the name of the first schedule. On the next read it will set the characteristic to the schedule information. This will repeat until there are no more schedules in the requested channel (saved\+\_\+channel\+\_\+num). \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_a585aa05559a79ac7bb48f6ce4edc4b38}{decode\+\_\+ble\+\_\+schedule}} (uint8\+\_\+t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Converts byte packet in order to create schedule object. Recieves name from saved\+\_\+name. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_a076344a574e0aebc243b5a645d123086}{decode\+\_\+ble\+\_\+schedule\+\_\+name}} (uint8\+\_\+t $\ast$packet, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Converts byte packet into string and saves value in saved\+\_\+name. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_a1c46d112b58daa431c6c25fd2b51a161}{decode\+\_\+ble\+\_\+time}} (uint8\+\_\+t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Converts byte packet into U\+N\+IX time value and calls set\+\_\+time function. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_a2a8eebd201ec20abb784c4d459316d7c}{decode\+\_\+ble\+\_\+direct}} (uint8\+\_\+t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Converts byte packet into channel, brightness, and color information. If R\+GB channel is written, calls set\+\_\+color function. If normal L\+ED channel is written, calls channel\+\_\+on function. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_ac85fea850b61c98028c892add6df79e3}{decode\+\_\+ble\+\_\+delete}} (uint8\+\_\+t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Converts byte packet into schedule name and channel. The schedule on the corresponding channel is then deleted using delete\+\_\+schedule\+\_\+by\+\_\+name function. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{decode__bluetooth_8h_ac2e833028a85d85228142ed5a3ffe58a}{get\+\_\+\+Int32}} (uint8\+\_\+t $\ast$begin)
+\begin{DoxyCompactList}\small\item\em Takes byte array and converts into a uint32 using the first 4 indices. Assumes Big-\/endian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: \begin{DoxyAuthor}{Author}
+\+: Hunaid Puri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{decode__bluetooth_8h_ace91a5d41d45b586ac07287220868c4f}\label{decode__bluetooth_8h_ace91a5d41d45b586ac07287220868c4f}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!DECODE\_BLUETOOTH\_H@{DECODE\_BLUETOOTH\_H}}
+\index{DECODE\_BLUETOOTH\_H@{DECODE\_BLUETOOTH\_H}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{DECODE\_BLUETOOTH\_H}{DECODE\_BLUETOOTH\_H}}
+{\footnotesize\ttfamily \#define D\+E\+C\+O\+D\+E\+\_\+\+B\+L\+U\+E\+T\+O\+O\+T\+H\+\_\+H}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{decode__bluetooth_8h_ac85fea850b61c98028c892add6df79e3}\label{decode__bluetooth_8h_ac85fea850b61c98028c892add6df79e3}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!decode\_ble\_delete@{decode\_ble\_delete}}
+\index{decode\_ble\_delete@{decode\_ble\_delete}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{decode\_ble\_delete()}{decode\_ble\_delete()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t decode\+\_\+ble\+\_\+delete (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Converts byte packet into schedule name and channel. The schedule on the corresponding channel is then deleted using delete\+\_\+schedule\+\_\+by\+\_\+name function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet with schedule name to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_a2a8eebd201ec20abb784c4d459316d7c}\label{decode__bluetooth_8h_a2a8eebd201ec20abb784c4d459316d7c}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!decode\_ble\_direct@{decode\_ble\_direct}}
+\index{decode\_ble\_direct@{decode\_ble\_direct}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{decode\_ble\_direct()}{decode\_ble\_direct()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t decode\+\_\+ble\+\_\+direct (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Converts byte packet into channel, brightness, and color information. If R\+GB channel is written, calls set\+\_\+color function. If normal L\+ED channel is written, calls channel\+\_\+on function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet with led control information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_a585aa05559a79ac7bb48f6ce4edc4b38}\label{decode__bluetooth_8h_a585aa05559a79ac7bb48f6ce4edc4b38}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!decode\_ble\_schedule@{decode\_ble\_schedule}}
+\index{decode\_ble\_schedule@{decode\_ble\_schedule}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{decode\_ble\_schedule()}{decode\_ble\_schedule()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t decode\+\_\+ble\+\_\+schedule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Converts byte packet in order to create schedule object. Recieves name from saved\+\_\+name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet with schedule information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_a076344a574e0aebc243b5a645d123086}\label{decode__bluetooth_8h_a076344a574e0aebc243b5a645d123086}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!decode\_ble\_schedule\_name@{decode\_ble\_schedule\_name}}
+\index{decode\_ble\_schedule\_name@{decode\_ble\_schedule\_name}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{decode\_ble\_schedule\_name()}{decode\_ble\_schedule\_name()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t decode\+\_\+ble\+\_\+schedule\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Converts byte packet into string and saves value in saved\+\_\+name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet with scheudle name \\
+\hline
+{\em length} & length of recieved packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_a1c46d112b58daa431c6c25fd2b51a161}\label{decode__bluetooth_8h_a1c46d112b58daa431c6c25fd2b51a161}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!decode\_ble\_time@{decode\_ble\_time}}
+\index{decode\_ble\_time@{decode\_ble\_time}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{decode\_ble\_time()}{decode\_ble\_time()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t decode\+\_\+ble\+\_\+time (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Converts byte packet into U\+N\+IX time value and calls set\+\_\+time function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet with time information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_ac2e833028a85d85228142ed5a3ffe58a}\label{decode__bluetooth_8h_ac2e833028a85d85228142ed5a3ffe58a}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!get\_Int32@{get\_Int32}}
+\index{get\_Int32@{get\_Int32}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{get\_Int32()}{get\_Int32()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+\_\+\+Int32 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{begin }\end{DoxyParamCaption})}
+
+
+
+Takes byte array and converts into a uint32 using the first 4 indices. Assumes Big-\/endian. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & byte array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_a58c0fa4d3101421598daf61af1885266}\label{decode__bluetooth_8h_a58c0fa4d3101421598daf61af1885266}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!set\_schedule\_read@{set\_schedule\_read}}
+\index{set\_schedule\_read@{set\_schedule\_read}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{set\_schedule\_read()}{set\_schedule\_read()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+\_\+schedule\+\_\+read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{handle }\end{DoxyParamCaption})}
+
+
+
+Sets G\+A\+TT characteristic with the respective handle to the value of a schedule. First sets the characteristic to the name of the first schedule. On the next read it will set the characteristic to the schedule information. This will repeat until there are no more schedules in the requested channel (saved\+\_\+channel\+\_\+num). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & handle for the characteristic that will be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decode__bluetooth_8h_ac27f9600c5121c97b9477380a418c40c}\label{decode__bluetooth_8h_ac27f9600c5121c97b9477380a418c40c}} 
+\index{decode\_bluetooth.h@{decode\_bluetooth.h}!start\_schedule\_read@{start\_schedule\_read}}
+\index{start\_schedule\_read@{start\_schedule\_read}!decode\_bluetooth.h@{decode\_bluetooth.h}}
+\doxysubsubsection{\texorpdfstring{start\_schedule\_read()}{start\_schedule\_read()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t start\+\_\+schedule\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{packet,  }\item[{uint16\+\_\+t}]{handle }\end{DoxyParamCaption})}
+
+
+
+Looks for \char`\"{}\+Begin Read\char`\"{} from the packet recieved. Saves channel number found in packet in saved\+\_\+channel\+\_\+num. Calls set\+\_\+schedule read, passing handle parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & recieved byte packet \\
+\hline
+{\em handle} & handle for the characteristic that will be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}

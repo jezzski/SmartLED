@@ -1,0 +1,279 @@
+\hypertarget{http_8cpp}{}\doxysection{src/http.cpp File Reference}
+\label{http_8cpp}\index{src/http.cpp@{src/http.cpp}}
+
+
+File for hosting http server specific to L\+ED controller/scheduler.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+wifi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+event\+\_\+loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+http\+\_\+server.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}http.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scheduler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}espsntp.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{http_8cpp_a23195218eef2cf21e2beae685a041783}{D\+E\+L\+I\+M\+I\+T\+ER}}~(\char`\"{};\textquotesingle{};\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_a7638adf8cc7014fbde3c2c93006fdde8}{init\+\_\+http}} (httpd\+\_\+handle\+\_\+t server)
+\begin{DoxyCompactList}\small\item\em Initializes a http server with other handlers defined the file. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_ab83f4e437e31a317cb8ef289bb499d61}{homepage\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve home/direct control page. Accessed when server receives \char`\"{}/\char`\"{} or \char`\"{}/index.\+html\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_ae02d41c41bdfabbac1caf5f0ca495f7f}{styles\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve styles C\+SS page. Accessed when server receives \char`\"{}/styles.\+css\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_ac48af00fc792e81230c8452487320728}{schedules\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve schedules page. Accessed when server receives \char`\"{}/schedules.\+html\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_aa40f115e7e8edd95c03ecc5973827bb9}{scripts\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve scripts page. Accessed when server receives \char`\"{}/schedules.\+js\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_a353a6fa151767f3974cdc9cbaeadb43b}{schedule\+\_\+post\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to create new schedule. Accessed when server receives or \char`\"{}/post\+\_\+sch\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{http_8cpp_a06af17a6b0583d8e1fe2bd3f9da67027}{sch\+Token\+Process}} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Function to process \char`\"{};\textquotesingle{};\char`\"{}-\/delimited string. Parses out scheduing data and for schedule post handler. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_acbeb8f07bb0a10422c80124683f86e30}{favicon\+\_\+ico\+\_\+get\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve favicon. Accessed when server receives \char`\"{}/favicon.\+ico\char`\"{} -\/ D\+O\+ES N\+OT W\+O\+RK. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_aa7b8132253dc6de7025bf2d8276e02ea}{time\+\_\+post\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to post time to esp32. Accessed when server receives \char`\"{}/time\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_afe426694ca121997c05295df19716747}{direct\+\_\+control\+\_\+post\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler for direct control. Access when server receives \char`\"{}/direct\+\_\+control\char`\"{}. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{http_8cpp_a58637ae93f71294b6811227fe3b22d9a}{sch\+\_\+data\+\_\+post\+\_\+handler}} (httpd\+\_\+req\+\_\+t $\ast$req)
+\begin{DoxyCompactList}\small\item\em Handler to retrieve schedule data Access when server receives \char`\"{}/sch\+\_\+data\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File for hosting http server specific to L\+ED controller/scheduler. 
+
+\begin{DoxyAuthor}{Author}
+Andy Yang (\href{mailto:andyyeung123@gmail.com}{\texttt{ andyyeung123@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/04-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020
+\end{DoxyCopyright}
+Description\+: \begin{DoxyAuthor}{Author}
+\+: Andy Yeung 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{http_8cpp_a23195218eef2cf21e2beae685a041783}\label{http_8cpp_a23195218eef2cf21e2beae685a041783}} 
+\index{http.cpp@{http.cpp}!DELIMITER@{DELIMITER}}
+\index{DELIMITER@{DELIMITER}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{DELIMITER}{DELIMITER}}
+{\footnotesize\ttfamily \#define D\+E\+L\+I\+M\+I\+T\+ER~(\char`\"{};\textquotesingle{};\char`\"{})}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{http_8cpp_afe426694ca121997c05295df19716747}\label{http_8cpp_afe426694ca121997c05295df19716747}} 
+\index{http.cpp@{http.cpp}!direct\_control\_post\_handler@{direct\_control\_post\_handler}}
+\index{direct\_control\_post\_handler@{direct\_control\_post\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{direct\_control\_post\_handler()}{direct\_control\_post\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t direct\+\_\+control\+\_\+post\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler for direct control. Access when server receives \char`\"{}/direct\+\_\+control\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_acbeb8f07bb0a10422c80124683f86e30}\label{http_8cpp_acbeb8f07bb0a10422c80124683f86e30}} 
+\index{http.cpp@{http.cpp}!favicon\_ico\_get\_handler@{favicon\_ico\_get\_handler}}
+\index{favicon\_ico\_get\_handler@{favicon\_ico\_get\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{favicon\_ico\_get\_handler()}{favicon\_ico\_get\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t favicon\+\_\+ico\+\_\+get\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve favicon. Accessed when server receives \char`\"{}/favicon.\+ico\char`\"{} -\/ D\+O\+ES N\+OT W\+O\+RK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_ab83f4e437e31a317cb8ef289bb499d61}\label{http_8cpp_ab83f4e437e31a317cb8ef289bb499d61}} 
+\index{http.cpp@{http.cpp}!homepage\_handler@{homepage\_handler}}
+\index{homepage\_handler@{homepage\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{homepage\_handler()}{homepage\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t homepage\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve home/direct control page. Accessed when server receives \char`\"{}/\char`\"{} or \char`\"{}/index.\+html\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_a7638adf8cc7014fbde3c2c93006fdde8}\label{http_8cpp_a7638adf8cc7014fbde3c2c93006fdde8}} 
+\index{http.cpp@{http.cpp}!init\_http@{init\_http}}
+\index{init\_http@{init\_http}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{init\_http()}{init\_http()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t init\+\_\+http (\begin{DoxyParamCaption}\item[{httpd\+\_\+handle\+\_\+t}]{server }\end{DoxyParamCaption})}
+
+
+
+Initializes a http server with other handlers defined the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em server} & A handle for the server. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_a58637ae93f71294b6811227fe3b22d9a}\label{http_8cpp_a58637ae93f71294b6811227fe3b22d9a}} 
+\index{http.cpp@{http.cpp}!sch\_data\_post\_handler@{sch\_data\_post\_handler}}
+\index{sch\_data\_post\_handler@{sch\_data\_post\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{sch\_data\_post\_handler()}{sch\_data\_post\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t sch\+\_\+data\+\_\+post\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve schedule data Access when server receives \char`\"{}/sch\+\_\+data\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_a353a6fa151767f3974cdc9cbaeadb43b}\label{http_8cpp_a353a6fa151767f3974cdc9cbaeadb43b}} 
+\index{http.cpp@{http.cpp}!schedule\_post\_handler@{schedule\_post\_handler}}
+\index{schedule\_post\_handler@{schedule\_post\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{schedule\_post\_handler()}{schedule\_post\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t schedule\+\_\+post\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to create new schedule. Accessed when server receives or \char`\"{}/post\+\_\+sch\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_ac48af00fc792e81230c8452487320728}\label{http_8cpp_ac48af00fc792e81230c8452487320728}} 
+\index{http.cpp@{http.cpp}!schedules\_handler@{schedules\_handler}}
+\index{schedules\_handler@{schedules\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{schedules\_handler()}{schedules\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t schedules\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve schedules page. Accessed when server receives \char`\"{}/schedules.\+html\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_a06af17a6b0583d8e1fe2bd3f9da67027}\label{http_8cpp_a06af17a6b0583d8e1fe2bd3f9da67027}} 
+\index{http.cpp@{http.cpp}!schTokenProcess@{schTokenProcess}}
+\index{schTokenProcess@{schTokenProcess}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{schTokenProcess()}{schTokenProcess()}}
+{\footnotesize\ttfamily void sch\+Token\+Process (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Function to process \char`\"{};\textquotesingle{};\char`\"{}-\/delimited string. Parses out scheduing data and for schedule post handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Received string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{http_8cpp_aa40f115e7e8edd95c03ecc5973827bb9}\label{http_8cpp_aa40f115e7e8edd95c03ecc5973827bb9}} 
+\index{http.cpp@{http.cpp}!scripts\_handler@{scripts\_handler}}
+\index{scripts\_handler@{scripts\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{scripts\_handler()}{scripts\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t scripts\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve scripts page. Accessed when server receives \char`\"{}/schedules.\+js\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_ae02d41c41bdfabbac1caf5f0ca495f7f}\label{http_8cpp_ae02d41c41bdfabbac1caf5f0ca495f7f}} 
+\index{http.cpp@{http.cpp}!styles\_handler@{styles\_handler}}
+\index{styles\_handler@{styles\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{styles\_handler()}{styles\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t styles\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to retrieve styles C\+SS page. Accessed when server receives \char`\"{}/styles.\+css\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http_8cpp_aa7b8132253dc6de7025bf2d8276e02ea}\label{http_8cpp_aa7b8132253dc6de7025bf2d8276e02ea}} 
+\index{http.cpp@{http.cpp}!time\_post\_handler@{time\_post\_handler}}
+\index{time\_post\_handler@{time\_post\_handler}!http.cpp@{http.cpp}}
+\doxysubsubsection{\texorpdfstring{time\_post\_handler()}{time\_post\_handler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t time\+\_\+post\+\_\+handler (\begin{DoxyParamCaption}\item[{httpd\+\_\+req\+\_\+t $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Handler to post time to esp32. Accessed when server receives \char`\"{}/time\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & An incoming H\+T\+TP request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}

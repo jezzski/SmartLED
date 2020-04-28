@@ -1,0 +1,323 @@
+\hypertarget{scheduler_8cpp}{}\doxysection{src/scheduler.cpp File Reference}
+\label{scheduler_8cpp}\index{src/scheduler.cpp@{src/scheduler.cpp}}
+{\ttfamily \#include \char`\"{}scheduler.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{scheduler_8cpp_a3acffbd305ee72dcd4593c0d8af64a4f}{M\+IN}}(a,  b)~a $<$ b ? a \+: b
+\item 
+\#define \mbox{\hyperlink{scheduler_8cpp_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{M\+AX}}(a,  b)~a $>$ b ? a \+: b
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a78b719a43444d4e4f5f2385da49e9bd5}{create\+\_\+schedule}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, \mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}} s)
+\begin{DoxyCompactList}\small\item\em Create a schedule to associate with the specified channel. If the schedule already exists then it is replaced with the new schedule. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_ad5081964098978c38f471b2de8603a27}{delete\+\_\+schedule\+\_\+by\+\_\+id}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, uint8\+\_\+t ID)
+\begin{DoxyCompactList}\small\item\em Delete a schedule by ID. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_ad69d338018193af29cb6102c9fbb1f14}{delete\+\_\+schedule\+\_\+by\+\_\+name}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Delete a schedule by name. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a046245f588ff6f416c6d7576d68fac31}{disable\+\_\+schedule\+\_\+by\+\_\+id}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, uint8\+\_\+t ID)
+\begin{DoxyCompactList}\small\item\em Disable a schedule by ID. The schedule remains in the linked list but does not run or perform updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a7fc47414e893d7d185d0625d34da60b9}{disable\+\_\+schedule\+\_\+by\+\_\+name}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Disable a schedule by name. The schedule remains in the linked list but does not run or perform updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a277dd96ecb40de9ce5ff23fa662959b9}{enable\+\_\+schedule\+\_\+by\+\_\+id}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, uint8\+\_\+t ID)
+\begin{DoxyCompactList}\small\item\em Enable a schedule by ID. If the schedule was disabled, the schedule now runs and performs updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a4244b878fc36ee809683c1869f36c31c}{enable\+\_\+schedule\+\_\+by\+\_\+name}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Enable a schedule by name. If the schedule was disabled, the schedule now runs and performs updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a66b9d1cbeaf61b1b8533d1ed0886bb56}{disable\+\_\+all\+\_\+schedules}} (void)
+\begin{DoxyCompactList}\small\item\em Disables all schedules on all channels. The schedules remain located in memory but no longer run or perform updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_ad7b1370f08b20eafc3a6a231062bea91}{enable\+\_\+all\+\_\+schedules}} (void)
+\begin{DoxyCompactList}\small\item\em Enable all schedules on all channels. If the schedule was disabled, the schedule now runs and performs updates. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a4a34cf8013831e2970182e3e358128b7}{delete\+\_\+all\+\_\+schedules}} (void)
+\begin{DoxyCompactList}\small\item\em Delete all schedules on all channels. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a7d504c730ae4364c1aaaef42cbfdfdf3}{get\+\_\+schedule\+\_\+names}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, char $\ast$\&out)
+\begin{DoxyCompactList}\small\item\em Get a json string of all schedules and their enabled status for a given channel. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{scheduler_8cpp_a2c16ddcb36dcac5ff8f45cd9b13cbec2}{get\+\_\+schedule}} (uint8\+\_\+t \mbox{\hyperlink{structchannel}{channel}}, char $\ast$name, \mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}} $\ast$out)
+\begin{DoxyCompactList}\small\item\em Get the schedule object specified. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scheduler_8cpp_a5b4eda4b705bab0fac4cf7e942596f48}{update\+\_\+start\+\_\+time}} (\mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}} $\ast$s, time\+\_\+t curr)
+\item 
+void \mbox{\hyperlink{scheduler_8cpp_aa38346a0ab344c83749161fd6edf1039}{init\+\_\+schedule}} (void)
+\begin{DoxyCompactList}\small\item\em Init the scheduler code. Starts the background task if not already started. If this is not called the schedules will not run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{schedule__object_8h_a15d73e1d2632c5e43b9c694d4c96eada}{List}} $\ast$ \mbox{\hyperlink{scheduler_8cpp_aca8a942c3063c28b0d97591dc004ac56}{schedules}} \mbox{[}\mbox{\hyperlink{led_8h_ae5597ce31d23d11493e6e674fe257d73}{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+LS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em The linked list associated with each channel. Can be used directly instead of scheduler functions if so desired. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Provides function definitions for running and maintaining repeating schedules as part of the scheduler subsystem. \begin{DoxyAuthor}{Author}
+\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{scheduler_8cpp_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\label{scheduler_8cpp_afa99ec4acc4ecb2dc3c2d05da15d0e3f}} 
+\index{scheduler.cpp@{scheduler.cpp}!MAX@{MAX}}
+\index{MAX@{MAX}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \#define M\+AX(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~a $>$ b ? a \+: b}
+
+\mbox{\Hypertarget{scheduler_8cpp_a3acffbd305ee72dcd4593c0d8af64a4f}\label{scheduler_8cpp_a3acffbd305ee72dcd4593c0d8af64a4f}} 
+\index{scheduler.cpp@{scheduler.cpp}!MIN@{MIN}}
+\index{MIN@{MIN}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \#define M\+IN(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~a $<$ b ? a \+: b}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{scheduler_8cpp_a78b719a43444d4e4f5f2385da49e9bd5}\label{scheduler_8cpp_a78b719a43444d4e4f5f2385da49e9bd5}} 
+\index{scheduler.cpp@{scheduler.cpp}!create\_schedule@{create\_schedule}}
+\index{create\_schedule@{create\_schedule}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{create\_schedule()}{create\_schedule()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t create\+\_\+schedule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{\mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}}}]{s }\end{DoxyParamCaption})}
+
+
+
+Create a schedule to associate with the specified channel. If the schedule already exists then it is replaced with the new schedule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel that the schedule will be placed on. \\
+\hline
+{\em s} & The schedule object that will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+\_\+\+M\+EM if unable to allocate schedule. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a4a34cf8013831e2970182e3e358128b7}\label{scheduler_8cpp_a4a34cf8013831e2970182e3e358128b7}} 
+\index{scheduler.cpp@{scheduler.cpp}!delete\_all\_schedules@{delete\_all\_schedules}}
+\index{delete\_all\_schedules@{delete\_all\_schedules}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{delete\_all\_schedules()}{delete\_all\_schedules()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t delete\+\_\+all\+\_\+schedules (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Delete all schedules on all channels. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful deletion. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_ad5081964098978c38f471b2de8603a27}\label{scheduler_8cpp_ad5081964098978c38f471b2de8603a27}} 
+\index{scheduler.cpp@{scheduler.cpp}!delete\_schedule\_by\_id@{delete\_schedule\_by\_id}}
+\index{delete\_schedule\_by\_id@{delete\_schedule\_by\_id}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{delete\_schedule\_by\_id()}{delete\_schedule\_by\_id()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t delete\+\_\+schedule\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{ID }\end{DoxyParamCaption})}
+
+
+
+Delete a schedule by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em ID} & The ID of the schedule to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_ad69d338018193af29cb6102c9fbb1f14}\label{scheduler_8cpp_ad69d338018193af29cb6102c9fbb1f14}} 
+\index{scheduler.cpp@{scheduler.cpp}!delete\_schedule\_by\_name@{delete\_schedule\_by\_name}}
+\index{delete\_schedule\_by\_name@{delete\_schedule\_by\_name}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{delete\_schedule\_by\_name()}{delete\_schedule\_by\_name()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t delete\+\_\+schedule\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Delete a schedule by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em name} & The name of the schedule to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on successful deletion. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a66b9d1cbeaf61b1b8533d1ed0886bb56}\label{scheduler_8cpp_a66b9d1cbeaf61b1b8533d1ed0886bb56}} 
+\index{scheduler.cpp@{scheduler.cpp}!disable\_all\_schedules@{disable\_all\_schedules}}
+\index{disable\_all\_schedules@{disable\_all\_schedules}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{disable\_all\_schedules()}{disable\_all\_schedules()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t disable\+\_\+all\+\_\+schedules (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Disables all schedules on all channels. The schedules remain located in memory but no longer run or perform updates. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful disable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a046245f588ff6f416c6d7576d68fac31}\label{scheduler_8cpp_a046245f588ff6f416c6d7576d68fac31}} 
+\index{scheduler.cpp@{scheduler.cpp}!disable\_schedule\_by\_id@{disable\_schedule\_by\_id}}
+\index{disable\_schedule\_by\_id@{disable\_schedule\_by\_id}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{disable\_schedule\_by\_id()}{disable\_schedule\_by\_id()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t disable\+\_\+schedule\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{ID }\end{DoxyParamCaption})}
+
+
+
+Disable a schedule by ID. The schedule remains in the linked list but does not run or perform updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em ID} & The name of the schedule to disable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful disable. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a7fc47414e893d7d185d0625d34da60b9}\label{scheduler_8cpp_a7fc47414e893d7d185d0625d34da60b9}} 
+\index{scheduler.cpp@{scheduler.cpp}!disable\_schedule\_by\_name@{disable\_schedule\_by\_name}}
+\index{disable\_schedule\_by\_name@{disable\_schedule\_by\_name}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{disable\_schedule\_by\_name()}{disable\_schedule\_by\_name()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t disable\+\_\+schedule\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Disable a schedule by name. The schedule remains in the linked list but does not run or perform updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em name} & The name of the schedule to disable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful disable. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_ad7b1370f08b20eafc3a6a231062bea91}\label{scheduler_8cpp_ad7b1370f08b20eafc3a6a231062bea91}} 
+\index{scheduler.cpp@{scheduler.cpp}!enable\_all\_schedules@{enable\_all\_schedules}}
+\index{enable\_all\_schedules@{enable\_all\_schedules}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{enable\_all\_schedules()}{enable\_all\_schedules()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t enable\+\_\+all\+\_\+schedules (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Enable all schedules on all channels. If the schedule was disabled, the schedule now runs and performs updates. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful disable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a277dd96ecb40de9ce5ff23fa662959b9}\label{scheduler_8cpp_a277dd96ecb40de9ce5ff23fa662959b9}} 
+\index{scheduler.cpp@{scheduler.cpp}!enable\_schedule\_by\_id@{enable\_schedule\_by\_id}}
+\index{enable\_schedule\_by\_id@{enable\_schedule\_by\_id}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{enable\_schedule\_by\_id()}{enable\_schedule\_by\_id()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t enable\+\_\+schedule\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{ID }\end{DoxyParamCaption})}
+
+
+
+Enable a schedule by ID. If the schedule was disabled, the schedule now runs and performs updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em ID} & The ID of the schedule to enable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful enable. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a4244b878fc36ee809683c1869f36c31c}\label{scheduler_8cpp_a4244b878fc36ee809683c1869f36c31c}} 
+\index{scheduler.cpp@{scheduler.cpp}!enable\_schedule\_by\_name@{enable\_schedule\_by\_name}}
+\index{enable\_schedule\_by\_name@{enable\_schedule\_by\_name}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{enable\_schedule\_by\_name()}{enable\_schedule\_by\_name()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t enable\+\_\+schedule\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Enable a schedule by name. If the schedule was disabled, the schedule now runs and performs updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em name} & The name of the schedule to enable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on successful enable. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel number is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if schedule not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a2c16ddcb36dcac5ff8f45cd9b13cbec2}\label{scheduler_8cpp_a2c16ddcb36dcac5ff8f45cd9b13cbec2}} 
+\index{scheduler.cpp@{scheduler.cpp}!get\_schedule@{get\_schedule}}
+\index{get\_schedule@{get\_schedule}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_schedule()}{get\_schedule()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+schedule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{char $\ast$}]{name,  }\item[{\mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}} $\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Get the schedule object specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel the schedule is located on. \\
+\hline
+{\em name} & The name of the schedule to find. \\
+\hline
+{\em out} & The schedule returned. N\+U\+LL if failure occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if successful. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel is invalid. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND if the schedule could not be found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_a7d504c730ae4364c1aaaef42cbfdfdf3}\label{scheduler_8cpp_a7d504c730ae4364c1aaaef42cbfdfdf3}} 
+\index{scheduler.cpp@{scheduler.cpp}!get\_schedule\_names@{get\_schedule\_names}}
+\index{get\_schedule\_names@{get\_schedule\_names}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_schedule\_names()}{get\_schedule\_names()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+schedule\+\_\+names (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{char $\ast$\&}]{out }\end{DoxyParamCaption})}
+
+
+
+Get a json string of all schedules and their enabled status for a given channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The channel to get the schedule names and status from. \\
+\hline
+{\em out} & The json string that is returned. Format is \textquotesingle{}\{ \char`\"{}\+Name1\char`\"{}\+:0, \char`\"{}\+Name2\char`\"{}\+:1, \char`\"{}\+Name3\char`\"{}\+:0 \}\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if successful. E\+S\+P\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG if channel is invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scheduler_8cpp_aa38346a0ab344c83749161fd6edf1039}\label{scheduler_8cpp_aa38346a0ab344c83749161fd6edf1039}} 
+\index{scheduler.cpp@{scheduler.cpp}!init\_schedule@{init\_schedule}}
+\index{init\_schedule@{init\_schedule}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{init\_schedule()}{init\_schedule()}}
+{\footnotesize\ttfamily void init\+\_\+schedule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Init the scheduler code. Starts the background task if not already started. If this is not called the schedules will not run. 
+
+\mbox{\Hypertarget{scheduler_8cpp_a5b4eda4b705bab0fac4cf7e942596f48}\label{scheduler_8cpp_a5b4eda4b705bab0fac4cf7e942596f48}} 
+\index{scheduler.cpp@{scheduler.cpp}!update\_start\_time@{update\_start\_time}}
+\index{update\_start\_time@{update\_start\_time}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{update\_start\_time()}{update\_start\_time()}}
+{\footnotesize\ttfamily void update\+\_\+start\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{schedule__object_8h_ad41a8d7f4f56707a3f71c48dd235f3f4}{schedule\+\_\+object}} $\ast$}]{s,  }\item[{time\+\_\+t}]{curr }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{scheduler_8cpp_aca8a942c3063c28b0d97591dc004ac56}\label{scheduler_8cpp_aca8a942c3063c28b0d97591dc004ac56}} 
+\index{scheduler.cpp@{scheduler.cpp}!schedules@{schedules}}
+\index{schedules@{schedules}!scheduler.cpp@{scheduler.cpp}}
+\doxysubsubsection{\texorpdfstring{schedules}{schedules}}
+{\footnotesize\ttfamily \mbox{\hyperlink{schedule__object_8h_a15d73e1d2632c5e43b9c694d4c96eada}{List}}$\ast$ schedules\mbox{[}\mbox{\hyperlink{led_8h_ae5597ce31d23d11493e6e674fe257d73}{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+LS}}\mbox{]}}
+
+
+
+The linked list associated with each channel. Can be used directly instead of scheduler functions if so desired. 
+

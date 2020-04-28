@@ -75,6 +75,9 @@ $(function() {
 <div class="title">bleSL.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>GATT server demo code used as base from esp-idf. Most modifications made in Init_Bluetooth function and gatts_profile_event_handler callback.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
 <code>#include &quot;freertos/task.h&quot;</code><br />
 <code>#include &quot;freertos/event_groups.h&quot;</code><br />
@@ -131,6 +134,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a31f6cef4c1b2631dee831e788cff230d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ble_s_l_8cpp.html#a31f6cef4c1b2631dee831e788cff230d">example_exec_write_event_env</a> (<a class="el" href="structprepare__type__env__t.html">prepare_type_env_t</a> *prepare_write_env, esp_ble_gatts_cb_param_t *param)</td></tr>
 <tr class="separator:a31f6cef4c1b2631dee831e788cff230d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a56147c07b11bed93a7c43f3b2e6824"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ble_s_l_8cpp.html#a4a56147c07b11bed93a7c43f3b2e6824">Init_Bluetooth</a> (void)</td></tr>
+<tr class="memdesc:a4a56147c07b11bed93a7c43f3b2e6824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes GATT Server.  <a href="ble_s_l_8cpp.html#a4a56147c07b11bed93a7c43f3b2e6824">More...</a><br /></td></tr>
 <tr class="separator:a4a56147c07b11bed93a7c43f3b2e6824"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -139,8 +143,11 @@ Variables</h2></td></tr>
 <tr class="separator:ad16146ef2434e8774dc230d62baa14a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Description: NOTE: based on esp-idf example code provided. (TODO: LINK HERE HUNAID) </p><dl class="section author"><dt>Author</dt><dd>: Hunaid Puri </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>last modified: 4/26/2020 </dd></dl>
+<div class="textblock"><p>GATT server demo code used as base from esp-idf. Most modifications made in Init_Bluetooth function and gatts_profile_event_handler callback. </p>
+<dl class="section author"><dt>Author</dt><dd>Hunaid Puri (<a href="#" onclick="location.href='mai'+'lto:'+'hun'+'ai'+'d14'+'@g'+'mai'+'l.'+'com'; return false;">hunai<span style="display: none;">.nosp@m.</span>d14@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020-04-26</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2020 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a5d2f5677517e7c8fd4ee8e2287ebec3b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d2f5677517e7c8fd4ee8e2287ebec3b">&#9670;&nbsp;</a></span>ADV_CONFIG_FLAG</h2>
@@ -388,6 +395,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initializes GATT Server. </p>
 
 </div>
 </div>

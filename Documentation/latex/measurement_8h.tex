@@ -1,0 +1,127 @@
+\hypertarget{measurement_8h}{}\doxysection{include/measurement.h File Reference}
+\label{measurement_8h}\index{include/measurement.h@{include/measurement.h}}
+{\ttfamily \#include \char`\"{}driver/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/dac.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pin\+\_\+defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{measurement_8h_ab8801756e9aa5799e792b4d4e3b5991c}{init\+\_\+oc}} (void)
+\begin{DoxyCompactList}\small\item\em Inits the overcurrent and overvoltage detection systems. The previously used values will be set as the level, with defaults of 24 Volts and 2 Amps triggering faults. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{measurement_8h_ade8ba3e0fa220d224381d6f7a9a3466b}{set\+\_\+current\+\_\+level}} (double amp\+Limit)
+\begin{DoxyCompactList}\small\item\em Set the current level that will trigger a fault. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{measurement_8h_a19a5bf746191f1ffcaa1e51e99cf398d}{set\+\_\+voltage\+\_\+level}} (double volt\+Limit)
+\begin{DoxyCompactList}\small\item\em Set the voltage level that will trigger a fault. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{measurement_8h_a634d87c7e64482f79d435817317b45e1}{is\+Current\+Fault}} ()
+\begin{DoxyCompactList}\small\item\em Determines if the device is in shutdown from an overcurrent condition. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{measurement_8h_a4034b32733c6054374ae2cc49b477986}{is\+Voltage\+Fault}} ()
+\begin{DoxyCompactList}\small\item\em Determines if the device is in shutdown from an overvoltage condition. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{measurement_8h_a07bf4858a59432f3e2195e2ed9a2a1bf}{clear\+Faults}} ()
+\begin{DoxyCompactList}\small\item\em Clears all faults from the system and allows outputs to be controlled again. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function declarations for O\+C/\+OV subsystem. Intended to set levels and take actions for overcurrent and overvoltage conditions. N\+O\+TE\+: this system is basically just an outline. Development was not completed b/c of a lack of hardware and time constraints. \begin{DoxyAuthor}{Author}
+\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{measurement_8h_a07bf4858a59432f3e2195e2ed9a2a1bf}\label{measurement_8h_a07bf4858a59432f3e2195e2ed9a2a1bf}} 
+\index{measurement.h@{measurement.h}!clearFaults@{clearFaults}}
+\index{clearFaults@{clearFaults}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{clearFaults()}{clearFaults()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t clear\+Faults (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears all faults from the system and allows outputs to be controlled again. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if successfully re-\/enables outputs. E\+S\+P\+\_\+\+F\+A\+IL if error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{measurement_8h_ab8801756e9aa5799e792b4d4e3b5991c}\label{measurement_8h_ab8801756e9aa5799e792b4d4e3b5991c}} 
+\index{measurement.h@{measurement.h}!init\_oc@{init\_oc}}
+\index{init\_oc@{init\_oc}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{init\_oc()}{init\_oc()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t init\+\_\+oc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inits the overcurrent and overvoltage detection systems. The previously used values will be set as the level, with defaults of 24 Volts and 2 Amps triggering faults. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{measurement_8h_a634d87c7e64482f79d435817317b45e1}\label{measurement_8h_a634d87c7e64482f79d435817317b45e1}} 
+\index{measurement.h@{measurement.h}!isCurrentFault@{isCurrentFault}}
+\index{isCurrentFault@{isCurrentFault}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{isCurrentFault()}{isCurrentFault()}}
+{\footnotesize\ttfamily uint8\+\_\+t is\+Current\+Fault (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Determines if the device is in shutdown from an overcurrent condition. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t A value of 1 means that there is currently a fault. A value of 0 means there is no fault 
+\end{DoxyReturn}
+\mbox{\Hypertarget{measurement_8h_a4034b32733c6054374ae2cc49b477986}\label{measurement_8h_a4034b32733c6054374ae2cc49b477986}} 
+\index{measurement.h@{measurement.h}!isVoltageFault@{isVoltageFault}}
+\index{isVoltageFault@{isVoltageFault}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{isVoltageFault()}{isVoltageFault()}}
+{\footnotesize\ttfamily uint8\+\_\+t is\+Voltage\+Fault (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Determines if the device is in shutdown from an overvoltage condition. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t A value of 1 means that there is currently a fault. A value of 0 means there is no fault 
+\end{DoxyReturn}
+\mbox{\Hypertarget{measurement_8h_ade8ba3e0fa220d224381d6f7a9a3466b}\label{measurement_8h_ade8ba3e0fa220d224381d6f7a9a3466b}} 
+\index{measurement.h@{measurement.h}!set\_current\_level@{set\_current\_level}}
+\index{set\_current\_level@{set\_current\_level}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{set\_current\_level()}{set\_current\_level()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+\_\+current\+\_\+level (\begin{DoxyParamCaption}\item[{double}]{amp\+Limit }\end{DoxyParamCaption})}
+
+
+
+Set the current level that will trigger a fault. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amp\+Limit} & The current level to be used to determine faults, such as 1.\+1 Amps. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if the new level was successfully set, else if error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{measurement_8h_a19a5bf746191f1ffcaa1e51e99cf398d}\label{measurement_8h_a19a5bf746191f1ffcaa1e51e99cf398d}} 
+\index{measurement.h@{measurement.h}!set\_voltage\_level@{set\_voltage\_level}}
+\index{set\_voltage\_level@{set\_voltage\_level}!measurement.h@{measurement.h}}
+\doxysubsubsection{\texorpdfstring{set\_voltage\_level()}{set\_voltage\_level()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+\_\+voltage\+\_\+level (\begin{DoxyParamCaption}\item[{double}]{volt\+Limit }\end{DoxyParamCaption})}
+
+
+
+Set the voltage level that will trigger a fault. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volt\+Limit} & The voltage level to be used to determine faults, such as 12.\+5 Volts. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if the new level was successfully set, else if error occurred. 
+\end{DoxyReturn}

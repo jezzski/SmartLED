@@ -1,0 +1,139 @@
+\hypertarget{struct_schedule___object}{}\doxysection{Schedule\+\_\+\+Object Struct Reference}
+\label{struct_schedule___object}\index{Schedule\_Object@{Schedule\_Object}}
+
+
+data object that specified parameters a schedule can contain  
+
+
+
+
+{\ttfamily \#include $<$schedule\+\_\+object.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_af175cadcf614537fdfd7ceadc8035de4}{ID}}
+\item 
+char \mbox{\hyperlink{struct_schedule___object_af3019d3356c6226d5d5dde1c7d6559b3}{name}} \mbox{[}250\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_a69004f804708a2fd78e88b31cc75855f}{enabled}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_schedule___object_aca09cbc207c8c1ca096f6870174f8e7c}{start}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_schedule___object_a295c89fe1c03c38ffd06f7d35db801a3}{duration}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_a64dcf99843774af5f3c203a9f928133b}{repeat\+\_\+mask}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_schedule___object_a9ea5d00066436b526d22975b701fbba7}{repeat\+\_\+time}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_a25ba399aa574079f9f9446f5327187b3}{dawn}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_ac188b3dcff486626bab6aed73011b0a0}{dusk}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_a4bbbbb61d42d35340c8cd44a64109ae4}{is\+R\+GB}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_add45a8a0cdb095e0a12d90648bf5a1d4}{brightness}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_ae06800253ce296a2c2fbcef2de2df6c7}{r}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_a0a1a94fd40d4f2a602d19c363a3675db}{g}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_schedule___object_ad616ac51d4f0c62ff94582743b810572}{b}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+data object that specified parameters a schedule can contain 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_schedule___object_ad616ac51d4f0c62ff94582743b810572}\label{struct_schedule___object_ad616ac51d4f0c62ff94582743b810572}} 
+\index{Schedule\_Object@{Schedule\_Object}!b@{b}}
+\index{b@{b}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{b}{b}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::b}
+
+The blue portion of the color. Values from 0-\/255. \mbox{\Hypertarget{struct_schedule___object_add45a8a0cdb095e0a12d90648bf5a1d4}\label{struct_schedule___object_add45a8a0cdb095e0a12d90648bf5a1d4}} 
+\index{Schedule\_Object@{Schedule\_Object}!brightness@{brightness}}
+\index{brightness@{brightness}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{brightness}{brightness}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::brightness}
+
+The brightness of the L\+ED. 0-\/255 with 0 being off, and 255 being maximum brightness. \mbox{\Hypertarget{struct_schedule___object_a25ba399aa574079f9f9446f5327187b3}\label{struct_schedule___object_a25ba399aa574079f9f9446f5327187b3}} 
+\index{Schedule\_Object@{Schedule\_Object}!dawn@{dawn}}
+\index{dawn@{dawn}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{dawn}{dawn}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::dawn}
+
+Whether the schedule runs at dawn. Not compatable with repeat\+\_\+time \mbox{\Hypertarget{struct_schedule___object_a295c89fe1c03c38ffd06f7d35db801a3}\label{struct_schedule___object_a295c89fe1c03c38ffd06f7d35db801a3}} 
+\index{Schedule\_Object@{Schedule\_Object}!duration@{duration}}
+\index{duration@{duration}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{duration}{duration}}
+{\footnotesize\ttfamily uint32\+\_\+t Schedule\+\_\+\+Object\+::duration}
+
+The duration, in seconds, of the schedule. If set to the max value the schedule will run indefinitely. \mbox{\Hypertarget{struct_schedule___object_ac188b3dcff486626bab6aed73011b0a0}\label{struct_schedule___object_ac188b3dcff486626bab6aed73011b0a0}} 
+\index{Schedule\_Object@{Schedule\_Object}!dusk@{dusk}}
+\index{dusk@{dusk}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{dusk}{dusk}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::dusk}
+
+Whether the schedule runs at dusk. Not compatable with repeat\+\_\+time. \mbox{\Hypertarget{struct_schedule___object_a69004f804708a2fd78e88b31cc75855f}\label{struct_schedule___object_a69004f804708a2fd78e88b31cc75855f}} 
+\index{Schedule\_Object@{Schedule\_Object}!enabled@{enabled}}
+\index{enabled@{enabled}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::enabled}
+
+The enabled status of the schedule. If 0, the schedule does not run. If not 0 the schedule actively runs according to other parameters. \mbox{\Hypertarget{struct_schedule___object_a0a1a94fd40d4f2a602d19c363a3675db}\label{struct_schedule___object_a0a1a94fd40d4f2a602d19c363a3675db}} 
+\index{Schedule\_Object@{Schedule\_Object}!g@{g}}
+\index{g@{g}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{g}{g}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::g}
+
+The green portion of the color. Values from 0-\/255. \mbox{\Hypertarget{struct_schedule___object_af175cadcf614537fdfd7ceadc8035de4}\label{struct_schedule___object_af175cadcf614537fdfd7ceadc8035de4}} 
+\index{Schedule\_Object@{Schedule\_Object}!ID@{ID}}
+\index{ID@{ID}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::\+ID}
+
+The ID for the schedule. Each schedule in a list should have its own unique ID. \mbox{\Hypertarget{struct_schedule___object_a4bbbbb61d42d35340c8cd44a64109ae4}\label{struct_schedule___object_a4bbbbb61d42d35340c8cd44a64109ae4}} 
+\index{Schedule\_Object@{Schedule\_Object}!isRGB@{isRGB}}
+\index{isRGB@{isRGB}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{isRGB}{isRGB}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::is\+R\+GB}
+
+The type of L\+ED associated. If this field is 0, the L\+ED is not an R\+GB L\+ED and only the brightness field is used in controlling the L\+ED. If is\+R\+GB is not 0, the brightness, R, G, and B fields control the L\+ED \mbox{\Hypertarget{struct_schedule___object_af3019d3356c6226d5d5dde1c7d6559b3}\label{struct_schedule___object_af3019d3356c6226d5d5dde1c7d6559b3}} 
+\index{Schedule\_Object@{Schedule\_Object}!name@{name}}
+\index{name@{name}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily char Schedule\+\_\+\+Object\+::name\mbox{[}250\mbox{]}}
+
+The name of the schedule. Each schedule in a list should have its own unique name. \mbox{\Hypertarget{struct_schedule___object_ae06800253ce296a2c2fbcef2de2df6c7}\label{struct_schedule___object_ae06800253ce296a2c2fbcef2de2df6c7}} 
+\index{Schedule\_Object@{Schedule\_Object}!r@{r}}
+\index{r@{r}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::r}
+
+The red portion of the color. Values from 0-\/255. \mbox{\Hypertarget{struct_schedule___object_a64dcf99843774af5f3c203a9f928133b}\label{struct_schedule___object_a64dcf99843774af5f3c203a9f928133b}} 
+\index{Schedule\_Object@{Schedule\_Object}!repeat\_mask@{repeat\_mask}}
+\index{repeat\_mask@{repeat\_mask}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{repeat\_mask}{repeat\_mask}}
+{\footnotesize\ttfamily uint8\+\_\+t Schedule\+\_\+\+Object\+::repeat\+\_\+mask}
+
+A bit mask for which days the schedule runs on. If repeat\+\_\+time is set this field is not used. The M\+SB bit is not used and following bits represent the days. The 8 bits represent \mbox{[}Unused, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday\mbox{]}. \mbox{\Hypertarget{struct_schedule___object_a9ea5d00066436b526d22975b701fbba7}\label{struct_schedule___object_a9ea5d00066436b526d22975b701fbba7}} 
+\index{Schedule\_Object@{Schedule\_Object}!repeat\_time@{repeat\_time}}
+\index{repeat\_time@{repeat\_time}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{repeat\_time}{repeat\_time}}
+{\footnotesize\ttfamily uint32\+\_\+t Schedule\+\_\+\+Object\+::repeat\+\_\+time}
+
+An alternative way to have schedules repeat instead of by day. This field represents the time, in seconds, that the schedule repeats. The next start time is calculated by adding the current start time plus the repeat\+\_\+time. Settings this field to 5 seconds means that the schedule\textquotesingle{}s start is triggered every 5 seconds. If this field is enabled then repeat\+\_\+mask and dawn/dusk will not work. \mbox{\Hypertarget{struct_schedule___object_aca09cbc207c8c1ca096f6870174f8e7c}\label{struct_schedule___object_aca09cbc207c8c1ca096f6870174f8e7c}} 
+\index{Schedule\_Object@{Schedule\_Object}!start@{start}}
+\index{start@{start}!Schedule\_Object@{Schedule\_Object}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily uint32\+\_\+t Schedule\+\_\+\+Object\+::start}
+
+The unix timestamp of the start time. If a schedule repeats, this field will update to the next start time as the schedule runs. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{schedule__object_8h}{schedule\+\_\+object.\+h}}\end{DoxyCompactItemize}

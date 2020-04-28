@@ -1,0 +1,466 @@
+\hypertarget{rtcdefine_8h}{}\doxysection{include/rtcdefine.h File Reference}
+\label{rtcdefine_8h}\index{include/rtcdefine.h@{include/rtcdefine.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}driver/spi\+\_\+master.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+spi\+\_\+flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sdkconfig.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a06f387ed6612989cff452b3f166f5425}{H\+S\+P\+I\+\_\+\+M\+I\+SO}}~12
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a9b380b71648f189d15d4b48f5dde14e2}{H\+S\+P\+I\+\_\+\+M\+O\+SI}}~13
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a64e9876efbb500a7cd9745348b51ea42}{H\+S\+P\+I\+\_\+\+C\+LK}}~14
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a6485e6b3fe13c79cf8ed9d8d5b1d1bdd}{H\+S\+P\+I\+\_\+\+CS}}~15
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a65dd15c61397abf8c66738f80c342740}{E\+E\+R\+E\+AD}}~0x03
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a3f2c2e3b497a757e3f22569f13e967c9}{E\+E\+W\+R\+I\+TE}}~0x02
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_aeb3444195acab77be2609280ceed34fb}{E\+E\+W\+R\+DI}}~0x04
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ab2c4bc37e8cb37c37ba54bffbbaa4739}{E\+E\+W\+R\+EN}}~0x06
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_aac7375d20181fbde61057ac1f2f56db8}{S\+R\+R\+E\+AD}}~0x05
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a6e14a7f31dbf5b6dd62c1260b187df3a}{S\+S\+W\+R\+I\+TE}}~0x01
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a0c7645baa78dc8a2952d1080f8b803a4}{R\+T\+C\+\_\+\+R\+E\+AD}}~0x13
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ab230740af65cc2b3c5b3656decd14530}{R\+T\+C\+\_\+\+W\+R\+I\+TE}}~0x12
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ac18bcf4d3c48f21a52117f936ed5c726}{R\+T\+C\+\_\+\+U\+N\+L\+O\+CK}}~0x14
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ac686ef70c21b4ac5b160d3856bafdb33}{I\+D\+W\+R\+I\+TE}}~0x32
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ad2e0794b19eff3dd81aa0e8ef53f9afc}{I\+D\+R\+E\+AD}}~0x33
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a839089b793be4b46f3de0a5f2b81d826}{C\+L\+R\+R\+AM}}~0x54
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a96af20c350747620ce5f6de298313c18}{R\+T\+C\+H\+S\+EC}}~0x00
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_af6bf21b5a694fa6902ff474b15092254}{R\+T\+C\+S\+EC}}~0x01
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a0150d9e65ef842a5636b60239fbc936c}{R\+T\+C\+M\+IN}}~0x02
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a9bada5c628434fc86acaf3e6bee945aa}{R\+T\+C\+H\+O\+UR}}~0x03
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_aa6d008a80473136f988b51f24dd4231f}{R\+T\+C\+W\+K\+D\+AY}}~0x04
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_af6160a608c3e6d3374de422193b07d91}{R\+T\+C\+D\+A\+TE}}~0x05
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ad61f1dd0a34071d0fffbad9b89a87889}{R\+T\+C\+M\+TH}}~0x06
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a86f74b7b45943cdfd7c4f7cb6c9f2e77}{R\+T\+C\+Y\+E\+AR}}~0x07
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a553a124e1d5855773c74cb5561dec040}{C\+O\+N\+T\+R\+OL}}~0x08
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_adce9f2146ad3526a93c8fde23a94adf4}{O\+S\+C\+T\+R\+IM}}~0x09
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a8ce59d4327f38712cb11fe1d25361215}{P\+W\+R\+D\+N\+M\+IN}}~0x18
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a1db986fc6919176ed53a52b633279608}{P\+W\+R\+D\+N\+H\+O\+UR}}~0x19
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a12a5fde0f96f9e6c7b0232526beb59b9}{P\+W\+R\+D\+N\+D\+A\+TE}}~0x1A
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a0dad36b486c6800d69d93d803cb1498c}{P\+W\+R\+D\+N\+M\+O\+N\+TH}}~0x1B
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ab52cdc475a6866d1be7b5807fb623f50}{ST}}~0x80
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ac6fb7d18d5bb36accb5a78293568660e}{L\+P\+YR}}~0x20
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a23c7d58108d99a089ce0824823e6b950}{PM}}~0x20
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_aa7b5456eeb855e8921ce0eb2b28f9abf}{H12}}~0x40
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ab60c105748f1523ce5b2bd1df1ac3010}{T\+R\+I\+M\+S\+I\+GN}}~0x80
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_aec78e7a9e90a406a56f859ee456e8eae}{O\+UT}}~0x80
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a99cdf570e16eaa4804baa3f4f625f4a6}{S\+Q\+W\+EN}}~0x40
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a131d39f1665180778fd123baf8a9b64e}{O\+S\+C\+R\+UN}}~0x20
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_a0a70ffb498fad5a2a5ed1ef1e71ae58c}{V\+B\+A\+T\+EN}}~0x08
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ae9b0a27b5c7e757712002658fb631c2b}{P\+W\+R\+F\+A\+IL}}~0x10
+\item 
+\#define \mbox{\hyperlink{rtcdefine_8h_ac865dafcdac32372ceb4a1a35fafcc1a}{R\+T\+C\+\_\+\+T\+AG}}~\char`\"{}R\+TC\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtcdefine_8h_a026bf6139463c2b571c9f49bba4d3a13}{set\+Time}} (const struct tm $\ast$time)
+\begin{DoxyCompactList}\small\item\em Set the time of the external R\+TC to the specified value. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtcdefine_8h_a286e8d20210646469ac6c736cc90fad9}{get\+Time}} (struct tm $\ast$out\+Time)
+\begin{DoxyCompactList}\small\item\em Get the current time on the external R\+TC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtcdefine_8h_a27626acf2f67a88a169a20ccce924adf}{R\+T\+C\+Handler}} (void $\ast$pv\+Parms)
+\begin{DoxyCompactList}\small\item\em The R\+T\+OS task that handles R\+TC related actions. This task syncrhonizes the esp32\textquotesingle{}s and R\+TC\textquotesingle{}s time. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{rtcdefine_8h_aa48027addbf1c2a0bbfcba31bb80c9c7}{S\+T\+\_\+\+Start\+R\+T\+C\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Starts the R\+T\+OS task that handles R\+TC and esp32 time synchronization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{rtcdefine_8h_a15f2575b5d3ab1909df4e3d491e7f1a3}{R\+T\+C\+\_\+\+Handle}}
+\begin{DoxyCompactList}\small\item\em The task handle for the R\+TC task. If this field is != N\+U\+LL then task is currently running. Can be used to stop task with R\+T\+OS functions. \end{DoxyCompactList}\item 
+struct tm $\ast$ \mbox{\hyperlink{rtcdefine_8h_aa57198d6fb22901ea54737a90842cc27}{curr\+Time}}
+\begin{DoxyCompactList}\small\item\em A copy of the most recent time obtained from the R\+TC. Is not guaranteed to be accurate to the actual time stored on the R\+TC. This value is updated as often as the R\+TC task runs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function and pin definitions for the time manager subsystem. Controls external R\+TC M\+C\+P79510. see\+: \href{http://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf}{\texttt{ http\+://ww1.\+microchip.\+com/downloads/en/\+Device\+Doc/\+M\+C\+P7951\+X-\/\+M\+C\+P7952\+X-\/\+Battery-\/\+Backed-\/\+S\+P\+I-\/\+R\+T\+C\+C-\/20002300\+C.\+pdf}} \begin{DoxyAuthor}{Author}
+\+: Lead\+: Shipra Vaidya, Seoncdary\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{rtcdefine_8h_a839089b793be4b46f3de0a5f2b81d826}\label{rtcdefine_8h_a839089b793be4b46f3de0a5f2b81d826}} 
+\index{rtcdefine.h@{rtcdefine.h}!CLRRAM@{CLRRAM}}
+\index{CLRRAM@{CLRRAM}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{CLRRAM}{CLRRAM}}
+{\footnotesize\ttfamily \#define C\+L\+R\+R\+AM~0x54}
+
+\mbox{\Hypertarget{rtcdefine_8h_a553a124e1d5855773c74cb5561dec040}\label{rtcdefine_8h_a553a124e1d5855773c74cb5561dec040}} 
+\index{rtcdefine.h@{rtcdefine.h}!CONTROL@{CONTROL}}
+\index{CONTROL@{CONTROL}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{CONTROL}{CONTROL}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+R\+OL~0x08}
+
+\mbox{\Hypertarget{rtcdefine_8h_a65dd15c61397abf8c66738f80c342740}\label{rtcdefine_8h_a65dd15c61397abf8c66738f80c342740}} 
+\index{rtcdefine.h@{rtcdefine.h}!EEREAD@{EEREAD}}
+\index{EEREAD@{EEREAD}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{EEREAD}{EEREAD}}
+{\footnotesize\ttfamily \#define E\+E\+R\+E\+AD~0x03}
+
+\mbox{\Hypertarget{rtcdefine_8h_aeb3444195acab77be2609280ceed34fb}\label{rtcdefine_8h_aeb3444195acab77be2609280ceed34fb}} 
+\index{rtcdefine.h@{rtcdefine.h}!EEWRDI@{EEWRDI}}
+\index{EEWRDI@{EEWRDI}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{EEWRDI}{EEWRDI}}
+{\footnotesize\ttfamily \#define E\+E\+W\+R\+DI~0x04}
+
+\mbox{\Hypertarget{rtcdefine_8h_ab2c4bc37e8cb37c37ba54bffbbaa4739}\label{rtcdefine_8h_ab2c4bc37e8cb37c37ba54bffbbaa4739}} 
+\index{rtcdefine.h@{rtcdefine.h}!EEWREN@{EEWREN}}
+\index{EEWREN@{EEWREN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{EEWREN}{EEWREN}}
+{\footnotesize\ttfamily \#define E\+E\+W\+R\+EN~0x06}
+
+\mbox{\Hypertarget{rtcdefine_8h_a3f2c2e3b497a757e3f22569f13e967c9}\label{rtcdefine_8h_a3f2c2e3b497a757e3f22569f13e967c9}} 
+\index{rtcdefine.h@{rtcdefine.h}!EEWRITE@{EEWRITE}}
+\index{EEWRITE@{EEWRITE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{EEWRITE}{EEWRITE}}
+{\footnotesize\ttfamily \#define E\+E\+W\+R\+I\+TE~0x02}
+
+\mbox{\Hypertarget{rtcdefine_8h_aa7b5456eeb855e8921ce0eb2b28f9abf}\label{rtcdefine_8h_aa7b5456eeb855e8921ce0eb2b28f9abf}} 
+\index{rtcdefine.h@{rtcdefine.h}!H12@{H12}}
+\index{H12@{H12}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{H12}{H12}}
+{\footnotesize\ttfamily \#define H12~0x40}
+
+\mbox{\Hypertarget{rtcdefine_8h_a64e9876efbb500a7cd9745348b51ea42}\label{rtcdefine_8h_a64e9876efbb500a7cd9745348b51ea42}} 
+\index{rtcdefine.h@{rtcdefine.h}!HSPI\_CLK@{HSPI\_CLK}}
+\index{HSPI\_CLK@{HSPI\_CLK}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{HSPI\_CLK}{HSPI\_CLK}}
+{\footnotesize\ttfamily \#define H\+S\+P\+I\+\_\+\+C\+LK~14}
+
+\mbox{\Hypertarget{rtcdefine_8h_a6485e6b3fe13c79cf8ed9d8d5b1d1bdd}\label{rtcdefine_8h_a6485e6b3fe13c79cf8ed9d8d5b1d1bdd}} 
+\index{rtcdefine.h@{rtcdefine.h}!HSPI\_CS@{HSPI\_CS}}
+\index{HSPI\_CS@{HSPI\_CS}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{HSPI\_CS}{HSPI\_CS}}
+{\footnotesize\ttfamily \#define H\+S\+P\+I\+\_\+\+CS~15}
+
+\mbox{\Hypertarget{rtcdefine_8h_a06f387ed6612989cff452b3f166f5425}\label{rtcdefine_8h_a06f387ed6612989cff452b3f166f5425}} 
+\index{rtcdefine.h@{rtcdefine.h}!HSPI\_MISO@{HSPI\_MISO}}
+\index{HSPI\_MISO@{HSPI\_MISO}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{HSPI\_MISO}{HSPI\_MISO}}
+{\footnotesize\ttfamily \#define H\+S\+P\+I\+\_\+\+M\+I\+SO~12}
+
+\mbox{\Hypertarget{rtcdefine_8h_a9b380b71648f189d15d4b48f5dde14e2}\label{rtcdefine_8h_a9b380b71648f189d15d4b48f5dde14e2}} 
+\index{rtcdefine.h@{rtcdefine.h}!HSPI\_MOSI@{HSPI\_MOSI}}
+\index{HSPI\_MOSI@{HSPI\_MOSI}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{HSPI\_MOSI}{HSPI\_MOSI}}
+{\footnotesize\ttfamily \#define H\+S\+P\+I\+\_\+\+M\+O\+SI~13}
+
+\mbox{\Hypertarget{rtcdefine_8h_ad2e0794b19eff3dd81aa0e8ef53f9afc}\label{rtcdefine_8h_ad2e0794b19eff3dd81aa0e8ef53f9afc}} 
+\index{rtcdefine.h@{rtcdefine.h}!IDREAD@{IDREAD}}
+\index{IDREAD@{IDREAD}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{IDREAD}{IDREAD}}
+{\footnotesize\ttfamily \#define I\+D\+R\+E\+AD~0x33}
+
+\mbox{\Hypertarget{rtcdefine_8h_ac686ef70c21b4ac5b160d3856bafdb33}\label{rtcdefine_8h_ac686ef70c21b4ac5b160d3856bafdb33}} 
+\index{rtcdefine.h@{rtcdefine.h}!IDWRITE@{IDWRITE}}
+\index{IDWRITE@{IDWRITE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{IDWRITE}{IDWRITE}}
+{\footnotesize\ttfamily \#define I\+D\+W\+R\+I\+TE~0x32}
+
+\mbox{\Hypertarget{rtcdefine_8h_ac6fb7d18d5bb36accb5a78293568660e}\label{rtcdefine_8h_ac6fb7d18d5bb36accb5a78293568660e}} 
+\index{rtcdefine.h@{rtcdefine.h}!LPYR@{LPYR}}
+\index{LPYR@{LPYR}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{LPYR}{LPYR}}
+{\footnotesize\ttfamily \#define L\+P\+YR~0x20}
+
+\mbox{\Hypertarget{rtcdefine_8h_a131d39f1665180778fd123baf8a9b64e}\label{rtcdefine_8h_a131d39f1665180778fd123baf8a9b64e}} 
+\index{rtcdefine.h@{rtcdefine.h}!OSCRUN@{OSCRUN}}
+\index{OSCRUN@{OSCRUN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{OSCRUN}{OSCRUN}}
+{\footnotesize\ttfamily \#define O\+S\+C\+R\+UN~0x20}
+
+\mbox{\Hypertarget{rtcdefine_8h_adce9f2146ad3526a93c8fde23a94adf4}\label{rtcdefine_8h_adce9f2146ad3526a93c8fde23a94adf4}} 
+\index{rtcdefine.h@{rtcdefine.h}!OSCTRIM@{OSCTRIM}}
+\index{OSCTRIM@{OSCTRIM}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{OSCTRIM}{OSCTRIM}}
+{\footnotesize\ttfamily \#define O\+S\+C\+T\+R\+IM~0x09}
+
+\mbox{\Hypertarget{rtcdefine_8h_aec78e7a9e90a406a56f859ee456e8eae}\label{rtcdefine_8h_aec78e7a9e90a406a56f859ee456e8eae}} 
+\index{rtcdefine.h@{rtcdefine.h}!OUT@{OUT}}
+\index{OUT@{OUT}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{OUT}{OUT}}
+{\footnotesize\ttfamily \#define O\+UT~0x80}
+
+\mbox{\Hypertarget{rtcdefine_8h_a23c7d58108d99a089ce0824823e6b950}\label{rtcdefine_8h_a23c7d58108d99a089ce0824823e6b950}} 
+\index{rtcdefine.h@{rtcdefine.h}!PM@{PM}}
+\index{PM@{PM}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PM}{PM}}
+{\footnotesize\ttfamily \#define PM~0x20}
+
+\mbox{\Hypertarget{rtcdefine_8h_a12a5fde0f96f9e6c7b0232526beb59b9}\label{rtcdefine_8h_a12a5fde0f96f9e6c7b0232526beb59b9}} 
+\index{rtcdefine.h@{rtcdefine.h}!PWRDNDATE@{PWRDNDATE}}
+\index{PWRDNDATE@{PWRDNDATE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PWRDNDATE}{PWRDNDATE}}
+{\footnotesize\ttfamily \#define P\+W\+R\+D\+N\+D\+A\+TE~0x1A}
+
+\mbox{\Hypertarget{rtcdefine_8h_a1db986fc6919176ed53a52b633279608}\label{rtcdefine_8h_a1db986fc6919176ed53a52b633279608}} 
+\index{rtcdefine.h@{rtcdefine.h}!PWRDNHOUR@{PWRDNHOUR}}
+\index{PWRDNHOUR@{PWRDNHOUR}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PWRDNHOUR}{PWRDNHOUR}}
+{\footnotesize\ttfamily \#define P\+W\+R\+D\+N\+H\+O\+UR~0x19}
+
+\mbox{\Hypertarget{rtcdefine_8h_a8ce59d4327f38712cb11fe1d25361215}\label{rtcdefine_8h_a8ce59d4327f38712cb11fe1d25361215}} 
+\index{rtcdefine.h@{rtcdefine.h}!PWRDNMIN@{PWRDNMIN}}
+\index{PWRDNMIN@{PWRDNMIN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PWRDNMIN}{PWRDNMIN}}
+{\footnotesize\ttfamily \#define P\+W\+R\+D\+N\+M\+IN~0x18}
+
+\mbox{\Hypertarget{rtcdefine_8h_a0dad36b486c6800d69d93d803cb1498c}\label{rtcdefine_8h_a0dad36b486c6800d69d93d803cb1498c}} 
+\index{rtcdefine.h@{rtcdefine.h}!PWRDNMONTH@{PWRDNMONTH}}
+\index{PWRDNMONTH@{PWRDNMONTH}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PWRDNMONTH}{PWRDNMONTH}}
+{\footnotesize\ttfamily \#define P\+W\+R\+D\+N\+M\+O\+N\+TH~0x1B}
+
+\mbox{\Hypertarget{rtcdefine_8h_ae9b0a27b5c7e757712002658fb631c2b}\label{rtcdefine_8h_ae9b0a27b5c7e757712002658fb631c2b}} 
+\index{rtcdefine.h@{rtcdefine.h}!PWRFAIL@{PWRFAIL}}
+\index{PWRFAIL@{PWRFAIL}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{PWRFAIL}{PWRFAIL}}
+{\footnotesize\ttfamily \#define P\+W\+R\+F\+A\+IL~0x10}
+
+\mbox{\Hypertarget{rtcdefine_8h_a0c7645baa78dc8a2952d1080f8b803a4}\label{rtcdefine_8h_a0c7645baa78dc8a2952d1080f8b803a4}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTC\_READ@{RTC\_READ}}
+\index{RTC\_READ@{RTC\_READ}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_READ}{RTC\_READ}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+R\+E\+AD~0x13}
+
+\mbox{\Hypertarget{rtcdefine_8h_ac865dafcdac32372ceb4a1a35fafcc1a}\label{rtcdefine_8h_ac865dafcdac32372ceb4a1a35fafcc1a}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTC\_TAG@{RTC\_TAG}}
+\index{RTC\_TAG@{RTC\_TAG}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_TAG}{RTC\_TAG}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+T\+AG~\char`\"{}R\+TC\char`\"{}}
+
+\mbox{\Hypertarget{rtcdefine_8h_ac18bcf4d3c48f21a52117f936ed5c726}\label{rtcdefine_8h_ac18bcf4d3c48f21a52117f936ed5c726}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTC\_UNLOCK@{RTC\_UNLOCK}}
+\index{RTC\_UNLOCK@{RTC\_UNLOCK}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_UNLOCK}{RTC\_UNLOCK}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+U\+N\+L\+O\+CK~0x14}
+
+\mbox{\Hypertarget{rtcdefine_8h_ab230740af65cc2b3c5b3656decd14530}\label{rtcdefine_8h_ab230740af65cc2b3c5b3656decd14530}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTC\_WRITE@{RTC\_WRITE}}
+\index{RTC\_WRITE@{RTC\_WRITE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_WRITE}{RTC\_WRITE}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+W\+R\+I\+TE~0x12}
+
+\mbox{\Hypertarget{rtcdefine_8h_af6160a608c3e6d3374de422193b07d91}\label{rtcdefine_8h_af6160a608c3e6d3374de422193b07d91}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCDATE@{RTCDATE}}
+\index{RTCDATE@{RTCDATE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCDATE}{RTCDATE}}
+{\footnotesize\ttfamily \#define R\+T\+C\+D\+A\+TE~0x05}
+
+\mbox{\Hypertarget{rtcdefine_8h_a9bada5c628434fc86acaf3e6bee945aa}\label{rtcdefine_8h_a9bada5c628434fc86acaf3e6bee945aa}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCHOUR@{RTCHOUR}}
+\index{RTCHOUR@{RTCHOUR}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCHOUR}{RTCHOUR}}
+{\footnotesize\ttfamily \#define R\+T\+C\+H\+O\+UR~0x03}
+
+\mbox{\Hypertarget{rtcdefine_8h_a96af20c350747620ce5f6de298313c18}\label{rtcdefine_8h_a96af20c350747620ce5f6de298313c18}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCHSEC@{RTCHSEC}}
+\index{RTCHSEC@{RTCHSEC}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCHSEC}{RTCHSEC}}
+{\footnotesize\ttfamily \#define R\+T\+C\+H\+S\+EC~0x00}
+
+\mbox{\Hypertarget{rtcdefine_8h_a0150d9e65ef842a5636b60239fbc936c}\label{rtcdefine_8h_a0150d9e65ef842a5636b60239fbc936c}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCMIN@{RTCMIN}}
+\index{RTCMIN@{RTCMIN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCMIN}{RTCMIN}}
+{\footnotesize\ttfamily \#define R\+T\+C\+M\+IN~0x02}
+
+\mbox{\Hypertarget{rtcdefine_8h_ad61f1dd0a34071d0fffbad9b89a87889}\label{rtcdefine_8h_ad61f1dd0a34071d0fffbad9b89a87889}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCMTH@{RTCMTH}}
+\index{RTCMTH@{RTCMTH}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCMTH}{RTCMTH}}
+{\footnotesize\ttfamily \#define R\+T\+C\+M\+TH~0x06}
+
+\mbox{\Hypertarget{rtcdefine_8h_af6bf21b5a694fa6902ff474b15092254}\label{rtcdefine_8h_af6bf21b5a694fa6902ff474b15092254}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCSEC@{RTCSEC}}
+\index{RTCSEC@{RTCSEC}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCSEC}{RTCSEC}}
+{\footnotesize\ttfamily \#define R\+T\+C\+S\+EC~0x01}
+
+\mbox{\Hypertarget{rtcdefine_8h_aa6d008a80473136f988b51f24dd4231f}\label{rtcdefine_8h_aa6d008a80473136f988b51f24dd4231f}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCWKDAY@{RTCWKDAY}}
+\index{RTCWKDAY@{RTCWKDAY}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCWKDAY}{RTCWKDAY}}
+{\footnotesize\ttfamily \#define R\+T\+C\+W\+K\+D\+AY~0x04}
+
+\mbox{\Hypertarget{rtcdefine_8h_a86f74b7b45943cdfd7c4f7cb6c9f2e77}\label{rtcdefine_8h_a86f74b7b45943cdfd7c4f7cb6c9f2e77}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCYEAR@{RTCYEAR}}
+\index{RTCYEAR@{RTCYEAR}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCYEAR}{RTCYEAR}}
+{\footnotesize\ttfamily \#define R\+T\+C\+Y\+E\+AR~0x07}
+
+\mbox{\Hypertarget{rtcdefine_8h_a99cdf570e16eaa4804baa3f4f625f4a6}\label{rtcdefine_8h_a99cdf570e16eaa4804baa3f4f625f4a6}} 
+\index{rtcdefine.h@{rtcdefine.h}!SQWEN@{SQWEN}}
+\index{SQWEN@{SQWEN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{SQWEN}{SQWEN}}
+{\footnotesize\ttfamily \#define S\+Q\+W\+EN~0x40}
+
+\mbox{\Hypertarget{rtcdefine_8h_aac7375d20181fbde61057ac1f2f56db8}\label{rtcdefine_8h_aac7375d20181fbde61057ac1f2f56db8}} 
+\index{rtcdefine.h@{rtcdefine.h}!SRREAD@{SRREAD}}
+\index{SRREAD@{SRREAD}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{SRREAD}{SRREAD}}
+{\footnotesize\ttfamily \#define S\+R\+R\+E\+AD~0x05}
+
+\mbox{\Hypertarget{rtcdefine_8h_a6e14a7f31dbf5b6dd62c1260b187df3a}\label{rtcdefine_8h_a6e14a7f31dbf5b6dd62c1260b187df3a}} 
+\index{rtcdefine.h@{rtcdefine.h}!SSWRITE@{SSWRITE}}
+\index{SSWRITE@{SSWRITE}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{SSWRITE}{SSWRITE}}
+{\footnotesize\ttfamily \#define S\+S\+W\+R\+I\+TE~0x01}
+
+\mbox{\Hypertarget{rtcdefine_8h_ab52cdc475a6866d1be7b5807fb623f50}\label{rtcdefine_8h_ab52cdc475a6866d1be7b5807fb623f50}} 
+\index{rtcdefine.h@{rtcdefine.h}!ST@{ST}}
+\index{ST@{ST}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{ST}{ST}}
+{\footnotesize\ttfamily \#define ST~0x80}
+
+\mbox{\Hypertarget{rtcdefine_8h_ab60c105748f1523ce5b2bd1df1ac3010}\label{rtcdefine_8h_ab60c105748f1523ce5b2bd1df1ac3010}} 
+\index{rtcdefine.h@{rtcdefine.h}!TRIMSIGN@{TRIMSIGN}}
+\index{TRIMSIGN@{TRIMSIGN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{TRIMSIGN}{TRIMSIGN}}
+{\footnotesize\ttfamily \#define T\+R\+I\+M\+S\+I\+GN~0x80}
+
+\mbox{\Hypertarget{rtcdefine_8h_a0a70ffb498fad5a2a5ed1ef1e71ae58c}\label{rtcdefine_8h_a0a70ffb498fad5a2a5ed1ef1e71ae58c}} 
+\index{rtcdefine.h@{rtcdefine.h}!VBATEN@{VBATEN}}
+\index{VBATEN@{VBATEN}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{VBATEN}{VBATEN}}
+{\footnotesize\ttfamily \#define V\+B\+A\+T\+EN~0x08}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtcdefine_8h_a286e8d20210646469ac6c736cc90fad9}\label{rtcdefine_8h_a286e8d20210646469ac6c736cc90fad9}} 
+\index{rtcdefine.h@{rtcdefine.h}!getTime@{getTime}}
+\index{getTime@{getTime}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Time (\begin{DoxyParamCaption}\item[{struct tm $\ast$}]{out\+Time }\end{DoxyParamCaption})}
+
+
+
+Get the current time on the external R\+TC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Time} & The current time on the R\+TC will be stored in this value. Check the return type against E\+S\+P\+\_\+\+OK to ensure this value was set correctly. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, else on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtcdefine_8h_a27626acf2f67a88a169a20ccce924adf}\label{rtcdefine_8h_a27626acf2f67a88a169a20ccce924adf}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTCHandler@{RTCHandler}}
+\index{RTCHandler@{RTCHandler}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTCHandler()}{RTCHandler()}}
+{\footnotesize\ttfamily void R\+T\+C\+Handler (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parms }\end{DoxyParamCaption})}
+
+
+
+The R\+T\+OS task that handles R\+TC related actions. This task syncrhonizes the esp32\textquotesingle{}s and R\+TC\textquotesingle{}s time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pv\+Parms} & Required parameter of R\+T\+OS tasks. Not used in this task. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{rtcdefine_8h_a026bf6139463c2b571c9f49bba4d3a13}\label{rtcdefine_8h_a026bf6139463c2b571c9f49bba4d3a13}} 
+\index{rtcdefine.h@{rtcdefine.h}!setTime@{setTime}}
+\index{setTime@{setTime}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Time (\begin{DoxyParamCaption}\item[{const struct tm $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+Set the time of the external R\+TC to the specified value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time to be set on the device. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, else on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtcdefine_8h_aa48027addbf1c2a0bbfcba31bb80c9c7}\label{rtcdefine_8h_aa48027addbf1c2a0bbfcba31bb80c9c7}} 
+\index{rtcdefine.h@{rtcdefine.h}!ST\_StartRTCHandler@{ST\_StartRTCHandler}}
+\index{ST\_StartRTCHandler@{ST\_StartRTCHandler}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{ST\_StartRTCHandler()}{ST\_StartRTCHandler()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t S\+T\+\_\+\+Start\+R\+T\+C\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Starts the R\+T\+OS task that handles R\+TC and esp32 time synchronization. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK if task started successfully, else on failure. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{rtcdefine_8h_aa57198d6fb22901ea54737a90842cc27}\label{rtcdefine_8h_aa57198d6fb22901ea54737a90842cc27}} 
+\index{rtcdefine.h@{rtcdefine.h}!currTime@{currTime}}
+\index{currTime@{currTime}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{currTime}{currTime}}
+{\footnotesize\ttfamily struct tm$\ast$ curr\+Time}
+
+
+
+A copy of the most recent time obtained from the R\+TC. Is not guaranteed to be accurate to the actual time stored on the R\+TC. This value is updated as often as the R\+TC task runs. 
+
+\mbox{\Hypertarget{rtcdefine_8h_a15f2575b5d3ab1909df4e3d491e7f1a3}\label{rtcdefine_8h_a15f2575b5d3ab1909df4e3d491e7f1a3}} 
+\index{rtcdefine.h@{rtcdefine.h}!RTC\_Handle@{RTC\_Handle}}
+\index{RTC\_Handle@{RTC\_Handle}!rtcdefine.h@{rtcdefine.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_Handle}{RTC\_Handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t R\+T\+C\+\_\+\+Handle}
+
+
+
+The task handle for the R\+TC task. If this field is != N\+U\+LL then task is currently running. Can be used to stop task with R\+T\+OS functions. 
+

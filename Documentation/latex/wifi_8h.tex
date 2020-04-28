@@ -1,0 +1,55 @@
+\hypertarget{wifi_8h}{}\doxysection{include/wifi.h File Reference}
+\label{wifi_8h}\index{include/wifi.h@{include/wifi.h}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+wifi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+event\+\_\+loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{wifi_8h_a74e75242132eaabbc1c512488a135926}{M\+IN}}(x,  y)~((x)$<$(y)?(x)\+:(y))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{wifi_8h_a62dddf76eb27aacde1609464b8d9ebad}{wifi\+\_\+init\+\_\+softap}} ()
+\item 
+void \mbox{\hyperlink{wifi_8h_aaf48dd31815d6c6e4a94cebfb63e56a3}{wifi\+\_\+init\+\_\+sta}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function declarations to connect to a Wi\+Fi networking using S\+S\+ID defined in \mbox{\hyperlink{wifi_8cpp}{wifi.\+cpp}} \begin{DoxyAuthor}{Author}
+\+: Lead\+: Andy Yeung, Secondary\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{wifi_8h_a74e75242132eaabbc1c512488a135926}\label{wifi_8h_a74e75242132eaabbc1c512488a135926}} 
+\index{wifi.h@{wifi.h}!MIN@{MIN}}
+\index{MIN@{MIN}!wifi.h@{wifi.h}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \#define M\+IN(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x)$<$(y)?(x)\+:(y))}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{wifi_8h_a62dddf76eb27aacde1609464b8d9ebad}\label{wifi_8h_a62dddf76eb27aacde1609464b8d9ebad}} 
+\index{wifi.h@{wifi.h}!wifi\_init\_softap@{wifi\_init\_softap}}
+\index{wifi\_init\_softap@{wifi\_init\_softap}!wifi.h@{wifi.h}}
+\doxysubsubsection{\texorpdfstring{wifi\_init\_softap()}{wifi\_init\_softap()}}
+{\footnotesize\ttfamily void wifi\+\_\+init\+\_\+softap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{wifi_8h_aaf48dd31815d6c6e4a94cebfb63e56a3}\label{wifi_8h_aaf48dd31815d6c6e4a94cebfb63e56a3}} 
+\index{wifi.h@{wifi.h}!wifi\_init\_sta@{wifi\_init\_sta}}
+\index{wifi\_init\_sta@{wifi\_init\_sta}!wifi.h@{wifi.h}}
+\doxysubsubsection{\texorpdfstring{wifi\_init\_sta()}{wifi\_init\_sta()}}
+{\footnotesize\ttfamily void wifi\+\_\+init\+\_\+sta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

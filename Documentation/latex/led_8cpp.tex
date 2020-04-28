@@ -1,0 +1,140 @@
+\hypertarget{led_8cpp}{}\doxysection{src/led.cpp File Reference}
+\label{led_8cpp}\index{src/led.cpp@{src/led.cpp}}
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structchannel}{channel}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{led_8cpp_aa6db81ddec240b96865d0c5b4c86404a}{shutdown\+\_\+outputs}} (void)
+\begin{DoxyCompactList}\small\item\em Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state until clear\+\_\+shutdown is called or device is reset. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{led_8cpp_ac7cf4cbb4dc27090a67c478f6547a7e6}{clear\+\_\+shutdown}} (void)
+\begin{DoxyCompactList}\small\item\em Clears a shutdown state, allowing outputs to be controlled again. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{led_8cpp_ab050692af95b693671e6bcb3fdc4af8a}{init\+\_\+channels}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize channels to set all timer and channel configurations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{led_8cpp_a20896bf2f99ce528eff7170d5b605522}{channel\+\_\+on}} (uint8\+\_\+t index, uint8\+\_\+t brightness)
+\begin{DoxyCompactList}\small\item\em Sets brightness of individual channel to turn that output on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{led_8cpp_a92cec3c1563c68b948ac4e12e8e1ee34}{channel\+\_\+off}} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Sets brightness of individual channel to 0 to turn off channel output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{led_8cpp_ae78a8765f8f3c3b5a4d57d08e8d0596b}{set\+\_\+color}} (uint8\+\_\+t index, uint16\+\_\+t r, uint16\+\_\+t g, uint16\+\_\+t b, uint8\+\_\+t brightness)
+\begin{DoxyCompactList}\small\item\em Controls R\+GB channel by changing R, G, and B based off chosen brightness. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{led_8cpp_a08b3517e2d98c571573ea46d89002694}{shutdown\+\_\+status}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function definitions to setup and manipulate G\+P\+IO outputs as P\+WM outputs for controlling L\+ED strips \begin{DoxyAuthor}{Author}
+\+: Primary\+: Shipra Vaidya, Secondary\+: Jesse Cannon (bugfixes and shutdown feature) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{led_8cpp_a92cec3c1563c68b948ac4e12e8e1ee34}\label{led_8cpp_a92cec3c1563c68b948ac4e12e8e1ee34}} 
+\index{led.cpp@{led.cpp}!channel\_off@{channel\_off}}
+\index{channel\_off@{channel\_off}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{channel\_off()}{channel\_off()}}
+{\footnotesize\ttfamily void channel\+\_\+off (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+Sets brightness of individual channel to 0 to turn off channel output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Value between 0 and 5 corresponding to channel being controlled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{led_8cpp_a20896bf2f99ce528eff7170d5b605522}\label{led_8cpp_a20896bf2f99ce528eff7170d5b605522}} 
+\index{led.cpp@{led.cpp}!channel\_on@{channel\_on}}
+\index{channel\_on@{channel\_on}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{channel\_on()}{channel\_on()}}
+{\footnotesize\ttfamily void channel\+\_\+on (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{uint8\+\_\+t}]{brightness }\end{DoxyParamCaption})}
+
+
+
+Sets brightness of individual channel to turn that output on. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Value between 0 and 5 corresponding to channel being controlled. \\
+\hline
+{\em brightness} & Value of brightness chosen per channel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{led_8cpp_ac7cf4cbb4dc27090a67c478f6547a7e6}\label{led_8cpp_ac7cf4cbb4dc27090a67c478f6547a7e6}} 
+\index{led.cpp@{led.cpp}!clear\_shutdown@{clear\_shutdown}}
+\index{clear\_shutdown@{clear\_shutdown}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{clear\_shutdown()}{clear\_shutdown()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t clear\+\_\+shutdown (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clears a shutdown state, allowing outputs to be controlled again. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, E\+S\+P\+\_\+\+F\+A\+IL if not in shutdown state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{led_8cpp_ab050692af95b693671e6bcb3fdc4af8a}\label{led_8cpp_ab050692af95b693671e6bcb3fdc4af8a}} 
+\index{led.cpp@{led.cpp}!init\_channels@{init\_channels}}
+\index{init\_channels@{init\_channels}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{init\_channels()}{init\_channels()}}
+{\footnotesize\ttfamily void init\+\_\+channels (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize channels to set all timer and channel configurations. 
+
+\mbox{\Hypertarget{led_8cpp_ae78a8765f8f3c3b5a4d57d08e8d0596b}\label{led_8cpp_ae78a8765f8f3c3b5a4d57d08e8d0596b}} 
+\index{led.cpp@{led.cpp}!set\_color@{set\_color}}
+\index{set\_color@{set\_color}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{set\_color()}{set\_color()}}
+{\footnotesize\ttfamily void set\+\_\+color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{uint16\+\_\+t}]{r,  }\item[{uint16\+\_\+t}]{g,  }\item[{uint16\+\_\+t}]{b,  }\item[{uint8\+\_\+t}]{brightness }\end{DoxyParamCaption})}
+
+
+
+Controls R\+GB channel by changing R, G, and B based off chosen brightness. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Value between 0 and 1 corrensponding to two supported R\+GB channel outputs repectively. \\
+\hline
+{\em r} & R value of chosen color. \\
+\hline
+{\em g} & G value of chosen color. \\
+\hline
+{\em b} & B value of chosen color. \\
+\hline
+{\em brightness} & Value of brightness chosen for R\+GB channel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{led_8cpp_aa6db81ddec240b96865d0c5b4c86404a}\label{led_8cpp_aa6db81ddec240b96865d0c5b4c86404a}} 
+\index{led.cpp@{led.cpp}!shutdown\_outputs@{shutdown\_outputs}}
+\index{shutdown\_outputs@{shutdown\_outputs}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{shutdown\_outputs()}{shutdown\_outputs()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t shutdown\+\_\+outputs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down all channels and prevents them from turning on again. Enter a permanent shutdown state until clear\+\_\+shutdown is called or device is reset. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success, E\+S\+P\+\_\+\+F\+A\+IL if already in shutdown state. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{led_8cpp_a08b3517e2d98c571573ea46d89002694}\label{led_8cpp_a08b3517e2d98c571573ea46d89002694}} 
+\index{led.cpp@{led.cpp}!shutdown\_status@{shutdown\_status}}
+\index{shutdown\_status@{shutdown\_status}!led.cpp@{led.cpp}}
+\doxysubsubsection{\texorpdfstring{shutdown\_status}{shutdown\_status}}
+{\footnotesize\ttfamily uint8\+\_\+t shutdown\+\_\+status = 0}
+

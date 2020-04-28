@@ -1,0 +1,99 @@
+\hypertarget{wifi_8cpp}{}\doxysection{src/wifi.cpp File Reference}
+\label{wifi_8cpp}\index{src/wifi.cpp@{src/wifi.cpp}}
+
+
+File to connect E\+S\+P32 to Wi\+Fi.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+wifi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+event\+\_\+loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}wifi.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{wifi_8cpp_ad2883d0cae1d96edaefd3b0a46b5ee46}{E\+S\+P\+\_\+\+W\+I\+F\+I\+\_\+\+S\+S\+ID}}~\char`\"{}Esp32\char`\"{}
+\item 
+\#define \mbox{\hyperlink{wifi_8cpp_ac0354e38c60a7a189ea8653efc4e0cd6}{E\+S\+P\+\_\+\+W\+I\+F\+I\+\_\+\+P\+A\+SS}}~\char`\"{}hello123\char`\"{}
+\item 
+\#define \mbox{\hyperlink{wifi_8cpp_a428d6fc23e06208d09595c62b0a98aa9}{M\+A\+X\+\_\+\+S\+T\+A\+\_\+\+C\+O\+NN}}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{wifi_8cpp_a62dddf76eb27aacde1609464b8d9ebad}{wifi\+\_\+init\+\_\+softap}} ()
+\item 
+void \mbox{\hyperlink{wifi_8cpp_aaf48dd31815d6c6e4a94cebfb63e56a3}{wifi\+\_\+init\+\_\+sta}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{wifi_8cpp_a16d5ed168aa11f4ff9f3ebbaf75a262f}{W\+I\+F\+I\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D\+\_\+\+B\+IT}} = B\+I\+T0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File to connect E\+S\+P32 to Wi\+Fi. 
+
+\begin{DoxyAuthor}{Author}
+Andy Yang (\href{mailto:andyyeung123@gmail.com}{\texttt{ andyyeung123@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/04-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{wifi_8cpp_ac0354e38c60a7a189ea8653efc4e0cd6}\label{wifi_8cpp_ac0354e38c60a7a189ea8653efc4e0cd6}} 
+\index{wifi.cpp@{wifi.cpp}!ESP\_WIFI\_PASS@{ESP\_WIFI\_PASS}}
+\index{ESP\_WIFI\_PASS@{ESP\_WIFI\_PASS}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{ESP\_WIFI\_PASS}{ESP\_WIFI\_PASS}}
+{\footnotesize\ttfamily \#define E\+S\+P\+\_\+\+W\+I\+F\+I\+\_\+\+P\+A\+SS~\char`\"{}hello123\char`\"{}}
+
+\mbox{\Hypertarget{wifi_8cpp_ad2883d0cae1d96edaefd3b0a46b5ee46}\label{wifi_8cpp_ad2883d0cae1d96edaefd3b0a46b5ee46}} 
+\index{wifi.cpp@{wifi.cpp}!ESP\_WIFI\_SSID@{ESP\_WIFI\_SSID}}
+\index{ESP\_WIFI\_SSID@{ESP\_WIFI\_SSID}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{ESP\_WIFI\_SSID}{ESP\_WIFI\_SSID}}
+{\footnotesize\ttfamily \#define E\+S\+P\+\_\+\+W\+I\+F\+I\+\_\+\+S\+S\+ID~\char`\"{}Esp32\char`\"{}}
+
+\mbox{\Hypertarget{wifi_8cpp_a428d6fc23e06208d09595c62b0a98aa9}\label{wifi_8cpp_a428d6fc23e06208d09595c62b0a98aa9}} 
+\index{wifi.cpp@{wifi.cpp}!MAX\_STA\_CONN@{MAX\_STA\_CONN}}
+\index{MAX\_STA\_CONN@{MAX\_STA\_CONN}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_STA\_CONN}{MAX\_STA\_CONN}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+S\+T\+A\+\_\+\+C\+O\+NN~4}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{wifi_8cpp_a62dddf76eb27aacde1609464b8d9ebad}\label{wifi_8cpp_a62dddf76eb27aacde1609464b8d9ebad}} 
+\index{wifi.cpp@{wifi.cpp}!wifi\_init\_softap@{wifi\_init\_softap}}
+\index{wifi\_init\_softap@{wifi\_init\_softap}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{wifi\_init\_softap()}{wifi\_init\_softap()}}
+{\footnotesize\ttfamily void wifi\+\_\+init\+\_\+softap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{wifi_8cpp_aaf48dd31815d6c6e4a94cebfb63e56a3}\label{wifi_8cpp_aaf48dd31815d6c6e4a94cebfb63e56a3}} 
+\index{wifi.cpp@{wifi.cpp}!wifi\_init\_sta@{wifi\_init\_sta}}
+\index{wifi\_init\_sta@{wifi\_init\_sta}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{wifi\_init\_sta()}{wifi\_init\_sta()}}
+{\footnotesize\ttfamily void wifi\+\_\+init\+\_\+sta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{wifi_8cpp_a16d5ed168aa11f4ff9f3ebbaf75a262f}\label{wifi_8cpp_a16d5ed168aa11f4ff9f3ebbaf75a262f}} 
+\index{wifi.cpp@{wifi.cpp}!WIFI\_CONNECTED\_BIT@{WIFI\_CONNECTED\_BIT}}
+\index{WIFI\_CONNECTED\_BIT@{WIFI\_CONNECTED\_BIT}!wifi.cpp@{wifi.cpp}}
+\doxysubsubsection{\texorpdfstring{WIFI\_CONNECTED\_BIT}{WIFI\_CONNECTED\_BIT}}
+{\footnotesize\ttfamily const int W\+I\+F\+I\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D\+\_\+\+B\+IT = B\+I\+T0}
+

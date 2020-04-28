@@ -1,0 +1,170 @@
+\hypertarget{dawndusk_8h}{}\doxysection{include/dawndusk.h File Reference}
+\label{dawndusk_8h}\index{include/dawndusk.h@{include/dawndusk.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{dawndusk_8h_a77e76b711036e5e2fcea28729e200658}{radius}}~6378
+\begin{DoxyCompactList}\small\item\em Size of radius of Earth, used in dawn/dusk calculation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{dawndusk_8h_a1daf785e3f68d293c7caa1c756d5cb74}{pi}}~3.\+1415926
+\begin{DoxyCompactList}\small\item\em Value of pi, used in dawn/dusk calculations. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{dawndusk_8h_a59fcee4e0d5b10684a562118bbba8e66}{plane\+Dist}}~23.\+45
+\begin{DoxyCompactList}\small\item\em Distance between x-\/y plane and ecliptic plane, used in dawn/dusk calculations. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{dawndusk_8h_ad66e96191d8d686d82759d5de782372d}{dist\+Sun}}~149598000
+\begin{DoxyCompactList}\small\item\em Distance from Earth to sun, used in dawn/dusk calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{dawndusk_8h_a7ffcbaffd00f005db97cc34773deabc9}{deg\+To\+Rad}} (double deg)
+\begin{DoxyCompactList}\small\item\em Convert degrees to radians. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dawndusk_8h_a09f11d2057b22449a395bd4f02513a61}{sign}} (double x)
+\begin{DoxyCompactList}\small\item\em Checks sign of given value. If longitude value is negative, an offset is taken into account for dawn/duck calculations. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{dawndusk_8h_a613b5ba6eb0eafdb8f59e489387eb2e3}{dawn\+Calc}} (int day, int month, int year, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Calculation of approximate dawn time based on given day and location. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{dawndusk_8h_a103f5b99a9a68e30e8aca3e210ce14f9}{dusk\+Calc}} (int day, int month, int year, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Calculation of approximate dusk time based on given day and location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Desciprtion\+: Contains function declarations and constants used in approximate dawn and dusk times. \begin{DoxyAuthor}{Author}
+\+: Shipra Vaidya 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{dawndusk_8h_ad66e96191d8d686d82759d5de782372d}\label{dawndusk_8h_ad66e96191d8d686d82759d5de782372d}} 
+\index{dawndusk.h@{dawndusk.h}!distSun@{distSun}}
+\index{distSun@{distSun}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{distSun}{distSun}}
+{\footnotesize\ttfamily \#define dist\+Sun~149598000}
+
+
+
+Distance from Earth to sun, used in dawn/dusk calculations. 
+
+\mbox{\Hypertarget{dawndusk_8h_a1daf785e3f68d293c7caa1c756d5cb74}\label{dawndusk_8h_a1daf785e3f68d293c7caa1c756d5cb74}} 
+\index{dawndusk.h@{dawndusk.h}!pi@{pi}}
+\index{pi@{pi}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{pi}{pi}}
+{\footnotesize\ttfamily \#define pi~3.\+1415926}
+
+
+
+Value of pi, used in dawn/dusk calculations. 
+
+\mbox{\Hypertarget{dawndusk_8h_a59fcee4e0d5b10684a562118bbba8e66}\label{dawndusk_8h_a59fcee4e0d5b10684a562118bbba8e66}} 
+\index{dawndusk.h@{dawndusk.h}!planeDist@{planeDist}}
+\index{planeDist@{planeDist}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{planeDist}{planeDist}}
+{\footnotesize\ttfamily \#define plane\+Dist~23.\+45}
+
+
+
+Distance between x-\/y plane and ecliptic plane, used in dawn/dusk calculations. 
+
+\mbox{\Hypertarget{dawndusk_8h_a77e76b711036e5e2fcea28729e200658}\label{dawndusk_8h_a77e76b711036e5e2fcea28729e200658}} 
+\index{dawndusk.h@{dawndusk.h}!radius@{radius}}
+\index{radius@{radius}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily \#define radius~6378}
+
+
+
+Size of radius of Earth, used in dawn/dusk calculation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dawndusk_8h_a613b5ba6eb0eafdb8f59e489387eb2e3}\label{dawndusk_8h_a613b5ba6eb0eafdb8f59e489387eb2e3}} 
+\index{dawndusk.h@{dawndusk.h}!dawnCalc@{dawnCalc}}
+\index{dawnCalc@{dawnCalc}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{dawnCalc()}{dawnCalc()}}
+{\footnotesize\ttfamily double dawn\+Calc (\begin{DoxyParamCaption}\item[{int}]{day,  }\item[{int}]{month,  }\item[{int}]{year,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Calculation of approximate dawn time based on given day and location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Numerical value, day of month. \\
+\hline
+{\em month} & Numerical value, month in year. \\
+\hline
+{\em year} & Numerical value, year. \\
+\hline
+{\em latitude} & Degree value of latitude from user\textquotesingle{}s location. \\
+\hline
+{\em longitude} & Degree value of longitude from user\textquotesingle{}s location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns approximate time of dawn on given date at given location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8h_a7ffcbaffd00f005db97cc34773deabc9}\label{dawndusk_8h_a7ffcbaffd00f005db97cc34773deabc9}} 
+\index{dawndusk.h@{dawndusk.h}!degToRad@{degToRad}}
+\index{degToRad@{degToRad}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{degToRad()}{degToRad()}}
+{\footnotesize\ttfamily double deg\+To\+Rad (\begin{DoxyParamCaption}\item[{double}]{deg }\end{DoxyParamCaption})}
+
+
+
+Convert degrees to radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deg} & Latitude or longitude value in degrees. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns converted value in radians. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8h_a103f5b99a9a68e30e8aca3e210ce14f9}\label{dawndusk_8h_a103f5b99a9a68e30e8aca3e210ce14f9}} 
+\index{dawndusk.h@{dawndusk.h}!duskCalc@{duskCalc}}
+\index{duskCalc@{duskCalc}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{duskCalc()}{duskCalc()}}
+{\footnotesize\ttfamily double dusk\+Calc (\begin{DoxyParamCaption}\item[{int}]{day,  }\item[{int}]{month,  }\item[{int}]{year,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Calculation of approximate dusk time based on given day and location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Numerical value, day of month. \\
+\hline
+{\em month} & Numerical value, month in year. \\
+\hline
+{\em year} & Numerical value, year. \\
+\hline
+{\em latitude} & Degree value of latitude from user\textquotesingle{}s location. \\
+\hline
+{\em longitude} & Degree value of longitude from user\textquotesingle{}s location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Returns approximate time of dusk on given date at given location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dawndusk_8h_a09f11d2057b22449a395bd4f02513a61}\label{dawndusk_8h_a09f11d2057b22449a395bd4f02513a61}} 
+\index{dawndusk.h@{dawndusk.h}!sign@{sign}}
+\index{sign@{sign}!dawndusk.h@{dawndusk.h}}
+\doxysubsubsection{\texorpdfstring{sign()}{sign()}}
+{\footnotesize\ttfamily int sign (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+Checks sign of given value. If longitude value is negative, an offset is taken into account for dawn/duck calculations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Value of longitude. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 1 if positive, -\/1 if negative, to be multiplied in offset calculation. 
+\end{DoxyReturn}

@@ -1,0 +1,39 @@
+\hypertarget{espsntp_8h}{}\doxysection{include/espsntp.h File Reference}
+\label{espsntp_8h}\index{include/espsntp.h@{include/espsntp.h}}
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lwip/apps/sntp.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{espsntp_8h_adacd55e04920dba0fe2514dd4e2d64c8}{obtain\+\_\+time}} (void)
+\item 
+void \mbox{\hyperlink{espsntp_8h_ad43a023f7ba5cfce2bd3740cdb135efa}{set\+\_\+time}} (uint32\+\_\+t time)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function declarations to start the process of obtaining time from an S\+N\+TP server. N\+O\+TE\+: not tested with latest version of project. Was initially developed very early in project and abandoned for other priorites. \begin{DoxyAuthor}{Author}
+\+: Jesse Cannon (based on \href{https://github.com/espressif/esp-idf/blob/5aa21584cfb4cfe4f2c7f6250151341e28141cf3/examples/protocols/sntp/main/sntp_example_main.c}{\texttt{ https\+://github.\+com/espressif/esp-\/idf/blob/5aa21584cfb4cfe4f2c7f6250151341e28141cf3/examples/protocols/sntp/main/sntp\+\_\+example\+\_\+main.\+c}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{espsntp_8h_adacd55e04920dba0fe2514dd4e2d64c8}\label{espsntp_8h_adacd55e04920dba0fe2514dd4e2d64c8}} 
+\index{espsntp.h@{espsntp.h}!obtain\_time@{obtain\_time}}
+\index{obtain\_time@{obtain\_time}!espsntp.h@{espsntp.h}}
+\doxysubsubsection{\texorpdfstring{obtain\_time()}{obtain\_time()}}
+{\footnotesize\ttfamily void obtain\+\_\+time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{espsntp_8h_ad43a023f7ba5cfce2bd3740cdb135efa}\label{espsntp_8h_ad43a023f7ba5cfce2bd3740cdb135efa}} 
+\index{espsntp.h@{espsntp.h}!set\_time@{set\_time}}
+\index{set\_time@{set\_time}!espsntp.h@{espsntp.h}}
+\doxysubsubsection{\texorpdfstring{set\_time()}{set\_time()}}
+{\footnotesize\ttfamily void set\+\_\+time (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time }\end{DoxyParamCaption})}
+

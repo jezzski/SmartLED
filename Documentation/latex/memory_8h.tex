@@ -1,0 +1,297 @@
+\hypertarget{memory_8h}{}\doxysection{include/memory.h File Reference}
+\label{memory_8h}\index{include/memory.h@{include/memory.h}}
+{\ttfamily \#include \char`\"{}Arduino\+Json-\/v6.\+14.\+1.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+err.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+spiffs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scheduler.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{memory_8h_a23e877cf59fe5ff552235db010e2c87d}{S\+E\+T\+T\+I\+N\+G\+S\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~512
+\begin{DoxyCompactList}\small\item\em The size of the buffer used to store settings. Increase this if storing a lot of settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_adefe2a9e7fd37ce90f5dd6cd63bac51b}{init\+\_\+memory}} (void)
+\begin{DoxyCompactList}\small\item\em Starts the memory system. Call this before calling any other memory related functions. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a8dbe582624d12db7baf738eb30ae10ed}{store\+\_\+schedules}} (void)
+\begin{DoxyCompactList}\small\item\em Stores all currently running schedules in persistent memory. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_add45089dc311bf9774194476ec2381d9}{recall\+\_\+schedules}} (void)
+\begin{DoxyCompactList}\small\item\em Recall schedules from persistent memory. All schedules recalled will now be located in the tespective channel\textquotesingle{}s schedule list. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_ada332ab16933ad45df8ff3b06d631d73}{clear\+\_\+schedule\+\_\+data}} (void)
+\begin{DoxyCompactList}\small\item\em Clears all schedules from persistent memory. Does not delete the schedules from the list. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a47a46f1e1030d53ac90d68b8cdc1cc87}{store\+\_\+setting\+\_\+string}} (const char $\ast$name, char $\ast$setting)
+\begin{DoxyCompactList}\small\item\em Persistently store a string setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a8842404654d4aa9cb8128fb41df8110d}{store\+\_\+setting\+\_\+int}} (const char $\ast$name, int setting)
+\begin{DoxyCompactList}\small\item\em Persistently store an integer setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a97caf43dfa0fcca1bd2c57a87c735b9c}{store\+\_\+setting\+\_\+byte}} (const char $\ast$name, uint8\+\_\+t setting)
+\begin{DoxyCompactList}\small\item\em Persistently store a byte setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a737a727de5414266238a820f0595cc72}{store\+\_\+setting\+\_\+double}} (const char $\ast$name, double setting)
+\begin{DoxyCompactList}\small\item\em Persistently store a double setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_adbc26f3ee8d27b5f7a235c47fe9bbb8e}{get\+\_\+setting\+\_\+string}} (const char $\ast$name, char $\ast$setting)
+\begin{DoxyCompactList}\small\item\em Recall a persistent string setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a3dc18cc835281f83af3547f0c87e117e}{get\+\_\+setting\+\_\+int}} (const char $\ast$name, int $\ast$setting)
+\begin{DoxyCompactList}\small\item\em Recall a persistent integer setting. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a7c7025f21e1658c33370505929d1f187}{get\+\_\+setting\+\_\+byte}} (const char $\ast$name, uint8\+\_\+t $\ast$setting)
+\begin{DoxyCompactList}\small\item\em Recall a byte string setting. Uint8\+\_\+t is equivalent to unsigned char. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_a7cdcee3a995268d19285d8fabd3f3256}{get\+\_\+setting\+\_\+double}} (const char $\ast$name, double $\ast$setting)
+\begin{DoxyCompactList}\small\item\em Recall a persistent double setting. Exact storage depends on Arduino\+Json configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{memory_8h_aff4328f57ccf70037c9ee94e694a0f73}{clear\+\_\+setting\+\_\+data}} (void)
+\begin{DoxyCompactList}\small\item\em Clear settings from persistent memory and R\+AM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Description\+: Contains function declarations and settings used by the memory subsystem. Functions are primarily used by other files to get and retrieve values from persistent memory. \begin{DoxyAuthor}{Author}
+\+: Jesse Cannon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+last modified\+: 4/26/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{memory_8h_a23e877cf59fe5ff552235db010e2c87d}\label{memory_8h_a23e877cf59fe5ff552235db010e2c87d}} 
+\index{memory.h@{memory.h}!SETTINGS\_BUFFER\_SIZE@{SETTINGS\_BUFFER\_SIZE}}
+\index{SETTINGS\_BUFFER\_SIZE@{SETTINGS\_BUFFER\_SIZE}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{SETTINGS\_BUFFER\_SIZE}{SETTINGS\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define S\+E\+T\+T\+I\+N\+G\+S\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~512}
+
+
+
+The size of the buffer used to store settings. Increase this if storing a lot of settings. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memory_8h_ada332ab16933ad45df8ff3b06d631d73}\label{memory_8h_ada332ab16933ad45df8ff3b06d631d73}} 
+\index{memory.h@{memory.h}!clear\_schedule\_data@{clear\_schedule\_data}}
+\index{clear\_schedule\_data@{clear\_schedule\_data}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{clear\_schedule\_data()}{clear\_schedule\_data()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t clear\+\_\+schedule\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clears all schedules from persistent memory. Does not delete the schedules from the list. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_aff4328f57ccf70037c9ee94e694a0f73}\label{memory_8h_aff4328f57ccf70037c9ee94e694a0f73}} 
+\index{memory.h@{memory.h}!clear\_setting\_data@{clear\_setting\_data}}
+\index{clear\_setting\_data@{clear\_setting\_data}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{clear\_setting\_data()}{clear\_setting\_data()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t clear\+\_\+setting\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear settings from persistent memory and R\+AM. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+F\+A\+IL if error occurrs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a7c7025f21e1658c33370505929d1f187}\label{memory_8h_a7c7025f21e1658c33370505929d1f187}} 
+\index{memory.h@{memory.h}!get\_setting\_byte@{get\_setting\_byte}}
+\index{get\_setting\_byte@{get\_setting\_byte}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{get\_setting\_byte()}{get\_setting\_byte()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+setting\+\_\+byte (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{uint8\+\_\+t $\ast$}]{setting }\end{DoxyParamCaption})}
+
+
+
+Recall a byte string setting. Uint8\+\_\+t is equivalent to unsigned char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to recall. \\
+\hline
+{\em setting} & The output of that setting. Set to N\+U\+LL if not found, the value if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail if not found or an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a7cdcee3a995268d19285d8fabd3f3256}\label{memory_8h_a7cdcee3a995268d19285d8fabd3f3256}} 
+\index{memory.h@{memory.h}!get\_setting\_double@{get\_setting\_double}}
+\index{get\_setting\_double@{get\_setting\_double}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{get\_setting\_double()}{get\_setting\_double()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+setting\+\_\+double (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{double $\ast$}]{setting }\end{DoxyParamCaption})}
+
+
+
+Recall a persistent double setting. Exact storage depends on Arduino\+Json configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to recall. \\
+\hline
+{\em setting} & The output of that setting. Set to N\+U\+LL if not found, the value if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail if not found or an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a3dc18cc835281f83af3547f0c87e117e}\label{memory_8h_a3dc18cc835281f83af3547f0c87e117e}} 
+\index{memory.h@{memory.h}!get\_setting\_int@{get\_setting\_int}}
+\index{get\_setting\_int@{get\_setting\_int}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{get\_setting\_int()}{get\_setting\_int()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+setting\+\_\+int (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{int $\ast$}]{setting }\end{DoxyParamCaption})}
+
+
+
+Recall a persistent integer setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to recall. \\
+\hline
+{\em setting} & The output of that setting. Set to N\+U\+LL if not found, the value if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail if not found or an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_adbc26f3ee8d27b5f7a235c47fe9bbb8e}\label{memory_8h_adbc26f3ee8d27b5f7a235c47fe9bbb8e}} 
+\index{memory.h@{memory.h}!get\_setting\_string@{get\_setting\_string}}
+\index{get\_setting\_string@{get\_setting\_string}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{get\_setting\_string()}{get\_setting\_string()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+\_\+setting\+\_\+string (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{char $\ast$}]{setting }\end{DoxyParamCaption})}
+
+
+
+Recall a persistent string setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to recall. \\
+\hline
+{\em setting} & The output of that setting. Set to N\+U\+LL if not found, the value if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail if not found or an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_adefe2a9e7fd37ce90f5dd6cd63bac51b}\label{memory_8h_adefe2a9e7fd37ce90f5dd6cd63bac51b}} 
+\index{memory.h@{memory.h}!init\_memory@{init\_memory}}
+\index{init\_memory@{init\_memory}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{init\_memory()}{init\_memory()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t init\+\_\+memory (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Starts the memory system. Call this before calling any other memory related functions. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_add45089dc311bf9774194476ec2381d9}\label{memory_8h_add45089dc311bf9774194476ec2381d9}} 
+\index{memory.h@{memory.h}!recall\_schedules@{recall\_schedules}}
+\index{recall\_schedules@{recall\_schedules}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{recall\_schedules()}{recall\_schedules()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t recall\+\_\+schedules (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Recall schedules from persistent memory. All schedules recalled will now be located in the tespective channel\textquotesingle{}s schedule list. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a8dbe582624d12db7baf738eb30ae10ed}\label{memory_8h_a8dbe582624d12db7baf738eb30ae10ed}} 
+\index{memory.h@{memory.h}!store\_schedules@{store\_schedules}}
+\index{store\_schedules@{store\_schedules}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{store\_schedules()}{store\_schedules()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t store\+\_\+schedules (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stores all currently running schedules in persistent memory. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a97caf43dfa0fcca1bd2c57a87c735b9c}\label{memory_8h_a97caf43dfa0fcca1bd2c57a87c735b9c}} 
+\index{memory.h@{memory.h}!store\_setting\_byte@{store\_setting\_byte}}
+\index{store\_setting\_byte@{store\_setting\_byte}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{store\_setting\_byte()}{store\_setting\_byte()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t store\+\_\+setting\+\_\+byte (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{uint8\+\_\+t}]{setting }\end{DoxyParamCaption})}
+
+
+
+Persistently store a byte setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. \\
+\hline
+{\em setting} & The setting to associate with the given name. Uint8\+\_\+t is equivalent to an unsigned char. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a737a727de5414266238a820f0595cc72}\label{memory_8h_a737a727de5414266238a820f0595cc72}} 
+\index{memory.h@{memory.h}!store\_setting\_double@{store\_setting\_double}}
+\index{store\_setting\_double@{store\_setting\_double}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{store\_setting\_double()}{store\_setting\_double()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t store\+\_\+setting\+\_\+double (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{double}]{setting }\end{DoxyParamCaption})}
+
+
+
+Persistently store a double setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. \\
+\hline
+{\em setting} & The setting to associate with the given name. Exact storage depends on Arduino\+Json configuration, but typically a maximum of 9 decimal places with rounding. No trailing zeros are included \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a8842404654d4aa9cb8128fb41df8110d}\label{memory_8h_a8842404654d4aa9cb8128fb41df8110d}} 
+\index{memory.h@{memory.h}!store\_setting\_int@{store\_setting\_int}}
+\index{store\_setting\_int@{store\_setting\_int}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{store\_setting\_int()}{store\_setting\_int()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t store\+\_\+setting\+\_\+int (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{int}]{setting }\end{DoxyParamCaption})}
+
+
+
+Persistently store an integer setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. \\
+\hline
+{\em setting} & The setting to associate with the given name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a47a46f1e1030d53ac90d68b8cdc1cc87}\label{memory_8h_a47a46f1e1030d53ac90d68b8cdc1cc87}} 
+\index{memory.h@{memory.h}!store\_setting\_string@{store\_setting\_string}}
+\index{store\_setting\_string@{store\_setting\_string}!memory.h@{memory.h}}
+\doxysubsubsection{\texorpdfstring{store\_setting\_string()}{store\_setting\_string()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t store\+\_\+setting\+\_\+string (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{char $\ast$}]{setting }\end{DoxyParamCaption})}
+
+
+
+Persistently store a string setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the setting to store. If the setting with that name already exists it is overwritten with the new value. \\
+\hline
+{\em setting} & The setting to associate with the given name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Returns E\+S\+P\+\_\+\+OK on success. E\+S\+P\+\_\+\+Fail or related if an error occurred. 
+\end{DoxyReturn}
